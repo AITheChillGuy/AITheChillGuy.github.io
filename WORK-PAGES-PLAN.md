@@ -27,104 +27,112 @@ explanation. One page per session, deployed and verified before the next.
 ### 1. `agentic-ai.html` → TriAgent  ★ start here (content is stale, not just plain)
 **Paper:** "TriAgent: An Adaptive Multi-Agent Architecture for Crisis Clinical
 Decision Support Under Incomplete Information" — Ibrahim, AlSanousi, Serag.
-*AI* 7(6):230, 2026, DOI 10.3390/ai7060230. **Now published** — the index
-still says `wip(agentic)` "in-progress" and it's missing from Publications.
-
-**Story (Ahmed's framing):** this is a *crisis* system. In an ER during a
-mass-casualty event — or anywhere the health system itself is in crisis:
-conflict zones, disasters, places like Gaza — the patient in front of you has
-no chart. No history, no med list, no allergy record, and no time. Rule-based
-CDS assumes structured data that doesn't exist; a bare LLM has no mechanism
-that *forces* a safety check. The page opens on that reality: a patient card
-that is mostly blank — unknowns rendered as redacted/empty fields — and the
-design shows the system working *around* the gaps, not pretending they aren't
-there. Missing information is the protagonist, not an edge case.
-
-**Real architecture (from the paper — drives the board):**
-- **Orchestrator Agent** — routes by model reasoning, no fixed execution path;
-  invokes only the modules each case requires.
-- Specialist modules: **clinical assessment · retrieval · treatment planning ·
-  safety verification · system coordination**.
-- **Retrieval sub-agent** — iterative query refinement + relevance grading
-  over **49,000 MIMIC-IV discharge notes**.
-- **Medication-conflict screening** and **allergy-risk assessment** — invoked
-  in parallel, only when clinically indicated.
-- **Critique Agent** — reviews the full reasoning trace before the
-  recommendation is finalized.
-
-**Real numbers (retrospective, 1000 real emergency presentations with
-synthesized incomplete inputs):**
-- **85.0%** critical-case recall vs **≤ 14.7%** for matched single-model /
-  retrieval-only baselines — the headline stat (~5.8×).
-- **65.7%** overall triage accuracy vs ≤ 43.4% baselines.
-- Safety checks executed on **every** continuation pathway.
-- Print the paper's own caveat honestly: these are internal system
-  properties; prospective clinician-involved validation still ahead.
-
-**Motif — the live triage board:** interactive agent graph (inline SVG).
-The blank patient card sits beside the board; the visitor toggles what's
-known (history? med list? allergies? vitals?) and watches the Orchestrator
-re-plan live — message pulses along edges, conflict/allergy modules waking in
-parallel only when indicated, the Critique Agent gating the exit. A scripted
-**crisis-scenario mode** steps through one incomplete-information case beat by
-beat. Stats strip uses the real numbers above. Tone rule for the crisis
-framing: factual and respectful — the setting explains why the problem
-matters; no dramatization.
-
-**Also in this session:** add TriAgent to the index Publications list; flip
-the projects git-log entry `wip` → `paper(triagent)` + published pill; update
-terminal easter eggs (`git status` "in active development", README
-"drafting"); rename page to `triagent.html` with `agentic-ai.html` as a
-redirect stub (matches existing stub pattern); update next-chain labels.
+*AI* 7(6):230, 2026, DOI 10.3390/ai7060230. Now published; index still says
+`wip(agentic)` and it's missing from Publications.
+- **Story:** a *crisis* system. In a mass-casualty ER — or where the health
+  system itself is in crisis: conflict zones, disasters, places like Gaza —
+  the patient has no chart, no med list, no allergies on file, no time.
+  Missing information is the protagonist, not an edge case. Tone: factual and
+  respectful; the setting explains why it matters, no dramatization.
+- **Motif — the live triage board:** interactive agent graph (inline SVG)
+  beside a mostly-blank patient card. Toggle what's known (history / meds /
+  allergies / vitals) → the Orchestrator visibly re-plans: pulses along
+  edges, conflict + allergy modules waking in parallel only when indicated,
+  the Critique Agent gating the exit. Scripted crisis-scenario mode steps
+  through one incomplete-information case.
+- **Real facts to use:** Orchestrator + specialist modules (assessment,
+  retrieval, treatment planning, safety verification, coordination); retrieval
+  sub-agent over 49k MIMIC-IV notes; stats — 85.0% critical-case recall vs
+  ≤ 14.7% baseline (~5.8×), 65.7% vs 43.4% triage accuracy, safety checks on
+  every pathway (1000 real presentations, retrospective); print the paper's
+  own caveat: prospective clinician-involved validation still ahead.
+- **Session also:** add TriAgent to Publications; flip git-log entry `wip` →
+  `paper(triagent)` + published pill; sync terminal easter eggs; rename to
+  `triagent.html` with `agentic-ai.html` redirect stub; fix next-chain labels.
 
 ### 2. `mera.html` — MERA, RAG over clinical records
-**Paper:** MAKE 7(3):73, 2025. RAG over MIMIC-IV-Note.
-- **Story:** grounding — answers that point back into the record.
-- **Motif — the chart itself:** page styled as a de-identified clinical chart:
-  monospace record fields, animated **redaction bars** (the de-identification
-  motif is natively monochrome). Interactive retrieval demo: pick a canned
-  clinical question → matching passages highlight inside a mock note → answer
-  assembles with citation markers lighting back to their source chunks.
-  Scroll-driven pipeline strip: query → retrieve → ground → answer.
+**Paper:** "MERA: A Medical Electronic Records Assistant" — MAKE 7(3):73,
+2025. RAG over MIMIC-IV-Note for clinical inquiry.
+- **Story:** grounding — in medicine an answer is only useful if it points
+  back into the record. The page performs that claim: every generated line
+  visibly traces to the passage that supports it.
+- **Motif — the chart itself:** the page is styled as a de-identified
+  clinical chart: monospace record fields, animated redaction bars (the
+  de-identification motif is natively monochrome). Interactive retrieval
+  demo: pick a canned clinical question → matching passages highlight inside
+  a mock note → the answer assembles itself with citation markers that light
+  back to their source chunks on hover. A scroll-driven pipeline strip walks
+  query → retrieve → ground → answer.
+- **Fetch at build time:** the MAKE paper for real eval numbers (correctness,
+  groundedness, ROUGE-1 F1, Jaccard, METEOR — metrics named on current page),
+  model lineup (Mistral, Qwen), corpus size, and one real-shaped example
+  question to drive the demo.
 
 ### 3. `menara.html` — MENARA, dialect-robust Arabic medical LLM
-**Paper:** MAKE 8(4):110, 2026 + ACL ArabicNLP 2025 (model merging).
-- **Story:** one model, many Arabics.
-- **Motif — the language switcher:** same medical question morphing across
-  MSA / Gulf / Levantine / Maghrebi / Egyptian (animated text swap, real RTL
-  Arabic typography — vendor a subset of an open Arabic font) while the answer
-  panel stays fixed: *many dialects, one answer quality*. Second visual: model
-  merging as two/three weight-space fields interpolating into one (animated
-  SVG isolines — abstract, monochrome, honest).
+**Paper:** "MENARA: Medical Natural Arabic Response Assistant" — MAKE
+8(4):110, 2026 + companion "Bridging Dialectal Gaps…" ACL ArabicNLP 2025.
+- **Story:** one model, many Arabics. MSA is what textbooks are written in;
+  patients ask in Gulf, Levantine, Maghrebi, Egyptian. A model that only
+  speaks "textbook" quietly fails the people most likely to need it.
+- **Motif — the language switcher:** the same medical question morphing
+  between dialects in real RTL Arabic typography (vendor a subset of an open
+  Arabic font) while the answer panel stays fixed — *many dialects, one
+  answer quality*. Second visual: model merging as two/three weight-space
+  fields interpolating into one (animated SVG isolines — abstract,
+  monochrome, honest). Dialect labels double as navigation chips.
+- **Fetch at build time:** both papers for the merge recipe (which base
+  models merged, method), dialect evaluation results, and 3–4 authentic
+  dialect phrasings of one question (verify wording with Ahmed — native
+  speaker — before shipping).
 
 ### 4. `d3.html` — D3, small LM vs LLMs for drug–drug interactions
-**Paper:** MLwA 20:100658, 2025. ~72M params vs billion-param LLMs.
-- **Story:** David vs Goliath — right-sized models.
+**Paper:** "D3: A Small Language Model for Drug–Drug Interaction Prediction…"
+— MLwA 20:100658, 2025. ~72M params, pretrained from scratch.
+- **Story:** David vs Goliath — right-sized models. A 72M-parameter model
+  pretrained for one job holds its own against billion-parameter generalists,
+  at a fraction of the inference cost.
 - **Motif — scale you can feel:** log-scale parameter bars where the LLM bar
-  breaks out of the chart frame; animated parameter counter; tiny display
-  type for "72M" against enormous type for the giants. Interactive drug-pair
-  picker over a small embedded sample of pairs → interaction card flips out.
-  Cost-vs-accuracy scatter with D3 sitting in the good corner.
+  breaks out of the chart frame; an animated parameter counter; "72M" set
+  tiny against enormous display type for the giants. Interactive drug-pair
+  picker over a small embedded sample of pairs → interaction card flips out
+  with the predicted interaction class. Cost-vs-accuracy scatter with D3
+  sitting alone in the good corner.
+- **Fetch at build time:** the MLwA paper for exact parameter count, which
+  LLMs it was benchmarked against, accuracy/F1 per model, and a handful of
+  real drug pairs + labels safe to embed as the demo dataset.
 
 ### 5. `stroke-segmentation.html` — do complex architectures win?
-**Paper:** IEEE Access 12:198262, 2024 (+ arXiv:2403.17177).
-- **Story:** controlled comparison — hold everything fixed, vary only the
-  architecture.
+**Paper:** "Deep Models for Stroke Segmentation: Do Complex Architectures
+Always Perform Better?" — IEEE Access 12:198262, 2024 (+ arXiv:2403.17177).
+- **Story:** controlled comparison — hold loaders, augmentation, and loss
+  fixed; vary only the architecture. The punchline: added complexity did not
+  reliably beat the well-tuned simple baseline.
 - **Motif — the reveal slider:** stylized monochrome MRI slice (hand-drawn
-  SVG, no fake patient data) with a **drag-to-compare overlay** showing
-  predicted vs ground-truth lesion masks. Three architecture "weigh-in" cards
-  (UNet / Attention-UNet / Transformer) with matched-conditions callout; Dice
-  bars animate in; the punchline lands: complexity didn't reliably win.
+  SVG, no fake patient data) with a drag-to-compare overlay showing predicted
+  vs ground-truth lesion masks. Three architecture "weigh-in" cards (UNet /
+  Attention-UNet / Transformer) listing matched conditions; Dice bars animate
+  in and land close together — the visual understatement *is* the finding.
+- **Fetch at build time:** the IEEE Access paper (open) for real Dice/IoU
+  numbers per architecture, datasets used (ISLES/ATLAS?), and training-setup
+  details for the matched-conditions callout. Keep the lesion geometry in the
+  SVG anatomically plausible but clearly illustrative.
 
 ### 6. `multimodal-radiology.html` — the imaging VLM line of work
-**Papers:** M3 (BJR|AI 2(1), 2025) + "From Slices to Volumes" (MICCAI 2025).
-Consolidates the vision-language radiology thread.
-- **Story:** models that read the scan, slice by slice.
+**Papers:** "M3: Multimodal AI for Medical Report Generation and VQA from 3D
+Abdominal CT" — BJR|AI 2(1), 2025 + "From Slices to Volumes" — MICCAI 2025.
+- **Story:** models that read the scan, slice by slice — and then learn to
+  see the volume the way a radiologist does, fusing 2D detail with 3D
+  context. Consolidates the vision-language radiology thread.
 - **Motif — the scan scrubber:** a drag/scroll CT-stack scrubber (pre-drawn
-  abstract slice frames, canvas or layered SVG) like a radiologist paging
-  through a volume; slices visibly stack into a 3D volume (the 2D→3D fusion
-  idea). Canned VQA: pick a question → attention spotlight sweeps the slice →
-  answer types out as a report line.
+  abstract slice frames, layered SVG or canvas) paging through a volume like
+  a radiologist; on scroll the slices visibly stack into a 3D volume — the
+  2D→3D fusion idea performed by the layout. Canned VQA: pick a question →
+  an attention spotlight sweeps the slice → the answer types out as a report
+  line, character by character.
+- **Fetch at build time:** both papers for report-generation metrics and VQA
+  accuracy, fusion architecture details for an honest pipeline figure, and
+  which findings/questions make good canned examples. All slice imagery
+  drawn, not real patient data.
 
 ## Progress
 
