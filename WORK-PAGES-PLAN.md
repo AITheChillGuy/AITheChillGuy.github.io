@@ -27,19 +27,55 @@ explanation. One page per session, deployed and verified before the next.
 ### 1. `agentic-ai.html` → TriAgent  ★ start here (content is stale, not just plain)
 **Paper:** "TriAgent: An Adaptive Multi-Agent Architecture for Crisis Clinical
 Decision Support Under Incomplete Information" — Ibrahim, AlSanousi, Serag.
-*AI* 7(6):230, 2026. **Now published** — the index still says `wip(agentic)`
-"in-progress" and it's missing from the Publications list entirely.
-- **Story:** deciding under missing information — agents that adapt when the
-  chart is incomplete.
-- **Motif — the live triage board:** an interactive agent graph (inline SVG).
-  Visitor toggles pieces of patient information on/off; message-pulses animate
-  along edges and the routing visibly re-plans. A scripted "crisis scenario"
-  mode steps through a case beat by beat.
-- **Also in this session:** add TriAgent to the index Publications list; flip
-  the projects git-log entry from `wip` → `paper(triagent)` + published pill;
-  update terminal easter eggs (`git status` "in active development" line,
-  README "drafting"); keep URL (redirect stub not needed — page keeps its name
-  or gets `triagent.html` + stub, decide from final title).
+*AI* 7(6):230, 2026, DOI 10.3390/ai7060230. **Now published** — the index
+still says `wip(agentic)` "in-progress" and it's missing from Publications.
+
+**Story (Ahmed's framing):** this is a *crisis* system. In an ER during a
+mass-casualty event — or anywhere the health system itself is in crisis:
+conflict zones, disasters, places like Gaza — the patient in front of you has
+no chart. No history, no med list, no allergy record, and no time. Rule-based
+CDS assumes structured data that doesn't exist; a bare LLM has no mechanism
+that *forces* a safety check. The page opens on that reality: a patient card
+that is mostly blank — unknowns rendered as redacted/empty fields — and the
+design shows the system working *around* the gaps, not pretending they aren't
+there. Missing information is the protagonist, not an edge case.
+
+**Real architecture (from the paper — drives the board):**
+- **Orchestrator Agent** — routes by model reasoning, no fixed execution path;
+  invokes only the modules each case requires.
+- Specialist modules: **clinical assessment · retrieval · treatment planning ·
+  safety verification · system coordination**.
+- **Retrieval sub-agent** — iterative query refinement + relevance grading
+  over **49,000 MIMIC-IV discharge notes**.
+- **Medication-conflict screening** and **allergy-risk assessment** — invoked
+  in parallel, only when clinically indicated.
+- **Critique Agent** — reviews the full reasoning trace before the
+  recommendation is finalized.
+
+**Real numbers (retrospective, 1000 real emergency presentations with
+synthesized incomplete inputs):**
+- **85.0%** critical-case recall vs **≤ 14.7%** for matched single-model /
+  retrieval-only baselines — the headline stat (~5.8×).
+- **65.7%** overall triage accuracy vs ≤ 43.4% baselines.
+- Safety checks executed on **every** continuation pathway.
+- Print the paper's own caveat honestly: these are internal system
+  properties; prospective clinician-involved validation still ahead.
+
+**Motif — the live triage board:** interactive agent graph (inline SVG).
+The blank patient card sits beside the board; the visitor toggles what's
+known (history? med list? allergies? vitals?) and watches the Orchestrator
+re-plan live — message pulses along edges, conflict/allergy modules waking in
+parallel only when indicated, the Critique Agent gating the exit. A scripted
+**crisis-scenario mode** steps through one incomplete-information case beat by
+beat. Stats strip uses the real numbers above. Tone rule for the crisis
+framing: factual and respectful — the setting explains why the problem
+matters; no dramatization.
+
+**Also in this session:** add TriAgent to the index Publications list; flip
+the projects git-log entry `wip` → `paper(triagent)` + published pill; update
+terminal easter eggs (`git status` "in active development", README
+"drafting"); rename page to `triagent.html` with `agentic-ai.html` as a
+redirect stub (matches existing stub pattern); update next-chain labels.
 
 ### 2. `mera.html` — MERA, RAG over clinical records
 **Paper:** MAKE 7(3):73, 2025. RAG over MIMIC-IV-Note.
