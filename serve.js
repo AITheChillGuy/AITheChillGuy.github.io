@@ -12,7 +12,8 @@ const TYPES = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript',
   '.webp': 'image/webp', '.png': 'image/png', '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon', '.json': 'application/json',
-  '.glb': 'model/gltf-binary', '.gltf': 'model/gltf+json'
+  '.glb': 'model/gltf-binary', '.gltf': 'model/gltf+json',
+  '.pdf': 'application/pdf', '.ttf': 'font/ttf'
 };
 
 http.createServer((req, res) => {
