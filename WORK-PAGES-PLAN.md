@@ -1,0 +1,107 @@
+# Work Pages Plan — one bespoke page per project
+
+Goal: replace the six template work pages with unique, interactive designs, the
+way `work/hgts.html` already got its own treatment (3D viewer + gallery). Each
+page's design should *embody the paper's mechanism* — the interaction IS the
+explanation. One page per session, deployed and verified before the next.
+
+## Ground rules (apply to every page)
+
+- **Stay in the system:** strict monochrome, Fraunces / Manrope / JetBrains
+  Mono, hairline borders, `label-caps` eyebrows, editorial voice. Unique ≠
+  off-brand: each page gets its own *motif*, not its own palette.
+- **Vanilla only.** No frameworks. Page-specific CSS appended to `styles.css`
+  under a namespaced block (like `.hgts-*`); page-specific JS inline in the
+  page (like hgts's reset-view script). Assets vendored, never hotlinked.
+- **Honest numbers.** Before building a page, fetch the actual paper and pull
+  real metrics for the stats/figures. No invented benchmarks.
+- **Respect `prefers-reduced-motion`** for every animation; everything must
+  degrade to a readable static page with JS off.
+- **Light pages.** Target < 300 KB added per page (excluding shared assets);
+  no scroll-jacking on mobile; test at 360px width.
+- **Ship loop per page:** fetch paper → design → build → link-check → commit →
+  push (auto-deploys) → verify live → update this file's checklist.
+
+## The pages, in build order
+
+### 1. `agentic-ai.html` → TriAgent  ★ start here (content is stale, not just plain)
+**Paper:** "TriAgent: An Adaptive Multi-Agent Architecture for Crisis Clinical
+Decision Support Under Incomplete Information" — Ibrahim, AlSanousi, Serag.
+*AI* 7(6):230, 2026. **Now published** — the index still says `wip(agentic)`
+"in-progress" and it's missing from the Publications list entirely.
+- **Story:** deciding under missing information — agents that adapt when the
+  chart is incomplete.
+- **Motif — the live triage board:** an interactive agent graph (inline SVG).
+  Visitor toggles pieces of patient information on/off; message-pulses animate
+  along edges and the routing visibly re-plans. A scripted "crisis scenario"
+  mode steps through a case beat by beat.
+- **Also in this session:** add TriAgent to the index Publications list; flip
+  the projects git-log entry from `wip` → `paper(triagent)` + published pill;
+  update terminal easter eggs (`git status` "in active development" line,
+  README "drafting"); keep URL (redirect stub not needed — page keeps its name
+  or gets `triagent.html` + stub, decide from final title).
+
+### 2. `mera.html` — MERA, RAG over clinical records
+**Paper:** MAKE 7(3):73, 2025. RAG over MIMIC-IV-Note.
+- **Story:** grounding — answers that point back into the record.
+- **Motif — the chart itself:** page styled as a de-identified clinical chart:
+  monospace record fields, animated **redaction bars** (the de-identification
+  motif is natively monochrome). Interactive retrieval demo: pick a canned
+  clinical question → matching passages highlight inside a mock note → answer
+  assembles with citation markers lighting back to their source chunks.
+  Scroll-driven pipeline strip: query → retrieve → ground → answer.
+
+### 3. `menara.html` — MENARA, dialect-robust Arabic medical LLM
+**Paper:** MAKE 8(4):110, 2026 + ACL ArabicNLP 2025 (model merging).
+- **Story:** one model, many Arabics.
+- **Motif — the language switcher:** same medical question morphing across
+  MSA / Gulf / Levantine / Maghrebi / Egyptian (animated text swap, real RTL
+  Arabic typography — vendor a subset of an open Arabic font) while the answer
+  panel stays fixed: *many dialects, one answer quality*. Second visual: model
+  merging as two/three weight-space fields interpolating into one (animated
+  SVG isolines — abstract, monochrome, honest).
+
+### 4. `d3.html` — D3, small LM vs LLMs for drug–drug interactions
+**Paper:** MLwA 20:100658, 2025. ~72M params vs billion-param LLMs.
+- **Story:** David vs Goliath — right-sized models.
+- **Motif — scale you can feel:** log-scale parameter bars where the LLM bar
+  breaks out of the chart frame; animated parameter counter; tiny display
+  type for "72M" against enormous type for the giants. Interactive drug-pair
+  picker over a small embedded sample of pairs → interaction card flips out.
+  Cost-vs-accuracy scatter with D3 sitting in the good corner.
+
+### 5. `stroke-segmentation.html` — do complex architectures win?
+**Paper:** IEEE Access 12:198262, 2024 (+ arXiv:2403.17177).
+- **Story:** controlled comparison — hold everything fixed, vary only the
+  architecture.
+- **Motif — the reveal slider:** stylized monochrome MRI slice (hand-drawn
+  SVG, no fake patient data) with a **drag-to-compare overlay** showing
+  predicted vs ground-truth lesion masks. Three architecture "weigh-in" cards
+  (UNet / Attention-UNet / Transformer) with matched-conditions callout; Dice
+  bars animate in; the punchline lands: complexity didn't reliably win.
+
+### 6. `multimodal-radiology.html` — the imaging VLM line of work
+**Papers:** M3 (BJR|AI 2(1), 2025) + "From Slices to Volumes" (MICCAI 2025).
+Consolidates the vision-language radiology thread.
+- **Story:** models that read the scan, slice by slice.
+- **Motif — the scan scrubber:** a drag/scroll CT-stack scrubber (pre-drawn
+  abstract slice frames, canvas or layered SVG) like a radiologist paging
+  through a volume; slices visibly stack into a 3D volume (the 2D→3D fusion
+  idea). Canned VQA: pick a question → attention spotlight sweeps the slice →
+  answer types out as a report line.
+
+## Progress
+
+- [ ] 1. TriAgent (+ index publication entry, git-log flip, terminal sync)
+- [ ] 2. MERA
+- [ ] 3. MENARA
+- [ ] 4. D3
+- [ ] 5. Stroke segmentation
+- [ ] 6. Multimodal radiology
+
+## Deliberately out of scope
+
+- Non-first-author papers without project pages (SPINE, ChatCVD, breast
+  cancer, ICU readmission, …) stay list-only in Publications.
+- HGTS is done; the redirect stubs (`clinical-rag.html`, `domain-llms.html`)
+  stay as-is.
