@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MENARA — Medical Natural Arabic Response Assistant</title>
+<meta name="description" content="An Arabic-language medical assistant designed to handle dialectal variation across the Arabic-speaking world. Published in Machine Learning and Knowledge Extraction, MDPI 2026.">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="wordmark" href="../index.html#cover" aria-label="Ahmed Ibrahim — back to home">
+    <span class="wordmark-text">AHMED IBRAHIM</span>
+  </a>
+  <ul class="nav-links">
+    <li><a class="nav-link label-caps" href="../index.html#about">About</a></li>
+    <li><a class="nav-link label-caps" href="../index.html#research">Research</a></li>
+    <li><a class="nav-link label-caps" href="../index.html#projects">Projects</a></li>
+    <li><a class="nav-link label-caps" href="../index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="detail-hero">
+  <a class="back-link label-caps" href="../index.html#projects">← Back to projects</a>
+  <p class="label-caps issue">Publication · 2026 · MDPI</p>
+  <h1>MENARA — Medical Natural Arabic Response Assistant</h1>
+  <p class="lead">An Arabic-language medical assistant designed to handle dialectal variation — so the model works for users across the Arabic-speaking world, not just for those who write in MSA.</p>
+</header>
+
+<section class="anatomy">
+  <dl>
+    <dt class="label-caps">Role</dt><dd>Lead author · WCM-Q</dd>
+    <dt class="label-caps">Stack</dt><dd>Python · PyTorch · Hugging Face · Model Merging · Arabic NLP</dd>
+    <dt class="label-caps">Year</dt><dd>2026</dd>
+    <dt class="label-caps">Venue</dt><dd>Machine Learning and Knowledge Extraction · MDPI</dd>
+    <dt class="label-caps">Status</dt><dd>Published</dd>
+  </dl>
+  <div class="prose">
+    <p><strong>The problem.</strong> Arabic is not one language at the user level. Modern Standard Arabic is what gets written in textbooks and news; what people actually <em>ask</em> a medical assistant in is some mix of MSA and their own dialect. Most medical LLMs trained on Arabic are trained on MSA-heavy data and quietly fail when a question comes in dialectal form.</p>
+    <p><strong>The approach.</strong> A medical Arabic response assistant built to bridge that dialectal gap — so that a question in Gulf, Levantine, or Maghrebi Arabic gets the same quality of clinical answer as one in MSA.</p>
+    <blockquote class="pullquote">One model. Many dialects. One clinical answer quality.</blockquote>
+    <p><strong>What was hard.</strong> Coverage and evaluation. Arabic dialects are not just lexical variants — they differ in syntax, morphology, and what's considered idiomatic. Building an evaluation that exposes failures across dialect boundaries (not just on MSA test sets) was the part that took the most thought.</p>
+    <p><strong>What shipped.</strong> A peer-reviewed Arabic medical assistant in <em>Machine Learning and Knowledge Extraction</em> (MDPI, 2026), evaluated across dialectal inputs.</p>
+    <p><strong>What this changes.</strong> Medical AI for Arabic-speaking users has typically been an MSA-first problem. Treating dialectal robustness as a first-class evaluation criterion — rather than an afterthought — changes what "good" looks like for these systems.</p>
+  </div>
+</section>
+
+<section class="artifacts">
+  <figure class="fig">
+<pre>medical Arabic data (MSA + dialects)
+  → Arabic medical LLM
+  → dialect-aware evaluation
+  → consistent clinical response quality across dialects</pre>
+    <figcaption class="caption-meta label-caps">FIG. 1 — MENARA system overview</figcaption>
+  </figure>
+</section>
+
+<p class="footnote">Published in <em>Machine Learning and Knowledge Extraction</em>, MDPI, 2026. Companion paper: "Bridging Dialectal Gaps in Arabic Medical LLMs through Model Merging" (ACL ArabicNLP, 2025).</p>
+
+<a class="next-issue" href="mera.html">
+  <span class="label-caps lab">Next project →</span>
+  <h2 class="h2">MERA — Medical Electronic Records Assistant</h2>
+</a>
+
+<footer class="footer">
+  <div class="footer-row">
+    <span class="label-caps">© 2026 Ahmed Ibrahim · Doha, Qatar</span>
+    <a href="../index.html#cover" class="label-caps back-to-top">Back to top ↑</a>
+  </div>
+</footer>
+
+</body>
+</html>

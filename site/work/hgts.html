@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HGTS — Handball Goalkeeping Training System</title>
+<meta name="description" content="A virtual-reality training platform for handball goalkeepers, paired with a DIY haptic feedback glove. Senior Design Project at Qatar University — 2nd Place at the CENG Capstone Design Competition 2023 (Best Prototype, Most Creative Design) and 2nd Place at the Senior Design Project Competition.">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script type="module" src="../assets/vendor/model-viewer-3.5.0.min.js"></script>
+</head>
+<body class="hgts-page">
+
+<nav class="nav">
+  <a class="wordmark" href="../index.html#cover" aria-label="Ahmed Ibrahim — back to home">
+    <span class="wordmark-text">AHMED IBRAHIM</span>
+  </a>
+  <ul class="nav-links">
+    <li><a class="nav-link label-caps" href="../index.html#about">About</a></li>
+    <li><a class="nav-link label-caps" href="../index.html#research">Research</a></li>
+    <li><a class="nav-link label-caps" href="../index.html#projects">Projects</a></li>
+    <li><a class="nav-link label-caps" href="../index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================
+     STAGE — dark inverted block: hero text on the left,
+     interactive 3D model on the right.
+     ============================================================ -->
+<section class="hgts-stage">
+  <div class="hgts-stage-grid">
+    <div class="hgts-hero">
+      <a class="hgts-back label-caps" href="../index.html#projects">← Back to projects</a>
+      <p class="label-caps hgts-kicker">Senior Design Project · 2023</p>
+      <h1 class="hgts-title">Handball Goalkeeping Training System</h1>
+      <p class="hgts-lead">A virtual-reality goalkeeper trainer paired with a DIY haptic-feedback glove — an accessible, adaptable practice environment for players whose training is constrained by geography or scheduling.</p>
+      <ul class="hgts-awards">
+        <li><span class="label-caps">2nd</span> CENG Capstone Design Competition 2023 — Best Prototype, Most Creative Design</li>
+        <li><span class="label-caps">2nd</span> Senior Design Project Competition</li>
+      </ul>
+    </div>
+
+    <div class="hgts-viewer-wrap">
+      <model-viewer
+        class="hgts-viewer"
+        src="../assets/models/gloves-2k.glb"
+        ios-src=""
+        alt="Interactive 3D model of the haptic feedback glove"
+        camera-controls
+        disable-zoom
+        touch-action="pan-y"
+        auto-rotate
+        auto-rotate-delay="2000"
+        rotation-per-second="14deg"
+        interaction-prompt="none"
+        environment-image="neutral"
+        skybox-image=""
+        tone-mapping="neutral"
+        shadow-intensity="0.5"
+        shadow-softness="1"
+        exposure="0.5"
+        camera-orbit="35deg 78deg 130%"
+        loading="eager"
+        reveal="auto">
+        <div slot="poster" style="background: transparent;"></div>
+      </model-viewer>
+
+      <span class="hgts-viewer-hint label-caps">Drag to rotate</span>
+      <button class="hgts-viewer-reset label-caps" type="button" data-hgts-reset>Reset view</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS STRIP
+     ============================================================ -->
+<section class="hgts-stats">
+  <div class="hgts-stat">
+    <span class="hgts-stat-num">95%</span>
+    <span class="hgts-stat-lbl label-caps">Real-time, haptics on</span>
+  </div>
+  <div class="hgts-stat">
+    <span class="hgts-stat-num">4</span>
+    <span class="hgts-stat-lbl label-caps">Prototype iterations</span>
+  </div>
+  <div class="hgts-stat">
+    <span class="hgts-stat-num">5</span>
+    <span class="hgts-stat-lbl label-caps">Barriers dismantled</span>
+  </div>
+  <div class="hgts-stat">
+    <span class="hgts-stat-num">2×</span>
+    <span class="hgts-stat-lbl label-caps">2nd-place finishes</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     ANATOMY — spec sheet + prose
+     ============================================================ -->
+<section class="anatomy">
+  <dl>
+    <dt class="label-caps">Role</dt><dd>Senior Design team · Qatar University</dd>
+    <dt class="label-caps">Hardware</dt><dd>DIY haptic glove · ESP32 · flex sensors</dd>
+    <dt class="label-caps">Software</dt><dd>Unity · C# · SteamVR</dd>
+    <dt class="label-caps">Year</dt><dd>2023</dd>
+    <dt class="label-caps">Recognition</dt><dd>2nd Place — CENG Capstone Design Competition 2023 (Best Prototype, Most Creative Design) · 2nd Place — Senior Design Project Competition</dd>
+    <dt class="label-caps">Status</dt><dd>Prototype — four iterations (I through IV)</dd>
+  </dl>
+  <div class="prose">
+    <p><strong>The problem.</strong> Handball goalkeeper training depends on a coach, a thrower, and a court — and geographical limitations and global event restrictions make consistent practice hard for most players outside elite academies. The need was for an accessible, engaging, and adaptable training solution that didn't require a venue or a partner.</p>
+    <p><strong>The approach.</strong> A Unity VR simulation at the intersection of sports and technology, paired with a custom haptic glove built from flex sensors and an ESP32 microcontroller. The glove delivered both tactile and force feedback; SteamVR handled motion capture and rendering; motion-capture animations and a user-friendly interface filled in the rest. The design went through four iterative prototypes.</p>
+    <blockquote class="pullquote">95% real-time performance with haptic feedback enabled — meeting both real-time simulation and haptic-feedback standards.</blockquote>
+    <p><strong>What was hard.</strong> The five barriers the project set out to dismantle — realism, integration, user engagement, technology skepticism, and scalability — all converge on one technical problem: a haptic loop fast enough that the cue still feels like contact. Late feedback teaches the wrong timing.</p>
+    <p><strong>What shipped.</strong> A working end-to-end prototype across four iterations. The project placed 2nd at the CENG Capstone Design Competition 2023 — winning Best Prototype and Most Creative Design — and 2nd at the Senior Design Project Competition. The system rendered user movements accurately in VR and held 95% real-time performance with haptics on.</p>
+    <p><strong>What this changes.</strong> Sport-specific VR training can be built cheap, accessible, and customisable when the haptic loop is treated as a primary design constraint, not a finishing touch — reshaping how athletes outside elite academies can train.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALLERY — pre-rendered angles next to the live model
+     ============================================================ -->
+<section class="hgts-gallery">
+  <header class="hgts-gallery-head">
+    <p class="label-caps eyebrow">Prototypes</p>
+    <h2 class="h2">Four iterations, one glove.</h2>
+  </header>
+  <div class="hgts-gallery-grid">
+    <figure class="hgts-shot">
+      <img src="../assets/hgts/prototype-1.webp" alt="Prototype I — early proof-of-concept of the haptic glove">
+      <figcaption class="caption-meta label-caps">Prototype I</figcaption>
+    </figure>
+    <figure class="hgts-shot">
+      <img src="../assets/hgts/prototype-2.webp" alt="Prototype II — refined sensor placement and wiring">
+      <figcaption class="caption-meta label-caps">Prototype II</figcaption>
+    </figure>
+    <figure class="hgts-shot">
+      <img src="../assets/hgts/prototype-3.webp" alt="Prototype III — improved fit and feedback integration">
+      <figcaption class="caption-meta label-caps">Prototype III</figcaption>
+    </figure>
+    <figure class="hgts-shot">
+      <img src="../assets/hgts/prototype-4.webp" alt="Prototype IV — final iteration used in competition demos">
+      <figcaption class="caption-meta label-caps">Prototype IV</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================================================
+     SYSTEM LOOP
+     ============================================================ -->
+<section class="artifacts">
+  <figure class="fig hgts-loop">
+    <pre>flex sensors → ESP32 microcontroller
+  → Unity simulation (SteamVR motion + rendering)
+  → ball trajectory + collision
+  → haptic glove (tactile + force feedback)
+  → measured loop: 95% real-time with haptics on</pre>
+    <figcaption class="caption-meta label-caps">FIG. 1 — System loop</figcaption>
+  </figure>
+</section>
+
+<p class="footnote">Senior Design Project, Qatar University CSE, 2023. 2nd Place at the CENG Capstone Design Competition 2023 (Best Prototype, Most Creative Design) and 2nd Place at the Senior Design Project Competition.</p>
+
+<a class="next-issue" href="multimodal-radiology.html">
+  <span class="label-caps lab">Next project →</span>
+  <h2 class="h2">Multimodal Models for Radiology</h2>
+</a>
+
+<footer class="footer">
+  <div class="footer-row">
+    <span class="label-caps">© 2026 Ahmed Ibrahim · Doha, Qatar</span>
+    <a href="../index.html#cover" class="label-caps back-to-top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var mv    = document.querySelector('.hgts-viewer');
+    var reset = document.querySelector('[data-hgts-reset]');
+    if (!mv || !reset) return;
+    reset.addEventListener('click', function () {
+      try {
+        mv.resetTurntableRotation();
+        mv.cameraOrbit = '35deg 78deg 130%';
+        mv.cameraTarget = 'auto auto auto';
+        mv.fieldOfView = 'auto';
+      } catch (e) { /* model not ready yet */ }
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+node_modules/
+
+# Raw project archives (938 MB — Blender sources, videos, docs). Not build
+# inputs; the deployable site only needs what's already under site/.
+Projects/

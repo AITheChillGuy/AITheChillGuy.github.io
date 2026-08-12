@@ -1,0 +1,18 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Issue 01 — Ahmed. A monochrome comic-strip portfolio.",
+  "main": "serve.js",
+  "scripts": {
+    "build": "node build-assets.js && node gen-pages.js",
+    "serve": "node serve.js",
+    "preview": "node serve.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "sharp": "^0.34.5"
+  }
+}
