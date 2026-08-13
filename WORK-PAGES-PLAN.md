@@ -64,9 +64,13 @@ Decision Support Under Incomplete Information" — Ibrahim, AlSanousi, Serag.
   ≤ 14.7% baseline (~5.8×), 65.7% vs 43.4% triage accuracy, safety checks on
   every pathway (1000 real presentations, retrospective); print the paper's
   own caveat: prospective clinician-involved validation still ahead.
-- **Palette:** the film is a fixed dark "screen" in BOTH themes (near-black,
-  crisis red, monitor green, gate amber — physical-object rule); the
-  epilogue follows the site theme with a red accent token (`--cb-accent`).
+- **Palette:** fully theme-aware via `--cbf-*` tokens — light = daylight
+  case review (paper gray, deep red/green/amber), dark = night replay
+  (near-black, crisis red, monitor green, gate amber). Ahmed flagged a
+  fixed-dark film as "toggle doesn't work" — only genuinely physical props
+  (the bedside monitor) may stay fixed dark chrome; whole-surface pinning
+  reads as broken theming. Scene 1 carries a visual anchor (live ECG
+  monitor), not just text — every scene needs one.
 - **Session also:** add TriAgent to Publications; flip git-log entry `wip` →
   `paper(triagent)` + published pill; sync terminal easter eggs; rename to
   `triagent.html` with `agentic-ai.html` redirect stub; fix next-chain labels.
