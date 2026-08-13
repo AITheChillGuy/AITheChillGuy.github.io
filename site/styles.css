@@ -2622,7 +2622,7 @@ model-viewer.hgts-viewer {
   background: #08090C;
 }
 .cb-plate img { display: block; width: 100%; height: auto; }
-.cb-plate { transition: transform 350ms ease, box-shadow 350ms ease; }
+.cb-plate { transition: box-shadow 350ms ease; }
 .cb-plate img { transition: transform 2600ms cubic-bezier(.2, .6, .2, 1); }
 .cb-plate::after {
   /* light sweep on hover */
@@ -2634,9 +2634,18 @@ model-viewer.hgts-viewer {
   transition: left 700ms ease;
   pointer-events: none;
 }
-.cb-plate:hover { transform: translateY(-6px) rotate(-0.4deg); box-shadow: 13px 15px 0 var(--cbf-shadow); }
-.cb-plate:hover img { transform: scale(1.07); }
-.cb-plate:hover::after { left: 170%; }
+/* standalone plates (vignettes) lift themselves */
+.cb-vg .cb-plate { transition: transform 350ms ease, box-shadow 350ms ease; }
+.cb-vg .cb-plate:hover { transform: translateY(-6px) rotate(-0.4deg); box-shadow: 13px 15px 0 var(--cbf-shadow); }
+.cb-vg .cb-plate:hover img { transform: scale(1.07); }
+.cb-vg .cb-plate:hover::after { left: 170%; }
+/* flip cards lift at the wrapper so the lift never fights rotateY */
+.cb-flip { transition: transform 350ms ease; }
+.cb-flip:hover { transform: translateY(-6px); }
+.cb-flip:hover .cb-plate { box-shadow: 13px 15px 0 var(--cbf-shadow); }
+.cb-flip:hover .cb-plate img { transform: scale(1.07); }
+.cb-flip:hover .cb-plate::after { left: 170%; }
+.cb-face { pointer-events: none; }
 .cb-anim {
   position: absolute;
   top: 0; left: 0;
@@ -2647,9 +2656,9 @@ model-viewer.hgts-viewer {
 }
 .cb-anim.is-playing { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
-  .cb-plate, .cb-plate img, .cb-plate::after { transition: none; }
-  .cb-plate:hover { transform: none; }
-  .cb-plate:hover img { transform: none; }
+  .cb-plate, .cb-plate img, .cb-plate::after, .cb-flip { transition: none; }
+  .cb-vg .cb-plate:hover, .cb-flip:hover { transform: none; }
+  .cb-vg .cb-plate:hover img, .cb-flip:hover .cb-plate img { transform: none; }
 }
 .cb-plate-cap {
   display: flex; align-items: baseline; gap: 12px;

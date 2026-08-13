@@ -519,7 +519,7 @@
   /* hover cartoons: lazy-load and play the plate's animation */
   if (!reduced) {
     document.querySelectorAll('.cb-anim').forEach(function (v) {
-      var fig = v.closest('.cb-plate');
+      var fig = v.closest('.cb-flip') || v.closest('.cb-plate');
       if (!fig) return;
       function start() {
         if (!v.src) v.src = v.dataset.src;
