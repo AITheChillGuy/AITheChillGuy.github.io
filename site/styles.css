@@ -2403,11 +2403,11 @@ model-viewer.hgts-viewer {
 }
 
 /* ---- Scene 1 — vignette stage ------------------------------
-   The right column acts out the current chart row with
-   illustrated plates (generated graphic-novel art, framed like
-   printed panels — same plate in both themes, like the story
-   frames' "color island"). Exclusive visibility via [data-vbeat]
-   set by JS; entrance choreography restarts on every activation.
+   The right column illustrates the current chart row with
+   framed art plates (generated graphic-novel panels, identical
+   in both themes like the story frames' color island). Exclusive
+   visibility via [data-vbeat] set by JS from scroll progress;
+   plates cross-fade as beats land. The art itself is static.
    V5 is the live telemetry monitor. */
 .cb-vgs { position: relative; min-height: min(70vh, 660px); width: 100%; }
 .cb-vg {
@@ -2426,265 +2426,43 @@ model-viewer.hgts-viewer {
 .cb-vgs[data-vbeat="4"] .cb-vg-4,
 .cb-vgs[data-vbeat="5"] .cb-vg-5,
 .cb-vgs[data-vbeat="6"] .cb-vg-5 { opacity: 1; transform: none; }
-/* the plate: art bleeding into the page, not a floating card.
-   The image is feather-masked on all sides so the scene dissolves
-   into the background — near-seamless in dark mode, a soft spot
-   illustration in light. Caption reads as a catalog line beneath.
-   Sized to own the column AND fit a 100vh stage. */
+
+/* the plate: a printed panel with its placard.
+   Sized to own the column: capped by column width AND by what fits
+   a 100vh stage (image is 4:3 + ~54px placard). */
 .cb-plate {
   position: relative;
-  width: min(100%, 760px, calc((100vh - 290px) * 1.28));
+  width: min(100%, 720px, calc((100vh - 290px) * 1.28));
+  border: 1px solid var(--cbf-stroke);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(5, 8, 12, 0.45);
+  background: #08090C;
 }
 .cb-plate img { display: block; width: 100%; height: auto; }
-.cb-plate img:not(.cb-iv) {
-  -webkit-mask-image: radial-gradient(115% 115% at 50% 46%, #000 58%, transparent 86%);
-  mask-image: radial-gradient(115% 115% at 50% 46%, #000 58%, transparent 86%);
-}
-
-/* the IV bag is a true separate object (style-matched SVG) hung
-   from the pole arm; the baked bag was patched out of the art. */
-.cb-ivobj {
-  position: absolute;
-  left: 55.6%; top: 28.1%;
-  width: 4.93%; height: auto;
-  transform-origin: 50% 2%;
-}
-.cb-vgs[data-vbeat="1"] .cb-ivobj { animation: cb-ivsway 1.4s ease-in-out 700ms infinite alternate; }
-@keyframes cb-ivsway { from { rotate: 4.4deg; } to { rotate: -4.4deg; } }
-
-/* V3: the artwork's own tipped bottle keeps pouring — white pills
-   emerge at its mouth, tumble down onto the baked pile, and fade
-   as they land, so the stream reads as continuous. Emit point and
-   landing zone measured off the art (mouth ≈ 61% 68% of plate). */
-.cb-pour {
-  position: absolute;
-  left: 49.3%; top: 62.5%;
-  width: 16.4%; height: auto;
-  pointer-events: none;
-}
-.cb-pp { opacity: 0; }
-.cb-vgs[data-vbeat="3"] .cb-pp-1 { animation: cb-pour-a 2.7s linear 0s infinite; }
-.cb-vgs[data-vbeat="3"] .cb-pp-2 { animation: cb-pour-b 2.7s linear 450ms infinite; }
-.cb-vgs[data-vbeat="3"] .cb-pp-3 { animation: cb-pour-c 2.7s linear 900ms infinite; }
-.cb-vgs[data-vbeat="3"] .cb-pp-4 { animation: cb-pour-a 2.7s linear 1.35s infinite; }
-.cb-vgs[data-vbeat="3"] .cb-pp-5 { animation: cb-pour-b 2.7s linear 1.8s infinite; }
-.cb-vgs[data-vbeat="3"] .cb-pp-6 { animation: cb-pour-c 2.7s linear 2.25s infinite; }
-@keyframes cb-pour-a {
-  0%   { opacity: 0; translate: 138px 58px; rotate: 20deg; }
-  8%   { opacity: 1; translate: 130px 74px; rotate: -10deg; }
-  38%  { translate: 96px 122px; rotate: -95deg; }
-  50%  { translate: 84px 142px; rotate: -130deg; }
-  56%  { translate: 80px 138px; rotate: -140deg; }
-  62%  { translate: 78px 143px; rotate: -145deg; opacity: 1; }
-  74%, 100% { translate: 78px 143px; rotate: -145deg; opacity: 0; }
-}
-@keyframes cb-pour-b {
-  0%   { opacity: 0; translate: 142px 64px; rotate: -30deg; }
-  8%   { opacity: 1; translate: 132px 80px; rotate: 10deg; }
-  38%  { translate: 110px 126px; rotate: 80deg; }
-  50%  { translate: 104px 148px; rotate: 110deg; }
-  56%  { translate: 101px 144px; rotate: 118deg; }
-  62%  { translate: 100px 149px; rotate: 120deg; opacity: 1; }
-  74%, 100% { translate: 100px 149px; rotate: 120deg; opacity: 0; }
-}
-@keyframes cb-pour-c {
-  0%   { opacity: 0; translate: 134px 62px; rotate: 60deg; }
-  8%   { opacity: 1; translate: 124px 78px; rotate: 30deg; }
-  38%  { translate: 74px 118px; rotate: -60deg; }
-  50%  { translate: 60px 138px; rotate: -85deg; }
-  56%  { translate: 57px 134px; rotate: -92deg; }
-  62%  { translate: 56px 139px; rotate: -95deg; opacity: 1; }
-  74%, 100% { translate: 56px 139px; rotate: -95deg; opacity: 0; }
-}
-
-/* V4: the allergy warning hovers over the blank band, unanswered */
-.cb-warn {
-  position: absolute;
-  left: 44.5%; top: 3%;
-  width: 11%; height: auto;
-  filter: drop-shadow(0 6px 18px rgba(255, 197, 61, 0.35));
-  pointer-events: none;
-}
-.cb-vgs[data-vbeat="4"] .cb-warn { animation: cb-hoverwarn 2.4s ease-in-out infinite alternate; }
-@keyframes cb-hoverwarn {
-  from { translate: 0 0; rotate: -2deg; }
-  to   { translate: 0 -10px; rotate: 2deg; }
-}
-.cb-plate-art { position: relative; container-type: inline-size; }
 .cb-plate-cap {
   display: flex; align-items: baseline; gap: 12px;
-  padding: 10px 6px 0;
+  padding: 13px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0D1015;
   font-family: var(--mono);
   font-size: 0.75rem;
   letter-spacing: 0.05em;
-  color: var(--cbf-dim);
+  color: #8B96A2;
   text-align: left;
 }
 .cb-plate-no {
   font-weight: 500;
-  color: var(--cbf-red);
+  color: #FF3B36;
   flex: none;
 }
 .cb-plate-no::after {
   content: "";
   display: inline-block;
   width: 18px; height: 1px;
-  background: var(--cbf-red);
+  background: #FF3B36;
   vertical-align: middle;
   margin-left: 10px;
-}
-
-
-/* V1 — bursts in from the right, wheels still rolling */
-.cb-vgs[data-vbeat="1"] .cb-plate-1 { animation: cb-burst 850ms cubic-bezier(.16,.85,.28,1) both; }
-@keyframes cb-burst {
-  0%   { opacity: 0; transform: translateX(46%) rotate(1.5deg); }
-  70%  { opacity: 1; transform: translateX(-2%) rotate(-0.6deg); }
-  100% { opacity: 1; transform: none; }
-}
-.cb-plate-glow {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 42% 46% at 47% 44%, rgba(255, 59, 54, 0.4), transparent 72%);
-  mix-blend-mode: screen;
-  opacity: 0;
-  pointer-events: none;
-}
-.cb-vgs[data-vbeat="1"] .cb-plate-glow { animation: cb-beacon 1.3s ease-in-out 300ms infinite; }
-@keyframes cb-beacon { 0%, 100% { opacity: 0.12; } 50% { opacity: 0.8; } }
-/* V4's glow sits over the wristband — a slow warning pulse */
-.cb-glow-4 {
-  background: radial-gradient(ellipse 30% 34% at 60% 50%, rgba(255, 59, 54, 0.45), transparent 74%);
-}
-.cb-vgs[data-vbeat="4"] .cb-glow-4 { animation: cb-warnpulse 2.4s ease-in-out 600ms infinite; }
-@keyframes cb-warnpulse { 0%, 100% { opacity: 0.08; } 50% { opacity: 0.7; } }
-
-/* V2 — wipes open, scanner sweeps, verdict chip stamps in */
-.cb-vgs[data-vbeat="2"] .cb-plate-2 { animation: cb-wipe 700ms cubic-bezier(.3,.7,.2,1) both; }
-@keyframes cb-wipe {
-  from { opacity: 0; clip-path: inset(0 100% 0 0); }
-  to   { opacity: 1; clip-path: inset(0 0 0 0); }
-}
-@keyframes cb-gone { to { opacity: 0; } }
-
-/* V2 on-screen software — plays on the artwork's blank monitor.
-   The overlay is positioned over the screen region of the plate
-   (percentages of the 1216x896 art); cqw units scale the UI with
-   the plate. Timeline per activation: type 0.7-2.0s, scan sweeps
-   2.0-3.8s, result rows live 2.1-4.2s, verdict stamps 4.15s. */
-.cbs2 { position: absolute; left: 15.2%; top: 5%; width: 66.2%; height: 51.3%; opacity: 0; }
-.cb-vgs[data-vbeat="2"] .cbs2 { animation: cb-appear 300ms ease 500ms both; }
-@keyframes cb-appear { to { opacity: 1; } }
-.cbs2-q {
-  position: absolute; left: 4%; top: 7%; width: 56%; height: 14%;
-  display: flex; align-items: center;
-  background: rgba(13, 16, 21, 0.82);
-  border-radius: 4px;
-  padding: 0 2cqw;
-  font-family: var(--mono);
-  font-size: 0.6rem; font-size: 1.9cqw;
-  color: #F4F6F8; letter-spacing: 0.04em;
-  white-space: nowrap; overflow: hidden;
-}
-.cbs2-qtxt { display: inline-block; overflow: hidden; white-space: nowrap; width: 0; }
-.cb-vgs[data-vbeat="2"] .cbs2-qtxt { animation: cb-typew 1.3s steps(40, end) 700ms both; }
-@keyframes cb-typew { from { width: 0; } to { width: 100%; } }
-.cbs2-caret {
-  flex: none;
-  width: 2px; width: 0.9cqw;
-  height: 55%;
-  background: #35D97B;
-  margin-left: 4px;
-  animation: cb-caret 0.8s steps(1) infinite;
-}
-@keyframes cb-caret { 50% { opacity: 0; } }
-.cbs2-win {
-  position: absolute; right: 2.5%; top: 27%; width: 39%; height: 66%;
-  background: rgba(13, 16, 21, 0.6);
-  border: 1px solid rgba(26, 34, 44, 0.9);
-  border-radius: 4px;
-  overflow: hidden;
-}
-.cbs2-scan {
-  position: absolute; left: 0; right: 0; top: 0; height: 3px;
-  background: var(--cbf-amber);
-  box-shadow: 0 0 12px 1px var(--cbf-amber);
-  opacity: 0;
-}
-.cb-vgs[data-vbeat="2"] .cbs2-scan { animation: cb-scanv 0.9s ease-in-out 2s 2, cb-gone 200ms linear 3.8s both; }
-@keyframes cb-scanv { from { opacity: 0.95; top: 2%; } to { opacity: 0.95; top: 94%; } }
-.cbs2-row {
-  position: absolute; left: 8%; height: 9%;
-  background: rgba(244, 246, 248, 0.35);
-  border-radius: 2px;
-  opacity: 0;
-}
-.cbs2-r1 { top: 12%; width: 74%; }
-.cbs2-r2 { top: 30%; width: 58%; }
-.cbs2-r3 { top: 48%; width: 66%; }
-.cb-vgs[data-vbeat="2"] .cbs2-r1 { animation: cb-rowlife2 1.9s linear 2.1s both; }
-.cb-vgs[data-vbeat="2"] .cbs2-r2 { animation: cb-rowlife2 1.7s linear 2.3s both; }
-.cb-vgs[data-vbeat="2"] .cbs2-r3 { animation: cb-rowlife2 1.5s linear 2.5s both; }
-@keyframes cb-rowlife2 {
-  0% { opacity: 0; }
-  12% { opacity: 1; }
-  78% { opacity: 1; }
-  92% { opacity: 0.3; }
-  100% { opacity: 0; }
-}
-.cbs2-res {
-  position: absolute; left: 8%; right: 8%; top: 68%;
-  text-align: center;
-  font-family: var(--mono);
-  font-size: 0.625rem; font-size: 2cqw;
-  letter-spacing: 0.06em;
-  color: #FF3B36;
-  border: 1.5px solid #FF3B36;
-  border-radius: 3px;
-  padding: 0.8cqw 0;
-  background: rgba(13, 16, 21, 0.85);
-  opacity: 0;
-  transform-origin: center;
-}
-.cb-vgs[data-vbeat="2"] .cbs2-res { animation: cb-stampin 380ms ease 4.15s both, cb-blink 1.5s steps(1) 5s infinite; }
-
-@keyframes cb-stampin {
-  from { opacity: 0; transform: scale(1.5) rotate(-4deg); filter: blur(4px); }
-  to   { opacity: 1; transform: none; filter: none; }
-}
-@keyframes cb-blink { 50% { opacity: 0.45; } }
-
-/* V3 — pops in, question marks float off the tray */
-.cb-vgs[data-vbeat="3"] .cb-plate-3 { animation: cb-pop 600ms cubic-bezier(.2,1.4,.35,1) both; }
-@keyframes cb-pop {
-  from { opacity: 0; transform: scale(0.82); }
-  to   { opacity: 1; transform: none; }
-}
-.cb-q {
-  position: absolute;
-  font-family: var(--mono);
-  font-weight: 500;
-  font-size: 2rem;
-  color: #FF3B36;
-  text-shadow: 0 2px 12px rgba(8,9,12,0.7);
-  opacity: 0;
-}
-.cb-q1 { left: 30%; bottom: 34%; }
-.cb-q2 { left: 48%; bottom: 40%; font-size: 2.6rem; }
-.cb-q3 { left: 64%; bottom: 32%; }
-.cb-vgs[data-vbeat="3"] .cb-q1 { animation: cb-float 2.2s ease-out 200ms infinite; }
-.cb-vgs[data-vbeat="3"] .cb-q2 { animation: cb-float 2.2s ease-out 900ms infinite; }
-.cb-vgs[data-vbeat="3"] .cb-q3 { animation: cb-float 2.2s ease-out 1.6s infinite; }
-@keyframes cb-float {
-  0%   { opacity: 0; transform: translateY(14px) rotate(-4deg); }
-  25%  { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-56px) rotate(5deg); }
-}
-
-/* V4 — slow tense rise; the blank band gets the blinking verdict */
-.cb-vgs[data-vbeat="4"] .cb-plate-4 { animation: cb-rise-slow 900ms cubic-bezier(.2,.8,.2,1) both; }
-@keyframes cb-rise-slow {
-  from { opacity: 0; transform: translateY(36px) scale(0.97); }
-  to   { opacity: 1; transform: none; }
 }
 
 /* vignettes in static / reduced-motion mode: show the monitor only */
@@ -2692,7 +2470,7 @@ model-viewer.hgts-viewer {
 .cb-page:not(.cb-js) .cb-vg { display: none; }
 .cb-page:not(.cb-js) .cb-vg-5 { display: flex; position: static; opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
-  .cb-vg, .cb-vg *, .cb-plate, .cb-plate * { animation: none !important; }
+  .cb-vg { transition: none; }
 }
 @media (max-width: 1023px) {
   .cb-vgs { min-height: 46vh; }
