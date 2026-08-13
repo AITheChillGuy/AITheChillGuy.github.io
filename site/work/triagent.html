@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
-<title>TriAgent — Crisis Clinical Decision Support</title>
-<meta name="description" content="TriAgent: an adaptive multi-agent architecture for crisis clinical decision support under incomplete information. 85.0% critical-case recall where matched baselines reached 14.7%. Published in AI (MDPI), 2026.">
+<title>TriAgent — Code Blue: 11 Minutes</title>
+<meta name="description" content="Code Blue: 11 Minutes — a scroll-driven replay of TriAgent deciding a crisis case with almost nothing known. Adaptive multi-agent clinical decision support, published in AI (MDPI), 2026.">
 <link rel="icon" href="../assets/favicon.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 </head>
-<body class="tri-page">
+<body class="cb-page">
 
 <nav class="nav">
   <a class="wordmark" href="../index.html#cover" aria-label="Ahmed Ibrahim — back to home">
@@ -24,197 +24,229 @@
     <li><a class="nav-link label-caps" href="../index.html#research">Research</a></li>
     <li><a class="nav-link label-caps" href="../index.html#projects">Projects</a></li>
     <li><a class="nav-link label-caps" href="../index.html#contact">Contact</a></li>
-      <li><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme">◐</button></li>
+    <li><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme">◐</button></li>
   </ul>
 </nav>
 
-<!-- ============================================================
-     STAGE — night shift in an emergency department. Title on the
-     left; on the right, what a crisis actually hands the system:
-     a chart that is mostly blank.
-     ============================================================ -->
-<section class="tri-stage">
-  <div class="tri-stage-grid">
-    <div class="tri-hero">
-      <a class="tri-back label-caps" href="../index.html#projects">← Back to projects</a>
-      <p class="label-caps tri-kicker">Publication · AI (MDPI) · Jun 2026</p>
-      <h1 class="tri-title">TriAgent</h1>
-      <p class="tri-lead">Adaptive multi-agent clinical decision support for the moments when the chart doesn't exist — mass-casualty emergencies, disaster response, health systems in crisis. The patient in front of you has no history, no medication list, no allergy record. TriAgent is built to decide safely anyway.</p>
-      <ul class="tri-badges">
-        <li><span class="label-caps tri-badge-crit">85.0%</span> critical-case recall — best matched baseline: 14.7%</li>
-        <li><span class="label-caps">100%</span> of continuation pathways safety-checked</li>
-      </ul>
-    </div>
-
-    <aside class="tri-card" aria-label="Example intake record with mostly unknown fields">
-      <header class="tri-card-head">
-        <span>INTAKE — PRESENTATION 0412/1000</span>
-        <span class="tri-card-tag">synthesized incomplete input</span>
-      </header>
-      <dl class="tri-card-body">
-        <dt>Patient ID</dt><dd class="tri-unknown">unknown — unresponsive on arrival</dd>
-        <dt>History</dt><dd class="tri-unknown"><span class="tri-redact" aria-hidden="true"></span> none on file</dd>
-        <dt>Medications</dt><dd class="tri-unknown"><span class="tri-redact" aria-hidden="true"></span> unknown</dd>
-        <dt>Allergies</dt><dd class="tri-unknown"><span class="tri-redact" aria-hidden="true"></span> unknown</dd>
-        <dt>Vitals</dt><dd class="tri-vital">BP 84/52 · HR 127 · SpO₂ 90%</dd>
-        <dt>Time</dt><dd class="tri-vital">00:00 <span class="tri-caret" aria-hidden="true"></span></dd>
-      </dl>
-      <p class="tri-card-foot label-caps">4 of 6 fields unknown — this is the normal case, not the edge case</p>
-    </aside>
-  </div>
-</section>
-
-<!-- ============================================================
-     ECG STRIP — the pulse of the page. Decorative.
-     ============================================================ -->
-<div class="tri-ecg" aria-hidden="true">
-  <svg viewBox="0 0 1520 64" preserveAspectRatio="none">
-    <path class="tri-ecg-base" d="M0,36 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39"/>
-    <path class="tri-ecg-sweep" d="M0,36 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39"/>
-  </svg>
+<!-- fixed HUD: the clock that binds the film together -->
+<div class="cb-hud" aria-hidden="true">
+  <span class="cb-hud-label">T+</span><span class="cb-hud-time" id="cb-clock">00:00</span>
 </div>
 
-<!-- ============================================================
-     STATS STRIP — retrospective eval, 1000 real presentations
-     ============================================================ -->
-<section class="tri-stats">
-  <div class="tri-stat">
-    <span class="tri-stat-num tri-stat-crit">85.0%</span>
-    <span class="tri-stat-lbl label-caps">critical-case recall</span>
-  </div>
-  <div class="tri-stat">
-    <span class="tri-stat-num">≤14.7%</span>
-    <span class="tri-stat-lbl label-caps">best matched baseline</span>
-  </div>
-  <div class="tri-stat">
-    <span class="tri-stat-num">65.7%</span>
-    <span class="tri-stat-lbl label-caps">triage accuracy · vs 43.4%</span>
-  </div>
-  <div class="tri-stat">
-    <span class="tri-stat-num">49k</span>
-    <span class="tri-stat-lbl label-caps">MIMIC-IV notes retrieved over</span>
-  </div>
-</section>
+<div class="cb-film" id="cb-film">
 
-<!-- ============================================================
-     THE BOARD — toggle what's known; watch the routing adapt.
-     Orthogonal bus layout: orchestrator → distribution rail →
-     modules → collection rail → critique → recommendation.
-     ============================================================ -->
-<section class="tri-board" aria-label="Interactive triage board">
-  <header class="tri-board-head">
-    <p class="label-caps eyebrow tri-eyebrow">The triage board</p>
-    <h2 class="h2">Toggle what's known. Watch it re-plan.</h2>
-    <p class="tri-board-note">The Orchestrator routes by model reasoning, not a fixed pipeline — modules are invoked only when the case calls for them, and every pathway still ends at the safety gate. Illustrative routing; the invocation policy in the paper is the model's own.</p>
+  <!-- ==========================================================
+       TITLE CARD
+       ========================================================== -->
+  <header class="cb-title">
+    <p class="cb-eyebrow">TriAgent · Case replay · <span class="cb-red">Code Blue</span></p>
+    <h1 class="cb-big" aria-label="11 Minutes">
+      <span class="cb-big-row"><span>1</span><span>1</span></span>
+      <span class="cb-big-row cb-big-word"><span>M</span><span>I</span><span>N</span><span>U</span><span>T</span><span>E</span><span>S</span></span>
+    </h1>
+    <p class="cb-title-sub">One patient. No chart. A replay of how an adaptive multi-agent
+    system decides when almost nothing is known.</p>
+    <p class="cb-title-cite">Architecture &amp; results: <em>AI</em> 7(6):230, MDPI 2026 · timings compressed, case illustrative</p>
+    <p class="cb-scrollcue">scroll — time moves when you do <span class="cb-cue-arrow">▼</span></p>
   </header>
 
-  <div class="tri-chips" role="group" aria-label="Toggle which patient information is known">
-    <button class="tri-chip" type="button" data-field="history"   aria-pressed="false"><span class="tri-chip-k">HISTORY</span><span class="tri-chip-v">unknown</span></button>
-    <button class="tri-chip" type="button" data-field="meds"      aria-pressed="false"><span class="tri-chip-k">MEDICATIONS</span><span class="tri-chip-v">unknown</span></button>
-    <button class="tri-chip" type="button" data-field="allergies" aria-pressed="false"><span class="tri-chip-k">ALLERGIES</span><span class="tri-chip-v">unknown</span></button>
-    <button class="tri-chip is-known" type="button" data-field="vitals" aria-pressed="true"><span class="tri-chip-k">VITALS</span><span class="tri-chip-v">known</span></button>
-  </div>
+  <!-- ==========================================================
+       SCENE 1 — 00:00 INTAKE
+       ========================================================== -->
+  <section class="cb-scene cb-s1" data-scene="1">
+    <div class="cb-stage">
+      <p class="cb-beatmark">00:00 — intake</p>
+      <h2 class="cb-h" data-beat="0">The chart is blank.</h2>
+      <div class="cb-chart" role="img" aria-label="Intake chart: patient ID unknown, history none on file, medications unknown, allergies unknown; vitals BP 84 over 52, heart rate 127, oxygen saturation 90 percent">
+        <div class="cb-chart-row" data-beat="1"><span>PATIENT ID</span><b class="cb-unk">unknown — unresponsive on arrival</b></div>
+        <div class="cb-chart-row" data-beat="2"><span>HISTORY</span><b class="cb-unk">none on file</b></div>
+        <div class="cb-chart-row" data-beat="3"><span>MEDICATIONS</span><b class="cb-unk">unknown</b></div>
+        <div class="cb-chart-row" data-beat="4"><span>ALLERGIES</span><b class="cb-unk">unknown</b></div>
+        <div class="cb-chart-row" data-beat="5"><span>VITALS</span><b class="cb-viv">BP 84/52 · HR 127 · SpO₂ 90%</b></div>
+      </div>
+      <p class="cb-cap" data-beat="6">Four of six fields unknown. In a mass-casualty emergency — or where the
+      health system itself is the casualty, in disaster response and conflict settings like Gaza —
+      <b>this is the normal case, not the edge case.</b></p>
+    </div>
+  </section>
 
-  <div class="tri-graph-wrap">
-    <svg class="tri-graph" viewBox="0 0 760 616" role="img" aria-label="TriAgent architecture: an Orchestrator Agent routes between clinical assessment, retrieval, treatment planning, safety verification, and coordination modules; medication-conflict and allergy-risk screens hang off the safety gate; a Critique Agent reviews the full reasoning trace before the recommendation is finalized.">
-      <!-- distribution: orchestrator -> rail -> modules -->
-      <path id="te-assess" class="te" d="M380,80 V120 H84 V170"/>
-      <path id="te-retr"   class="te" d="M380,80 V120 H232 V170"/>
-      <path id="te-plan"   class="te" d="M380,80 V170"/>
-      <path id="te-safe"   class="te" d="M380,80 V120 H528 V170"/>
-      <path id="te-coord"  class="te" d="M380,80 V120 H676 V170"/>
-      <!-- safety gate -> parallel screens -->
-      <path id="te-med"    class="te" d="M528,242 V272 H494 V300"/>
-      <path id="te-alg"    class="te" d="M528,242 V272 H644 V300"/>
-      <!-- collection: modules -> rail -> critique -->
-      <path id="tc-assess" class="te" d="M84,242 V400 H380 V440"/>
-      <path id="tc-retr"   class="te" d="M232,242 V400 H380 V440"/>
-      <path id="tc-plan"   class="te" d="M380,242 V440"/>
-      <path id="tc-med"    class="te" d="M494,344 V400 H380 V440"/>
-      <path id="tc-alg"    class="te" d="M644,344 V400 H380 V440"/>
-      <path id="tc-coord"  class="te" d="M676,242 V400 H380 V440"/>
-      <!-- critique -> recommendation; critique -> orchestrator (revise) -->
-      <path id="tc-rec"    class="te te-on" d="M380,492 V540"/>
-      <path id="tc-rev"    class="te te-dash" d="M480,466 H736 V54 H480"/>
-      <text class="tn-revlbl" x="736" y="44" text-anchor="end">revise ↺</text>
+  <!-- ==========================================================
+       SCENE 2 — 01:00 ORCHESTRATION (graph assembles)
+       ========================================================== -->
+  <section class="cb-scene cb-s2" data-scene="2">
+    <div class="cb-stage">
+      <p class="cb-beatmark">01:00 — orchestration</p>
+      <h2 class="cb-h" data-beat="0">Routing by reasoning,<br>not a flowchart.</h2>
+      <div class="cb-graphwrap">
+        <svg class="cb-graph" viewBox="0 0 760 616" aria-hidden="true">
+          <path class="cb-e" data-beat="2" pathLength="1" d="M380,80 V120 H84 V170"/>
+          <path class="cb-e" data-beat="3" pathLength="1" d="M380,80 V120 H232 V170"/>
+          <path class="cb-e" data-beat="4" pathLength="1" d="M380,80 V170"/>
+          <path class="cb-e" data-beat="5" pathLength="1" d="M380,80 V120 H528 V170"/>
+          <path class="cb-e" data-beat="6" pathLength="1" d="M380,80 V120 H676 V170"/>
+          <path class="cb-e" data-beat="7" pathLength="1" d="M84,242 V400 H380 V440"/>
+          <path class="cb-e" data-beat="7" pathLength="1" d="M232,242 V400 H380 V440"/>
+          <path class="cb-e" data-beat="7" pathLength="1" d="M380,242 V440"/>
+          <path class="cb-e" data-beat="7" pathLength="1" d="M528,242 V400 H380 V440"/>
+          <path class="cb-e" data-beat="7" pathLength="1" d="M676,242 V400 H380 V440"/>
+          <path class="cb-e" data-beat="8" pathLength="1" d="M380,492 V540"/>
 
-      <!-- orchestrator -->
-      <g id="tn-orch" class="tn tn-major">
-        <rect x="280" y="28" width="200" height="52" rx="2"/>
-        <text class="tn-name" x="380" y="50" text-anchor="middle">ORCHESTRATOR</text>
-        <text class="tn-sub"  x="380" y="66" text-anchor="middle">routes by reasoning — no fixed paths</text>
-      </g>
+          <g class="cb-n cb-n-major" data-beat="1">
+            <rect x="280" y="28" width="200" height="52" rx="2"/>
+            <text class="cb-nn" x="380" y="50" text-anchor="middle">ORCHESTRATOR</text>
+            <text class="cb-ns" x="380" y="66" text-anchor="middle">reads the case, picks the modules</text>
+          </g>
+          <g class="cb-n" data-beat="2">
+            <rect x="20" y="170" width="128" height="72" rx="2"/>
+            <text class="cb-nn" x="84" y="198" text-anchor="middle">ASSESSMENT</text>
+            <text class="cb-ns" x="84" y="216" text-anchor="middle">vitals → state</text>
+          </g>
+          <g class="cb-n" data-beat="3">
+            <rect x="168" y="170" width="128" height="72" rx="2"/>
+            <text class="cb-nn" x="232" y="198" text-anchor="middle">RETRIEVAL</text>
+            <text class="cb-ns" x="232" y="216" text-anchor="middle">49,000 notes</text>
+          </g>
+          <g class="cb-n" data-beat="4">
+            <rect x="316" y="170" width="128" height="72" rx="2"/>
+            <text class="cb-nn" x="380" y="198" text-anchor="middle">PLANNING</text>
+            <text class="cb-ns" x="380" y="216" text-anchor="middle">treatment path</text>
+          </g>
+          <g class="cb-n cb-n-gate" data-beat="5">
+            <rect x="464" y="170" width="128" height="72" rx="2"/>
+            <text class="cb-nn" x="528" y="198" text-anchor="middle">SAFETY VERIFY</text>
+            <text class="cb-ns" x="528" y="216" text-anchor="middle">every pathway</text>
+          </g>
+          <g class="cb-n" data-beat="6">
+            <rect x="612" y="170" width="128" height="72" rx="2"/>
+            <text class="cb-nn" x="676" y="198" text-anchor="middle">COORDINATION</text>
+            <text class="cb-ns" x="676" y="216" text-anchor="middle">system + handoff</text>
+          </g>
+          <g class="cb-n cb-n-major" data-beat="8">
+            <rect x="280" y="440" width="200" height="52" rx="2"/>
+            <text class="cb-nn" x="380" y="462" text-anchor="middle">CRITIQUE AGENT</text>
+            <text class="cb-ns" x="380" y="478" text-anchor="middle">reads the whole trace back</text>
+          </g>
+          <g class="cb-n cb-n-final" data-beat="8">
+            <rect x="280" y="540" width="200" height="52" rx="2"/>
+            <text class="cb-nn" x="380" y="562" text-anchor="middle">RECOMMENDATION</text>
+            <text class="cb-ns" x="380" y="578" text-anchor="middle">+ audit trail</text>
+          </g>
+        </svg>
+      </div>
+      <p class="cb-cap" data-beat="8">No fixed pipeline. The Orchestrator invokes only what this case needs —
+      and every route it can draw still ends at the safety gate.</p>
+    </div>
+  </section>
 
-      <!-- specialist modules -->
-      <g id="tn-assess" class="tn">
-        <rect x="20" y="170" width="128" height="72" rx="2"/>
-        <text class="tn-name" x="84" y="194" text-anchor="middle">ASSESSMENT</text>
-        <text class="tn-sub tn-dyn" x="84" y="212" text-anchor="middle">vitals live</text>
-        <text class="tn-sub" x="84" y="228" text-anchor="middle">clinical state</text>
-      </g>
-      <g id="tn-retr" class="tn">
-        <rect x="168" y="170" width="128" height="72" rx="2"/>
-        <text class="tn-name" x="232" y="194" text-anchor="middle">RETRIEVAL</text>
-        <text class="tn-sub tn-dyn" x="232" y="212" text-anchor="middle">iterate ×3</text>
-        <text class="tn-sub" x="232" y="228" text-anchor="middle">49,000 notes</text>
-      </g>
-      <g id="tn-plan" class="tn">
-        <rect x="316" y="170" width="128" height="72" rx="2"/>
-        <text class="tn-name" x="380" y="194" text-anchor="middle">PLANNING</text>
-        <text class="tn-sub" x="380" y="212" text-anchor="middle">treatment</text>
-        <text class="tn-sub" x="380" y="228" text-anchor="middle">pathway</text>
-      </g>
-      <g id="tn-safe" class="tn tn-gate">
-        <rect x="464" y="170" width="128" height="72" rx="2"/>
-        <text class="tn-name" x="528" y="194" text-anchor="middle">SAFETY VERIFY</text>
-        <text class="tn-sub" x="528" y="212" text-anchor="middle">every pathway,</text>
-        <text class="tn-sub" x="528" y="228" text-anchor="middle">no exceptions</text>
-      </g>
-      <g id="tn-coord" class="tn">
-        <rect x="612" y="170" width="128" height="72" rx="2"/>
-        <text class="tn-name" x="676" y="194" text-anchor="middle">COORDINATION</text>
-        <text class="tn-sub" x="676" y="212" text-anchor="middle">system +</text>
-        <text class="tn-sub" x="676" y="228" text-anchor="middle">handoff</text>
-      </g>
+  <!-- ==========================================================
+       SCENE 3 — 04:00 RETRIEVAL (the notes wall)
+       ========================================================== -->
+  <section class="cb-scene cb-s3" data-scene="3">
+    <div class="cb-stage">
+      <div class="cb-notes" id="cb-notes" aria-hidden="true"></div>
+      <div class="cb-s3-fg">
+        <p class="cb-beatmark">04:00 — retrieval</p>
+        <h2 class="cb-h" data-beat="0">49,000 notes.<br>Three passes.</h2>
+        <div class="cb-query" data-beat="1">
+          <span class="cb-query-label">query · pass 1</span>
+          <span class="cb-query-text" id="cb-query">unresponsive adult hypotension tachycardia</span>
+        </div>
+        <p class="cb-cap" data-beat="4">With no history to read, the retrieval sub-agent iterates —
+        refining its query and grading every candidate note for relevance before
+        anything reaches the planner.</p>
+      </div>
+    </div>
+  </section>
 
-      <!-- parallel screens under the safety gate -->
-      <g id="tn-med" class="tn tn-screen">
-        <rect x="424" y="300" width="140" height="44" rx="2"/>
-        <text class="tn-name" x="494" y="318" text-anchor="middle">MED-CONFLICT</text>
-        <text class="tn-sub tn-dyn" x="494" y="334" text-anchor="middle">unknown → screen all</text>
-      </g>
-      <g id="tn-alg" class="tn tn-screen">
-        <rect x="574" y="300" width="140" height="44" rx="2"/>
-        <text class="tn-name" x="644" y="318" text-anchor="middle">ALLERGY-RISK</text>
-        <text class="tn-sub tn-dyn" x="644" y="334" text-anchor="middle">unknown → assume risk</text>
-      </g>
+  <!-- ==========================================================
+       SCENE 4 — 07:00 THE SAFETY GATE
+       ========================================================== -->
+  <section class="cb-scene cb-s4" data-scene="4">
+    <div class="cb-stage">
+      <p class="cb-beatmark">07:00 — safety verification</p>
+      <h2 class="cb-h" data-beat="0">Unknowns are treated<br>as risk.</h2>
+      <div class="cb-screens">
+        <div class="cb-screen cb-screen-l" data-beat="1">
+          <span class="cb-screen-name">MED-CONFLICT SCREEN</span>
+          <span class="cb-screen-sub">medication list unknown → screen everything</span>
+        </div>
+        <div class="cb-screen cb-screen-r" data-beat="2">
+          <span class="cb-screen-name">ALLERGY-RISK SCREEN</span>
+          <span class="cb-screen-sub">no allergy record → assume risk</span>
+        </div>
+      </div>
+      <div class="cb-gateline" data-beat="3"><span>SAFETY GATE — no continuation pathway goes around it</span></div>
+      <p class="cb-cap" data-beat="4">Dynamic routing usually costs you the guarantee that the safety step is
+      on the path. TriAgent embeds verification in <b>every</b> continuation pathway instead —
+      the plan can change; the gate cannot be skipped.</p>
+    </div>
+  </section>
 
-      <!-- critique + recommendation -->
-      <g id="tn-crit" class="tn tn-major">
-        <rect x="280" y="440" width="200" height="52" rx="2"/>
-        <text class="tn-name" x="380" y="462" text-anchor="middle">CRITIQUE AGENT</text>
-        <text class="tn-sub" x="380" y="478" text-anchor="middle">full reasoning-trace review</text>
-      </g>
-      <g id="tn-rec" class="tn tn-final">
-        <rect x="280" y="540" width="200" height="52" rx="2"/>
-        <text class="tn-name" x="380" y="562" text-anchor="middle">RECOMMENDATION</text>
-        <text class="tn-sub" x="380" y="578" text-anchor="middle">+ end-to-end audit trail</text>
-      </g>
-    </svg>
-  </div>
+  <!-- ==========================================================
+       SCENE 5 — 09:00 CRITIQUE
+       ========================================================== -->
+  <section class="cb-scene cb-s5" data-scene="5">
+    <div class="cb-stage">
+      <p class="cb-beatmark">09:00 — critique</p>
+      <h2 class="cb-h" data-beat="0">The trace gets<br>read back.</h2>
+      <div class="cb-trace">
+        <div class="cb-trace-line" data-beat="1">00:00 · intake — unresponsive adult, no ID, no records</div>
+        <div class="cb-trace-line" data-beat="1">01:12 · orchestrator: assessment + retrieval (history absent)</div>
+        <div class="cb-trace-line" data-beat="2">04:38 · retrieval: 3 passes, relevance graded</div>
+        <div class="cb-trace-line" data-beat="2">06:02 · planning: stabilization pathway drafted</div>
+        <div class="cb-trace-line" data-beat="3">07:44 · safety: conflict + allergy screens — unknowns as risk</div>
+        <div class="cb-trace-stamp" data-beat="4">1 REVISION REQUESTED</div>
+        <div class="cb-trace-line" data-beat="5">10:21 · plan revised — re-verified through the gate</div>
+      </div>
+      <p class="cb-cap" data-beat="5">A Critique Agent reviews the full reasoning trace before anything is
+      finalized. It can — and here does — send the plan back.</p>
+    </div>
+  </section>
 
-  <p class="tri-status mono-caps" id="tri-status" role="status" aria-live="polite"></p>
+  <!-- ==========================================================
+       SCENE 6 — 11:00 VERDICT
+       ========================================================== -->
+  <section class="cb-scene cb-s6" data-scene="6">
+    <div class="cb-stage">
+      <p class="cb-beatmark cb-beatmark-final">11:00 — verdict</p>
+      <div class="cb-verdict" aria-label="Triage verdict: critical">
+        <span class="cb-v" data-beat="1">C</span><span class="cb-v" data-beat="2">R</span><span class="cb-v" data-beat="3">I</span><span class="cb-v" data-beat="4">T</span><span class="cb-v" data-beat="5">I</span><span class="cb-v" data-beat="6">C</span><span class="cb-v" data-beat="7">A</span><span class="cb-v" data-beat="8">L</span>
+      </div>
+      <p class="cb-verdict-sub" data-beat="9">escalate now · audit trail sealed · 11 minutes, chart still blank</p>
+    </div>
+  </section>
 
-  <div class="tri-run-row">
-    <button class="btn btn-primary tri-run-btn" type="button" id="tri-run">Run crisis scenario <span class="glyph">▸</span></button>
-    <span class="label-caps tri-run-hint">one incomplete-information case, beat by beat</span>
-  </div>
-  <div class="tri-console" id="tri-console" aria-live="polite" hidden></div>
-</section>
+</div><!-- /film -->
 
 <!-- ============================================================
-     ANATOMY — spec sheet + prose
+     EPILOGUE — the numbers, then the case notes (themed, paper)
      ============================================================ -->
+<section class="cb-score" aria-label="Results">
+  <p class="label-caps cb-score-eyebrow">Epilogue — what the evaluation showed</p>
+  <div class="cb-score-grid">
+    <div class="cb-score-cell">
+      <span class="cb-score-num cb-score-red">85.0%</span>
+      <span class="label-caps">critical-case recall</span>
+      <span class="cb-score-note">best matched baseline: 14.7%</span>
+    </div>
+    <div class="cb-score-cell">
+      <span class="cb-score-num">65.7%</span>
+      <span class="label-caps">overall triage accuracy</span>
+      <span class="cb-score-note">baselines: at most 43.4%</span>
+    </div>
+    <div class="cb-score-cell">
+      <span class="cb-score-num">1,000</span>
+      <span class="label-caps">real emergency presentations</span>
+      <span class="cb-score-note">synthesized incomplete inputs · retrospective</span>
+    </div>
+    <div class="cb-score-cell">
+      <span class="cb-score-num">100%</span>
+      <span class="label-caps">pathways safety-checked</span>
+      <span class="cb-score-note">adaptive routing, mandatory gate</span>
+    </div>
+  </div>
+</section>
+
 <section class="anatomy">
   <dl>
     <dt class="label-caps">Role</dt><dd>Lead author · WCM-Q</dd>
@@ -225,31 +257,16 @@
     <dt class="label-caps">Status</dt><dd>Published — open access (CC BY)</dd>
   </dl>
   <div class="prose">
-    <p><strong>The problem.</strong> Clinical decision support is usually built for hospitals on a good day: structured records, complete histories, time to look things up. Crises break every one of those assumptions. In a mass-casualty emergency — or where the health system itself is a casualty, in disaster response and conflict settings like Gaza — the patient arrives unconscious, undocumented, and unstable, and the decision cannot wait. Rule-based systems degrade when the structured data they key on is absent; a bare language model will answer anyway, with nothing in the loop that <em>forces</em> a safety check before its advice lands.</p>
+    <p><strong>The problem.</strong> Clinical decision support is usually built for hospitals on a good day: structured records, complete histories, time to look things up. Crises break every one of those assumptions. The patient arrives unconscious, undocumented, and unstable, and the decision cannot wait. Rule-based systems degrade when the structured data they key on is absent; a bare language model will answer anyway, with nothing in the loop that <em>forces</em> a safety check before its advice lands.</p>
     <p><strong>The approach.</strong> Make missing information a first-class input. An Orchestrator Agent reads the case and decides which specialist modules to invoke — clinical assessment, retrieval, treatment planning, safety verification, system coordination — routing by model reasoning rather than a fixed execution path. A retrieval sub-agent iteratively refines its queries and grades relevance over 49,000 MIMIC-IV discharge notes; medication-conflict screening and allergy-risk assessment run in parallel when the case indicates them; and a Critique Agent reviews the full reasoning trace before any recommendation is finalized.</p>
     <blockquote class="pullquote">85.0% critical-case recall where the best matched baseline reached 14.7% — with a safety check on every continuation pathway.</blockquote>
     <p><strong>What was hard.</strong> Dynamic routing and mandatory safety pull in opposite directions. The moment the execution path is chosen by a model instead of a flowchart, you lose the structural guarantee that the safety step is on it. TriAgent's answer is architectural: safety verification is embedded in every continuation pathway, so however the Orchestrator plans, there is no route to a recommendation that bypasses the check — and the full trace is auditable end to end.</p>
-    <p><strong>What shipped.</strong> A retrospective evaluation on 1,000 real emergency presentations under synthesized incomplete-information inputs: 85.0% critical-case recall and 65.7% overall triage accuracy, against at most 14.7% and 43.4% for matched single-model and retrieval-only baselines — with adaptive routing invoking only the modules each case required.</p>
     <p><strong>The honest caveat.</strong> These are internal system properties, measured retrospectively. Clinical-safety benefit is a different claim, and it remains to be established through prospective, clinician-involved validation. The paper says so plainly, and so does this page.</p>
     <p><strong>What this changes.</strong> Multi-agent orchestration stops being an engineering flourish and becomes a safety pattern: coordination is what lets a system be adaptive <em>and</em> auditable at once. For the settings this is built for — where the chart may never exist — that combination is the point.</p>
   </div>
 </section>
 
-<!-- ============================================================
-     SYSTEM LOOP
-     ============================================================ -->
-<section class="artifacts">
-  <figure class="fig tri-loop">
-    <pre>incomplete intake (no history · no meds · no allergies)
-  → orchestrator — routing by reasoning, not fixed paths
-  → [ assess | retrieve — 49k notes, iterative | plan | verify | coordinate ]
-  → critique agent — full-trace review, may send it back
-  → recommendation + audit trail   (safety checked on every pathway)</pre>
-    <figcaption class="caption-meta label-caps">FIG. 1 — TriAgent decision loop</figcaption>
-  </figure>
-</section>
-
-<p class="footnote">Ibrahim, AlSanousi, Serag. “TriAgent: An Adaptive Multi-Agent Architecture for Crisis Clinical Decision Support Under Incomplete Information.” <em>AI</em> 7(6):230, MDPI, 2026. Open access (CC BY). Retrospective evaluation; prospective clinician-involved validation ahead.</p>
+<p class="footnote">Ibrahim, AlSanousi, Serag. “TriAgent: An Adaptive Multi-Agent Architecture for Crisis Clinical Decision Support Under Incomplete Information.” <em>AI</em> 7(6):230, MDPI, 2026. Open access (CC BY). The case above is illustrative and time-compressed; architecture, corpus, and results are the paper's.</p>
 
 <a class="next-issue" href="../index.html#research">
   <span class="label-caps lab">Back to research →</span>
@@ -267,122 +284,95 @@
 (function () {
   'use strict';
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var $ = function (s) { return document.querySelector(s); };
+  if (reduced) { document.body.classList.add('cb-static'); return; }
+  document.body.classList.add('cb-js');
 
-  /* ---- board state: true = known ------------------------- */
-  var state = { history: false, meds: false, allergies: false, vitals: true };
+  var film = document.getElementById('cb-film');
+  var clock = document.getElementById('cb-clock');
+  var hud = document.querySelector('.cb-hud');
+  var scenes = [].slice.call(document.querySelectorAll('.cb-scene'));
 
-  var setText = function (sel, txt) {
-    var el = document.querySelector(sel + ' .tn-dyn');
-    if (el) el.textContent = txt;
-  };
-  var cls = function (sel, name, on) {
-    var el = $(sel); if (el) el.classList.toggle(name, on);
-  };
-
-  function render() {
-    var unknowns = ['history', 'meds', 'allergies', 'vitals']
-      .filter(function (k) { return !state[k]; }).length;
-
-    /* retrieval works harder when there is no history */
-    setText('#tn-retr', state.history ? 'history on file · 1 pass' : 'no history · iterate ×3');
-    cls('#te-retr', 'te-hot', !state.history);
-    cls('#tn-retr', 'tn-hot', !state.history);
-
-    /* assessment falls back to clinical estimate without vitals */
-    setText('#tn-assess', state.vitals ? 'vitals live' : 'clinical estimate only');
-    cls('#tn-assess', 'tn-hot', !state.vitals);
-
-    /* unknown meds/allergies pull the screens in, in parallel */
-    setText('#tn-med', state.meds ? 'list known · cleared' : 'unknown → screen all');
-    cls('#tn-med', 'tn-engaged', !state.meds);
-    cls('#te-med', 'te-hot', !state.meds);
-    cls('#tc-med', 'te-hot', !state.meds);
-    setText('#tn-alg', state.allergies ? 'record known · cleared' : 'unknown → assume risk');
-    cls('#tn-alg', 'tn-engaged', !state.allergies);
-    cls('#te-alg', 'te-hot', !state.allergies);
-    cls('#tc-alg', 'te-hot', !state.allergies);
-
-    /* rails to always-on modules */
-    ['#te-assess', '#te-retr', '#te-plan', '#te-safe', '#te-coord',
-     '#tc-assess', '#tc-retr', '#tc-plan', '#tc-coord', '#tc-med', '#tc-alg']
-      .forEach(function (s) { cls(s, 'te-on', true); });
-
-    var engaged = 5 + (!state.meds ? 1 : 0) + (!state.allergies ? 1 : 0);
-    $('#tri-status').textContent =
-      'routing: ' + engaged + ' of 7 modules engaged · unknown fields: ' + unknowns +
-      ' of 4 · safety: every pathway · critique: gating';
-  }
-
-  document.querySelectorAll('.tri-chip').forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      var f = chip.dataset.field;
-      state[f] = !state[f];
-      chip.classList.toggle('is-known', state[f]);
-      chip.setAttribute('aria-pressed', String(state[f]));
-      chip.querySelector('.tri-chip-v').textContent = state[f] ? 'known' : 'unknown';
-      render();
-    });
-  });
-
-  /* ---- scripted crisis scenario -------------------------- */
-  var SCRIPT = [
-    ['00:00', 'intake — unresponsive adult, no ID, no records', ['#tn-orch']],
-    ['00:01', 'orchestrator: assessment + retrieval (history absent → iterate)', ['#tn-assess', '#tn-retr']],
-    ['00:04', 'retrieval: query refined ×3 · notes graded for relevance', ['#tn-retr']],
-    ['00:06', 'planning: stabilization pathway drafted', ['#tn-plan']],
-    ['00:07', 'safety: med-conflict + allergy-risk in parallel — unknowns treated as risk', ['#tn-safe', '#tn-med', '#tn-alg']],
-    ['00:09', 'critique: full trace reviewed → one revision requested', ['#tn-crit']],
-    ['00:10', 'orchestrator: plan revised, re-verified', ['#tn-orch', '#tn-safe']],
-    ['00:11', 'TRIAGE: CRITICAL — escalate now · audit trail sealed', ['#tn-rec']]
-  ];
-  var running = false;
-  var btn = $('#tri-run'), consoleEl = $('#tri-console');
-
-  function addLine(t, msg, last) {
-    var row = document.createElement('div');
-    row.className = 'tri-line' + (last ? ' tri-line-crit' : '');
-    row.innerHTML = '<span class="tri-t"></span><span class="tri-m"></span>';
-    row.firstChild.textContent = t;
-    row.lastChild.textContent = msg;
-    consoleEl.appendChild(row);
-    consoleEl.scrollTop = consoleEl.scrollHeight;
-  }
-  function flash(sels) {
-    if (reduced) return;
-    sels.forEach(function (s) {
-      var el = $(s); if (!el) return;
-      el.classList.add('tn-flash');
-      setTimeout(function () { el.classList.remove('tn-flash'); }, 900);
-    });
-  }
-  btn.addEventListener('click', function () {
-    if (running) return;
-    running = true;
-    consoleEl.hidden = false;
-    consoleEl.innerHTML = '';
-    btn.disabled = true;
-    var i = 0;
-    function step() {
-      var beat = SCRIPT[i];
-      addLine(beat[0], beat[1], i === SCRIPT.length - 1);
-      flash(beat[2]);
-      i += 1;
-      if (i < SCRIPT.length) {
-        setTimeout(step, reduced ? 0 : 850);
-      } else {
-        btn.disabled = false;
-        btn.innerHTML = 'Replay scenario <span class="glyph">↺</span>';
-        running = false;
+  /* build the notes wall (deterministic, no Math.random) */
+  var notesEl = document.getElementById('cb-notes');
+  if (notesEl) {
+    var frag = document.createDocumentFragment();
+    for (var c = 0; c < 3; c++) {
+      var col = document.createElement('div');
+      col.className = 'cb-notes-col cb-notes-col-' + c;
+      for (var i = 0; i < 42; i++) {
+        var n = document.createElement('div');
+        n.className = 'cb-note' + (((i * 7 + c * 3) % 9) === 0 ? ' cb-note-hit' : '');
+        n.style.width = (46 + ((i * 37 + c * 13) % 47)) + '%';
+        col.appendChild(n);
       }
+      frag.appendChild(col);
     }
-    step();
-  });
+    notesEl.appendChild(frag);
+  }
 
-  render();
+  var QUERIES = [
+    'unresponsive adult hypotension tachycardia',
+    'undifferentiated shock unknown history vasopressor threshold',
+    'occult hemorrhage vs sepsis — discriminating features, incomplete data'
+  ];
+  var queryEl = document.getElementById('cb-query');
+  var queryLabel = document.querySelector('.cb-query-label');
+
+  function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var vh = window.innerHeight;
+
+    /* film progress → clock 00:00 → 11:00 */
+    var fr = film.getBoundingClientRect();
+    var fp = clamp(-fr.top / (film.offsetHeight - vh), 0, 1);
+    var secs = Math.round(fp * 660);
+    var mm = String(Math.floor(secs / 60)).padStart(2, '0');
+    var ss = String(secs % 60).padStart(2, '0');
+    clock.textContent = mm + ':' + ss;
+    hud.classList.toggle('cb-hud-on', fr.top < vh * 0.6 && fr.bottom > vh * 0.5);
+
+    scenes.forEach(function (scene) {
+      var r = scene.getBoundingClientRect();
+      var span = scene.offsetHeight - vh;
+      var p = clamp(-r.top / span, 0, 1);
+      scene.style.setProperty('--p', p.toFixed(4));
+
+      var beats = scene.querySelectorAll('[data-beat]');
+      var maxBeat = 0;
+      beats.forEach(function (b) {
+        var k = +b.dataset.beat;
+        if (k > maxBeat) maxBeat = k;
+      });
+      beats.forEach(function (b) {
+        var k = +b.dataset.beat;
+        b.classList.toggle('on', p >= (k + 0.5) / (maxBeat + 2));
+      });
+
+      /* scene 3: query refinement passes */
+      if (scene.dataset.scene === '3' && queryEl) {
+        var pass = p < 0.35 ? 0 : p < 0.6 ? 1 : 2;
+        if (queryEl.textContent !== QUERIES[pass]) {
+          queryEl.textContent = QUERIES[pass];
+          queryLabel.textContent = 'query · pass ' + (pass + 1);
+        }
+      }
+      /* scene 6: flood red near the end */
+      if (scene.dataset.scene === '6') {
+        scene.classList.toggle('cb-flood', p > 0.72);
+      }
+    });
+  }
+  function onScroll() {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
 })();
 </script>
 
-<script src="../theme.js" defer></script>
 </body>
 </html>

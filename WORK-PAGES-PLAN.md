@@ -47,21 +47,26 @@ Decision Support Under Incomplete Information" — Ibrahim, AlSanousi, Serag.
   the patient has no chart, no med list, no allergies on file, no time.
   Missing information is the protagonist, not an edge case. Tone: factual and
   respectful; the setting explains why it matters, no dramatization.
-- **Motif — the live triage board:** interactive agent graph (inline SVG)
-  beside a mostly-blank patient card. Toggle what's known (history / meds /
-  allergies / vitals) → the Orchestrator visibly re-plans: pulses along
-  edges, conflict + allergy modules waking in parallel only when indicated,
-  the Critique Agent gating the exit. Scripted crisis-scenario mode steps
-  through one incomplete-information case.
+- **Motif — "Code Blue: 11 Minutes" (v3, chosen by Ahmed from 3 pitched
+  directions):** cinematic scrollytelling. The page replays one case from
+  T+00:00 to T+11:00; scroll = time. Fixed HUD clock (mix-blend difference),
+  kinetic title type, six pinned scenes (blank chart materializes → agent
+  graph line-draws itself → 49k-notes parallax wall with query refinement →
+  safety screens slam in → critique trace + revision stamp → CRITICAL letters
+  slam, screen floods red), then a themed epilogue (scoreboard + case notes).
+  Scene machinery: sticky 100vh stages inside tall sections, JS sets --p +
+  beat classes, no libraries. v1 (monochrome board) and v2 (recolored board)
+  were rejected as too samey to the site's section-stack grammar — the
+  lesson recorded in ground rules: change the page GRAMMAR, not the paint.
 - **Real facts to use:** Orchestrator + specialist modules (assessment,
   retrieval, treatment planning, safety verification, coordination); retrieval
   sub-agent over 49k MIMIC-IV notes; stats — 85.0% critical-case recall vs
   ≤ 14.7% baseline (~5.8×), 65.7% vs 43.4% triage accuracy, safety checks on
   every pathway (1000 real presentations, retrospective); print the paper's
   own caveat: prospective clinician-involved validation still ahead.
-- **Palette:** emergency department at night — deep blue-black surfaces,
-  crisis red (missing/critical), ECG-monitor green (measured/alive), triage
-  yellow (the safety gate). Scoped via token override under `.tri-page`.
+- **Palette:** the film is a fixed dark "screen" in BOTH themes (near-black,
+  crisis red, monitor green, gate amber — physical-object rule); the
+  epilogue follows the site theme with a red accent token (`--cb-accent`).
 - **Session also:** add TriAgent to Publications; flip git-log entry `wip` →
   `paper(triagent)` + published pill; sync terminal easter eggs; rename to
   `triagent.html` with `agentic-ai.html` redirect stub; fix next-chain labels.
