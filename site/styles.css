@@ -2300,7 +2300,7 @@ model-viewer.hgts-viewer {
    (e-hot / has-sel dim) from page load, which would otherwise
    outrank this. Scoped to .cb-js so the static fallback keeps its
    visible graph. */
-.cb-page.cb-js .cb-e[data-beat]:not(.on) { opacity: 0 !important; }
+.cb-page.cb-js .cb-e[data-beat]:not(.on) { opacity: 0 !important; visibility: hidden !important; }
 .cb-e[data-beat].on { opacity: 0.85; }
 .cb-e.on { stroke-dashoffset: 0; }
 .cb-page path[data-beat],
