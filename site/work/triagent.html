@@ -55,18 +55,48 @@
        ========================================================== -->
   <section class="cb-scene cb-s1" data-scene="1">
     <div class="cb-stage">
-      <p class="cb-beatmark">00:00 — intake</p>
-      <h2 class="cb-h" data-beat="0">The chart is blank.</h2>
-      <div class="cb-chart" role="img" aria-label="Intake chart: patient ID unknown, history none on file, medications unknown, allergies unknown; vitals BP 84 over 52, heart rate 127, oxygen saturation 90 percent">
-        <div class="cb-chart-row" data-beat="1"><span>PATIENT ID</span><b class="cb-unk">unknown — unresponsive on arrival</b></div>
-        <div class="cb-chart-row" data-beat="2"><span>HISTORY</span><b class="cb-unk">none on file</b></div>
-        <div class="cb-chart-row" data-beat="3"><span>MEDICATIONS</span><b class="cb-unk">unknown</b></div>
-        <div class="cb-chart-row" data-beat="4"><span>ALLERGIES</span><b class="cb-unk">unknown</b></div>
-        <div class="cb-chart-row" data-beat="5"><span>VITALS</span><b class="cb-viv">BP 84/52 · HR 127 · SpO₂ 90%</b></div>
+      <div class="cb-s1-grid">
+        <div class="cb-s1-left">
+          <p class="cb-beatmark">00:00 — intake</p>
+          <h2 class="cb-h" data-beat="0">The chart is blank.</h2>
+          <div class="cb-chart" role="img" aria-label="Intake chart: patient ID unknown, history none on file, medications unknown, allergies unknown; vitals BP 84 over 52, heart rate 127, oxygen saturation 90 percent">
+            <div class="cb-chart-row" data-beat="1"><span>PATIENT ID</span><b class="cb-unk">unknown — unresponsive on arrival</b></div>
+            <div class="cb-chart-row" data-beat="2"><span>HISTORY</span><b class="cb-unk">none on file</b></div>
+            <div class="cb-chart-row" data-beat="3"><span>MEDICATIONS</span><b class="cb-unk">unknown</b></div>
+            <div class="cb-chart-row" data-beat="4"><span>ALLERGIES</span><b class="cb-unk">unknown</b></div>
+          </div>
+          <p class="cb-cap" data-beat="6">Four of six fields unknown. In a mass-casualty emergency — or where the
+          health system itself is the casualty, in disaster response and conflict settings like Gaza —
+          <b>this is the normal case, not the edge case.</b></p>
+        </div>
+
+        <!-- the one thing alive: the bedside monitor -->
+        <div class="cb-monitor" data-beat="5" aria-hidden="true">
+          <div class="cb-mon-head">
+            <span class="cb-mon-id">BED 07 · TELEMETRY</span>
+            <span class="cb-mon-alert">⚠ NO RECORD LINKED</span>
+          </div>
+          <svg class="cb-mon-ecg" viewBox="0 0 380 80" preserveAspectRatio="none">
+            <path class="cb-mon-base"  d="M0,44 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39"/>
+            <path class="cb-mon-trace" d="M0,44 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39 h58 l7,-6 l7,6 h18 l6,-22 l9,40 l6,-18 h20 c6,-12 14,-12 20,0 h39"/>
+          </svg>
+          <div class="cb-mon-vitals">
+            <div class="cb-mon-cell">
+              <span class="cb-mon-num cb-mon-hr">127</span>
+              <span class="cb-mon-lbl">HR · bpm</span>
+            </div>
+            <div class="cb-mon-cell">
+              <span class="cb-mon-num cb-mon-bp">84/52</span>
+              <span class="cb-mon-lbl">NIBP · mmHg</span>
+            </div>
+            <div class="cb-mon-cell">
+              <span class="cb-mon-num cb-mon-spo2">90</span>
+              <span class="cb-mon-lbl">SpO₂ · %</span>
+            </div>
+          </div>
+          <p class="cb-mon-foot">the only data this patient brought with them</p>
+        </div>
       </div>
-      <p class="cb-cap" data-beat="6">Four of six fields unknown. In a mass-casualty emergency — or where the
-      health system itself is the casualty, in disaster response and conflict settings like Gaza —
-      <b>this is the normal case, not the edge case.</b></p>
     </div>
   </section>
 
