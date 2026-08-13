@@ -2295,8 +2295,12 @@ model-viewer.hgts-viewer {
   transition: stroke-dashoffset 700ms ease, opacity 250ms ease;
 }
 /* markers ignore dash-hiding — arrowheads would show before their
-   edges draw. Hide the whole path until its beat lands. */
-.cb-e[data-beat] { opacity: 0; }
+   edges draw. Hide the whole path until its beat lands, and make it
+   unbeatable: the agent-board's default selection styles edges
+   (e-hot / has-sel dim) from page load, which would otherwise
+   outrank this. Scoped to .cb-js so the static fallback keeps its
+   visible graph. */
+.cb-page.cb-js .cb-e[data-beat]:not(.on) { opacity: 0 !important; }
 .cb-e[data-beat].on { opacity: 0.85; }
 .cb-e.on { stroke-dashoffset: 0; }
 .cb-page path[data-beat],
