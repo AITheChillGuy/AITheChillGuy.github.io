@@ -62,7 +62,7 @@
   --page: #0C0C0C; --bone: #141414; --mist: #1F1F1F;
   --hairline: #2B2B2B; --stone: #707070;
   --on-primary: #0C0C0C; --on-neutral: #F2F2F2;
-  --avatar-halo: radial-gradient(ellipse 58% 52% at 50% 42%, rgba(255,255,255,0.075), transparent 72%);
+  --avatar-halo: none;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -71,7 +71,7 @@
     --page: #0C0C0C; --bone: #141414; --mist: #1F1F1F;
     --hairline: #2B2B2B; --stone: #707070;
     --on-primary: #0C0C0C; --on-neutral: #F2F2F2;
-    --avatar-halo: radial-gradient(ellipse 58% 52% at 50% 42%, rgba(255,255,255,0.075), transparent 72%);
+    --avatar-halo: none;
   }
 }
 
