@@ -1845,20 +1845,57 @@ model-viewer.hgts-viewer {
 }
 
 /* ============================================================
-   TriAgent detail page — the live triage board
-   Scoped under .tri-page / .tri-*. The motif: a crisis intake
-   where almost nothing is known. A mostly-blank patient card,
-   an agent graph that visibly re-plans as fields toggle, and a
-   safety gate on every route out.
+   TriAgent detail page — crisis palette
+   The one page on the site that leaves monochrome, because the
+   subject demands it: an emergency department at night. Deep
+   blue-black surfaces, crisis red for what is missing or
+   critical, monitor green for what is alive and measured,
+   triage yellow for the safety gate. The whole page re-themes
+   by redefining the palette tokens under .tri-page.
    ============================================================ */
+.tri-page {
+  /* palette override — every shared component follows */
+  --ink:        #EDF1F4;
+  --charcoal:   #C3CBD3;
+  --slate:      #8B96A2;
+  --page:       #0E1319;
+  --bone:       #151C24;
+  --mist:       #1C242E;
+  --hairline:   #232C36;
+  --stone:      #57616C;
+  --on-primary: #0E1319;
+  --on-neutral: #EDF1F4;
+  /* crisis accents */
+  --crit:  #FF4742;
+  --vital: #35D97B;
+  --warn:  #FFC53D;
+  background: var(--page);
+  color: var(--ink);
+}
+.tri-page .footer { background: #0A0E13; color: var(--ink); }
+.tri-page .footer a { color: var(--ink); border-bottom-color: var(--stone); }
+.tri-page .footer a:hover { border-bottom-color: var(--ink); }
+.tri-page .footer-row { border-top-color: var(--hairline); }
+.tri-page .pullquote { border-left-color: var(--crit); }
+.tri-page .btn-primary { background: var(--crit); color: #FFFFFF; }
+.tri-page .btn-primary:hover { background: #E03A35; }
 
 /* ---- Stage ------------------------------------------------ */
 .tri-stage {
-  background: var(--bone);
+  position: relative;
   border-bottom: 1px solid var(--hairline);
   padding: var(--3xl) var(--gutter) var(--2xl);
+  overflow: hidden;
+}
+.tri-stage::before {
+  /* faint red emergency glow, top left — decorative */
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 640px 420px at 18% 0%, rgba(255,71,66,0.07), transparent 70%);
+  pointer-events: none;
 }
 .tri-stage-grid {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   gap: var(--2xl);
@@ -1866,13 +1903,9 @@ model-viewer.hgts-viewer {
   max-width: 1280px;
   margin: 0 auto;
 }
-.tri-back {
-  display: inline-block;
-  color: var(--slate);
-  margin-bottom: var(--xl);
-}
+.tri-back { display: inline-block; color: var(--slate); margin-bottom: var(--xl); }
 .tri-back:hover { color: var(--ink); }
-.tri-kicker { color: var(--slate); margin-bottom: var(--md); }
+.tri-kicker { color: var(--crit); margin-bottom: var(--md); }
 .tri-title {
   font-family: var(--manrope);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -1908,65 +1941,81 @@ model-viewer.hgts-viewer {
   font-weight: 500;
   color: var(--ink);
   padding: 2px 8px;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--stone);
   border-radius: var(--r-sm);
   white-space: nowrap;
 }
+.tri-badges li .tri-badge-crit { color: var(--crit); border-color: var(--crit); }
 
 /* ---- Intake card ------------------------------------------ */
 .tri-card {
-  background: var(--page);
-  border: 1px solid var(--ink);
+  position: relative;
+  background: var(--bone);
+  border: 1px solid var(--hairline);
   font-family: var(--mono);
   font-size: 0.8125rem;
-  box-shadow: 6px 6px 0 var(--hairline);
 }
 .tri-card-head {
   display: flex; justify-content: space-between; align-items: baseline;
   gap: var(--md);
-  background: var(--ink);
-  color: var(--on-primary);
+  background: var(--crit);
+  color: #FFFFFF;
   padding: var(--sm) var(--md);
   letter-spacing: 0.04em;
 }
-.tri-card-tag { color: var(--stone); font-size: 0.6875rem; text-align: right; }
-.tri-card-body {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0;
-  padding: var(--sm) 0;
-}
+.tri-card-tag { color: rgba(255,255,255,0.75); font-size: 0.6875rem; text-align: right; }
+.tri-card-body { display: grid; grid-template-columns: auto 1fr; padding: var(--sm) 0; }
 .tri-card-body dt,
-.tri-card-body dd {
-  padding: var(--sm) var(--md);
-  border-bottom: 1px solid var(--bone);
+.tri-card-body dd { padding: var(--sm) var(--md); border-bottom: 1px solid rgba(255,255,255,0.04); }
+.tri-card-body dt {
+  color: var(--stone);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  font-size: 0.6875rem; padding-top: 10px;
 }
-.tri-card-body dt { color: var(--stone); letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.6875rem; padding-top: 10px; }
 .tri-card-body dd { color: var(--ink); }
-.tri-card-body dd.tri-unknown { color: var(--slate); font-style: italic; }
+.tri-card-body dd.tri-unknown { color: var(--crit); font-style: italic; }
+.tri-card-body dd.tri-vital { color: var(--vital); font-weight: 500; }
 .tri-redact {
   display: inline-block;
   width: 3.5em; height: 0.7em;
   margin-right: 6px;
   vertical-align: baseline;
-  background: repeating-linear-gradient(135deg, var(--hairline) 0 3px, transparent 3px 6px);
-  border: 1px solid var(--hairline);
+  background: repeating-linear-gradient(135deg, rgba(255,71,66,0.35) 0 3px, transparent 3px 6px);
+  border: 1px solid rgba(255,71,66,0.4);
 }
 .tri-caret {
   display: inline-block;
   width: 7px; height: 1em;
   vertical-align: text-bottom;
-  background: var(--ink);
+  background: var(--vital);
   animation: tri-blink 1.1s steps(1) infinite;
 }
 .tri-card-foot {
   border-top: 1px solid var(--hairline);
   padding: var(--sm) var(--md);
-  color: var(--slate);
+  color: var(--crit);
 }
 @keyframes tri-blink { 50% { opacity: 0; } }
 
-/* ---- Stats strip (site pattern) --------------------------- */
+/* ---- ECG strip -------------------------------------------- */
+.tri-ecg {
+  background: #0A0E13;
+  border-bottom: 1px solid var(--hairline);
+  line-height: 0;
+}
+.tri-ecg svg { width: 100%; height: 64px; display: block; }
+.tri-ecg-base { fill: none; stroke: var(--hairline); stroke-width: 1.5; }
+.tri-ecg-sweep {
+  fill: none;
+  stroke: var(--vital);
+  stroke-width: 1.5;
+  stroke-dasharray: 300 1700;
+  filter: drop-shadow(0 0 4px rgba(53,217,123,0.55));
+  animation: tri-sweep 3.4s linear infinite;
+}
+@keyframes tri-sweep { to { stroke-dashoffset: -2000; } }
+
+/* ---- Stats strip ------------------------------------------ */
 .tri-stats {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1988,12 +2037,13 @@ model-viewer.hgts-viewer {
   font-weight: 700;
   line-height: 1;
 }
+.tri-stat-crit { color: var(--crit); }
 .tri-stat-lbl { color: var(--slate); }
 
 /* ---- Board ------------------------------------------------ */
 .tri-board { padding: var(--3xl) var(--gutter); max-width: 1280px; margin: 0 auto; }
 .tri-board-head { margin-bottom: var(--xl); max-width: 62ch; }
-.tri-board-head .eyebrow { margin-bottom: var(--sm); color: var(--slate); }
+.tri-eyebrow { color: var(--crit); margin-bottom: var(--sm); }
 .tri-board-note { margin-top: var(--md); color: var(--slate); font-size: 0.9375rem; line-height: 1.5; }
 
 .tri-chips { display: flex; flex-wrap: wrap; gap: var(--sm); margin-bottom: var(--lg); }
@@ -2003,55 +2053,49 @@ model-viewer.hgts-viewer {
   letter-spacing: 0.05em;
   display: inline-flex; align-items: baseline; gap: 8px;
   padding: 8px 12px;
-  background: var(--page);
-  border: 1px dashed var(--stone);
+  background: var(--bone);
+  border: 1px dashed var(--crit);
   border-radius: var(--r-sm);
-  color: var(--slate);
+  color: var(--ink);
   cursor: pointer;
   transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
 }
-.tri-chip .tri-chip-v { font-style: italic; }
-.tri-chip.is-known {
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  background: var(--bone);
-}
-.tri-chip.is-known .tri-chip-v { font-style: normal; font-weight: 500; }
-.tri-chip:hover { border-color: var(--ink); color: var(--ink); }
+.tri-chip .tri-chip-v { font-style: italic; color: var(--crit); }
+.tri-chip.is-known { border: 1px solid var(--vital); }
+.tri-chip.is-known .tri-chip-v { font-style: normal; font-weight: 500; color: var(--vital); }
+.tri-chip:hover { background: var(--mist); }
 
 .tri-graph-wrap {
   border: 1px solid var(--hairline);
-  background: var(--bone);
+  background: #0A0E13;
   padding: var(--lg);
 }
 .tri-graph { width: 100%; height: auto; display: block; }
 .tri-graph text { font-family: var(--mono); }
-.tn rect { fill: var(--page); stroke: var(--stone); stroke-width: 1; }
+.tn rect { fill: #131A22; stroke: #2E3947; stroke-width: 1; }
 .tn .tn-name { font-size: 12px; font-weight: 500; letter-spacing: 0.04em; fill: var(--ink); }
 .tn .tn-sub  { font-size: 10px; fill: var(--slate); }
 .tn-major rect { stroke: var(--ink); stroke-width: 1.5; }
-.tn-final rect { fill: var(--ink); }
-.tn-final .tn-name, .tn-final .tn-sub { fill: var(--on-primary); }
+.tn-gate rect { stroke: var(--warn); stroke-width: 1.5; }
+.tn-final rect { fill: var(--crit); stroke: var(--crit); }
+.tn-final .tn-name, .tn-final .tn-sub { fill: #FFFFFF; }
 .tn-screen rect { stroke-dasharray: 3 3; }
-.tn-screen.tn-engaged rect { stroke-dasharray: none; stroke: var(--ink); }
-.tn-hot rect { stroke: var(--ink); }
+.tn-screen.tn-engaged rect { stroke-dasharray: none; stroke: var(--crit); }
+.tn-screen.tn-engaged .tn-name { fill: var(--crit); }
+.tn-hot rect { stroke: var(--crit); }
 .tn-revlbl { font-size: 10px; fill: var(--stone); letter-spacing: 0.08em; }
-.te {
-  fill: none;
-  stroke: var(--hairline);
-  stroke-width: 1.25;
-}
-.te-on  { stroke: var(--stone); }
-.te-dash { stroke-dasharray: 4 4; stroke: var(--stone); }
+.te { fill: none; stroke: #232C36; stroke-width: 1.25; }
+.te-on   { stroke: #3A4552; }
+.te-dash { stroke-dasharray: 4 4; stroke: #3A4552; }
 .te-hot {
-  stroke: var(--ink);
+  stroke: var(--crit);
   stroke-width: 1.75;
   stroke-dasharray: 6 5;
   animation: tri-march 1.2s linear infinite;
 }
 @keyframes tri-march { to { stroke-dashoffset: -11; } }
-.tn-flash rect { fill: var(--ink); }
-.tn-flash .tn-name, .tn-flash .tn-sub { fill: var(--on-primary); }
+.tn-flash rect { fill: var(--crit); stroke: var(--crit); }
+.tn-flash .tn-name, .tn-flash .tn-sub { fill: #FFFFFF; }
 .tn rect, .tn text { transition: fill 240ms ease, stroke 240ms ease; }
 
 .tri-status {
@@ -2066,8 +2110,9 @@ model-viewer.hgts-viewer {
 .tri-run-hint { color: var(--stone); }
 .tri-console {
   margin-top: var(--lg);
-  background: var(--ink);
-  color: var(--on-primary);
+  background: #0A0E13;
+  border: 1px solid var(--hairline);
+  color: var(--vital);
   font-family: var(--mono);
   font-size: 0.8125rem;
   line-height: 1.7;
@@ -2078,8 +2123,8 @@ model-viewer.hgts-viewer {
 .tri-line { display: grid; grid-template-columns: 52px 1fr; gap: var(--md); }
 .tri-line .tri-t { color: var(--stone); }
 .tri-line-crit .tri-m {
-  background: var(--on-primary);
-  color: var(--ink);
+  background: var(--crit);
+  color: #FFFFFF;
   padding: 0 6px;
   font-weight: 500;
 }
@@ -2087,6 +2132,7 @@ model-viewer.hgts-viewer {
 /* ---- Reduced motion --------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .tri-caret { animation: none; }
+  .tri-ecg-sweep { animation: none; display: none; }
   .te-hot { animation: none; stroke-dasharray: none; }
   .tn rect, .tn text, .tri-chip { transition: none; }
 }
@@ -2099,13 +2145,14 @@ model-viewer.hgts-viewer {
   .tri-stats > .tri-stat:first-child,
   .tri-stats > .tri-stat:last-child { padding-left: var(--gutter); padding-right: var(--gutter); }
   .tri-board { padding: var(--2xl) var(--gutter); }
+  .tri-ecg svg { height: 48px; }
 }
 @media (max-width: 599px) {
   .tri-stat { padding: var(--xl) var(--md); }
   .tri-stat-lbl { font-size: 0.625rem; letter-spacing: 0.12em; }
-  .tri-card { box-shadow: 4px 4px 0 var(--hairline); }
   .tri-card-body { grid-template-columns: 1fr; }
   .tri-card-body dt { padding-bottom: 0; border-bottom: none; }
   .tri-graph-wrap { padding: var(--sm); }
   .tri-badges { flex-direction: column; gap: var(--sm); }
+  .tri-ecg svg { height: 40px; }
 }

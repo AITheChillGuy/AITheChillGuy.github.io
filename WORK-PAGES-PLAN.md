@@ -7,9 +7,16 @@ explanation. One page per session, deployed and verified before the next.
 
 ## Ground rules (apply to every page)
 
-- **Stay in the system:** strict monochrome, Fraunces / Manrope / JetBrains
-  Mono, hairline borders, `label-caps` eyebrows, editorial voice. Unique ≠
-  off-brand: each page gets its own *motif*, not its own palette.
+- **Each page is its own world (Ahmed's direction):** every project page gets
+  its own design elements AND its own palette, derived from the project's
+  real-world artifact — not the site's monochrome. Shared bones stay (fonts,
+  spacing tokens, nav/footer skeleton, editorial voice) so the site still
+  reads as one publication; page identity comes from a scoped token override
+  (redefine `--page/--ink/--hairline/…` under `.<ns>-page` + accent vars).
+- **Diagrams are engineered, not sketched:** orthogonal elbow connectors on
+  shared rails (bus layout), no crossing curves, no rotated labels, nothing
+  overlapping a node. If a diagram needs a curve to work, redesign the layout
+  instead.
 - **Vanilla only.** No frameworks. Page-specific CSS appended to `styles.css`
   under a namespaced block (like `.hgts-*`); page-specific JS inline in the
   page (like hgts's reset-view script). Assets vendored, never hotlinked.
@@ -46,6 +53,9 @@ Decision Support Under Incomplete Information" — Ibrahim, AlSanousi, Serag.
   ≤ 14.7% baseline (~5.8×), 65.7% vs 43.4% triage accuracy, safety checks on
   every pathway (1000 real presentations, retrospective); print the paper's
   own caveat: prospective clinician-involved validation still ahead.
+- **Palette:** emergency department at night — deep blue-black surfaces,
+  crisis red (missing/critical), ECG-monitor green (measured/alive), triage
+  yellow (the safety gate). Scoped via token override under `.tri-page`.
 - **Session also:** add TriAgent to Publications; flip git-log entry `wip` →
   `paper(triagent)` + published pill; sync terminal easter eggs; rename to
   `triagent.html` with `agentic-ai.html` redirect stub; fix next-chain labels.
@@ -63,6 +73,9 @@ Decision Support Under Incomplete Information" — Ibrahim, AlSanousi, Serag.
   a mock note → the answer assembles itself with citation markers that light
   back to their source chunks on hover. A scroll-driven pipeline strip walks
   query → retrieve → ground → answer.
+- **Palette:** the paper chart — manila-folder cream and archival paper
+  tones, medical-record blue ink for annotations/citations, redaction black.
+  A warm, analog counterpoint to TriAgent's dark ED.
 - **Fetch at build time:** the MAKE paper for real eval numbers (correctness,
   groundedness, ROUGE-1 F1, Jaccard, METEOR — metrics named on current page),
   model lineup (Mistral, Qwen), corpus size, and one real-shaped example
@@ -80,6 +93,9 @@ Decision Support Under Incomplete Information" — Ibrahim, AlSanousi, Serag.
   answer quality*. Second visual: model merging as two/three weight-space
   fields interpolating into one (animated SVG isolines — abstract,
   monochrome, honest). Dialect labels double as navigation chips.
+- **Palette:** Arabic manuscript & majlis — deep teal/turquoise ground,
+  warm sand, saffron/gold accent for the active dialect; calligraphic RTL
+  type as a design element in its own right.
 - **Fetch at build time:** both papers for the merge recipe (which base
   models merged, method), dialect evaluation results, and 3–4 authentic
   dialect phrasings of one question (verify wording with Ahmed — native
@@ -97,6 +113,9 @@ Decision Support Under Incomplete Information" — Ibrahim, AlSanousi, Serag.
   picker over a small embedded sample of pairs → interaction card flips out
   with the predicted interaction class. Cost-vs-accuracy scatter with D3
   sitting alone in the good corner.
+- **Palette:** pharmacy — clean lab white, capsule two-tone (pill orange +
+  clinical blue) for the two drugs in a pair; interaction severity as a
+  amber→red scale. Bright, precise, the anti-dark-mode page.
 - **Fetch at build time:** the MLwA paper for exact parameter count, which
   LLMs it was benchmarked against, accuracy/F1 per model, and a handful of
   real drug pairs + labels safe to embed as the demo dataset.
@@ -112,6 +131,10 @@ Always Perform Better?" — IEEE Access 12:198262, 2024 (+ arXiv:2403.17177).
   vs ground-truth lesion masks. Three architecture "weigh-in" cards (UNet /
   Attention-UNet / Transformer) listing matched conditions; Dice bars animate
   in and land close together — the visual understatement *is* the finding.
+- **Palette:** the radiology workstation — true grayscale MRI blacks (the
+  one legitimately monochrome page), with segmentation-mask overlay colors
+  doing all the talking: prediction in cyan, ground truth in magenta,
+  overlap reading as white. The palette IS the method.
 - **Fetch at build time:** the IEEE Access paper (open) for real Dice/IoU
   numbers per architecture, datasets used (ISLES/ATLAS?), and training-setup
   details for the matched-conditions callout. Keep the lesion geometry in the
@@ -129,6 +152,9 @@ Abdominal CT" — BJR|AI 2(1), 2025 + "From Slices to Volumes" — MICCAI 2025.
   2D→3D fusion idea performed by the layout. Canned VQA: pick a question →
   an attention spotlight sweeps the slice → the answer types out as a report
   line, character by character.
+- **Palette:** PACS viewer — near-black viewport chrome, slice grayscale,
+  attention heatmap as the accent (deep blue → hot amber gradient exactly
+  where the model looks); report text in terminal green as it types.
 - **Fetch at build time:** both papers for report-generation metrics and VQA
   accuracy, fusion architecture details for an honest pipeline figure, and
   which findings/questions make good canned examples. All slice imagery
