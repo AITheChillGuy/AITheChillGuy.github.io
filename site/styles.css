@@ -2341,6 +2341,7 @@ model-viewer.hgts-viewer {
   margin-bottom: var(--lg);
 }
 .cb-strip .cb-plate { width: 100%; box-shadow: 6px 6px 0 var(--cbf-shadow); }
+.cb-strip .cb-plate-cap { min-height: 62px; align-items: flex-start; }
 .cb-strip .cb-face-back .cb-plate-cap { border-top-width: 2px; }
 
 .cb-s3-intro {
@@ -2354,6 +2355,7 @@ model-viewer.hgts-viewer {
 /* mode switch — synced to scroll, click to jump */
 .cb-mode { display: inline-flex; border: 2px solid #17191E; box-shadow: 4px 4px 0 var(--cbf-shadow); margin-bottom: var(--lg); background: var(--cbf-panel); }
 .cb-mode-btn {
+  display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--mono);
   font-size: 0.75rem;
   font-weight: 500;
@@ -2362,6 +2364,12 @@ model-viewer.hgts-viewer {
   color: #6B6F77;
   cursor: pointer;
 }
+.cb-mode-btn svg {
+  width: 15px; height: 15px;
+  fill: none; stroke: currentColor; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.cb-mode-btn svg circle:only-of-type { fill: none; }
 .cb-mode-btn.is-on { background: #17191E; color: #FFFFFF; }
 .cb-mode-btn + .cb-mode-btn { border-left: 2px solid #17191E; }
 
@@ -2370,8 +2378,9 @@ model-viewer.hgts-viewer {
 .cb-cell + .cb-cell::before {
   content: "➜";
   position: absolute;
-  left: calc(-1 * var(--lg) - 4px);
-  top: 48%;
+  left: calc(-1 * var(--lg) - 5px);
+  top: 40%;
+  transform: translateY(-50%);
   font-size: 1.4rem;
   color: var(--cbf-ink);
   z-index: 2;
@@ -2385,6 +2394,20 @@ model-viewer.hgts-viewer {
   background: #17191E;
   color: #FFFFFF;
   padding: 4px 10px;
+}
+.cb-s3-chips { display: flex; flex-wrap: wrap; gap: var(--md) var(--lg); align-items: center; }
+.cb-statchip {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  display: inline-block;
+  background: var(--cbf-panel);
+  color: #0F8C6F;
+  border: 2px solid var(--cbf-teal);
+  box-shadow: 4px 4px 0 var(--cbf-shadow);
+  padding: 6px 14px;
+  margin-top: var(--lg);
+  transform: rotate(0.8deg);
 }
 .cb-loopchip {
   font-family: var(--mono);
