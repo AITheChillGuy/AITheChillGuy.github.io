@@ -2374,17 +2374,7 @@ model-viewer.hgts-viewer {
 .cb-mode-btn + .cb-mode-btn { border-left: 2px solid #17191E; }
 
 /* step cells with arrows between them */
-.cb-cell { position: relative; display: flex; flex-direction: column; gap: var(--sm); }
-.cb-cell + .cb-cell::before {
-  content: "➜";
-  position: absolute;
-  left: calc(-1 * var(--lg) - 5px);
-  top: 40%;
-  transform: translateY(-50%);
-  font-size: 1.4rem;
-  color: var(--cbf-ink);
-  z-index: 2;
-}
+.cb-cell { position: relative; display: flex; flex-direction: column; gap: var(--sm); align-self: start; }
 .cb-step {
   font-family: var(--mono);
   font-size: 0.6875rem;
@@ -2774,7 +2764,6 @@ model-viewer.hgts-viewer {
   .cb-graphwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .cb-strip { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .cb-strip .cb-cell { flex: 0 0 72vw; }
-  .cb-cell + .cb-cell::before { display: none; }
   .cb-graph { min-width: 640px; max-height: none; }
   .cb-screens { grid-template-columns: 1fr; }
   .cb-trace-stamp { right: 0; }
