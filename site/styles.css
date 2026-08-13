@@ -2236,15 +2236,45 @@ model-viewer.hgts-viewer {
   color: #9B9EA5;
 }
 .cb-graphwrap { width: 100%; }
-.cb-graph { width: 100%; height: auto; max-height: 68vh; display: block; }
+.cb-graph { width: 100%; height: auto; max-height: 74vh; display: block; }
+.cb-arrowhead { fill: var(--cbf-ink); }
 .cb-n { cursor: pointer; outline: none; }
 .cb-n rect { transition: stroke 160ms ease, stroke-width 160ms ease; }
 .cb-n:hover rect, .cb-n:focus-visible rect { stroke: var(--cbf-red); }
 .cb-n.is-sel rect { stroke: var(--cbf-red); stroke-width: 4; }
 .cb-n-final:hover rect, .cb-n-final.is-sel rect { stroke: #17191E; }
+.cb-n-crit rect { stroke: var(--cbf-red); }
+.cb-n-crit .cb-nn { fill: #E02D24; }
+.cb-n-mem rect { stroke-dasharray: 6 4; }
+.cb-n-out rect { stroke: var(--cbf-teal); stroke-width: 3.5; }
+.cb-n-out .cb-nn { fill: #0F8C6F; }
+.cb-n-mod .cb-nn { font-size: 12px; }
 .cb-e { transition: opacity 200ms ease, stroke 200ms ease; }
 .cb-graph.has-sel .cb-e:not(.e-hot) { opacity: 0.22; }
 .cb-e.e-hot { stroke: var(--cbf-red); stroke-width: 3.5; opacity: 1; }
+.cb-e-crit { stroke: var(--cbf-red); }
+.cb-e-dash { stroke-dasharray: 6 5; }
+.cb-elbl {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  fill: var(--cbf-dim);
+  text-transform: uppercase;
+}
+.cb-frame-box {
+  fill: none;
+  stroke: var(--cbf-ink);
+  stroke-width: 2;
+  stroke-dasharray: 9 7;
+  opacity: 0.75;
+}
+.cb-frame-title { font-size: 13.5px; font-weight: 500; letter-spacing: 0.06em; fill: var(--cbf-ink); }
+.cb-frame-sub { font-size: 10px; fill: var(--cbf-dim); font-style: italic; }
+.cb-ng {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  fill: var(--cbf-dim);
+}
 .cb-graph text { font-family: var(--mono); }
 .cb-e {
   fill: none;
@@ -2582,6 +2612,8 @@ model-viewer.hgts-viewer {
 @media (max-width: 599px) {
   .cb-scene { height: 240vh; }
   .cb-chart-row { grid-template-columns: 1fr; gap: 4px; }
+  .cb-graphwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .cb-graph { min-width: 640px; max-height: none; }
   .cb-screens { grid-template-columns: 1fr; }
   .cb-trace-stamp { right: 0; }
   .cb-score-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
