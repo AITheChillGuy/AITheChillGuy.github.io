@@ -2637,6 +2637,15 @@ model-viewer.hgts-viewer {
 .cb-plate:hover { transform: translateY(-6px) rotate(-0.4deg); box-shadow: 13px 15px 0 var(--cbf-shadow); }
 .cb-plate:hover img { transform: scale(1.07); }
 .cb-plate:hover::after { left: 170%; }
+.cb-anim {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: auto;
+  opacity: 0;
+  transition: opacity 350ms ease;
+  pointer-events: none;
+}
+.cb-anim.is-playing { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   .cb-plate, .cb-plate img, .cb-plate::after { transition: none; }
   .cb-plate:hover { transform: none; }

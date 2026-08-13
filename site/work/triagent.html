@@ -289,10 +289,12 @@
               <div class="cb-flip-inner" data-beat="4">
                 <figure class="cb-plate cb-face cb-face-front">
                   <img src="../assets/cb/r1.webp" alt="A doctor dwarfed by a towering archive of medical records" width="760" height="560" loading="lazy">
+                  <video class="cb-anim" data-src="../assets/cb/anim/r1.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                   <figcaption class="cb-plate-cap"><span class="cb-plate-no">01</span>comb 49,000 notes for the five most similar cases</figcaption>
                 </figure>
                 <figure class="cb-plate cb-face cb-face-back">
                   <img src="../assets/cb/t1.webp" alt="Documents as a constellation of connected points; a teal query document under a magnifying glass linked to its nearest neighbors" width="760" height="560" loading="lazy">
+                  <video class="cb-anim" data-src="../assets/cb/anim/t1.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                   <figcaption class="cb-plate-cap cb-cap-tech"><span class="cb-plate-no">01</span>MiniLM embeddings · FAISS cosine search → top-5</figcaption>
                 </figure>
               </div>
@@ -304,10 +306,12 @@
               <div class="cb-flip-inner" data-beat="4">
                 <figure class="cb-plate cb-face cb-face-front">
                   <img src="../assets/cb/r3.webp" alt="Hands keep glowing similar pages while grey pages fall to a discard basket" width="760" height="560" loading="lazy">
+                  <video class="cb-anim" data-src="../assets/cb/anim/r3.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                   <figcaption class="cb-plate-cap"><span class="cb-plate-no">02</span>read the five — are they truly like this patient?</figcaption>
                 </figure>
                 <figure class="cb-plate cb-face cb-face-back">
                   <img src="../assets/cb/t3.webp" alt="A robot arm stamps documents on a conveyor: teal checks continue, a red X page falls into a wire bin" width="760" height="560" loading="lazy">
+                  <video class="cb-anim" data-src="../assets/cb/anim/t3.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                   <figcaption class="cb-plate-cap cb-cap-tech"><span class="cb-plate-no">02</span>the LLM scores each candidate — accept at ≥ 0.5</figcaption>
                 </figure>
               </div>
@@ -319,10 +323,12 @@
               <div class="cb-flip-inner" data-beat="4">
                 <figure class="cb-plate cb-face cb-face-front">
                   <img src="../assets/cb/r2.webp" alt="The doctor reads what came back and writes a sharper query" width="760" height="560" loading="lazy">
+                  <video class="cb-anim" data-src="../assets/cb/anim/r2.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                   <figcaption class="cb-plate-cap"><span class="cb-plate-no">03</span>weak matches? ask once more, sharper</figcaption>
                 </figure>
                 <figure class="cb-plate cb-face cb-face-back">
                   <img src="../assets/cb/t2.webp" alt="A robot pulling a lever to switch document flow between three conveyor routes; only one route glows active" width="760" height="560" loading="lazy">
+                  <video class="cb-anim" data-src="../assets/cb/anim/t2.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                   <figcaption class="cb-plate-cap cb-cap-tech"><span class="cb-plate-no">03</span>below threshold → one rewrite → search again</figcaption>
                 </figure>
               </div>
@@ -509,6 +515,29 @@
     });
     sel('orch');
   })();
+
+  /* hover cartoons: lazy-load and play the plate's animation */
+  if (!reduced) {
+    document.querySelectorAll('.cb-anim').forEach(function (v) {
+      var fig = v.closest('.cb-plate');
+      if (!fig) return;
+      function start() {
+        if (!v.src) v.src = v.dataset.src;
+        v.play().catch(function () {});
+        v.classList.add('is-playing');
+      }
+      function stop() {
+        v.pause();
+        v.currentTime = 0;
+        v.classList.remove('is-playing');
+      }
+      fig.addEventListener('mouseenter', start);
+      fig.addEventListener('mouseleave', stop);
+      fig.addEventListener('touchstart', function () {
+        if (v.classList.contains('is-playing')) stop(); else start();
+      }, { passive: true });
+    });
+  }
 
   if (reduced) { document.body.classList.add('cb-static'); return; }
   document.body.classList.add('cb-js');
