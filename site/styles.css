@@ -2194,9 +2194,57 @@ model-viewer.hgts-viewer {
 .cb-unk { color: #E02D24; font-style: italic; }
 .cb-viv { color: #0F8C6F; }
 
-/* ---- Scene 2 — graph: white comic panels on the ground ---- */
-.cb-graphwrap { max-width: 680px; width: 100%; }
-.cb-graph { width: 100%; height: auto; max-height: 56vh; display: block; }
+/* ---- Scene 2 — the agent board: placed like scene 1, and
+   interactive — hover/tap/focus an agent to light its pathways
+   and read its dossier in the card on the left. ------------- */
+.cb-s2-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: var(--2xl);
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.cb-agent {
+  background: var(--cbf-panel);
+  color: #17191E;
+  border: 2px solid #17191E;
+  box-shadow: 7px 7px 0 var(--cbf-shadow);
+  padding: var(--lg);
+  max-width: 520px;
+  min-height: 172px;
+  display: flex; flex-direction: column; gap: var(--sm);
+}
+.cb-agent-name {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  align-self: flex-start;
+  background: #17191E;
+  color: #FFFFFF;
+  padding: 4px 10px;
+}
+.cb-agent-desc { font-size: 0.9688rem; line-height: 1.55; color: #3C3F46; margin: 0; }
+.cb-agent-hint {
+  margin-top: auto;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  color: #9B9EA5;
+}
+.cb-graphwrap { width: 100%; }
+.cb-graph { width: 100%; height: auto; max-height: 68vh; display: block; }
+.cb-n { cursor: pointer; outline: none; }
+.cb-n rect { transition: stroke 160ms ease, stroke-width 160ms ease; }
+.cb-n:hover rect, .cb-n:focus-visible rect { stroke: var(--cbf-red); }
+.cb-n.is-sel rect { stroke: var(--cbf-red); stroke-width: 4; }
+.cb-n-final:hover rect, .cb-n-final.is-sel rect { stroke: #17191E; }
+.cb-e { transition: opacity 200ms ease, stroke 200ms ease; }
+.cb-graph.has-sel .cb-e:not(.e-hot) { opacity: 0.22; }
+.cb-e.e-hot { stroke: var(--cbf-red); stroke-width: 3.5; opacity: 1; }
 .cb-graph text { font-family: var(--mono); }
 .cb-e {
   fill: none;
@@ -2525,7 +2573,8 @@ model-viewer.hgts-viewer {
 @media (max-width: 1023px) {
   .cb-scene { height: 280vh; }
   .cb-hud { left: var(--gutter); bottom: 20px; }
-  .cb-s1-grid { grid-template-columns: 1fr; gap: var(--xl); }
+  .cb-s1-grid, .cb-s2-grid { grid-template-columns: 1fr; gap: var(--xl); }
+  .cb-graph { max-height: 52vh; }
   .cb-vgs { min-height: 46vh; }
   .cb-plate { width: min(100%, 560px, calc((100vh - 420px) * 1.28)); }
   .cb-wedges span { height: 20vh; }

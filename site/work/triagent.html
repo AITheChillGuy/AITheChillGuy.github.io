@@ -141,66 +141,76 @@
        ========================================================== -->
   <section class="cb-scene cb-s2" data-scene="2">
     <div class="cb-stage">
-      <p class="cb-beatmark">01:00 — orchestration</p>
-      <h2 class="cb-h" data-beat="0">Routing by reasoning,<br>not a flowchart.</h2>
-      <div class="cb-graphwrap">
-        <svg class="cb-graph" viewBox="0 0 760 616" aria-hidden="true">
-          <path class="cb-e" data-beat="2" pathLength="1" d="M380,80 V120 H84 V170"/>
-          <path class="cb-e" data-beat="3" pathLength="1" d="M380,80 V120 H232 V170"/>
-          <path class="cb-e" data-beat="4" pathLength="1" d="M380,80 V170"/>
-          <path class="cb-e" data-beat="5" pathLength="1" d="M380,80 V120 H528 V170"/>
-          <path class="cb-e" data-beat="6" pathLength="1" d="M380,80 V120 H676 V170"/>
-          <path class="cb-e" data-beat="7" pathLength="1" d="M84,242 V400 H380 V440"/>
-          <path class="cb-e" data-beat="7" pathLength="1" d="M232,242 V400 H380 V440"/>
-          <path class="cb-e" data-beat="7" pathLength="1" d="M380,242 V440"/>
-          <path class="cb-e" data-beat="7" pathLength="1" d="M528,242 V400 H380 V440"/>
-          <path class="cb-e" data-beat="7" pathLength="1" d="M676,242 V400 H380 V440"/>
-          <path class="cb-e" data-beat="8" pathLength="1" d="M380,492 V540"/>
+      <div class="cb-s2-grid">
+        <div class="cb-s2-left">
+          <p class="cb-beatmark">01:00 — orchestration</p>
+          <h2 class="cb-h" data-beat="0">Routing by reasoning,<br>not a flowchart.</h2>
+          <div class="cb-agent" data-beat="1">
+            <span class="cb-agent-name" id="cb-agent-name">ORCHESTRATOR</span>
+            <p class="cb-agent-desc" id="cb-agent-desc">Reads the case and decides which specialists to invoke — the route is chosen by model reasoning, not a fixed execution path.</p>
+            <span class="cb-agent-hint">hover or tap any agent on the board</span>
+          </div>
+          <p class="cb-cap" data-beat="8">No fixed pipeline. The Orchestrator invokes only what this case needs —
+          and every route it can draw still ends at the safety gate.</p>
+        </div>
 
-          <g class="cb-n cb-n-major" data-beat="1">
-            <rect x="280" y="28" width="200" height="52" rx="2"/>
-            <text class="cb-nn" x="380" y="50" text-anchor="middle">ORCHESTRATOR</text>
-            <text class="cb-ns" x="380" y="66" text-anchor="middle">reads the case, picks the modules</text>
-          </g>
-          <g class="cb-n" data-beat="2">
-            <rect x="20" y="170" width="128" height="72" rx="2"/>
-            <text class="cb-nn" x="84" y="198" text-anchor="middle">ASSESSMENT</text>
-            <text class="cb-ns" x="84" y="216" text-anchor="middle">vitals → state</text>
-          </g>
-          <g class="cb-n" data-beat="3">
-            <rect x="168" y="170" width="128" height="72" rx="2"/>
-            <text class="cb-nn" x="232" y="198" text-anchor="middle">RETRIEVAL</text>
-            <text class="cb-ns" x="232" y="216" text-anchor="middle">49,000 notes</text>
-          </g>
-          <g class="cb-n" data-beat="4">
-            <rect x="316" y="170" width="128" height="72" rx="2"/>
-            <text class="cb-nn" x="380" y="198" text-anchor="middle">PLANNING</text>
-            <text class="cb-ns" x="380" y="216" text-anchor="middle">treatment path</text>
-          </g>
-          <g class="cb-n cb-n-gate" data-beat="5">
-            <rect x="464" y="170" width="128" height="72" rx="2"/>
-            <text class="cb-nn" x="528" y="198" text-anchor="middle">SAFETY VERIFY</text>
-            <text class="cb-ns" x="528" y="216" text-anchor="middle">every pathway</text>
-          </g>
-          <g class="cb-n" data-beat="6">
-            <rect x="612" y="170" width="128" height="72" rx="2"/>
-            <text class="cb-nn" x="676" y="198" text-anchor="middle">COORDINATION</text>
-            <text class="cb-ns" x="676" y="216" text-anchor="middle">system + handoff</text>
-          </g>
-          <g class="cb-n cb-n-major" data-beat="8">
-            <rect x="280" y="440" width="200" height="52" rx="2"/>
-            <text class="cb-nn" x="380" y="462" text-anchor="middle">CRITIQUE AGENT</text>
-            <text class="cb-ns" x="380" y="478" text-anchor="middle">reads the whole trace back</text>
-          </g>
-          <g class="cb-n cb-n-final" data-beat="8">
-            <rect x="280" y="540" width="200" height="52" rx="2"/>
-            <text class="cb-nn" x="380" y="562" text-anchor="middle">RECOMMENDATION</text>
-            <text class="cb-ns" x="380" y="578" text-anchor="middle">+ audit trail</text>
-          </g>
-        </svg>
+        <div class="cb-graphwrap">
+          <svg class="cb-graph" viewBox="0 0 760 616" aria-label="TriAgent agent board — use the buttons to read each agent's role">
+            <path id="e2-assess" class="cb-e" data-beat="2" pathLength="1" d="M380,80 V120 H84 V170"/>
+            <path id="e2-retr"   class="cb-e" data-beat="3" pathLength="1" d="M380,80 V120 H232 V170"/>
+            <path id="e2-plan"   class="cb-e" data-beat="4" pathLength="1" d="M380,80 V170"/>
+            <path id="e2-safe"   class="cb-e" data-beat="5" pathLength="1" d="M380,80 V120 H528 V170"/>
+            <path id="e2-coord"  class="cb-e" data-beat="6" pathLength="1" d="M380,80 V120 H676 V170"/>
+            <path id="c2-assess" class="cb-e" data-beat="7" pathLength="1" d="M84,242 V400 H380 V440"/>
+            <path id="c2-retr"   class="cb-e" data-beat="7" pathLength="1" d="M232,242 V400 H380 V440"/>
+            <path id="c2-plan"   class="cb-e" data-beat="7" pathLength="1" d="M380,242 V440"/>
+            <path id="c2-safe"   class="cb-e" data-beat="7" pathLength="1" d="M528,242 V400 H380 V440"/>
+            <path id="c2-coord"  class="cb-e" data-beat="7" pathLength="1" d="M676,242 V400 H380 V440"/>
+            <path id="c2-rec"    class="cb-e" data-beat="8" pathLength="1" d="M380,492 V540"/>
+
+            <g class="cb-n cb-n-major" data-beat="1" data-agent="orch" tabindex="0" role="button" aria-label="Orchestrator">
+              <rect x="255" y="28" width="250" height="52" rx="2"/>
+              <text class="cb-nn" x="380" y="50" text-anchor="middle">ORCHESTRATOR</text>
+              <text class="cb-ns" x="380" y="66" text-anchor="middle">reads the case, picks the modules</text>
+            </g>
+            <g class="cb-n" data-beat="2" data-agent="assess" tabindex="0" role="button" aria-label="Clinical assessment">
+              <rect x="20" y="170" width="128" height="72" rx="2"/>
+              <text class="cb-nn" x="84" y="198" text-anchor="middle">ASSESSMENT</text>
+              <text class="cb-ns" x="84" y="216" text-anchor="middle">vitals → state</text>
+            </g>
+            <g class="cb-n" data-beat="3" data-agent="retr" tabindex="0" role="button" aria-label="Retrieval">
+              <rect x="168" y="170" width="128" height="72" rx="2"/>
+              <text class="cb-nn" x="232" y="198" text-anchor="middle">RETRIEVAL</text>
+              <text class="cb-ns" x="232" y="216" text-anchor="middle">49,000 notes</text>
+            </g>
+            <g class="cb-n" data-beat="4" data-agent="plan" tabindex="0" role="button" aria-label="Treatment planning">
+              <rect x="316" y="170" width="128" height="72" rx="2"/>
+              <text class="cb-nn" x="380" y="198" text-anchor="middle">PLANNING</text>
+              <text class="cb-ns" x="380" y="216" text-anchor="middle">treatment path</text>
+            </g>
+            <g class="cb-n cb-n-gate" data-beat="5" data-agent="safe" tabindex="0" role="button" aria-label="Safety verification">
+              <rect x="464" y="170" width="128" height="72" rx="2"/>
+              <text class="cb-nn" x="528" y="198" text-anchor="middle">SAFETY VERIFY</text>
+              <text class="cb-ns" x="528" y="216" text-anchor="middle">every pathway</text>
+            </g>
+            <g class="cb-n" data-beat="6" data-agent="coord" tabindex="0" role="button" aria-label="System coordination">
+              <rect x="612" y="170" width="128" height="72" rx="2"/>
+              <text class="cb-nn" x="676" y="198" text-anchor="middle">COORDINATION</text>
+              <text class="cb-ns" x="676" y="216" text-anchor="middle">system + handoff</text>
+            </g>
+            <g class="cb-n cb-n-major" data-beat="8" data-agent="crit" tabindex="0" role="button" aria-label="Critique agent">
+              <rect x="280" y="440" width="200" height="52" rx="2"/>
+              <text class="cb-nn" x="380" y="462" text-anchor="middle">CRITIQUE AGENT</text>
+              <text class="cb-ns" x="380" y="478" text-anchor="middle">reads the whole trace back</text>
+            </g>
+            <g class="cb-n cb-n-final" data-beat="8" data-agent="rec" tabindex="0" role="button" aria-label="Recommendation">
+              <rect x="280" y="540" width="200" height="52" rx="2"/>
+              <text class="cb-nn" x="380" y="562" text-anchor="middle">RECOMMENDATION</text>
+              <text class="cb-ns" x="380" y="578" text-anchor="middle">+ audit trail</text>
+            </g>
+          </svg>
+        </div>
       </div>
-      <p class="cb-cap" data-beat="8">No fixed pipeline. The Orchestrator invokes only what this case needs —
-      and every route it can draw still ends at the safety gate.</p>
     </div>
   </section>
 
@@ -350,6 +360,47 @@
 (function () {
   'use strict';
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- agent board: hover/tap/keyboard dossiers ---------- */
+  (function wireAgents() {
+    var svg = document.querySelector('.cb-graph');
+    var nameEl = document.getElementById('cb-agent-name');
+    var descEl = document.getElementById('cb-agent-desc');
+    if (!svg || !nameEl || !descEl) return;
+    var A = {
+      orch:   ['ORCHESTRATOR', 'Reads the case and decides which specialists to invoke — the route is chosen by model reasoning, not a fixed execution path.', ['e2-assess', 'e2-retr', 'e2-plan', 'e2-safe', 'e2-coord']],
+      assess: ['CLINICAL ASSESSMENT', 'Turns the little that is measurable — vitals, presentation — into a working clinical state the other agents can plan against.', ['e2-assess', 'c2-assess']],
+      retr:   ['RETRIEVAL', 'With no history to read, it iterates: refining its query and grading relevance across 49,000 MIMIC-IV discharge notes before anything reaches the planner.', ['e2-retr', 'c2-retr']],
+      plan:   ['TREATMENT PLANNING', 'Drafts the stabilization pathway from the assessment and the retrieved evidence — and redrafts it when the critique sends it back.', ['e2-plan', 'c2-plan']],
+      safe:   ['SAFETY VERIFICATION', 'Embedded in every continuation pathway — med-conflict and allergy-risk screens run in parallel when the case indicates them. However the route is drawn, it cannot go around this gate.', ['e2-safe', 'c2-safe']],
+      coord:  ['SYSTEM COORDINATION', 'Sequencing, handoff, and the system-level constraints of a crisis setting — the agent that keeps the others pointed at the same patient.', ['e2-coord', 'c2-coord']],
+      crit:   ['CRITIQUE AGENT', 'Reviews the full reasoning trace before anything is finalized. It can — and in this case does — send the plan back for revision.', ['c2-assess', 'c2-retr', 'c2-plan', 'c2-safe', 'c2-coord', 'c2-rec']],
+      rec:    ['RECOMMENDATION', 'The finalized triage decision, delivered with an end-to-end audit trail: every retrieval, screen, and revision on the record.', ['c2-rec']]
+    };
+    function sel(id) {
+      var a = A[id];
+      if (!a) return;
+      nameEl.textContent = a[0];
+      descEl.textContent = a[1];
+      svg.classList.add('has-sel');
+      svg.querySelectorAll('.cb-n').forEach(function (n) {
+        n.classList.toggle('is-sel', n.dataset.agent === id);
+      });
+      svg.querySelectorAll('.cb-e').forEach(function (e) {
+        e.classList.toggle('e-hot', a[2].indexOf(e.id) !== -1);
+      });
+    }
+    svg.querySelectorAll('.cb-n').forEach(function (n) {
+      n.addEventListener('mouseenter', function () { sel(n.dataset.agent); });
+      n.addEventListener('click', function () { sel(n.dataset.agent); });
+      n.addEventListener('focus', function () { sel(n.dataset.agent); });
+      n.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sel(n.dataset.agent); }
+      });
+    });
+    sel('orch');
+  })();
+
   if (reduced) { document.body.classList.add('cb-static'); return; }
   document.body.classList.add('cb-js');
 
