@@ -2330,82 +2330,18 @@ model-viewer.hgts-viewer {
 }
 .cb-note-hit { background: var(--cbf-teal); opacity: 0.75; }
 .cb-s3-fg { position: relative; z-index: 1; }
-.cb-s3-grid {
+/* the loop told in three panels */
+.cb-s3-fg .cb-h { margin-bottom: var(--lg); }
+.cb-strip {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  gap: var(--2xl);
-  align-items: center;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--lg);
   width: 100%;
-  max-width: 1360px;
-  margin: 0 auto;
+  max-width: 1240px;
+  margin-bottom: var(--lg);
 }
-/* the retrieval console — one white panel that shows the loop */
-.cb-retr {
-  background: var(--cbf-panel);
-  border: 2px solid #17191E;
-  box-shadow: 8px 8px 0 var(--cbf-shadow);
-  padding: var(--lg);
-  display: flex; flex-direction: column; gap: var(--lg);
-  max-width: 640px;
-  width: 100%;
-}
-.cb-retr-head {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  align-self: flex-start;
-  background: #17191E;
-  color: #FFFFFF;
-  padding: 4px 10px;
-}
-.cb-retr-foot {
-  font-family: var(--mono);
-  font-size: 0.6563rem;
-  font-style: italic;
-  color: #9B9EA5;
-}
-.cb-funnel { display: flex; flex-direction: column; gap: 10px; }
-.cb-fun-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: var(--md);
-  align-items: center;
-}
-.cb-fun-track { display: block; height: 18px; border: 2px solid #17191E; background: #F1EEE6; }
-.cb-fun-bar {
-  display: block; height: 100%;
-  width: 0;
-  background: #17191E;
-  transition: width 800ms cubic-bezier(.2,.8,.2,1);
-}
-.cb-fun-bar-keep { background: var(--cbf-teal); }
-.cb-funnel.on .cb-fun-bar { width: var(--w); }
-.cb-funnel.on .cb-fun-row:nth-child(2) .cb-fun-bar { transition-delay: 180ms; }
-.cb-funnel.on .cb-fun-row:nth-child(3) .cb-fun-bar { transition-delay: 360ms; }
-.cb-fun-lbl { font-family: var(--mono); font-size: 0.7188rem; color: #3C3F46; letter-spacing: 0.03em; }
-.cb-hits { display: flex; flex-direction: column; }
-.cb-hit {
-  display: flex; justify-content: space-between; align-items: center; gap: var(--md);
-  font-family: var(--mono);
-  font-size: 0.7188rem;
-  color: #3C3F46;
-  padding: 9px 0;
-  border-bottom: 1px dashed #C9C5BB;
-  opacity: 0;
-  transform: translateX(-14px);
-  transition: opacity 400ms ease, transform 400ms ease;
-}
-.cb-hit:last-child { border-bottom: none; }
-.cb-hits.on .cb-hit { opacity: 1; transform: none; }
-.cb-hits.on .cb-hit:nth-child(2) { transition-delay: 140ms; }
-.cb-hits.on .cb-hit:nth-child(3) { transition-delay: 280ms; }
-.cb-hits.on .cb-hit:nth-child(4) { transition-delay: 420ms; }
-.cb-hit b { font-weight: 500; padding: 2px 8px; font-size: 0.6563rem; letter-spacing: 0.08em; flex: none; }
-.cb-hit-hi { background: var(--cbf-teal); color: #FFFFFF; }
-.cb-hit-md { background: var(--cbf-amber); color: #17191E; }
-.cb-hit-lo { background: #ECEEF2; color: #6B6F77; }
-.cb-hit-cut span { text-decoration: line-through; color: #9B9EA5; }
+.cb-strip .cb-plate { width: 100%; box-shadow: 6px 6px 0 var(--cbf-shadow); }
+
 .cb-query {
   font-family: var(--mono);
   background: var(--cbf-panel);
@@ -2688,7 +2624,7 @@ model-viewer.hgts-viewer {
 @media (max-width: 1023px) {
   .cb-scene { height: 280vh; }
   .cb-hud { left: var(--gutter); bottom: 20px; }
-  .cb-s1-grid, .cb-s2-grid, .cb-s3-grid { grid-template-columns: 1fr; gap: var(--xl); }
+  .cb-s1-grid, .cb-s2-grid { grid-template-columns: 1fr; gap: var(--xl); }
   .cb-graph { max-height: 52vh; }
   .cb-vgs { min-height: 46vh; }
   .cb-plate { width: min(100%, 560px, calc((100vh - 420px) * 1.28)); }
@@ -2698,6 +2634,8 @@ model-viewer.hgts-viewer {
   .cb-scene { height: 240vh; }
   .cb-chart-row { grid-template-columns: 1fr; gap: 4px; }
   .cb-graphwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .cb-strip { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .cb-strip .cb-plate { flex: 0 0 72vw; }
   .cb-graph { min-width: 640px; max-height: none; }
   .cb-screens { grid-template-columns: 1fr; }
   .cb-trace-stamp { right: 0; }
