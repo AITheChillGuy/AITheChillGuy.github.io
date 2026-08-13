@@ -2399,3 +2399,148 @@ model-viewer.hgts-viewer {
   .cb-graph { max-height: 44vh; }
   .cb-monitor { padding: var(--md); }
 }
+
+/* ---- Scene 1 — vignette stage ------------------------------
+   The right column acts out the current chart row: gurney in,
+   empty records search, unknown meds, blank allergy band, then
+   the monitor. Exclusive visibility via [data-vbeat] set by JS;
+   entry animations restart on every activation. */
+.cb-vgs { position: relative; min-height: min(62vh, 500px); width: 100%; }
+.cb-vg {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: var(--md);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 450ms ease, transform 450ms ease;
+  pointer-events: none;
+}
+.cb-vgs[data-vbeat="1"] .cb-vg-1,
+.cb-vgs[data-vbeat="2"] .cb-vg-2,
+.cb-vgs[data-vbeat="3"] .cb-vg-3,
+.cb-vgs[data-vbeat="4"] .cb-vg-4,
+.cb-vgs[data-vbeat="5"] .cb-vg-5,
+.cb-vgs[data-vbeat="6"] .cb-vg-5 { opacity: 1; transform: none; }
+.cb-vg-svg { width: min(100%, 460px); height: auto; }
+.cb-vg-svg * {
+  stroke: var(--cbf-ink);
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cb-vg-svg text { stroke: none; font-family: var(--mono); }
+.cb-vg-svg .cb-panel { fill: var(--cbf-panel); }
+.cb-vg-svg .cb-floor { stroke: var(--cbf-faint); stroke-width: 2; }
+.cb-vg-svg .cb-fill-ink { fill: var(--cbf-ink); stroke: none; }
+.cb-vg-cap {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  color: var(--cbf-dim);
+  text-align: center;
+  max-width: 42ch;
+}
+
+/* V1 — gurney rolls in */
+.cb-vg1-roll { transform: translateX(130%); }
+.cb-vgs[data-vbeat="1"] .cb-vg1-roll { animation: cb-rollin 1s cubic-bezier(.16,.85,.28,1) 100ms both; }
+@keyframes cb-rollin {
+  from { transform: translateX(130%); }
+  86%  { transform: translateX(-1.5%); }
+  to   { transform: none; }
+}
+.cb-vgs[data-vbeat="1"] .cb-vg1-wheel { animation: cb-spin 1s cubic-bezier(.2,.7,.4,1) 100ms both; }
+@keyframes cb-spin { from { rotate: 0deg; } to { rotate: -660deg; } }
+.cb-vg1-speed { stroke: var(--cbf-faint); opacity: 0; }
+.cb-vgs[data-vbeat="1"] .cb-vg1-speed1 { animation: cb-whoosh 900ms ease-out 150ms both; }
+.cb-vgs[data-vbeat="1"] .cb-vg1-speed2 { animation: cb-whoosh 900ms ease-out 280ms both; }
+.cb-vgs[data-vbeat="1"] .cb-vg1-speed3 { animation: cb-whoosh 900ms ease-out 220ms both; }
+@keyframes cb-whoosh {
+  0% { opacity: 0; transform: translateX(60px); }
+  30% { opacity: 0.7; }
+  100% { opacity: 0; transform: none; }
+}
+.cb-vgs[data-vbeat="1"] .cb-vg1-bag { animation: cb-sway 2.4s ease-in-out 1s infinite; }
+@keyframes cb-sway { 0%, 100% { rotate: 4deg; } 50% { rotate: -4deg; } }
+.cb-vg1-fluid { fill: var(--cbf-red); opacity: 0.5; stroke: none; }
+.cb-vg1-dome { fill: var(--cbf-red); stroke: none; opacity: 0.9; }
+.cb-vg1-glow { fill: var(--cbf-red); stroke: none; opacity: 0.15; }
+.cb-vgs[data-vbeat="1"] .cb-vg1-glow { animation: cb-lamp 1.2s ease-in-out infinite; }
+.cb-vgs[data-vbeat="1"] .cb-vg1-dome { animation: cb-lampdome 1.2s ease-in-out infinite; }
+@keyframes cb-lamp { 50% { opacity: 0.38; } }
+@keyframes cb-lampdome { 50% { opacity: 0.55; } }
+
+/* V2 — the search comes back empty (timed sequence per activation) */
+.cb-vg2-scr { fill: var(--cbf-bg); stroke: var(--cbf-stroke); stroke-width: 2; }
+.cb-vg2-scan { fill: var(--cbf-amber); stroke: none; opacity: 0; }
+.cb-vgs[data-vbeat="2"] .cb-vg2-scan { animation: cb-scan 1.05s linear 2, cb-gone 200ms linear 2.15s both; }
+@keyframes cb-scan { from { opacity: 1; transform: translateY(0); } to { opacity: 1; transform: translateY(84px); } }
+@keyframes cb-gone { to { opacity: 0; } }
+.cb-vg2-row { fill: var(--cbf-note); stroke: none; opacity: 0; }
+.cb-vgs[data-vbeat="2"] .cb-vg2-row1 { animation: cb-rowlife 2.3s linear 150ms both; }
+.cb-vgs[data-vbeat="2"] .cb-vg2-row2 { animation: cb-rowlife 2.15s linear 320ms both; }
+.cb-vgs[data-vbeat="2"] .cb-vg2-row3 { animation: cb-rowlife 2.0s linear 480ms both; }
+@keyframes cb-rowlife { 0% { opacity: 0; } 12% { opacity: 1; } 82% { opacity: 1; } 100% { opacity: 0; } }
+.cb-vg2-nofile { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.cb-vgs[data-vbeat="2"] .cb-vg2-nofile { animation: cb-stampin 420ms ease 2.55s both; }
+@keyframes cb-stampin {
+  from { opacity: 0; transform: scale(1.6); filter: blur(5px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+.cb-vg2-slash { stroke: var(--cbf-red); stroke-width: 5; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.cb-vgs[data-vbeat="2"] .cb-vg2-slash { animation: cb-drawline 450ms ease 3s both; }
+@keyframes cb-drawline { to { stroke-dashoffset: 0; } }
+.cb-vg2-txt { fill: var(--cbf-red); font-size: 13px; letter-spacing: 0.08em; }
+.cb-vgs[data-vbeat="2"] .cb-vg2-arm { animation: cb-type 280ms ease-in-out infinite alternate; }
+@keyframes cb-type { from { rotate: 0deg; } to { rotate: -7deg; } }
+
+/* V3 — meds unknown */
+.cb-vgs[data-vbeat="3"] .cb-vg3-bottle { animation: cb-shake 1.6s ease-in-out 200ms infinite; }
+@keyframes cb-shake {
+  0%, 100% { rotate: 0deg; }
+  20% { rotate: -3deg; }
+  40% { rotate: 2.4deg; }
+  60% { rotate: -1.6deg; }
+  80% { rotate: 1deg; }
+}
+.cb-vg3-rx { fill: var(--cbf-ink); font-size: 22px; font-weight: 500; }
+.cb-vg3-q { fill: var(--cbf-red); font-size: 36px; font-weight: 500; opacity: 0; }
+.cb-vgs[data-vbeat="3"] .cb-vg3-q1 { animation: cb-float 2.1s ease-out 0s infinite; }
+.cb-vgs[data-vbeat="3"] .cb-vg3-q2 { animation: cb-float 2.1s ease-out 700ms infinite; }
+.cb-vgs[data-vbeat="3"] .cb-vg3-q3 { animation: cb-float 2.1s ease-out 1.4s infinite; }
+@keyframes cb-float {
+  0%   { opacity: 0; transform: translateY(16px); }
+  25%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-48px); }
+}
+
+/* V4 — blank allergy band */
+.cb-vg4-band { stroke: var(--cbf-red); stroke-width: 3.5; }
+.cb-vg4-tag rect { stroke: var(--cbf-red); stroke-dasharray: 6 5; }
+.cb-vg4-txt { fill: var(--cbf-red); font-size: 14px; letter-spacing: 0.08em; }
+.cb-vgs[data-vbeat="4"] .cb-vg4-tag { animation: cb-blink 1.3s steps(1) infinite; }
+@keyframes cb-blink { 50% { opacity: 0.35; } }
+.cb-vg4-warn * { stroke: var(--cbf-amber); }
+.cb-vg4-warn .cb-fill-red { fill: var(--cbf-amber); stroke: none; }
+.cb-vgs[data-vbeat="4"] .cb-vg4-warn { animation: cb-hover 2.2s ease-in-out infinite alternate; }
+@keyframes cb-hover { from { transform: translateY(0); } to { transform: translateY(-9px); } }
+
+/* vignettes in static / reduced-motion mode: show the monitor only */
+.cb-page:not(.cb-js) .cb-vgs { min-height: 0; }
+.cb-page:not(.cb-js) .cb-vg { display: none; }
+.cb-page:not(.cb-js) .cb-vg-5 { display: flex; position: static; opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .cb-vg, .cb-vg * { animation: none !important; }
+}
+@media (max-width: 1023px) {
+  .cb-vgs { min-height: 40vh; }
+  .cb-vg-svg { width: min(100%, 380px); }
+}
+@media (max-width: 599px) {
+  .cb-vgs { min-height: 320px; }
+  .cb-vg-svg { width: min(100%, 320px); }
+  .cb-vg-cap { font-size: 0.6875rem; }
+}
