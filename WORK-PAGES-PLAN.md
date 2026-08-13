@@ -13,6 +13,12 @@ explanation. One page per session, deployed and verified before the next.
   spacing tokens, nav/footer skeleton, editorial voice) so the site still
   reads as one publication; page identity comes from a scoped token override
   (redefine `--page/--ink/--hairline/…` under `.<ns>-page` + accent vars).
+- **Every palette ships BOTH themes (Ahmed's direction):** the site has a
+  light/dark toggle (`theme.js` + `data-theme` on `<html>`, system preference
+  as default). Each page palette defines a light variant (default) and a dark
+  variant (under `[data-theme="dark"] .<ns>-page` + the media-guarded twin).
+  Physical objects may stay fixed-color in both themes (e.g. TriAgent's ECG
+  strip and console are dark "hardware"; HGTS's hero stage is pinned black).
 - **Diagrams are engineered, not sketched:** orthogonal elbow connectors on
   shared rails (bus layout), no crossing curves, no rotated labels, nothing
   overlapping a node. If a diagram needs a curve to work, redesign the layout

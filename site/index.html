@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <title>Ahmed Ibrahim — AI Research Specialist</title>
 <meta name="description" content="Ahmed Ibrahim — AI Research Specialist at Weill Cornell Medicine — Qatar. Building trustworthy AI for medicine: retrieval, language models, and multimodal systems for healthcare.">
 <meta property="og:title" content="Ahmed Ibrahim — AI Research Specialist">
@@ -28,6 +29,7 @@
     <li><a class="nav-link label-caps" href="#research">RESEARCH</a></li>
     <li><a class="nav-link label-caps" href="#projects">PROJECTS</a></li>
     <li><a class="nav-link label-caps" href="#contact">CONTACT</a></li>
+      <li><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme">◐</button></li>
   </ul>
   <button class="nav-toggle label-caps" aria-expanded="false" aria-controls="navmenu">MENU</button>
 </nav>
@@ -37,6 +39,7 @@
   <a href="#research">RESEARCH</a>
   <a href="#projects">PROJECTS</a>
   <a href="#contact">CONTACT</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle light/dark theme">◐ Theme</button>
 </div>
 
 <main>
@@ -842,5 +845,6 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="theme.js" defer></script>
 </body>
 </html>

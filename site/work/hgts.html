@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <title>HGTS — Handball Goalkeeping Training System</title>
 <meta name="description" content="A virtual-reality training platform for handball goalkeepers, paired with a DIY haptic feedback glove. Senior Design Project at Qatar University — 2nd Place at the CENG Capstone Design Competition 2023 (Best Prototype, Most Creative Design) and 2nd Place at the Senior Design Project Competition.">
 <link rel="icon" href="../assets/favicon.png">
@@ -24,6 +25,7 @@
     <li><a class="nav-link label-caps" href="../index.html#research">Research</a></li>
     <li><a class="nav-link label-caps" href="../index.html#projects">Projects</a></li>
     <li><a class="nav-link label-caps" href="../index.html#contact">Contact</a></li>
+      <li><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme">◐</button></li>
   </ul>
 </nav>
 
@@ -191,5 +193,6 @@
   })();
 </script>
 
+<script src="../theme.js" defer></script>
 </body>
 </html>
