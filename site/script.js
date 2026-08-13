@@ -232,7 +232,7 @@
       'work/d3.html':                   'D3 — Small LM for DDI',
       'work/mera.html':                 'MERA — Clinical RAG',
       'work/menara.html':               'MENARA — Arabic medical LLM',
-      'work/agentic-ai.html':           'Agentic AI for Clinical Workflows',
+      'work/triagent.html':             'TriAgent — Crisis CDS',
       'work/stroke-segmentation.html':  'Stroke Lesion Segmentation on MRI',
       'work/multimodal-radiology.html': 'Multimodal Models for Radiology',
     };
@@ -293,11 +293,8 @@
           'On branch main\n' +
           'Your branch is up to date with \'origin/main\'.\n' +
           '\n' +
-          'Changes not staged for commit:\n' +
-          '  (use "git add <file>..." to update what will be committed)\n' +
-          '        modified:  work/agentic-ai.html (in active development)\n' +
-          '\n' +
-          'no other changes to commit, working tree clean.'
+          'nothing to commit, working tree clean.\n' +
+          '(agentic branch merged — TriAgent shipped in AI 7(6):230)'
         );
         return;
       }
@@ -305,11 +302,11 @@
       /* --- git log ----------------------------------------- */
       if (lower === 'git log' || lower === 'git log --oneline' || lower === 'log') {
         print(
-          'a3e9f1c  (HEAD -> agentic, origin/agentic)  wip(agentic): agentic ai system\n' +
-          'b7c8d12  (tag: paper/menara, origin/main)   paper(menara): MENARA\n' +
-          '4d2a89e  (tag: paper/mera)                  paper(mera): MERA\n' +
-          '9f3b15a  (tag: paper/d3)                    paper(d3): D3\n' +
-          '1c8e4f7  (tag: capstone/hgts)               release(hgts): HGTS'
+          'e18f230  (HEAD -> main, tag: paper/triagent)  paper(triagent): TriAgent\n' +
+          'b7c8d12  (tag: paper/menara)                  paper(menara): MENARA\n' +
+          '4d2a89e  (tag: paper/mera)                    paper(mera): MERA\n' +
+          '9f3b15a  (tag: paper/d3)                      paper(d3): D3\n' +
+          '1c8e4f7  (tag: capstone/hgts)                 release(hgts): HGTS'
         );
         return;
       }
@@ -318,7 +315,7 @@
       if (lower === 'git branch' || lower === 'branch') {
         print(
           '* main\n' +
-          '  agentic            (origin/agentic, ahead 1)\n' +
+          '  agentic            (merged -> paper/triagent)\n' +
           '  grad-school        (untracked, applying soon)'
         );
         return;
@@ -327,7 +324,7 @@
       /* --- git blame --------------------------------------- */
       if (lower === 'git blame' || lower === 'blame') {
         print(
-          '^a3e9f1c (Ahmed Ibrahim  2026-05  ) all of it\n' +
+          '^e18f230 (Ahmed Ibrahim  2026-06  ) all of it\n' +
           '^b7c8d12 (Ahmed Ibrahim  2026-04  ) all of it\n' +
           '^4d2a89e (Ahmed Ibrahim  2025-07  ) all of it\n' +
           '^9f3b15a (Ahmed Ibrahim  2025-04  ) all of it\n' +
@@ -358,7 +355,7 @@
         setTimeout(() => print('rm: removed `./work/d3.html`'),       220);
         setTimeout(() => print('rm: removed `./work/mera.html`'),     320);
         setTimeout(() => print('rm: removed `./work/menara.html`'),   420);
-        setTimeout(() => print('rm: removed `./work/agentic-ai.html`'), 520);
+        setTimeout(() => print('rm: removed `./work/triagent.html`'), 520);
         setTimeout(() => print('rm: removed `./index.html`'),         620);
         setTimeout(() => print('rm: removed `./styles.css`'),         720);
         setTimeout(() => print('rm: removed `./.git/`'),              820);
@@ -379,10 +376,10 @@
       /* --- ls ---------------------------------------------- */
       if (lower === 'ls' || lower === 'dir' || lower === 'ls -la') {
         print(
-          'work/menara.html               work/mera.html\n' +
-          'work/d3.html                   work/stroke-segmentation.html\n' +
-          'work/hgts.html                 work/multimodal-radiology.html\n' +
-          'work/agentic-ai.html           CV-Resume.pdf\n' +
+          'work/triagent.html             work/menara.html\n' +
+          'work/mera.html                 work/d3.html\n' +
+          'work/stroke-segmentation.html  work/hgts.html\n' +
+          'work/multimodal-radiology.html CV-Resume.pdf\n' +
           'README.md                      .git/'
         );
         return;
@@ -398,7 +395,7 @@
           'with healthcare data as the use case rather than the subject.\n' +
           '\n' +
           '## current\n' +
-          '  - agentic systems (drafting)\n' +
+          '  - TriAgent — crisis clinical decision support (AI 7(6):230)\n' +
           '  - applying to graduate school\n'
         );
         return;

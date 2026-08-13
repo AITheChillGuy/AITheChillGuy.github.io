@@ -136,7 +136,7 @@ Abdominal CT" — BJR|AI 2(1), 2025 + "From Slices to Volumes" — MICCAI 2025.
 
 ## Progress
 
-- [ ] 1. TriAgent (+ index publication entry, git-log flip, terminal sync)
+- [x] 1. TriAgent (+ index publication entry, git-log flip, terminal sync) — shipped 2026-08-13
 - [ ] 2. MERA
 - [ ] 3. MENARA
 - [ ] 4. D3

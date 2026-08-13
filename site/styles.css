@@ -1843,3 +1843,269 @@ model-viewer.hgts-viewer {
   .hgts-shot img { padding: var(--md); }
   .hgts-awards { flex-direction: column; gap: var(--sm); }
 }
+
+/* ============================================================
+   TriAgent detail page — the live triage board
+   Scoped under .tri-page / .tri-*. The motif: a crisis intake
+   where almost nothing is known. A mostly-blank patient card,
+   an agent graph that visibly re-plans as fields toggle, and a
+   safety gate on every route out.
+   ============================================================ */
+
+/* ---- Stage ------------------------------------------------ */
+.tri-stage {
+  background: var(--bone);
+  border-bottom: 1px solid var(--hairline);
+  padding: var(--3xl) var(--gutter) var(--2xl);
+}
+.tri-stage-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--2xl);
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.tri-back {
+  display: inline-block;
+  color: var(--slate);
+  margin-bottom: var(--xl);
+}
+.tri-back:hover { color: var(--ink); }
+.tri-kicker { color: var(--slate); margin-bottom: var(--md); }
+.tri-title {
+  font-family: var(--manrope);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--lg);
+}
+.tri-lead {
+  font-size: var(--lead);
+  line-height: 1.45;
+  color: var(--slate);
+  max-width: 52ch;
+  margin-bottom: var(--xl);
+}
+.tri-badges {
+  display: flex; flex-wrap: wrap; gap: var(--md) var(--lg);
+  border-top: 1px solid var(--hairline);
+  padding-top: var(--lg);
+}
+.tri-badges li {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--slate);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+.tri-badges li .label-caps {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink);
+  padding: 2px 8px;
+  border: 1px solid var(--ink);
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+}
+
+/* ---- Intake card ------------------------------------------ */
+.tri-card {
+  background: var(--page);
+  border: 1px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  box-shadow: 6px 6px 0 var(--hairline);
+}
+.tri-card-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: var(--md);
+  background: var(--ink);
+  color: var(--on-primary);
+  padding: var(--sm) var(--md);
+  letter-spacing: 0.04em;
+}
+.tri-card-tag { color: var(--stone); font-size: 0.6875rem; text-align: right; }
+.tri-card-body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0;
+  padding: var(--sm) 0;
+}
+.tri-card-body dt,
+.tri-card-body dd {
+  padding: var(--sm) var(--md);
+  border-bottom: 1px solid var(--bone);
+}
+.tri-card-body dt { color: var(--stone); letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.6875rem; padding-top: 10px; }
+.tri-card-body dd { color: var(--ink); }
+.tri-card-body dd.tri-unknown { color: var(--slate); font-style: italic; }
+.tri-redact {
+  display: inline-block;
+  width: 3.5em; height: 0.7em;
+  margin-right: 6px;
+  vertical-align: baseline;
+  background: repeating-linear-gradient(135deg, var(--hairline) 0 3px, transparent 3px 6px);
+  border: 1px solid var(--hairline);
+}
+.tri-caret {
+  display: inline-block;
+  width: 7px; height: 1em;
+  vertical-align: text-bottom;
+  background: var(--ink);
+  animation: tri-blink 1.1s steps(1) infinite;
+}
+.tri-card-foot {
+  border-top: 1px solid var(--hairline);
+  padding: var(--sm) var(--md);
+  color: var(--slate);
+}
+@keyframes tri-blink { 50% { opacity: 0; } }
+
+/* ---- Stats strip (site pattern) --------------------------- */
+.tri-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+.tri-stat {
+  background: var(--page);
+  padding: var(--2xl) var(--lg);
+  display: flex; flex-direction: column; gap: var(--sm);
+  align-items: flex-start;
+}
+.tri-stats > .tri-stat:first-child { padding-left: var(--gutter); }
+.tri-stats > .tri-stat:last-child  { padding-right: var(--gutter); }
+.tri-stat-num {
+  font-family: var(--manrope);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+}
+.tri-stat-lbl { color: var(--slate); }
+
+/* ---- Board ------------------------------------------------ */
+.tri-board { padding: var(--3xl) var(--gutter); max-width: 1280px; margin: 0 auto; }
+.tri-board-head { margin-bottom: var(--xl); max-width: 62ch; }
+.tri-board-head .eyebrow { margin-bottom: var(--sm); color: var(--slate); }
+.tri-board-note { margin-top: var(--md); color: var(--slate); font-size: 0.9375rem; line-height: 1.5; }
+
+.tri-chips { display: flex; flex-wrap: wrap; gap: var(--sm); margin-bottom: var(--lg); }
+.tri-chip {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  display: inline-flex; align-items: baseline; gap: 8px;
+  padding: 8px 12px;
+  background: var(--page);
+  border: 1px dashed var(--stone);
+  border-radius: var(--r-sm);
+  color: var(--slate);
+  cursor: pointer;
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+.tri-chip .tri-chip-v { font-style: italic; }
+.tri-chip.is-known {
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  background: var(--bone);
+}
+.tri-chip.is-known .tri-chip-v { font-style: normal; font-weight: 500; }
+.tri-chip:hover { border-color: var(--ink); color: var(--ink); }
+
+.tri-graph-wrap {
+  border: 1px solid var(--hairline);
+  background: var(--bone);
+  padding: var(--lg);
+}
+.tri-graph { width: 100%; height: auto; display: block; }
+.tri-graph text { font-family: var(--mono); }
+.tn rect { fill: var(--page); stroke: var(--stone); stroke-width: 1; }
+.tn .tn-name { font-size: 12px; font-weight: 500; letter-spacing: 0.04em; fill: var(--ink); }
+.tn .tn-sub  { font-size: 10px; fill: var(--slate); }
+.tn-major rect { stroke: var(--ink); stroke-width: 1.5; }
+.tn-final rect { fill: var(--ink); }
+.tn-final .tn-name, .tn-final .tn-sub { fill: var(--on-primary); }
+.tn-screen rect { stroke-dasharray: 3 3; }
+.tn-screen.tn-engaged rect { stroke-dasharray: none; stroke: var(--ink); }
+.tn-hot rect { stroke: var(--ink); }
+.tn-revlbl { font-size: 10px; fill: var(--stone); letter-spacing: 0.08em; }
+.te {
+  fill: none;
+  stroke: var(--hairline);
+  stroke-width: 1.25;
+}
+.te-on  { stroke: var(--stone); }
+.te-dash { stroke-dasharray: 4 4; stroke: var(--stone); }
+.te-hot {
+  stroke: var(--ink);
+  stroke-width: 1.75;
+  stroke-dasharray: 6 5;
+  animation: tri-march 1.2s linear infinite;
+}
+@keyframes tri-march { to { stroke-dashoffset: -11; } }
+.tn-flash rect { fill: var(--ink); }
+.tn-flash .tn-name, .tn-flash .tn-sub { fill: var(--on-primary); }
+.tn rect, .tn text { transition: fill 240ms ease, stroke 240ms ease; }
+
+.tri-status {
+  margin-top: var(--md);
+  color: var(--slate);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.tri-run-row { display: flex; align-items: center; gap: var(--lg); margin-top: var(--xl); flex-wrap: wrap; }
+.tri-run-hint { color: var(--stone); }
+.tri-console {
+  margin-top: var(--lg);
+  background: var(--ink);
+  color: var(--on-primary);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  padding: var(--lg);
+  max-height: 280px;
+  overflow-y: auto;
+}
+.tri-line { display: grid; grid-template-columns: 52px 1fr; gap: var(--md); }
+.tri-line .tri-t { color: var(--stone); }
+.tri-line-crit .tri-m {
+  background: var(--on-primary);
+  color: var(--ink);
+  padding: 0 6px;
+  font-weight: 500;
+}
+
+/* ---- Reduced motion --------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .tri-caret { animation: none; }
+  .te-hot { animation: none; stroke-dasharray: none; }
+  .tn rect, .tn text, .tri-chip { transition: none; }
+}
+
+/* ---- Responsive ------------------------------------------- */
+@media (max-width: 1023px) {
+  .tri-stage { padding-top: var(--2xl); padding-bottom: var(--2xl); }
+  .tri-stage-grid { grid-template-columns: 1fr; gap: var(--2xl); }
+  .tri-stats { grid-template-columns: repeat(2, 1fr); }
+  .tri-stats > .tri-stat:first-child,
+  .tri-stats > .tri-stat:last-child { padding-left: var(--gutter); padding-right: var(--gutter); }
+  .tri-board { padding: var(--2xl) var(--gutter); }
+}
+@media (max-width: 599px) {
+  .tri-stat { padding: var(--xl) var(--md); }
+  .tri-stat-lbl { font-size: 0.625rem; letter-spacing: 0.12em; }
+  .tri-card { box-shadow: 4px 4px 0 var(--hairline); }
+  .tri-card-body { grid-template-columns: 1fr; }
+  .tri-card-body dt { padding-bottom: 0; border-bottom: none; }
+  .tri-graph-wrap { padding: var(--sm); }
+  .tri-badges { flex-direction: column; gap: var(--sm); }
+}
