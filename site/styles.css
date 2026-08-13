@@ -53,16 +53,16 @@
 
 /* ---- Dark mode — neutral tokens -----------------------------
    Explicit choice via data-theme wins; otherwise system setting.
-   Strict monochrome, inverted. --avatar-glow lifts the grayscale
+   Strict monochrome, inverted. --avatar-halo pools soft light behind
    avatar cutouts off dark backgrounds. */
-:root { color-scheme: light; --avatar-glow: none; }
+:root { color-scheme: light; --avatar-halo: none; }
 :root[data-theme="dark"] {
   color-scheme: dark;
   --ink: #F2F2F2; --charcoal: #CFCFCF; --slate: #9E9E9E;
   --page: #0C0C0C; --bone: #141414; --mist: #1F1F1F;
   --hairline: #2B2B2B; --stone: #707070;
   --on-primary: #0C0C0C; --on-neutral: #F2F2F2;
-  --avatar-glow: drop-shadow(0 0 14px rgba(255,255,255,0.22));
+  --avatar-halo: radial-gradient(ellipse 58% 52% at 50% 42%, rgba(255,255,255,0.075), transparent 72%);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -71,7 +71,7 @@
     --page: #0C0C0C; --bone: #141414; --mist: #1F1F1F;
     --hairline: #2B2B2B; --stone: #707070;
     --on-primary: #0C0C0C; --on-neutral: #F2F2F2;
-    --avatar-glow: drop-shadow(0 0 14px rgba(255,255,255,0.22));
+    --avatar-halo: radial-gradient(ellipse 58% 52% at 50% 42%, rgba(255,255,255,0.075), transparent 72%);
   }
 }
 
@@ -1902,8 +1902,18 @@ model-viewer.hgts-viewer {
 .theme-toggle:hover { background: var(--mist); }
 .nav-overlay .theme-toggle { color: var(--on-primary); }
 
-/* Grayscale avatar cutouts need lift on dark surfaces */
-.avatar img { filter: var(--avatar-glow); }
+/* Grayscale avatar cutouts need lift on dark surfaces: a soft
+   ambient light pool BEHIND the figure (dark mode only) — the
+   dark hair and shirt read against it, and nothing hugs the
+   contours, so no halo shimmer. */
+.avatar::before {
+  content: "";
+  position: absolute;
+  inset: -14% -20%;
+  z-index: -1;
+  background: var(--avatar-halo);
+  pointer-events: none;
+}
 
 /* The HGTS hero stage is a design object, not a theme surface:
    it stays ink-black in BOTH themes. Pin its backgrounds and the
