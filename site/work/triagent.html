@@ -78,7 +78,16 @@
             <figure class="cb-plate cb-plate-1">
               <div class="cb-plate-art">
               <img src="../assets/cb/v1.webp" alt="" width="960" height="707" loading="lazy">
-              <img class="cb-iv" src="../assets/cb/iv-bag.webp" alt="" width="66" height="88" aria-hidden="true">
+              <!-- IV bag: a separate object hanging from the pole arm -->
+              <svg class="cb-ivobj" viewBox="0 0 60 108" aria-hidden="true">
+                <line x1="30" y1="1" x2="30" y2="14" stroke="#646164" stroke-width="3"/>
+                <rect x="13" y="14" width="34" height="15" rx="4" fill="#C6C5C3" stroke="#646164" stroke-width="3"/>
+                <rect x="10" y="27" width="40" height="57" rx="7" fill="#FFC567" stroke="#646164" stroke-width="3"/>
+                <line x1="13" y1="40" x2="47" y2="40" stroke="#646164" stroke-width="2"/>
+                <path d="M17,48 q-2,14 3,26" fill="none" stroke="#FFF" stroke-width="3" opacity="0.55"/>
+                <rect x="25" y="84" width="10" height="13" rx="3" fill="#C6C5C3" stroke="#646164" stroke-width="3"/>
+                <circle cx="30" cy="102" r="4" fill="none" stroke="#646164" stroke-width="3"/>
+              </svg>
               <div class="cb-plate-glow" aria-hidden="true"></div>
               
               </div><figcaption class="cb-plate-cap"><span class="cb-plate-no">01</span>unresponsive on arrival — no ID, no one who knows them</figcaption>
@@ -90,7 +99,7 @@
             <figure class="cb-plate cb-plate-2">
               <div class="cb-plate-art">
               <img src="../assets/cb/v2.webp" alt="" width="960" height="707" loading="lazy">
-              <div class="cbs2" aria-hidden="true">
+              <div class="cbs2" aria-hidden="true"><!-- on-screen software -->
                 <div class="cbs2-q"><span class="cbs2-qtxt">find: patient 0412 — records, history, meds</span><span class="cbs2-caret"></span></div>
                 <div class="cbs2-win">
                   <div class="cbs2-scan"></div>
@@ -100,7 +109,6 @@
                   <div class="cbs2-res">⌀ NO FILE FOUND</div>
                 </div>
               </div>
-              <span class="cb-chip cb-chip-2">⌕ 0 RESULTS — NO FILE</span>
               
               </div><figcaption class="cb-plate-cap"><span class="cb-plate-no">02</span>records search: zero results — this patient has no past here</figcaption>
             </figure>
@@ -114,7 +122,21 @@
               <span class="cb-q cb-q1">?</span>
               <span class="cb-q cb-q2">?</span>
               <span class="cb-q cb-q3">?</span>
-              <span class="cb-chip cb-chip-3">MEDICATION LIST: UNKNOWN</span>
+              <!-- a bottle tips over and spills, on loop -->
+              <svg class="cb-fall" viewBox="0 0 170 150" aria-hidden="true">
+                <g class="cb-fbot">
+                  <rect x="42" y="72" width="44" height="56" rx="6" fill="#F4F6F8" stroke="#14181D" stroke-width="4"/>
+                  <rect x="42" y="90" width="44" height="18" fill="#FF3B36" stroke="#14181D" stroke-width="4"/>
+                  <g class="cb-fcap">
+                    <rect x="38" y="54" width="52" height="18" rx="4" fill="#1A222C" stroke="#14181D" stroke-width="4"/>
+                  </g>
+                </g>
+                <g class="cb-pill cb-pill-1"><rect x="0" y="0" width="15" height="7" rx="3.5" fill="#F4F6F8" stroke="#14181D" stroke-width="2.5"/><rect x="7.5" y="0" width="7.5" height="7" rx="3.5" fill="#FF3B36" stroke="#14181D" stroke-width="2.5"/></g>
+                <g class="cb-pill cb-pill-2"><rect x="0" y="0" width="15" height="7" rx="3.5" fill="#F4F6F8" stroke="#14181D" stroke-width="2.5"/><rect x="7.5" y="0" width="7.5" height="7" rx="3.5" fill="#1A222C" stroke="#14181D" stroke-width="2.5"/></g>
+                <g class="cb-pill cb-pill-3"><rect x="0" y="0" width="15" height="7" rx="3.5" fill="#F4F6F8" stroke="#14181D" stroke-width="2.5"/><rect x="7.5" y="0" width="7.5" height="7" rx="3.5" fill="#FF3B36" stroke="#14181D" stroke-width="2.5"/></g>
+                <g class="cb-pill cb-pill-4"><rect x="0" y="0" width="15" height="7" rx="3.5" fill="#F4F6F8" stroke="#14181D" stroke-width="2.5"/><rect x="7.5" y="0" width="7.5" height="7" rx="3.5" fill="#1A222C" stroke="#14181D" stroke-width="2.5"/></g>
+                <g class="cb-pill cb-pill-5"><rect x="0" y="0" width="15" height="7" rx="3.5" fill="#F4F6F8" stroke="#14181D" stroke-width="2.5"/><rect x="7.5" y="0" width="7.5" height="7" rx="3.5" fill="#FF3B36" stroke="#14181D" stroke-width="2.5"/></g>
+              </svg>
               
               </div><figcaption class="cb-plate-cap"><span class="cb-plate-no">03</span>on medication? which? interacting with what we give next?</figcaption>
             </figure>
@@ -126,7 +148,11 @@
               <div class="cb-plate-art">
               <img src="../assets/cb/v4.webp" alt="" width="960" height="707" loading="lazy">
               <div class="cb-plate-glow cb-glow-4" aria-hidden="true"></div>
-              <span class="cb-chip cb-chip-4">⚠ ALLERGY RECORD: BLANK</span>
+              <svg class="cb-warn" viewBox="0 0 120 110" aria-hidden="true">
+                <path d="M60,10 L112,98 H8 Z" fill="rgba(16,21,28,0.55)" stroke="#FFC53D" stroke-width="6" stroke-linejoin="round"/>
+                <line x1="60" y1="42" x2="60" y2="68" stroke="#FFC53D" stroke-width="7" stroke-linecap="round"/>
+                <circle cx="60" cy="82" r="4.5" fill="#FFC53D"/>
+              </svg>
               
               </div><figcaption class="cb-plate-cap"><span class="cb-plate-no">04</span>one wrong drug and the rescue becomes the injury</figcaption>
             </figure>

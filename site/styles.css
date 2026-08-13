@@ -2441,17 +2441,105 @@ model-viewer.hgts-viewer {
   mask-image: radial-gradient(115% 115% at 50% 46%, #000 58%, transparent 86%);
 }
 
-/* the IV bag is a layer cut from the artwork itself: pinned at
-   the hanger point, it swings with the run. Cutout edges live in
-   flat color regions so the sway never shows a seam. */
-.cb-iv {
+/* the IV bag is a true separate object (style-matched SVG) hung
+   from the pole arm; the baked bag was patched out of the art. */
+.cb-ivobj {
   position: absolute;
-  left: 54.77%; top: 26.79%;
-  width: 6.91% !important; height: auto;
-  transform-origin: 46% 11%;
+  left: 55.6%; top: 28.1%;
+  width: 4.93%; height: auto;
+  transform-origin: 50% 2%;
 }
-.cb-vgs[data-vbeat="1"] .cb-iv { animation: cb-ivsway 1.5s ease-in-out 900ms infinite alternate; }
-@keyframes cb-ivsway { from { rotate: 3.6deg; } to { rotate: -3.6deg; } }
+.cb-vgs[data-vbeat="1"] .cb-ivobj { animation: cb-ivsway 1.4s ease-in-out 700ms infinite alternate; }
+@keyframes cb-ivsway { from { rotate: 4.4deg; } to { rotate: -4.4deg; } }
+
+/* V3: a bottle on the tray tips over and spills capsules, on loop */
+.cb-fall {
+  position: absolute;
+  left: 8%; top: 58%;
+  width: 24%; height: auto;
+  pointer-events: none;
+}
+.cb-fbot { transform-origin: 86px 128px; opacity: 0; }
+.cb-vgs[data-vbeat="3"] .cb-fbot { animation: cb-fallcycle 6.5s ease-in-out 600ms infinite; }
+@keyframes cb-fallcycle {
+  0%   { rotate: 0deg; opacity: 0; }
+  4%   { opacity: 1; rotate: 0deg; }
+  10%  { rotate: 0deg; }
+  13%  { rotate: -5deg; }
+  17%  { rotate: 4deg; }
+  20%  { rotate: -2deg; }
+  23%  { rotate: 0deg; }
+  29%  { rotate: 90deg; }
+  32%  { rotate: 81deg; }
+  35%  { rotate: 85deg; }
+  90%  { rotate: 85deg; opacity: 1; }
+  96%  { rotate: 85deg; opacity: 0; }
+  100% { rotate: 0deg; opacity: 0; }
+}
+.cb-fcap { transform-origin: 64px 63px; }
+.cb-vgs[data-vbeat="3"] .cb-fcap { animation: cb-capcycle 6.5s ease-in 600ms infinite; }
+@keyframes cb-capcycle {
+  0%, 33% { translate: 0 0; rotate: 0deg; }
+  38%     { translate: 24px -16px; rotate: 40deg; }
+  44%     { translate: 38px 4px; rotate: 76deg; }
+  95%     { translate: 38px 4px; rotate: 76deg; }
+  100%    { translate: 0 0; rotate: 0deg; }
+}
+.cb-pill { opacity: 0; translate: 140px 112px; }
+.cb-vgs[data-vbeat="3"] .cb-pill-1 { animation: cb-pillfly1 6.5s ease-out 600ms infinite; }
+.cb-vgs[data-vbeat="3"] .cb-pill-2 { animation: cb-pillfly2 6.5s ease-out 600ms infinite; }
+.cb-vgs[data-vbeat="3"] .cb-pill-3 { animation: cb-pillfly3 6.5s ease-out 600ms infinite; }
+.cb-vgs[data-vbeat="3"] .cb-pill-4 { animation: cb-pillfly4 6.5s ease-out 600ms infinite; }
+.cb-vgs[data-vbeat="3"] .cb-pill-5 { animation: cb-pillfly5 6.5s ease-out 600ms infinite; }
+@keyframes cb-pillfly1 {
+  0%, 33% { opacity: 0; translate: 140px 112px; rotate: 0deg; }
+  37% { opacity: 1; translate: 134px 94px; rotate: -60deg; }
+  45% { translate: 102px 128px; rotate: -160deg; }
+  90% { translate: 102px 128px; rotate: -160deg; opacity: 1; }
+  96%, 100% { translate: 102px 128px; rotate: -160deg; opacity: 0; }
+}
+@keyframes cb-pillfly2 {
+  0%, 35% { opacity: 0; translate: 140px 112px; rotate: 0deg; }
+  39% { opacity: 1; translate: 146px 90px; rotate: 50deg; }
+  47% { translate: 126px 133px; rotate: 120deg; }
+  90% { translate: 126px 133px; rotate: 120deg; opacity: 1; }
+  96%, 100% { translate: 126px 133px; rotate: 120deg; opacity: 0; }
+}
+@keyframes cb-pillfly3 {
+  0%, 34% { opacity: 0; translate: 140px 112px; rotate: 0deg; }
+  38% { opacity: 1; translate: 150px 96px; rotate: -40deg; }
+  46% { translate: 148px 135px; rotate: -210deg; }
+  90% { translate: 148px 135px; rotate: -210deg; opacity: 1; }
+  96%, 100% { translate: 148px 135px; rotate: -210deg; opacity: 0; }
+}
+@keyframes cb-pillfly4 {
+  0%, 36% { opacity: 0; translate: 140px 112px; rotate: 0deg; }
+  40% { opacity: 1; translate: 138px 88px; rotate: -90deg; }
+  49% { translate: 86px 124px; rotate: -200deg; }
+  90% { translate: 86px 124px; rotate: -200deg; opacity: 1; }
+  96%, 100% { translate: 86px 124px; rotate: -200deg; opacity: 0; }
+}
+@keyframes cb-pillfly5 {
+  0%, 37% { opacity: 0; translate: 140px 112px; rotate: 0deg; }
+  41% { opacity: 1; translate: 148px 92px; rotate: 30deg; }
+  50% { translate: 136px 129px; rotate: 90deg; }
+  90% { translate: 136px 129px; rotate: 90deg; opacity: 1; }
+  96%, 100% { translate: 136px 129px; rotate: 90deg; opacity: 0; }
+}
+
+/* V4: the allergy warning hovers over the blank band, unanswered */
+.cb-warn {
+  position: absolute;
+  left: 44.5%; top: 3%;
+  width: 11%; height: auto;
+  filter: drop-shadow(0 6px 18px rgba(255, 197, 61, 0.35));
+  pointer-events: none;
+}
+.cb-vgs[data-vbeat="4"] .cb-warn { animation: cb-hoverwarn 2.4s ease-in-out infinite alternate; }
+@keyframes cb-hoverwarn {
+  from { translate: 0 0; rotate: -2deg; }
+  to   { translate: 0 -10px; rotate: 2deg; }
+}
 .cb-plate-art { position: relative; container-type: inline-size; }
 .cb-plate-cap {
   display: flex; align-items: baseline; gap: 12px;
@@ -2589,24 +2677,6 @@ model-viewer.hgts-viewer {
 }
 .cb-vgs[data-vbeat="2"] .cbs2-res { animation: cb-stampin 380ms ease 4.15s both, cb-blink 1.5s steps(1) 5s infinite; }
 
-/* chips: stamped verdict labels on the art */
-.cb-chip {
-  position: absolute;
-  left: 14px; bottom: 14px;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.09em;
-  padding: 7px 11px;
-  border: 2px solid #FF3B36;
-  color: #FFFFFF;
-  background: rgba(8, 9, 12, 0.82);
-  border-radius: var(--r-sm);
-  opacity: 0;
-  transform-origin: left bottom;
-}
-.cb-vgs[data-vbeat="2"] .cb-chip-2 { animation: cb-stampin 420ms ease 4.7s both; }
-.cb-vgs[data-vbeat="3"] .cb-chip-3 { animation: cb-stampin 420ms ease 900ms both; }
-.cb-vgs[data-vbeat="4"] .cb-chip-4 { animation: cb-stampin 420ms ease 700ms both, cb-blink 1.4s steps(1) 1.4s infinite; }
 @keyframes cb-stampin {
   from { opacity: 0; transform: scale(1.5) rotate(-4deg); filter: blur(4px); }
   to   { opacity: 1; transform: none; filter: none; }
@@ -2662,5 +2732,4 @@ model-viewer.hgts-viewer {
   .cb-vgs { min-height: 340px; }
   .cb-plate { width: min(100%, 400px, calc((100vh - 460px) * 1.28)); }
   .cb-plate-cap { font-size: 0.6563rem; padding: 10px 12px; }
-  .cb-chip { font-size: 0.625rem; padding: 5px 8px; bottom: 10px; }
 }
