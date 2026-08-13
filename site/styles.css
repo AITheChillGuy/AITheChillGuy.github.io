@@ -2351,6 +2351,55 @@ model-viewer.hgts-viewer {
   margin-bottom: var(--lg);
 }
 .cb-s3-intro b { color: var(--cbf-ink); font-weight: 700; }
+/* mode switch — synced to scroll, click to jump */
+.cb-mode { display: inline-flex; border: 2px solid #17191E; box-shadow: 4px 4px 0 var(--cbf-shadow); margin-bottom: var(--lg); background: var(--cbf-panel); }
+.cb-mode-btn {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 8px 16px;
+  color: #6B6F77;
+  cursor: pointer;
+}
+.cb-mode-btn.is-on { background: #17191E; color: #FFFFFF; }
+.cb-mode-btn + .cb-mode-btn { border-left: 2px solid #17191E; }
+
+/* step cells with arrows between them */
+.cb-cell { position: relative; display: flex; flex-direction: column; gap: var(--sm); }
+.cb-cell + .cb-cell::before {
+  content: "➜";
+  position: absolute;
+  left: calc(-1 * var(--lg) - 4px);
+  top: 48%;
+  font-size: 1.4rem;
+  color: var(--cbf-ink);
+  z-index: 2;
+}
+.cb-step {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  align-self: flex-start;
+  background: #17191E;
+  color: #FFFFFF;
+  padding: 4px 10px;
+}
+.cb-loopchip {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  display: inline-block;
+  background: var(--cbf-amber);
+  color: #17191E;
+  border: 2px solid #17191E;
+  box-shadow: 4px 4px 0 var(--cbf-shadow);
+  padding: 6px 14px;
+  margin-top: var(--lg);
+  transform: rotate(-1deg);
+}
+
 /* card flip: human story on the front, machinery on the back */
 .cb-flip { perspective: 1400px; width: 100%; }
 .cb-flip-inner {
@@ -2663,7 +2712,8 @@ model-viewer.hgts-viewer {
   .cb-chart-row { grid-template-columns: 1fr; gap: 4px; }
   .cb-graphwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .cb-strip { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .cb-strip .cb-flip { flex: 0 0 72vw; }
+  .cb-strip .cb-cell { flex: 0 0 72vw; }
+  .cb-cell + .cb-cell::before { display: none; }
   .cb-graph { min-width: 640px; max-height: none; }
   .cb-screens { grid-template-columns: 1fr; }
   .cb-trace-stamp { right: 0; }
