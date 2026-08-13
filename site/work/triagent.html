@@ -157,92 +157,92 @@
         <div class="cb-graphwrap">
           <svg class="cb-graph" viewBox="0 0 960 620" aria-label="TriAgent end-to-end architecture from the paper's Figure 2 — use the buttons to read each component's role">
             <defs>
-              <marker id="cbarrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <marker id="cbarrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
                 <path class="cb-arrowhead" d="M0,0 L10,5 L0,10 z"/>
               </marker>
             </defs>
 
             <!-- edges -->
-            <path id="a-rail" class="cb-e cb-e-crit" data-beat="4" pathLength="1" d="M325,30 V12 H845 V30" marker-end="url(#cbarrow)"/>
-            <path id="a-in"   class="cb-e" data-beat="2" pathLength="1" d="M170,62 H206" marker-end="url(#cbarrow)"/>
-            <path id="a-oc"   class="cb-e" data-beat="3" pathLength="1" d="M444,62 H476" marker-start="url(#cbarrow)" marker-end="url(#cbarrow)"/>
-            <path id="a-ce"   class="cb-e" data-beat="4" pathLength="1" d="M714,62 H746" marker-end="url(#cbarrow)"/>
-            <path id="d-orch" class="cb-e" data-beat="6" pathLength="1" d="M325,94 V150"/>
-            <path id="d-crit" class="cb-e" data-beat="7" pathLength="1" d="M595,94 V150"/>
-            <path id="d-out"  class="cb-e" data-beat="8" pathLength="1" d="M410,480 V526" marker-end="url(#cbarrow)"/>
-            <path id="fb"     class="cb-e cb-e-dash" data-beat="8" pathLength="1" d="M560,565 H930 V404 H799" marker-end="url(#cbarrow)"/>
+            <path id="a-rail" class="cb-e cb-e-crit" data-beat="4" pathLength="1" d="M325,32 V12 H845 V26" marker-end="url(#cbarrow)"/>
+            <path id="a-in"   class="cb-e" data-beat="2" pathLength="1" d="M170,67 H202" marker-end="url(#cbarrow)"/>
+            <path id="a-oc"   class="cb-e" data-beat="3" pathLength="1" d="M446,67 H474" marker-start="url(#cbarrow)" marker-end="url(#cbarrow)"/>
+            <path id="a-ce"   class="cb-e" data-beat="4" pathLength="1" d="M716,67 H742" marker-end="url(#cbarrow)"/>
+            <path id="d-orch" class="cb-e" data-beat="6" pathLength="1" d="M325,102 V146" marker-end="url(#cbarrow)"/>
+            <path id="d-crit" class="cb-e" data-beat="7" pathLength="1" d="M595,102 V146" marker-end="url(#cbarrow)"/>
+            <path id="d-out"  class="cb-e" data-beat="8" pathLength="1" d="M410,480 V524" marker-end="url(#cbarrow)"/>
+            <path id="fb"     class="cb-e cb-e-dash" data-beat="8" pathLength="1" d="M560,565 H930 V404 H778" marker-end="url(#cbarrow)"/>
             <text class="cb-elbl" data-beat="4" x="585" y="9" text-anchor="middle">critical case ⚡ bypass</text>
             <text class="cb-elbl" data-beat="8" x="924" y="588" text-anchor="end">clinician feedback ↺</text>
 
             <!-- top row -->
             <g class="cb-n" data-beat="2" data-agent="input" tabindex="0" role="button" aria-label="Input">
-              <rect x="20" y="30" width="150" height="64" rx="2"/>
-              <text class="cb-nn" x="95" y="58" text-anchor="middle">INPUT</text>
-              <text class="cb-ns" x="95" y="76" text-anchor="middle">JSON or free-text</text>
+              <rect x="20" y="32" width="150" height="70" rx="2"/>
+              <text class="cb-nn" x="95" y="62" text-anchor="middle">INPUT</text>
+              <text class="cb-ns" x="95" y="84" text-anchor="middle">JSON / free-text</text>
             </g>
             <g class="cb-n cb-n-gate" data-beat="1" data-agent="orch" tabindex="0" role="button" aria-label="Orchestrator agent">
-              <rect x="210" y="30" width="230" height="64" rx="2"/>
-              <text class="cb-nn" x="325" y="58" text-anchor="middle">ORCHESTRATOR AGENT</text>
-              <text class="cb-ns" x="325" y="76" text-anchor="middle">intake · triage · planning · routing</text>
+              <rect x="210" y="32" width="230" height="70" rx="2"/>
+              <text class="cb-nn" x="325" y="62" text-anchor="middle">ORCHESTRATOR AGENT</text>
+              <text class="cb-ns" x="325" y="84" text-anchor="middle">triage · plan · route</text>
             </g>
             <g class="cb-n cb-n-crit" data-beat="3" data-agent="crit" tabindex="0" role="button" aria-label="Critique agent">
-              <rect x="480" y="30" width="230" height="64" rx="2"/>
-              <text class="cb-nn" x="595" y="58" text-anchor="middle">CRITIQUE AGENT</text>
-              <text class="cb-ns" x="595" y="76" text-anchor="middle">verify plausibility · remediate</text>
+              <rect x="480" y="32" width="230" height="70" rx="2"/>
+              <text class="cb-nn" x="595" y="62" text-anchor="middle">CRITIQUE AGENT</text>
+              <text class="cb-ns" x="595" y="84" text-anchor="middle">verify &amp; remediate</text>
             </g>
             <g class="cb-n cb-n-final" data-beat="4" data-agent="emerg" tabindex="0" role="button" aria-label="Activate emergency">
-              <rect x="750" y="30" width="190" height="64" rx="2"/>
-              <text class="cb-nn" x="845" y="58" text-anchor="middle">⚠ EMERGENCY</text>
-              <text class="cb-ns" x="845" y="76" text-anchor="middle">escalate + expert handoff</text>
+              <rect x="750" y="32" width="190" height="70" rx="2"/>
+              <text class="cb-nn" x="845" y="62" text-anchor="middle">⚠ EMERGENCY</text>
+              <text class="cb-ns" x="845" y="84" text-anchor="middle">escalate · handoff</text>
             </g>
 
             <!-- composable specialist modules -->
             <g class="cb-frame" data-beat="5">
-              <rect class="cb-frame-box" x="20" y="150" width="780" height="330" rx="2"/>
+              <rect class="cb-frame-box" x="30" y="150" width="760" height="330" rx="2"/>
               <text class="cb-frame-title" x="410" y="180" text-anchor="middle">COMPOSABLE SPECIALIST MODULES</text>
               <text class="cb-frame-sub" x="410" y="198" text-anchor="middle">invoked dynamically by the Orchestrator and Critique agents</text>
-              <text class="cb-ng" x="165" y="228" text-anchor="middle">REASONING &amp; PLANNING</text>
-              <text class="cb-ng" x="420" y="228" text-anchor="middle">SAFETY &amp; KNOWLEDGE</text>
-              <text class="cb-ng" x="675" y="228" text-anchor="middle">MEMORY &amp; DOCUMENTATION</text>
+              <text class="cb-ng cb-ng-r" x="165" y="228" text-anchor="middle">REASONING &amp; PLANNING</text>
+              <text class="cb-ng cb-ng-s" x="410" y="228" text-anchor="middle">SAFETY &amp; KNOWLEDGE</text>
+              <text class="cb-ng cb-ng-m" x="655" y="228" text-anchor="middle">MEMORY &amp; DOCUMENTATION</text>
             </g>
             <g class="cb-mods" data-beat="6">
-              <g class="cb-n cb-n-mod" data-agent="urgency" tabindex="0" role="button" aria-label="Case urgency module">
-                <rect x="45" y="240" width="240" height="56" rx="2"/>
+              <g class="cb-n cb-n-mod cb-n-mod-r" data-agent="urgency" tabindex="0" role="button" aria-label="Case urgency module">
+                <rect x="50" y="240" width="230" height="56" rx="2"/>
                 <text class="cb-nn" x="165" y="273" text-anchor="middle">CASE URGENCY</text>
               </g>
-              <g class="cb-n cb-n-mod" data-agent="simsearch" tabindex="0" role="button" aria-label="Similarity search module">
-                <rect x="45" y="308" width="240" height="56" rx="2"/>
+              <g class="cb-n cb-n-mod cb-n-mod-r" data-agent="simsearch" tabindex="0" role="button" aria-label="Similarity search module">
+                <rect x="50" y="308" width="230" height="56" rx="2"/>
                 <text class="cb-nn" x="165" y="341" text-anchor="middle">SIMILARITY SEARCH</text>
               </g>
-              <g class="cb-n cb-n-mod" data-agent="draftplan" tabindex="0" role="button" aria-label="Draft plan module">
-                <rect x="45" y="376" width="240" height="56" rx="2"/>
+              <g class="cb-n cb-n-mod cb-n-mod-r" data-agent="draftplan" tabindex="0" role="button" aria-label="Draft plan module">
+                <rect x="50" y="376" width="230" height="56" rx="2"/>
                 <text class="cb-nn" x="165" y="409" text-anchor="middle">DRAFT PLAN</text>
               </g>
             </g>
             <g class="cb-mods" data-beat="7">
-              <g class="cb-n cb-n-mod" data-agent="drugsafety" tabindex="0" role="button" aria-label="Drug safety module">
-                <rect x="300" y="240" width="240" height="56" rx="2"/>
-                <text class="cb-nn" x="420" y="273" text-anchor="middle">DRUG SAFETY</text>
+              <g class="cb-n cb-n-mod cb-n-mod-s" data-agent="drugsafety" tabindex="0" role="button" aria-label="Drug safety module">
+                <rect x="295" y="240" width="230" height="56" rx="2"/>
+                <text class="cb-nn" x="410" y="273" text-anchor="middle">DRUG SAFETY</text>
               </g>
-              <g class="cb-n cb-n-mod" data-agent="safetypolicy" tabindex="0" role="button" aria-label="Safety policy module">
-                <rect x="300" y="308" width="240" height="56" rx="2"/>
-                <text class="cb-nn" x="420" y="341" text-anchor="middle">SAFETY POLICY</text>
+              <g class="cb-n cb-n-mod cb-n-mod-s" data-agent="safetypolicy" tabindex="0" role="button" aria-label="Safety policy module">
+                <rect x="295" y="308" width="230" height="56" rx="2"/>
+                <text class="cb-nn" x="410" y="341" text-anchor="middle">SAFETY POLICY</text>
               </g>
-              <g class="cb-n cb-n-mod" data-agent="allergyrisk" tabindex="0" role="button" aria-label="Allergy risk module">
-                <rect x="300" y="376" width="240" height="56" rx="2"/>
-                <text class="cb-nn" x="420" y="409" text-anchor="middle">ALLERGY RISK</text>
+              <g class="cb-n cb-n-mod cb-n-mod-s" data-agent="allergyrisk" tabindex="0" role="button" aria-label="Allergy risk module">
+                <rect x="295" y="376" width="230" height="56" rx="2"/>
+                <text class="cb-nn" x="410" y="409" text-anchor="middle">ALLERGY RISK</text>
               </g>
-              <g class="cb-n cb-n-mod" data-agent="notegen" tabindex="0" role="button" aria-label="Clinical note generation module">
-                <rect x="555" y="240" width="240" height="56" rx="2"/>
-                <text class="cb-nn" x="675" y="273" text-anchor="middle">CLINICAL NOTE GEN</text>
+              <g class="cb-n cb-n-mod cb-n-mod-m" data-agent="notegen" tabindex="0" role="button" aria-label="Clinical note generation module">
+                <rect x="540" y="240" width="230" height="56" rx="2"/>
+                <text class="cb-nn" x="655" y="273" text-anchor="middle">CLINICAL NOTE GEN</text>
               </g>
-              <g class="cb-n cb-n-mod" data-agent="historyrecall" tabindex="0" role="button" aria-label="Case history recall module">
-                <rect x="555" y="308" width="240" height="56" rx="2"/>
-                <text class="cb-nn" x="675" y="341" text-anchor="middle">CASE HISTORY RECALL</text>
+              <g class="cb-n cb-n-mod cb-n-mod-m" data-agent="historyrecall" tabindex="0" role="button" aria-label="Case history recall module">
+                <rect x="540" y="308" width="230" height="56" rx="2"/>
+                <text class="cb-nn" x="655" y="341" text-anchor="middle">CASE HISTORY RECALL</text>
               </g>
-              <g class="cb-n cb-n-mod cb-n-mem" data-agent="decisionmem" tabindex="0" role="button" aria-label="Decision memory module">
-                <rect x="555" y="376" width="240" height="56" rx="2"/>
-                <text class="cb-nn" x="675" y="409" text-anchor="middle">DECISION MEMORY</text>
+              <g class="cb-n cb-n-mod cb-n-mod-m cb-n-mem" data-agent="decisionmem" tabindex="0" role="button" aria-label="Decision memory module">
+                <rect x="540" y="376" width="230" height="56" rx="2"/>
+                <text class="cb-nn" x="655" y="409" text-anchor="middle">DECISION MEMORY</text>
               </g>
             </g>
 
@@ -250,7 +250,7 @@
             <g class="cb-n cb-n-out" data-beat="8" data-agent="output" tabindex="0" role="button" aria-label="Output">
               <rect x="260" y="530" width="300" height="70" rx="2"/>
               <text class="cb-nn" x="410" y="560" text-anchor="middle">OUTPUT</text>
-              <text class="cb-ns" x="410" y="580" text-anchor="middle">validated recommendations · actions · notes</text>
+              <text class="cb-ns" x="410" y="582" text-anchor="middle">recommendations · actions · notes</text>
             </g>
           </svg>
         </div>

@@ -2243,12 +2243,21 @@ model-viewer.hgts-viewer {
 .cb-n:hover rect, .cb-n:focus-visible rect { stroke: var(--cbf-red); }
 .cb-n.is-sel rect { stroke: var(--cbf-red); stroke-width: 4; }
 .cb-n-final:hover rect, .cb-n-final.is-sel rect { stroke: #17191E; }
-.cb-n-crit rect { stroke: var(--cbf-red); }
-.cb-n-crit .cb-nn { fill: #E02D24; }
-.cb-n-mem rect { stroke-dasharray: 6 4; }
-.cb-n-out rect { stroke: var(--cbf-teal); stroke-width: 3.5; }
+.cb-n .cb-ns { font-size: 10.5px; }
+.cb-n-crit rect { stroke: var(--cbf-red); fill: #FBE3E0; }
+.cb-n-crit .cb-nn { fill: #C22019; }
+.cb-n-crit .cb-ns { fill: #8A4540; }
+.cb-n-mem rect { stroke-dasharray: 4 3; }
+.cb-n-out rect { stroke: var(--cbf-teal); stroke-width: 3.5; fill: #E2F4ED; }
 .cb-n-out .cb-nn { fill: #0F8C6F; }
+.cb-n-out .cb-ns { fill: #3E7A68; }
 .cb-n-mod .cb-nn { font-size: 12px; }
+.cb-n-mod-r rect { fill: #E2F4ED; }
+.cb-n-mod-s rect { fill: #FBEED3; }
+.cb-n-mod-m rect { fill: #ECEEF2; }
+.cb-ng-r { fill: #0F8C6F; }
+.cb-ng-s { fill: #B87411; }
+.cb-ng-m { fill: #5B6470; }
 .cb-e { transition: opacity 200ms ease, stroke 200ms ease; }
 .cb-graph.has-sel .cb-e:not(.e-hot) { opacity: 0.22; }
 .cb-e.e-hot { stroke: var(--cbf-red); stroke-width: 3.5; opacity: 1; }
