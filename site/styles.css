@@ -2439,6 +2439,7 @@ model-viewer.hgts-viewer {
   background: #08090C;
 }
 .cb-plate img { display: block; width: 100%; height: auto; }
+.cb-plate-art { position: relative; overflow: hidden; container-type: inline-size; }
 .cb-plate-cap {
   display: flex; align-items: baseline; gap: 12px;
   padding: 13px 16px;
@@ -2487,22 +2488,94 @@ model-viewer.hgts-viewer {
   from { opacity: 0; clip-path: inset(0 100% 0 0); }
   to   { opacity: 1; clip-path: inset(0 0 0 0); }
 }
-.cb-vgs[data-vbeat="2"] .cb-plate-2 img { animation: cb-kenburns 7s ease-out 700ms both; }
-.cb-plate-scan {
-  position: absolute; inset: 0 auto 0 0;
-  width: 3px;
-  background: var(--cbf-amber);
-  box-shadow: 0 0 18px 2px var(--cbf-amber);
-  opacity: 0;
-}
-.cb-vgs[data-vbeat="2"] .cb-plate-scan { animation: cb-scanx 1.15s ease-in-out 700ms 2, cb-gone 200ms linear 3s both; }
-@keyframes cb-scanx { from { opacity: 0.9; left: 0; } to { opacity: 0.9; left: calc(100% - 3px); } }
+.cb-vgs[data-vbeat="2"] .cb-plate-2 img { animation: cb-kenburns 9s ease-out 700ms both; }
 @keyframes cb-gone { to { opacity: 0; } }
 
-/* chips: stamped verdict labels on the art (above the placard) */
+/* V2 on-screen software — plays on the artwork's blank monitor.
+   The overlay is positioned over the screen region of the plate
+   (percentages of the 1216x896 art); cqw units scale the UI with
+   the plate. Timeline per activation: type 0.7-2.0s, scan sweeps
+   2.0-3.8s, result rows live 2.1-4.2s, verdict stamps 4.15s. */
+.cbs2 { position: absolute; left: 15.2%; top: 5%; width: 66.2%; height: 51.3%; opacity: 0; }
+.cb-vgs[data-vbeat="2"] .cbs2 { animation: cb-appear 300ms ease 500ms both; }
+@keyframes cb-appear { to { opacity: 1; } }
+.cbs2-q {
+  position: absolute; left: 4%; top: 7%; width: 56%; height: 14%;
+  display: flex; align-items: center;
+  background: rgba(13, 16, 21, 0.82);
+  border-radius: 4px;
+  padding: 0 2cqw;
+  font-family: var(--mono);
+  font-size: 0.6rem; font-size: 1.9cqw;
+  color: #F4F6F8; letter-spacing: 0.04em;
+  white-space: nowrap; overflow: hidden;
+}
+.cbs2-qtxt { display: inline-block; overflow: hidden; white-space: nowrap; width: 0; }
+.cb-vgs[data-vbeat="2"] .cbs2-qtxt { animation: cb-typew 1.3s steps(40, end) 700ms both; }
+@keyframes cb-typew { from { width: 0; } to { width: 100%; } }
+.cbs2-caret {
+  flex: none;
+  width: 2px; width: 0.9cqw;
+  height: 55%;
+  background: #35D97B;
+  margin-left: 4px;
+  animation: cb-caret 0.8s steps(1) infinite;
+}
+@keyframes cb-caret { 50% { opacity: 0; } }
+.cbs2-win {
+  position: absolute; right: 2.5%; top: 27%; width: 39%; height: 66%;
+  background: rgba(13, 16, 21, 0.6);
+  border: 1px solid rgba(26, 34, 44, 0.9);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.cbs2-scan {
+  position: absolute; left: 0; right: 0; top: 0; height: 3px;
+  background: var(--cbf-amber);
+  box-shadow: 0 0 12px 1px var(--cbf-amber);
+  opacity: 0;
+}
+.cb-vgs[data-vbeat="2"] .cbs2-scan { animation: cb-scanv 0.9s ease-in-out 2s 2, cb-gone 200ms linear 3.8s both; }
+@keyframes cb-scanv { from { opacity: 0.95; top: 2%; } to { opacity: 0.95; top: 94%; } }
+.cbs2-row {
+  position: absolute; left: 8%; height: 9%;
+  background: rgba(244, 246, 248, 0.35);
+  border-radius: 2px;
+  opacity: 0;
+}
+.cbs2-r1 { top: 12%; width: 74%; }
+.cbs2-r2 { top: 30%; width: 58%; }
+.cbs2-r3 { top: 48%; width: 66%; }
+.cb-vgs[data-vbeat="2"] .cbs2-r1 { animation: cb-rowlife2 1.9s linear 2.1s both; }
+.cb-vgs[data-vbeat="2"] .cbs2-r2 { animation: cb-rowlife2 1.7s linear 2.3s both; }
+.cb-vgs[data-vbeat="2"] .cbs2-r3 { animation: cb-rowlife2 1.5s linear 2.5s both; }
+@keyframes cb-rowlife2 {
+  0% { opacity: 0; }
+  12% { opacity: 1; }
+  78% { opacity: 1; }
+  92% { opacity: 0.3; }
+  100% { opacity: 0; }
+}
+.cbs2-res {
+  position: absolute; left: 8%; right: 8%; top: 68%;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.625rem; font-size: 2cqw;
+  letter-spacing: 0.06em;
+  color: #FF3B36;
+  border: 1.5px solid #FF3B36;
+  border-radius: 3px;
+  padding: 0.8cqw 0;
+  background: rgba(13, 16, 21, 0.85);
+  opacity: 0;
+  transform-origin: center;
+}
+.cb-vgs[data-vbeat="2"] .cbs2-res { animation: cb-stampin 380ms ease 4.15s both, cb-blink 1.5s steps(1) 5s infinite; }
+
+/* chips: stamped verdict labels on the art */
 .cb-chip {
   position: absolute;
-  left: 14px; bottom: 66px;
+  left: 14px; bottom: 14px;
   font-family: var(--mono);
   font-size: 0.72rem;
   letter-spacing: 0.09em;
@@ -2514,7 +2587,7 @@ model-viewer.hgts-viewer {
   opacity: 0;
   transform-origin: left bottom;
 }
-.cb-vgs[data-vbeat="2"] .cb-chip-2 { animation: cb-stampin 420ms ease 3.1s both; }
+.cb-vgs[data-vbeat="2"] .cb-chip-2 { animation: cb-stampin 420ms ease 4.7s both; }
 .cb-vgs[data-vbeat="3"] .cb-chip-3 { animation: cb-stampin 420ms ease 900ms both; }
 .cb-vgs[data-vbeat="4"] .cb-chip-4 { animation: cb-stampin 420ms ease 700ms both, cb-blink 1.4s steps(1) 1.4s infinite; }
 @keyframes cb-stampin {
@@ -2577,5 +2650,5 @@ model-viewer.hgts-viewer {
   .cb-vgs { min-height: 340px; }
   .cb-plate { width: min(100%, 400px, calc((100vh - 460px) * 1.28)); }
   .cb-plate-cap { font-size: 0.6563rem; padding: 10px 12px; }
-  .cb-chip { font-size: 0.625rem; padding: 5px 8px; bottom: 56px; }
+  .cb-chip { font-size: 0.625rem; padding: 5px 8px; bottom: 10px; }
 }
