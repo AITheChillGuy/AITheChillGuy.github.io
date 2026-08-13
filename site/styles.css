@@ -2342,19 +2342,33 @@ model-viewer.hgts-viewer {
 }
 .cb-strip .cb-plate { width: 100%; box-shadow: 6px 6px 0 var(--cbf-shadow); }
 
-.cb-query {
-  font-family: var(--mono);
-  background: var(--cbf-panel);
-  color: #17191E;
-  border: 2px solid #17191E;
-  border-left: 10px solid var(--cbf-amber);
-  box-shadow: 6px 6px 0 var(--cbf-shadow);
-  padding: var(--md) var(--lg);
-  max-width: 640px;
-  display: flex; flex-direction: column; gap: 6px;
+.cb-s3-intro {
+  font-size: 1.0313rem;
+  line-height: 1.5;
+  color: var(--cbf-body);
+  max-width: 58ch;
+  margin-bottom: var(--lg);
 }
-.cb-query-label { font-size: 0.6875rem; letter-spacing: 0.12em; text-transform: uppercase; color: #9B9EA5; }
-.cb-query-text { font-size: clamp(0.9375rem, 1.7vw, 1.1875rem); color: #0F8C6F; font-weight: 500; }
+.cb-s3-intro b { color: var(--cbf-ink); font-weight: 700; }
+.cb-plate-tech {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  background: #17191E;
+  border-top: 2px solid #17191E;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: #2EC4A0;
+}
+.cb-tech-tag {
+  flex: none;
+  font-weight: 500;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  color: #17191E;
+  background: #2EC4A0;
+  padding: 2px 7px;
+}
 
 /* ---- Scene 4 — safety gate -------------------------------- */
 .cb-screens {

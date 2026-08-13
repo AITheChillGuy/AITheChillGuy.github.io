@@ -267,26 +267,27 @@
       <div class="cb-s3-fg">
         <p class="cb-beatmark">04:00 — retrieval</p>
         <h2 class="cb-h" data-beat="0">49,000 notes. Three passes.</h2>
+        <p class="cb-s3-intro" data-beat="0">Any clinician would do exactly this. TriAgent automates it —
+        <b>Retrieval-Augmented Generation (RAG)</b>, run as an agent. First the human version; keep
+        scrolling for the machinery.</p>
 
-        <!-- the loop, told in three panels -->
+        <!-- the loop, told in three panels: human story, then the tech -->
         <div class="cb-strip">
           <figure class="cb-plate cb-plate-strip" data-beat="1">
             <img src="../assets/cb/r1.webp" alt="A doctor dwarfed by a towering archive of medical records" width="760" height="560" loading="lazy">
             <figcaption class="cb-plate-cap"><span class="cb-plate-no">01</span>ask the archive — 49,000 notes</figcaption>
+            <div class="cb-plate-tech" data-beat="4"><span class="cb-tech-tag">RAG</span>embed the case → vector-search the corpus</div>
           </figure>
           <figure class="cb-plate cb-plate-strip" data-beat="2">
             <img src="../assets/cb/r2.webp" alt="The doctor reads what came back and writes a sharper query" width="760" height="560" loading="lazy">
             <figcaption class="cb-plate-cap"><span class="cb-plate-no">02</span>read what came back — ask sharper, ×3</figcaption>
+            <div class="cb-plate-tech" data-beat="4"><span class="cb-tech-tag">AGENT</span>read results → rewrite query → search again</div>
           </figure>
           <figure class="cb-plate cb-plate-strip" data-beat="3">
             <img src="../assets/cb/r3.webp" alt="Hands keep three glowing pages while grey pages fall to a discard basket" width="760" height="560" loading="lazy">
             <figcaption class="cb-plate-cap"><span class="cb-plate-no">03</span>grade relevance — keep the similar few</figcaption>
+            <div class="cb-plate-tech" data-beat="4"><span class="cb-tech-tag">GRADE</span>LLM scores every hit → low relevance dropped</div>
           </figure>
-        </div>
-
-        <div class="cb-query" data-beat="4">
-          <span class="cb-query-label">query · pass 1</span>
-          <span class="cb-query-text" id="cb-query">unresponsive adult hypotension tachycardia</span>
         </div>
       </div>
     </div>
@@ -491,14 +492,6 @@
     notesEl.appendChild(frag);
   }
 
-  var QUERIES = [
-    'unresponsive adult hypotension tachycardia',
-    'undifferentiated shock unknown history vasopressor threshold',
-    'occult hemorrhage vs sepsis — discriminating features, incomplete data'
-  ];
-  var queryEl = document.getElementById('cb-query');
-  var queryLabel = document.querySelector('.cb-query-label');
-
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
 
   var ticking = false;
@@ -544,14 +537,6 @@
         }
       }
 
-      /* scene 3: query refinement passes */
-      if (scene.dataset.scene === '3' && queryEl) {
-        var pass = p < 0.35 ? 0 : p < 0.6 ? 1 : 2;
-        if (queryEl.textContent !== QUERIES[pass]) {
-          queryEl.textContent = QUERIES[pass];
-          queryLabel.textContent = 'query · pass ' + (pass + 1);
-        }
-      }
       /* scene 6: flood red near the end */
       if (scene.dataset.scene === '6') {
         scene.classList.toggle('cb-flood', p > 0.72);
