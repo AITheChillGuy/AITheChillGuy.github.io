@@ -2260,7 +2260,7 @@ model-viewer.hgts-viewer {
 .cb-ng-m { fill: #5B6470; }
 .cb-e { transition: opacity 200ms ease, stroke 200ms ease; }
 .cb-graph.has-sel .cb-e:not(.e-hot) { opacity: 0.22; }
-.cb-e.e-hot { stroke: var(--cbf-red); stroke-width: 3.5; opacity: 1; }
+.cb-graph .cb-e.e-hot { stroke: var(--cbf-red); stroke-width: 3.5; opacity: 1; }
 .cb-e-crit { stroke: var(--cbf-red); }
 .cb-e-dash { stroke-dasharray: 6 5; }
 .cb-elbl {
@@ -2292,8 +2292,12 @@ model-viewer.hgts-viewer {
   opacity: 0.85;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  transition: stroke-dashoffset 700ms ease;
+  transition: stroke-dashoffset 700ms ease, opacity 250ms ease;
 }
+/* markers ignore dash-hiding — arrowheads would show before their
+   edges draw. Hide the whole path until its beat lands. */
+.cb-e[data-beat] { opacity: 0; }
+.cb-e[data-beat].on { opacity: 0.85; }
 .cb-e.on { stroke-dashoffset: 0; }
 .cb-page path[data-beat],
 .cb-page path[data-beat].on { transform: none; }
