@@ -2452,79 +2452,49 @@ model-viewer.hgts-viewer {
 .cb-vgs[data-vbeat="1"] .cb-ivobj { animation: cb-ivsway 1.4s ease-in-out 700ms infinite alternate; }
 @keyframes cb-ivsway { from { rotate: 4.4deg; } to { rotate: -4.4deg; } }
 
-/* V3: a bottle on the tray tips over and spills capsules, on loop */
-.cb-fall {
+/* V3: the artwork's own tipped bottle keeps pouring — white pills
+   emerge at its mouth, tumble down onto the baked pile, and fade
+   as they land, so the stream reads as continuous. Emit point and
+   landing zone measured off the art (mouth ≈ 61% 68% of plate). */
+.cb-pour {
   position: absolute;
-  left: 8%; top: 58%;
-  width: 24%; height: auto;
+  left: 49.3%; top: 62.5%;
+  width: 16.4%; height: auto;
   pointer-events: none;
 }
-.cb-fbot { transform-origin: 86px 128px; opacity: 0; }
-.cb-vgs[data-vbeat="3"] .cb-fbot { animation: cb-fallcycle 6.5s ease-in-out 600ms infinite; }
-@keyframes cb-fallcycle {
-  0%   { rotate: 0deg; opacity: 0; }
-  4%   { opacity: 1; rotate: 0deg; }
-  10%  { rotate: 0deg; }
-  13%  { rotate: -5deg; }
-  17%  { rotate: 4deg; }
-  20%  { rotate: -2deg; }
-  23%  { rotate: 0deg; }
-  29%  { rotate: 90deg; }
-  32%  { rotate: 81deg; }
-  35%  { rotate: 85deg; }
-  90%  { rotate: 85deg; opacity: 1; }
-  96%  { rotate: 85deg; opacity: 0; }
-  100% { rotate: 0deg; opacity: 0; }
+.cb-pp { opacity: 0; }
+.cb-vgs[data-vbeat="3"] .cb-pp-1 { animation: cb-pour-a 2.7s linear 0s infinite; }
+.cb-vgs[data-vbeat="3"] .cb-pp-2 { animation: cb-pour-b 2.7s linear 450ms infinite; }
+.cb-vgs[data-vbeat="3"] .cb-pp-3 { animation: cb-pour-c 2.7s linear 900ms infinite; }
+.cb-vgs[data-vbeat="3"] .cb-pp-4 { animation: cb-pour-a 2.7s linear 1.35s infinite; }
+.cb-vgs[data-vbeat="3"] .cb-pp-5 { animation: cb-pour-b 2.7s linear 1.8s infinite; }
+.cb-vgs[data-vbeat="3"] .cb-pp-6 { animation: cb-pour-c 2.7s linear 2.25s infinite; }
+@keyframes cb-pour-a {
+  0%   { opacity: 0; translate: 138px 58px; rotate: 20deg; }
+  8%   { opacity: 1; translate: 130px 74px; rotate: -10deg; }
+  38%  { translate: 96px 122px; rotate: -95deg; }
+  50%  { translate: 84px 142px; rotate: -130deg; }
+  56%  { translate: 80px 138px; rotate: -140deg; }
+  62%  { translate: 78px 143px; rotate: -145deg; opacity: 1; }
+  74%, 100% { translate: 78px 143px; rotate: -145deg; opacity: 0; }
 }
-.cb-fcap { transform-origin: 64px 63px; }
-.cb-vgs[data-vbeat="3"] .cb-fcap { animation: cb-capcycle 6.5s ease-in 600ms infinite; }
-@keyframes cb-capcycle {
-  0%, 33% { translate: 0 0; rotate: 0deg; }
-  38%     { translate: 24px -16px; rotate: 40deg; }
-  44%     { translate: 38px 4px; rotate: 76deg; }
-  95%     { translate: 38px 4px; rotate: 76deg; }
-  100%    { translate: 0 0; rotate: 0deg; }
+@keyframes cb-pour-b {
+  0%   { opacity: 0; translate: 142px 64px; rotate: -30deg; }
+  8%   { opacity: 1; translate: 132px 80px; rotate: 10deg; }
+  38%  { translate: 110px 126px; rotate: 80deg; }
+  50%  { translate: 104px 148px; rotate: 110deg; }
+  56%  { translate: 101px 144px; rotate: 118deg; }
+  62%  { translate: 100px 149px; rotate: 120deg; opacity: 1; }
+  74%, 100% { translate: 100px 149px; rotate: 120deg; opacity: 0; }
 }
-.cb-pill { opacity: 0; translate: 140px 112px; }
-.cb-vgs[data-vbeat="3"] .cb-pill-1 { animation: cb-pillfly1 6.5s ease-out 600ms infinite; }
-.cb-vgs[data-vbeat="3"] .cb-pill-2 { animation: cb-pillfly2 6.5s ease-out 600ms infinite; }
-.cb-vgs[data-vbeat="3"] .cb-pill-3 { animation: cb-pillfly3 6.5s ease-out 600ms infinite; }
-.cb-vgs[data-vbeat="3"] .cb-pill-4 { animation: cb-pillfly4 6.5s ease-out 600ms infinite; }
-.cb-vgs[data-vbeat="3"] .cb-pill-5 { animation: cb-pillfly5 6.5s ease-out 600ms infinite; }
-@keyframes cb-pillfly1 {
-  0%, 33% { opacity: 0; translate: 140px 112px; rotate: 0deg; }
-  37% { opacity: 1; translate: 134px 94px; rotate: -60deg; }
-  45% { translate: 102px 128px; rotate: -160deg; }
-  90% { translate: 102px 128px; rotate: -160deg; opacity: 1; }
-  96%, 100% { translate: 102px 128px; rotate: -160deg; opacity: 0; }
-}
-@keyframes cb-pillfly2 {
-  0%, 35% { opacity: 0; translate: 140px 112px; rotate: 0deg; }
-  39% { opacity: 1; translate: 146px 90px; rotate: 50deg; }
-  47% { translate: 126px 133px; rotate: 120deg; }
-  90% { translate: 126px 133px; rotate: 120deg; opacity: 1; }
-  96%, 100% { translate: 126px 133px; rotate: 120deg; opacity: 0; }
-}
-@keyframes cb-pillfly3 {
-  0%, 34% { opacity: 0; translate: 140px 112px; rotate: 0deg; }
-  38% { opacity: 1; translate: 150px 96px; rotate: -40deg; }
-  46% { translate: 148px 135px; rotate: -210deg; }
-  90% { translate: 148px 135px; rotate: -210deg; opacity: 1; }
-  96%, 100% { translate: 148px 135px; rotate: -210deg; opacity: 0; }
-}
-@keyframes cb-pillfly4 {
-  0%, 36% { opacity: 0; translate: 140px 112px; rotate: 0deg; }
-  40% { opacity: 1; translate: 138px 88px; rotate: -90deg; }
-  49% { translate: 86px 124px; rotate: -200deg; }
-  90% { translate: 86px 124px; rotate: -200deg; opacity: 1; }
-  96%, 100% { translate: 86px 124px; rotate: -200deg; opacity: 0; }
-}
-@keyframes cb-pillfly5 {
-  0%, 37% { opacity: 0; translate: 140px 112px; rotate: 0deg; }
-  41% { opacity: 1; translate: 148px 92px; rotate: 30deg; }
-  50% { translate: 136px 129px; rotate: 90deg; }
-  90% { translate: 136px 129px; rotate: 90deg; opacity: 1; }
-  96%, 100% { translate: 136px 129px; rotate: 90deg; opacity: 0; }
+@keyframes cb-pour-c {
+  0%   { opacity: 0; translate: 134px 62px; rotate: 60deg; }
+  8%   { opacity: 1; translate: 124px 78px; rotate: 30deg; }
+  38%  { translate: 74px 118px; rotate: -60deg; }
+  50%  { translate: 60px 138px; rotate: -85deg; }
+  56%  { translate: 57px 134px; rotate: -92deg; }
+  62%  { translate: 56px 139px; rotate: -95deg; opacity: 1; }
+  74%, 100% { translate: 56px 139px; rotate: -95deg; opacity: 0; }
 }
 
 /* V4: the allergy warning hovers over the blank band, unanswered */
