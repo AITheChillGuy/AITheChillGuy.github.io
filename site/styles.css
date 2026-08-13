@@ -2426,44 +2426,49 @@ model-viewer.hgts-viewer {
 .cb-vgs[data-vbeat="4"] .cb-vg-4,
 .cb-vgs[data-vbeat="5"] .cb-vg-5,
 .cb-vgs[data-vbeat="6"] .cb-vg-5 { opacity: 1; transform: none; }
-/* the plate: a printed panel with its placard.
-   Sized to own the column: capped by column width AND by what fits
-   a 100vh stage (image is 4:3 + ~54px placard). */
+/* the plate: art bleeding into the page, not a floating card.
+   The image is feather-masked on all sides so the scene dissolves
+   into the background — near-seamless in dark mode, a soft spot
+   illustration in light. Caption reads as a catalog line beneath.
+   Sized to own the column AND fit a 100vh stage. */
 .cb-plate {
   position: relative;
-  width: min(100%, 720px, calc((100vh - 290px) * 1.28));
-  border: 1px solid var(--cbf-stroke);
-  border-radius: var(--r-md);
-  overflow: hidden;
-  box-shadow: 0 32px 80px rgba(5, 8, 12, 0.45);
-  background: #08090C;
+  width: min(100%, 760px, calc((100vh - 290px) * 1.28));
 }
-.cb-plate img { display: block; width: 100%; height: auto; }
-.cb-plate-art { position: relative; overflow: hidden; container-type: inline-size; }
+.cb-plate img {
+  display: block; width: 100%; height: auto;
+  -webkit-mask-image: radial-gradient(115% 115% at 50% 46%, #000 58%, transparent 86%);
+  mask-image: radial-gradient(115% 115% at 50% 46%, #000 58%, transparent 86%);
+}
+.cb-plate-art { position: relative; container-type: inline-size; }
 .cb-plate-cap {
   display: flex; align-items: baseline; gap: 12px;
-  padding: 13px 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  background: #0D1015;
+  padding: 10px 6px 0;
   font-family: var(--mono);
   font-size: 0.75rem;
   letter-spacing: 0.05em;
-  color: #8B96A2;
+  color: var(--cbf-dim);
   text-align: left;
 }
 .cb-plate-no {
   font-weight: 500;
-  color: #FF3B36;
+  color: var(--cbf-red);
   flex: none;
 }
 .cb-plate-no::after {
   content: "";
   display: inline-block;
   width: 18px; height: 1px;
-  background: #FF3B36;
+  background: var(--cbf-red);
   vertical-align: middle;
   margin-left: 10px;
 }
+
+/* every plate breathes: slow drifting push-in, forever */
+.cb-vgs[data-vbeat="1"] .cb-plate-1 img { transform-origin: 40% 55%; }
+.cb-vgs[data-vbeat="2"] .cb-plate-2 img { transform-origin: 55% 30%; }
+.cb-vgs[data-vbeat="3"] .cb-plate-3 img { transform-origin: 50% 65%; }
+.cb-vgs[data-vbeat="4"] .cb-plate-4 img { transform-origin: 58% 45%; }
 
 /* V1 — bursts in from the right, wheels still rolling */
 .cb-vgs[data-vbeat="1"] .cb-plate-1 { animation: cb-burst 850ms cubic-bezier(.16,.85,.28,1) both; }
@@ -2472,15 +2477,22 @@ model-viewer.hgts-viewer {
   70%  { opacity: 1; transform: translateX(-2%) rotate(-0.6deg); }
   100% { opacity: 1; transform: none; }
 }
-.cb-vgs[data-vbeat="1"] .cb-plate-1 img { animation: cb-kenburns 7s ease-out 850ms both; }
+.cb-vgs[data-vbeat="1"] .cb-plate-1 img { animation: cb-kenburns 8s ease-in-out 850ms infinite alternate; }
 .cb-plate-glow {
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 46% 40% at 18% 12%, rgba(255,59,54,0.45), transparent 70%);
+  background: radial-gradient(ellipse 42% 46% at 47% 44%, rgba(255, 59, 54, 0.4), transparent 72%);
   mix-blend-mode: screen;
   opacity: 0;
+  pointer-events: none;
 }
 .cb-vgs[data-vbeat="1"] .cb-plate-glow { animation: cb-beacon 1.3s ease-in-out 300ms infinite; }
-@keyframes cb-beacon { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.85; } }
+@keyframes cb-beacon { 0%, 100% { opacity: 0.12; } 50% { opacity: 0.8; } }
+/* V4's glow sits over the wristband — a slow warning pulse */
+.cb-glow-4 {
+  background: radial-gradient(ellipse 30% 34% at 60% 50%, rgba(255, 59, 54, 0.45), transparent 74%);
+}
+.cb-vgs[data-vbeat="4"] .cb-glow-4 { animation: cb-warnpulse 2.4s ease-in-out 600ms infinite; }
+@keyframes cb-warnpulse { 0%, 100% { opacity: 0.08; } 50% { opacity: 0.7; } }
 
 /* V2 — wipes open, scanner sweeps, verdict chip stamps in */
 .cb-vgs[data-vbeat="2"] .cb-plate-2 { animation: cb-wipe 700ms cubic-bezier(.3,.7,.2,1) both; }
@@ -2488,7 +2500,7 @@ model-viewer.hgts-viewer {
   from { opacity: 0; clip-path: inset(0 100% 0 0); }
   to   { opacity: 1; clip-path: inset(0 0 0 0); }
 }
-.cb-vgs[data-vbeat="2"] .cb-plate-2 img { animation: cb-kenburns 9s ease-out 700ms both; }
+.cb-vgs[data-vbeat="2"] .cb-plate-2 img { animation: cb-kenburns 10s ease-in-out 700ms infinite alternate; }
 @keyframes cb-gone { to { opacity: 0; } }
 
 /* V2 on-screen software — plays on the artwork's blank monitor.
@@ -2602,7 +2614,7 @@ model-viewer.hgts-viewer {
   from { opacity: 0; transform: scale(0.82); }
   to   { opacity: 1; transform: none; }
 }
-.cb-vgs[data-vbeat="3"] .cb-plate-3 img { animation: cb-kenburns 7s ease-out 600ms both; }
+.cb-vgs[data-vbeat="3"] .cb-plate-3 img { animation: cb-kenburns 8s ease-in-out 600ms infinite alternate; }
 .cb-q {
   position: absolute;
   font-family: var(--mono);
@@ -2630,10 +2642,13 @@ model-viewer.hgts-viewer {
   from { opacity: 0; transform: translateY(36px) scale(0.97); }
   to   { opacity: 1; transform: none; }
 }
-.cb-vgs[data-vbeat="4"] .cb-plate-4 img { animation: cb-kenburns 8s ease-out 900ms both; }
+.cb-vgs[data-vbeat="4"] .cb-plate-4 img { animation: cb-kenburns 9s ease-in-out 900ms infinite alternate; }
 
-/* shared idle: slow push-in on the art itself */
-@keyframes cb-kenburns { from { transform: scale(1); } to { transform: scale(1.06); } }
+/* shared idle: slow drifting push-in, looped on every plate */
+@keyframes cb-kenburns {
+  from { transform: scale(1.015) translate(0, 0); }
+  to   { transform: scale(1.07) translate(-0.6%, 0.5%); }
+}
 
 /* vignettes in static / reduced-motion mode: show the monitor only */
 .cb-page:not(.cb-js) .cb-vgs { min-height: 0; }
