@@ -2112,10 +2112,12 @@ model-viewer.hgts-viewer {
 /* ---- Scene 1 — intake chart + bedside monitor ------------- */
 .cb-s1-grid {
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
   gap: var(--2xl);
   align-items: center;
   width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 .cb-chart {
   font-family: var(--mono);
@@ -2407,7 +2409,7 @@ model-viewer.hgts-viewer {
    frames' "color island"). Exclusive visibility via [data-vbeat]
    set by JS; entrance choreography restarts on every activation.
    V5 is the live telemetry monitor. */
-.cb-vgs { position: relative; min-height: min(62vh, 520px); width: 100%; }
+.cb-vgs { position: relative; min-height: min(70vh, 660px); width: 100%; }
 .cb-vg {
   position: absolute; inset: 0;
   display: flex; flex-direction: column;
@@ -2424,27 +2426,43 @@ model-viewer.hgts-viewer {
 .cb-vgs[data-vbeat="4"] .cb-vg-4,
 .cb-vgs[data-vbeat="5"] .cb-vg-5,
 .cb-vgs[data-vbeat="6"] .cb-vg-5 { opacity: 1; transform: none; }
-.cb-vg-cap {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  font-style: italic;
-  letter-spacing: 0.04em;
-  color: var(--cbf-dim);
-  text-align: center;
-  max-width: 42ch;
-}
-
-/* the plate: a printed panel */
+/* the plate: a printed panel with its placard.
+   Sized to own the column: capped by column width AND by what fits
+   a 100vh stage (image is 4:3 + ~54px placard). */
 .cb-plate {
   position: relative;
-  width: min(100%, 480px);
+  width: min(100%, 720px, calc((100vh - 290px) * 1.28));
   border: 1px solid var(--cbf-stroke);
   border-radius: var(--r-md);
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(5, 8, 12, 0.35);
+  box-shadow: 0 32px 80px rgba(5, 8, 12, 0.45);
   background: #08090C;
 }
 .cb-plate img { display: block; width: 100%; height: auto; }
+.cb-plate-cap {
+  display: flex; align-items: baseline; gap: 12px;
+  padding: 13px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0D1015;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: #8B96A2;
+  text-align: left;
+}
+.cb-plate-no {
+  font-weight: 500;
+  color: #FF3B36;
+  flex: none;
+}
+.cb-plate-no::after {
+  content: "";
+  display: inline-block;
+  width: 18px; height: 1px;
+  background: #FF3B36;
+  vertical-align: middle;
+  margin-left: 10px;
+}
 
 /* V1 — bursts in from the right, wheels still rolling */
 .cb-vgs[data-vbeat="1"] .cb-plate-1 { animation: cb-burst 850ms cubic-bezier(.16,.85,.28,1) both; }
@@ -2481,10 +2499,10 @@ model-viewer.hgts-viewer {
 @keyframes cb-scanx { from { opacity: 0.9; left: 0; } to { opacity: 0.9; left: calc(100% - 3px); } }
 @keyframes cb-gone { to { opacity: 0; } }
 
-/* chips: stamped verdict labels on the art */
+/* chips: stamped verdict labels on the art (above the placard) */
 .cb-chip {
   position: absolute;
-  left: 12px; bottom: 12px;
+  left: 14px; bottom: 66px;
   font-family: var(--mono);
   font-size: 0.72rem;
   letter-spacing: 0.09em;
@@ -2552,12 +2570,12 @@ model-viewer.hgts-viewer {
   .cb-vg, .cb-vg *, .cb-plate, .cb-plate * { animation: none !important; }
 }
 @media (max-width: 1023px) {
-  .cb-vgs { min-height: 42vh; }
-  .cb-plate { width: min(100%, 420px); }
+  .cb-vgs { min-height: 46vh; }
+  .cb-plate { width: min(100%, 560px, calc((100vh - 420px) * 1.28)); }
 }
 @media (max-width: 599px) {
-  .cb-vgs { min-height: 330px; }
-  .cb-plate { width: min(100%, 340px); }
-  .cb-vg-cap { font-size: 0.6875rem; }
-  .cb-chip { font-size: 0.625rem; padding: 5px 8px; }
+  .cb-vgs { min-height: 340px; }
+  .cb-plate { width: min(100%, 400px, calc((100vh - 460px) * 1.28)); }
+  .cb-plate-cap { font-size: 0.6563rem; padding: 10px 12px; }
+  .cb-chip { font-size: 0.625rem; padding: 5px 8px; bottom: 56px; }
 }
