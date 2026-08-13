@@ -268,26 +268,47 @@
         <p class="cb-beatmark">04:00 — retrieval</p>
         <h2 class="cb-h" data-beat="0">49,000 notes. Three passes.</h2>
         <p class="cb-s3-intro" data-beat="0">Any clinician would do exactly this. TriAgent automates it —
-        <b>Retrieval-Augmented Generation (RAG)</b>, run as an agent. First the human version; keep
-        scrolling for the machinery.</p>
+        <b>Retrieval-Augmented Generation (RAG)</b>, run as an agent. First the human version —
+        keep scrolling and the cards flip to the machinery.</p>
 
-        <!-- the loop, told in three panels: human story, then the tech -->
+        <!-- the loop in three panels: human story on the front, machinery on the back -->
         <div class="cb-strip">
-          <figure class="cb-plate cb-plate-strip" data-beat="1">
-            <img src="../assets/cb/r1.webp" alt="A doctor dwarfed by a towering archive of medical records" width="760" height="560" loading="lazy">
-            <figcaption class="cb-plate-cap"><span class="cb-plate-no">01</span>ask the archive — 49,000 notes</figcaption>
-            <div class="cb-plate-tech" data-beat="4"><span class="cb-tech-tag">RAG</span>embed the case → vector-search the corpus</div>
-          </figure>
-          <figure class="cb-plate cb-plate-strip" data-beat="2">
-            <img src="../assets/cb/r2.webp" alt="The doctor reads what came back and writes a sharper query" width="760" height="560" loading="lazy">
-            <figcaption class="cb-plate-cap"><span class="cb-plate-no">02</span>read what came back — ask sharper, ×3</figcaption>
-            <div class="cb-plate-tech" data-beat="4"><span class="cb-tech-tag">AGENT</span>read results → rewrite query → search again</div>
-          </figure>
-          <figure class="cb-plate cb-plate-strip" data-beat="3">
-            <img src="../assets/cb/r3.webp" alt="Hands keep three glowing pages while grey pages fall to a discard basket" width="760" height="560" loading="lazy">
-            <figcaption class="cb-plate-cap"><span class="cb-plate-no">03</span>grade relevance — keep the similar few</figcaption>
-            <div class="cb-plate-tech" data-beat="4"><span class="cb-tech-tag">GRADE</span>LLM scores every hit → low relevance dropped</div>
-          </figure>
+          <div class="cb-flip" data-beat="1">
+            <div class="cb-flip-inner" data-beat="4">
+              <figure class="cb-plate cb-face cb-face-front">
+                <img src="../assets/cb/r1.webp" alt="A doctor dwarfed by a towering archive of medical records" width="760" height="560" loading="lazy">
+                <figcaption class="cb-plate-cap"><span class="cb-plate-no">01</span>ask the archive — 49,000 notes</figcaption>
+              </figure>
+              <figure class="cb-plate cb-face cb-face-back">
+                <img src="../assets/cb/t1.webp" alt="Documents as a constellation of connected points; a teal query document under a magnifying glass linked to its nearest neighbors" width="760" height="560" loading="lazy">
+                <figcaption class="cb-plate-cap cb-cap-tech"><span class="cb-tech-tag">VECTOR</span>notes become points in meaning-space — the query finds its neighbors</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="cb-flip" data-beat="2">
+            <div class="cb-flip-inner" data-beat="5">
+              <figure class="cb-plate cb-face cb-face-front">
+                <img src="../assets/cb/r2.webp" alt="The doctor reads what came back and writes a sharper query" width="760" height="560" loading="lazy">
+                <figcaption class="cb-plate-cap"><span class="cb-plate-no">02</span>read what came back — ask sharper, ×3</figcaption>
+              </figure>
+              <figure class="cb-plate cb-face cb-face-back">
+                <img src="../assets/cb/t2.webp" alt="A robot pulling a lever to switch document flow between three conveyor routes; only one route glows active" width="760" height="560" loading="lazy">
+                <figcaption class="cb-plate-cap cb-cap-tech"><span class="cb-tech-tag">AGENT</span>it changes how it retrieves — rewrite · re-route · search again</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="cb-flip" data-beat="3">
+            <div class="cb-flip-inner" data-beat="6">
+              <figure class="cb-plate cb-face cb-face-front">
+                <img src="../assets/cb/r3.webp" alt="Hands keep three glowing pages while grey pages fall to a discard basket" width="760" height="560" loading="lazy">
+                <figcaption class="cb-plate-cap"><span class="cb-plate-no">03</span>grade relevance — keep the similar few</figcaption>
+              </figure>
+              <figure class="cb-plate cb-face cb-face-back">
+                <img src="../assets/cb/t3.webp" alt="A robot arm stamps documents on a conveyor: teal checks continue, a red X page falls into a wire bin" width="760" height="560" loading="lazy">
+                <figcaption class="cb-plate-cap cb-cap-tech"><span class="cb-tech-tag">GRADE</span>an LLM stamps every hit — weak matches get binned</figcaption>
+              </figure>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -2341,6 +2341,7 @@ model-viewer.hgts-viewer {
   margin-bottom: var(--lg);
 }
 .cb-strip .cb-plate { width: 100%; box-shadow: 6px 6px 0 var(--cbf-shadow); }
+.cb-strip .cb-face-back .cb-plate-cap { border-top-width: 2px; }
 
 .cb-s3-intro {
   font-size: 1.0313rem;
@@ -2350,15 +2351,28 @@ model-viewer.hgts-viewer {
   margin-bottom: var(--lg);
 }
 .cb-s3-intro b { color: var(--cbf-ink); font-weight: 700; }
-.cb-plate-tech {
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 14px;
+/* card flip: human story on the front, machinery on the back */
+.cb-flip { perspective: 1400px; width: 100%; }
+.cb-flip-inner {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 750ms cubic-bezier(.3, .7, .25, 1);
+}
+.cb-flip-inner[data-beat] { opacity: 1; transform: rotateY(0); }
+.cb-flip-inner[data-beat].on { opacity: 1; transform: rotateY(180deg); }
+.cb-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.cb-face-front { position: relative; }
+.cb-face-back {
+  position: absolute; inset: 0;
+  transform: rotateY(180deg);
+  display: flex; flex-direction: column;
+}
+.cb-face-back img { flex: 1; min-height: 0; object-fit: cover; }
+.cb-cap-tech {
   background: #17191E;
-  border-top: 2px solid #17191E;
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.04em;
   color: #2EC4A0;
+  border-top-color: #2EC4A0;
 }
 .cb-tech-tag {
   flex: none;
@@ -2649,7 +2663,7 @@ model-viewer.hgts-viewer {
   .cb-chart-row { grid-template-columns: 1fr; gap: 4px; }
   .cb-graphwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .cb-strip { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .cb-strip .cb-plate { flex: 0 0 72vw; }
+  .cb-strip .cb-flip { flex: 0 0 72vw; }
   .cb-graph { min-width: 640px; max-height: none; }
   .cb-screens { grid-template-columns: 1fr; }
   .cb-trace-stamp { right: 0; }
