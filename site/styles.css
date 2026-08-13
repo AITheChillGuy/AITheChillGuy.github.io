@@ -2435,11 +2435,23 @@ model-viewer.hgts-viewer {
   position: relative;
   width: min(100%, 760px, calc((100vh - 290px) * 1.28));
 }
-.cb-plate img {
-  display: block; width: 100%; height: auto;
+.cb-plate img { display: block; width: 100%; height: auto; }
+.cb-plate img:not(.cb-iv) {
   -webkit-mask-image: radial-gradient(115% 115% at 50% 46%, #000 58%, transparent 86%);
   mask-image: radial-gradient(115% 115% at 50% 46%, #000 58%, transparent 86%);
 }
+
+/* the IV bag is a layer cut from the artwork itself: pinned at
+   the hanger point, it swings with the run. Cutout edges live in
+   flat color regions so the sway never shows a seam. */
+.cb-iv {
+  position: absolute;
+  left: 54.77%; top: 26.79%;
+  width: 6.91% !important; height: auto;
+  transform-origin: 46% 11%;
+}
+.cb-vgs[data-vbeat="1"] .cb-iv { animation: cb-ivsway 1.5s ease-in-out 900ms infinite alternate; }
+@keyframes cb-ivsway { from { rotate: 3.6deg; } to { rotate: -3.6deg; } }
 .cb-plate-art { position: relative; container-type: inline-size; }
 .cb-plate-cap {
   display: flex; align-items: baseline; gap: 12px;
@@ -2464,11 +2476,6 @@ model-viewer.hgts-viewer {
   margin-left: 10px;
 }
 
-/* every plate breathes: slow drifting push-in, forever */
-.cb-vgs[data-vbeat="1"] .cb-plate-1 img { transform-origin: 40% 55%; }
-.cb-vgs[data-vbeat="2"] .cb-plate-2 img { transform-origin: 55% 30%; }
-.cb-vgs[data-vbeat="3"] .cb-plate-3 img { transform-origin: 50% 65%; }
-.cb-vgs[data-vbeat="4"] .cb-plate-4 img { transform-origin: 58% 45%; }
 
 /* V1 — bursts in from the right, wheels still rolling */
 .cb-vgs[data-vbeat="1"] .cb-plate-1 { animation: cb-burst 850ms cubic-bezier(.16,.85,.28,1) both; }
@@ -2477,7 +2484,6 @@ model-viewer.hgts-viewer {
   70%  { opacity: 1; transform: translateX(-2%) rotate(-0.6deg); }
   100% { opacity: 1; transform: none; }
 }
-.cb-vgs[data-vbeat="1"] .cb-plate-1 img { animation: cb-kenburns 8s ease-in-out 850ms infinite alternate; }
 .cb-plate-glow {
   position: absolute; inset: 0;
   background: radial-gradient(ellipse 42% 46% at 47% 44%, rgba(255, 59, 54, 0.4), transparent 72%);
@@ -2500,7 +2506,6 @@ model-viewer.hgts-viewer {
   from { opacity: 0; clip-path: inset(0 100% 0 0); }
   to   { opacity: 1; clip-path: inset(0 0 0 0); }
 }
-.cb-vgs[data-vbeat="2"] .cb-plate-2 img { animation: cb-kenburns 10s ease-in-out 700ms infinite alternate; }
 @keyframes cb-gone { to { opacity: 0; } }
 
 /* V2 on-screen software — plays on the artwork's blank monitor.
@@ -2614,7 +2619,6 @@ model-viewer.hgts-viewer {
   from { opacity: 0; transform: scale(0.82); }
   to   { opacity: 1; transform: none; }
 }
-.cb-vgs[data-vbeat="3"] .cb-plate-3 img { animation: cb-kenburns 8s ease-in-out 600ms infinite alternate; }
 .cb-q {
   position: absolute;
   font-family: var(--mono);
@@ -2641,13 +2645,6 @@ model-viewer.hgts-viewer {
 @keyframes cb-rise-slow {
   from { opacity: 0; transform: translateY(36px) scale(0.97); }
   to   { opacity: 1; transform: none; }
-}
-.cb-vgs[data-vbeat="4"] .cb-plate-4 img { animation: cb-kenburns 9s ease-in-out 900ms infinite alternate; }
-
-/* shared idle: slow drifting push-in, looped on every plate */
-@keyframes cb-kenburns {
-  from { transform: scale(1.015) translate(0, 0); }
-  to   { transform: scale(1.07) translate(-0.6%, 0.5%); }
 }
 
 /* vignettes in static / reduced-motion mode: show the monitor only */
