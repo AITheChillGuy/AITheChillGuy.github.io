@@ -264,16 +264,46 @@
   <section class="cb-scene cb-s3" data-scene="3">
     <div class="cb-stage">
       <div class="cb-notes" id="cb-notes" aria-hidden="true"></div>
-      <div class="cb-s3-fg">
-        <p class="cb-beatmark">04:00 — retrieval</p>
-        <h2 class="cb-h" data-beat="0">49,000 notes.<br>Three passes.</h2>
-        <div class="cb-query" data-beat="1">
-          <span class="cb-query-label">query · pass 1</span>
-          <span class="cb-query-text" id="cb-query">unresponsive adult hypotension tachycardia</span>
+      <div class="cb-s3-fg cb-s3-grid">
+        <div class="cb-s3-left">
+          <p class="cb-beatmark">04:00 — retrieval</p>
+          <h2 class="cb-h" data-beat="0">49,000 notes.<br>Three passes.</h2>
+          <p class="cb-cap" data-beat="4">No history means the right question can't be asked on the first
+          try. So the similarity-search module iterates: <b>each pass reads what came back, rewrites
+          the query, and searches again</b> — watch it sharpen from symptoms to a differential.</p>
+          <p class="cb-cap" data-beat="5">And volume isn't evidence: <b>every candidate note is graded
+          for relevance before it counts.</b> Only cases that grade as clinically similar reach the
+          planner — retrieval here is a filter, not a dump into the context window.</p>
         </div>
-        <p class="cb-cap" data-beat="4">With no history to read, the retrieval sub-agent iterates —
-        refining its query and grading every candidate note for relevance before
-        anything reaches the planner.</p>
+
+        <div class="cb-retr" aria-label="Retrieval console: the query refines across three passes, candidates are filtered and graded">
+          <span class="cb-retr-head">SIMILARITY SEARCH — MIMIC-IV DISCHARGE NOTES</span>
+          <div class="cb-query" data-beat="1">
+            <span class="cb-query-label">query · pass 1</span>
+            <span class="cb-query-text" id="cb-query">unresponsive adult hypotension tachycardia</span>
+          </div>
+          <div class="cb-funnel" data-beat="2" aria-hidden="true">
+            <div class="cb-fun-row">
+              <span class="cb-fun-track"><span class="cb-fun-bar" style="--w: 100%"></span></span>
+              <span class="cb-fun-lbl">49,000 notes in the corpus</span>
+            </div>
+            <div class="cb-fun-row">
+              <span class="cb-fun-track"><span class="cb-fun-bar" style="--w: 44%"></span></span>
+              <span class="cb-fun-lbl">candidates — matched by the query</span>
+            </div>
+            <div class="cb-fun-row">
+              <span class="cb-fun-track"><span class="cb-fun-bar cb-fun-bar-keep" style="--w: 12%"></span></span>
+              <span class="cb-fun-lbl">clinically similar — graded relevant</span>
+            </div>
+          </div>
+          <div class="cb-hits" data-beat="3" aria-hidden="true">
+            <div class="cb-hit"><span>discharge note · undifferentiated shock, no prior history</span><b class="cb-hit-hi">HIGH</b></div>
+            <div class="cb-hit"><span>discharge note · occult hemorrhage, delayed presentation</span><b class="cb-hit-hi">HIGH</b></div>
+            <div class="cb-hit"><span>discharge note · sepsis workup, refractory hypotension</span><b class="cb-hit-md">MED</b></div>
+            <div class="cb-hit cb-hit-cut"><span>discharge note · routine post-op follow-up</span><b class="cb-hit-lo">CUT</b></div>
+          </div>
+          <span class="cb-retr-foot">illustrative pass — corpus size and grading loop per the paper</span>
+        </div>
       </div>
     </div>
   </section>
