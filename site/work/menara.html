@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <title>MENARA — One Model, Many Arabics</title>
-<meta name="description" content="MENARA: an Arabic medical language model built by merging Egyptian Arabic, Moroccan Darija and medical specialists with TIES — one 2B model that stays fluent in every dialect. Published in Machine Learning and Knowledge Extraction, MDPI 2026.">
+<meta name="description" content="MENARA: an Arabic medical language model built by merging Egyptian Arabic, Moroccan Darija and medical specialists with TIES — one 2B model that beats 13B baselines on dialectal medicine. Published in Machine Learning and Knowledge Extraction, MDPI 2026.">
 <link rel="icon" href="../assets/favicon.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=6">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=7">
 </head>
 <body class="mn-page">
 
@@ -29,150 +29,163 @@
 </nav>
 
 <!-- ============================================================
-     HERO — the lighthouse the name promises
+     HERO — type only
      ============================================================ -->
 <header class="mn-hero">
-  <div class="mn-hero-grid">
-    <div class="mn-hero-text">
-      <a class="mn-back label-caps" href="../index.html#projects">← Back to projects</a>
-      <p class="mn-chip">Publication · MAKE 8(4):110 · MDPI · 2026</p>
-      <h1 class="mn-title">
-        <span class="mn-title-ar" lang="ar" dir="rtl">منارة</span>
-        <span class="mn-title-en">MENARA</span>
-      </h1>
-      <p class="mn-tagline">One model. Many Arabics.</p>
-      <p class="mn-sub">Patients don't speak textbook Arabic. MENARA merges an Egyptian
-      specialist, a Moroccan Darija specialist, and a medical specialist into <b>one 2-billion-parameter
-      model</b> that answers every patient in their own dialect — without retraining anything.</p>
-    </div>
-    <figure class="mn-plate mn-plate-hero mn-rev">
-      <img src="../assets/mn/hero.webp" alt="A minaret-lighthouse casting warm light beams over a skyline of domes under a crescent moon" width="1100" height="715" loading="eager">
-      <figcaption class="mn-plate-cap"><span lang="ar" dir="rtl">منارة</span> — a lighthouse: one light, every street</figcaption>
-    </figure>
-  </div>
+  <a class="mn-back label-caps" href="../index.html#projects">← Back to projects</a>
+  <h1 class="mn-title">
+    <span class="mn-title-ar" lang="ar" dir="rtl">منارة</span>
+    <span class="mn-title-en">MENARA</span>
+  </h1>
+  <div class="mn-rule" aria-hidden="true"></div>
+  <p class="mn-tagline"><span lang="ar" dir="rtl">نموذج واحد، عربيّات كثيرة</span><span class="mn-tagline-sep">·</span>One model, many Arabics</p>
+  <p class="mn-sub">Patients don't speak textbook Arabic. MENARA merges an Egyptian Arabic specialist,
+  a Moroccan Darija specialist, and a medical specialist into <b>one 2-billion-parameter model</b> —
+  no retraining, and it outperforms Arabic models six times its size on dialectal medicine.</p>
+  <p class="mn-cite">Machine Learning &amp; Knowledge Extraction · MDPI · 8(4):110 · 2026 · open access</p>
 </header>
 
 <!-- ============================================================
-     THE CONVERSATION — same question, three Arabics
+     § 01 — THE QUESTION (one interaction, three linked readouts)
      ============================================================ -->
-<section class="mn-talk" aria-label="The same medical question in three Arabic varieties, and how each model handles it">
-  <div class="mn-sect-head mn-rev">
-    <p class="mn-chip mn-chip-gold">The problem, out loud</p>
-    <h2 class="mn-h2">Same question. Three Arabics.<br>Watch the specialists falter.</h2>
+<section class="mn-sect" aria-label="Ask in any dialect">
+  <div class="mn-head mn-rev">
+    <span class="mn-head-no">01</span>
+    <span class="mn-head-en">Ask in any dialect</span>
+    <span class="mn-head-rule" aria-hidden="true"></span>
+    <span class="mn-head-ar" lang="ar" dir="rtl">اسأل بأي لهجة</span>
   </div>
 
   <div class="mn-dialects mn-rev" role="group" aria-label="Choose the patient's dialect">
-    <button class="mn-dial is-on" type="button" data-d="msa"><span class="mn-dial-ar" lang="ar" dir="rtl">الفصحى</span><span class="mn-dial-en">MSA</span></button>
-    <button class="mn-dial" type="button" data-d="egy"><span class="mn-dial-ar" lang="ar" dir="rtl">مصري</span><span class="mn-dial-en">Egyptian</span></button>
-    <button class="mn-dial" type="button" data-d="dar"><span class="mn-dial-ar" lang="ar" dir="rtl">دارجة</span><span class="mn-dial-en">Darija</span></button>
+    <button class="mn-dial is-on" type="button" data-d="msa"><span lang="ar" dir="rtl">الفصحى</span><small>MSA</small></button>
+    <button class="mn-dial" type="button" data-d="egy"><span lang="ar" dir="rtl">مصري</span><small>Egyptian</small></button>
+    <button class="mn-dial" type="button" data-d="dar"><span lang="ar" dir="rtl">دارجة</span><small>Darija</small></button>
   </div>
 
-  <div class="mn-bubble mn-rev">
-    <p class="mn-bubble-ar" id="mn-q" lang="ar" dir="rtl">أعاني من صداعٍ شديدٍ منذ يومين، فماذا أفعل؟</p>
-    <p class="mn-bubble-gloss">“I've had a bad headache for two days — what should I do?”</p>
-  </div>
+  <p class="mn-q mn-rev" id="mn-q" lang="ar" dir="rtl">أعاني من صداعٍ شديدٍ منذ يومين، فماذا أفعل؟</p>
+  <p class="mn-gloss mn-rev">“I've had a bad headache for two days — what should I do?”</p>
 
-  <div class="mn-models mn-rev" id="mn-models" aria-label="How each model scores on this dialect (LLM-judged dialectal fidelity, 1 to 5)">
-    <div class="mn-model" data-m="0">
-      <span class="mn-model-name">MSA MODEL</span>
-      <div class="mn-bar"><span class="mn-bar-fill"></span></div>
-      <b class="mn-score">–</b>
-      <span class="mn-status">–</span>
-      <span class="mn-med">medical –</span>
+  <div class="mn-readout mn-rev">
+    <div class="mn-comp">
+      <p class="mn-readout-label">What MENARA answers in <span class="mn-readout-note">— token composition of its replies, Fig. 7</span></p>
+      <div class="mn-compbar" id="mn-compbar" role="img" aria-label="Token composition of MENARA's replies for the selected dialect">
+        <span class="mn-seg mn-seg-msa"></span><span class="mn-seg mn-seg-egy"></span><span class="mn-seg mn-seg-dar"></span><span class="mn-seg mn-seg-oth"></span>
+      </div>
+      <div class="mn-legend">
+        <span><i class="mn-sw mn-sw-msa"></i>MSA</span>
+        <span><i class="mn-sw mn-sw-egy"></i>Egyptian</span>
+        <span><i class="mn-sw mn-sw-dar"></i>Darija</span>
+        <span><i class="mn-sw mn-sw-oth"></i>other</span>
+      </div>
+      <p class="mn-compnote" id="mn-compnote">Defaults cleanly to the standard register — zero Darija leakage.</p>
     </div>
-    <div class="mn-model" data-m="1">
-      <span class="mn-model-name">EGYPTIAN MODEL</span>
-      <div class="mn-bar"><span class="mn-bar-fill"></span></div>
-      <b class="mn-score">–</b>
-      <span class="mn-status">–</span>
-      <span class="mn-med">medical –</span>
-    </div>
-    <div class="mn-model" data-m="2">
-      <span class="mn-model-name">DARIJA MODEL</span>
-      <div class="mn-bar"><span class="mn-bar-fill"></span></div>
-      <b class="mn-score">–</b>
-      <span class="mn-status">–</span>
-      <span class="mn-med">medical –</span>
-    </div>
-    <div class="mn-model mn-model-menara" data-m="3">
-      <span class="mn-model-name">MENARA</span>
-      <div class="mn-bar"><span class="mn-bar-fill"></span></div>
-      <b class="mn-score">–</b>
-      <span class="mn-status">–</span>
-      <span class="mn-med">medical –</span>
+    <div class="mn-scores">
+      <div class="mn-scorebox">
+        <span class="mn-scorenum" id="mn-fid">4.89</span>
+        <span class="mn-scorelbl">dialectal fidelity / 5<br>Qwen-3 judge, 300 prompts</span>
+      </div>
+      <div class="mn-scorebox">
+        <span class="mn-scorenum" id="mn-hum">4.91</span>
+        <span class="mn-scorelbl">native-speaker rating / 5<br>naturalness &amp; coherence</span>
+      </div>
     </div>
   </div>
-  <p class="mn-note mn-rev">Dialectal-fidelity scores (1–5), judged by Qwen 3 over 300 prompts per dialect — Table 1 of the companion study. “Medical” is the matching medical-competence score from Table 2.</p>
+  <p class="mn-crossnote mn-rev">It also crosses: ask in Darija, request the answer in MSA — the paper
+  demonstrates all six directions (Fig. 5).</p>
 </section>
 
 <!-- ============================================================
-     THE MERGE — TIES as the calligrapher's craft
+     § 02 — THE MERGE (typographic diagram)
      ============================================================ -->
-<section class="mn-merge" aria-label="How the three specialists were merged with TIES">
-  <div class="mn-sect-head mn-rev">
-    <p class="mn-chip mn-chip-gold">The craft</p>
-    <h2 class="mn-h2">Three specialists, merged like inks.<br>No retraining — TIES.</h2>
+<section class="mn-sect" aria-label="How the model was built">
+  <div class="mn-head mn-rev">
+    <span class="mn-head-no">02</span>
+    <span class="mn-head-en">Three specialists, one model</span>
+    <span class="mn-head-rule" aria-hidden="true"></span>
+    <span class="mn-head-ar" lang="ar" dir="rtl">ثلاثة في واحد</span>
   </div>
 
-  <div class="mn-strip">
-    <figure class="mn-plate mn-rev">
-      <img src="../assets/mn/trim.webp" alt="A calligrapher's blade keeps only the boldest strokes on a page of flowing calligraphy" width="860" height="634" loading="lazy">
-      <figcaption class="mn-plate-cap">
-        <span class="mn-no">١</span><span class="mn-cap-craft">TRIM — keep only the boldest strokes</span>
-        <span class="mn-cap-tech">top-20% parameter updates kept per specialist</span>
-      </figcaption>
-    </figure>
-    <figure class="mn-plate mn-rev">
-      <img src="../assets/mn/elect.webp" alt="Three ornate arrows in an arabesque frame turning to point the same direction" width="860" height="634" loading="lazy">
-      <figcaption class="mn-plate-cap">
-        <span class="mn-no">٢</span><span class="mn-cap-craft">ELECT — when inks disagree, the majority direction wins</span>
-        <span class="mn-cap-tech">sign election across models before merging</span>
-      </figcaption>
-    </figure>
-    <figure class="mn-plate mn-rev">
-      <img src="../assets/mn/merge.webp" alt="Three ink streams pouring from three inkwells into one vessel, swirling into a single colour" width="860" height="634" loading="lazy">
-      <figcaption class="mn-plate-cap">
-        <span class="mn-no">٣</span><span class="mn-cap-craft">MERGE — three inks, one vessel</span>
-        <span class="mn-cap-tech">TIES via MergeKit · zero-shot · one Gemma-2B model</span>
-      </figcaption>
-    </figure>
+  <div class="mn-mergegram mn-rev">
+    <div class="mn-mrow">
+      <div class="mn-mcard">
+        <span class="mn-mcard-ar" lang="ar" dir="rtl">طب</span>
+        <span class="mn-mcard-name">Meditron3-Gemma2-2B</span>
+        <span class="mn-mcard-role">medical backbone · weight 0.4</span>
+      </div>
+      <div class="mn-mcard">
+        <span class="mn-mcard-ar" lang="ar" dir="rtl">مصري</span>
+        <span class="mn-mcard-name">Egyptian Gemma-2B</span>
+        <span class="mn-mcard-role">dialect specialist · weight 0.6</span>
+      </div>
+      <div class="mn-mcard">
+        <span class="mn-mcard-ar" lang="ar" dir="rtl">دارجة</span>
+        <span class="mn-mcard-name">Atlas-Chat-2B</span>
+        <span class="mn-mcard-role">dialect specialist · weight 0.6</span>
+      </div>
+    </div>
+    <svg class="mn-mlines" viewBox="0 0 600 90" aria-hidden="true" preserveAspectRatio="none">
+      <path d="M100,0 V30 Q100,60 300,60 V90" fill="none"/>
+      <path d="M300,0 V90" fill="none"/>
+      <path d="M500,0 V30 Q500,60 300,60 V90" fill="none"/>
+    </svg>
+    <div class="mn-mties">
+      <span class="mn-mties-name">TIES merging</span>
+      <span class="mn-mties-detail">trim · elect sign · merge — density 0.6 · MergeKit · zero-shot, no gradient ever flows</span>
+    </div>
+    <svg class="mn-mlines mn-mlines-short" viewBox="0 0 600 40" aria-hidden="true" preserveAspectRatio="none">
+      <path d="M300,0 V40" fill="none"/>
+    </svg>
+    <div class="mn-mout">
+      <span class="mn-mout-ar" lang="ar" dir="rtl">منارة</span>
+      <span class="mn-mout-detail">one 2B model · same tokenizer throughout · &gt;60% less storage than three</span>
+    </div>
   </div>
-  <p class="mn-note mn-rev">The three inks: <b>Meditron3-Gemma2-2B</b> (medicine), a custom Gemma-2B Egyptian
-  Arabic specialist, and <b>Atlas-Chat-2B</b> (Moroccan Darija) — same tokenizer, so nothing is lost in the pour.</p>
 </section>
 
 <!-- ============================================================
-     THE SCOREBOARD — no bad rows
+     § 03 — THE BENCHMARK (2B beats 13B)
      ============================================================ -->
-<section class="mn-board" aria-label="Evaluation results">
-  <div class="mn-sect-head mn-rev">
-    <p class="mn-chip mn-chip-gold">The payoff</p>
-    <h2 class="mn-h2">Every specialist collapses somewhere.<br>MENARA has no bad rows.</h2>
+<section class="mn-sect" aria-label="Benchmark against larger Arabic models">
+  <div class="mn-head mn-rev">
+    <span class="mn-head-no">03</span>
+    <span class="mn-head-en">Two billion beats thirteen</span>
+    <span class="mn-head-rule" aria-hidden="true"></span>
+    <span class="mn-head-ar" lang="ar" dir="rtl">الصغير يسبق الكبير</span>
   </div>
 
-  <div class="mn-tabs mn-rev" role="group" aria-label="Choose which scores to display">
-    <button class="mn-tab is-on" type="button" data-t="fid">Dialectal fidelity</button>
-    <button class="mn-tab" type="button" data-t="med">Medical competence</button>
-  </div>
+  <p class="mn-benchlead mn-rev">Same prompts, same judge, same rubric — against public Arabic LLMs up to
+  6× larger. Average dialectal fidelity across MSA, Egyptian, and Darija (Table 2):</p>
 
-  <div class="mn-grid-wrap mn-rev">
-    <table class="mn-grid" id="mn-grid" aria-label="Scores by prompt dialect and model, 1 to 5">
-      <thead>
-        <tr><th class="mn-corner">prompt ↓</th><th>MSA<br>model</th><th>Egyptian<br>model</th><th>Darija<br>model</th><th class="mn-col-menara">MENARA</th></tr>
-      </thead>
-      <tbody>
-        <tr><th>MSA</th><td></td><td></td><td></td><td></td></tr>
-        <tr><th>Egyptian</th><td></td><td></td><td></td><td></td></tr>
-        <tr><th>Darija</th><td></td><td></td><td></td><td></td></tr>
-      </tbody>
-    </table>
+  <div class="mn-bench mn-rev" id="mn-bench">
+    <div class="mn-brow mn-brow-hero" style="--v: 3.68">
+      <span class="mn-bname">MENARA <small>2B</small></span>
+      <span class="mn-btrack"><span class="mn-bfill"></span></span>
+      <span class="mn-bval">3.68</span>
+    </div>
+    <div class="mn-brow" style="--v: 2.93">
+      <span class="mn-bname">ALLaM <small>7B</small></span>
+      <span class="mn-btrack"><span class="mn-bfill"></span></span>
+      <span class="mn-bval">2.93</span>
+    </div>
+    <div class="mn-brow" style="--v: 2.84">
+      <span class="mn-bname">Jais <small>13B</small></span>
+      <span class="mn-btrack"><span class="mn-bfill"></span></span>
+      <span class="mn-bval">2.84</span>
+    </div>
+    <div class="mn-brow" style="--v: 2.55">
+      <span class="mn-bname">Fanar <small>7B</small></span>
+      <span class="mn-btrack"><span class="mn-bfill"></span></span>
+      <span class="mn-bval">2.55</span>
+    </div>
   </div>
+  <p class="mn-benchnote mn-rev">MENARA per dialect: MSA 4.89 · Egyptian 3.02 · Darija 3.12 — on the dialects,
+  it clears every larger model by a wide margin. Dialect adaptation beats scale.</p>
 
-  <div class="mn-chips mn-rev">
-    <span class="mn-fact">2B parameters — phone-sized, not server-sized</span>
-    <span class="mn-fact">zero-shot merge — no retraining</span>
-    <span class="mn-fact">&gt;60% cheaper than keeping three models</span>
-    <span class="mn-fact">native speakers rated it 4.91 / 4.87 / 4.20</span>
+  <div class="mn-facts mn-rev">
+    <span class="mn-fact">robust to noisy input — no significant drop (p &gt; 0.29)</span>
+    <span class="mn-fact">evaluator stability α = 0.89 (Krippendorff)</span>
+    <span class="mn-fact">reviewed by two medical SMEs</span>
+    <span class="mn-fact">runs where a 13B can't — 2B fits small hardware</span>
   </div>
 </section>
 
@@ -190,26 +203,26 @@
     <dt class="label-caps">Status</dt><dd>Published — open access (CC BY)</dd>
   </dl>
   <div class="prose">
-    <p><strong>The problem.</strong> Arabic is not one language at the patient level. Clinical conversations happen in Egyptian, Darija, Gulf, Levantine — not in the Modern Standard Arabic that most models are trained on. A specialist per dialect works, but training, storing, and serving a separate medical model for every dialect doesn't scale.</p>
-    <p><strong>The approach.</strong> Don't train — merge. MENARA combines three existing Gemma-2B specialists (Meditron3 for medicine, an Egyptian Arabic model, Atlas-Chat for Darija) with TIES: trim each specialist to its strongest parameter updates, elect a sign where they disagree, and merge the survivors into one model. Zero-shot — no gradient ever flows.</p>
-    <blockquote class="pullquote">Every single model collapses outside its home dialect. The merged model is the only column with no bad rows.</blockquote>
-    <p><strong>What was hard.</strong> Proving fluency, not just claiming it. The evaluation is dual: an LLM judge (Qwen 3) scores dialectal fidelity and medical competence over 300 prompts per dialect, and native speakers of Egyptian and Darija rate naturalness and coherence by hand. The journal version goes further — dialect-composition analysis of lexical purity and code-switching, benchmarks against state-of-the-art Arabic LLMs, and subject-matter-expert review.</p>
-    <p><strong>What shipped.</strong> A merged 2B model scoring 4.89 / 3.91 / 3.82 on dialectal fidelity across MSA, Egyptian, and Darija — where individual specialists fall as low as 1.91 off their home turf — with medical competence held near 4.0 everywhere and storage and deployment cost cut by more than 60% versus maintaining three models.</p>
-    <p><strong>What this changes.</strong> Model merging becomes a practical answer to linguistic fragmentation in healthcare: when the next dialect is needed, you merge a specialist in — no retraining, no second server, no model zoo.</p>
+    <p><strong>The problem.</strong> Arabic is not one language at the patient level. Clinical conversations happen in Egyptian, Darija, Gulf, Levantine — not in the Modern Standard Arabic most models are trained on. A specialist per dialect works, but training, storing, and serving a separate medical model for every dialect doesn't scale.</p>
+    <p><strong>The approach.</strong> Don't train — merge. MENARA combines three Gemma-2B specialists (Meditron3 for medicine, an Egyptian Arabic model, Atlas-Chat for Darija) with TIES merging at density 0.6, weighting the dialect specialists 0.6 against the medical backbone's 0.4. Zero-shot: no gradient ever flows.</p>
+    <blockquote class="pullquote">A 2B merge averages 3.68 on dialectal fidelity where Jais-13B manages 2.84 — dialect adaptation beats scale.</blockquote>
+    <p><strong>What was hard.</strong> Proving the dialect is real, not decorative. Beyond LLM-judged fidelity (Qwen 3, 300 prompts per dialect) and native-speaker ratings, the paper introduces a token-level composition analysis: prompted in Darija, MENARA's replies are 54% Darija with 27% MSA and French borrowings — which is how Darija actually talks about medicine, not leakage. Two medical SMEs reviewed clinical safety; evaluator stability reached Krippendorff's α = 0.89.</p>
+    <p><strong>What shipped.</strong> One 2B model with the most balanced profile across all three varieties (4.89 / 3.02 / 3.12 fidelity), no catastrophic failure in any dialect, cross-dialect answering in all six directions, robustness to noisy input, and more than 60% less storage than maintaining three specialists.</p>
+    <p><strong>What this changes.</strong> Model merging becomes a practical answer to linguistic fragmentation in healthcare: when the next dialect is needed, merge a specialist in — no retraining, no second server, no model zoo.</p>
   </div>
 </section>
 
 <section class="artifacts">
   <figure class="fig">
-<pre>three Gemma-2B specialists (Egyptian · Darija · medicine)
-  → TIES: trim (top-20%) → elect sign → merge     [MergeKit, zero-shot]
-  → one 2B model, every dialect
-  → judged: Qwen 3 over 300 prompts/dialect + native-speaker review</pre>
+<pre>three Gemma-2B specialists (medicine · Egyptian · Darija)
+  → TIES: trim → elect sign → merge   [density 0.6 · weights 0.6/0.6/0.4 · MergeKit]
+  → MENARA: one 2B model, every dialect, all six cross-dialect directions
+  → judged: Qwen 3 (300 prompts/dialect) · native speakers · 2 medical SMEs</pre>
     <figcaption class="caption-meta label-caps">FIG. 1 — The MENARA pipeline</figcaption>
   </figure>
 </section>
 
-<p class="footnote">Ibrahim, Hosseini, Helmy, Arabi, AlShareef, Lakhdhar, Serag. “MENARA: Medical Natural Arabic Response Assistant.” <em>MAKE</em> 8(4):110, MDPI, 2026. Open access (CC BY). Companion: “Bridging Dialectal Gaps in Arabic Medical LLMs through Model Merging,” ACL ArabicNLP 2025 — evaluation tables cited from the companion study.</p>
+<p class="footnote">Ibrahim, Hosseini, Helmy, Arabi, AlShareef, Lakhdhar, Serag. “MENARA: Medical Natural Arabic Response Assistant.” <em>MAKE</em> 8(4):110, MDPI, 2026. Open access (CC BY). Companion: “Bridging Dialectal Gaps in Arabic Medical LLMs through Model Merging,” ACL ArabicNLP 2025. All figures above are the journal's.</p>
 
 <a class="next-issue" href="mera.html">
   <span class="label-caps lab">Next project →</span>
@@ -228,68 +241,50 @@
   'use strict';
   document.body.classList.add('mn-js');
 
-  /* ---- scores: Table 1 (fidelity) & Table 2 (medical), companion paper */
-  var FID = { msa: [4.78, 4.64, 3.34, 4.89], egy: [2.14, 4.40, 1.96, 3.91], dar: [1.91, 2.35, 4.02, 3.82] };
-  var MED = { msa: [4.12, 3.68, 3.90, 4.02], egy: [2.28, 4.32, 2.03, 3.88], dar: [1.83, 1.77, 4.05, 3.85] };
-  var Q = {
-    msa: 'أعاني من صداعٍ شديدٍ منذ يومين، فماذا أفعل؟',
-    egy: 'عندي صداع جامد بقاله يومين، أعمل إيه؟',
-    dar: 'راسي كيضرني بزاف هادي يومين، شنو ندير؟'
+  /* journal data: Fig. 7 composition, §4.2 fidelity, Table 1 human */
+  var D = {
+    msa: { q: 'أعاني من صداعٍ شديدٍ منذ يومين، فماذا أفعل؟',
+           comp: [88, 5, 0, 7], fid: '4.89', hum: '4.91',
+           note: 'Defaults cleanly to the standard register — zero Darija leakage.' },
+    egy: { q: 'عندي صداع جامد بقاله يومين، أعمل إيه؟',
+           comp: [24, 71, 0, 5], fid: '3.02', hum: '4.87',
+           note: 'The 24% MSA is natural semi-formal code-switching, common in Egyptian medical talk.' },
+    dar: { q: 'راسي كيضرني بزاف هادي يومين، شنو ندير؟',
+           comp: [27, 8, 54, 11], fid: '3.12', hum: '4.20',
+           note: '27% MSA and French borrowings — how Darija actually talks about medicine, not leakage.' }
   };
-  function statusOf(s) { return s < 2.5 ? 'loses the dialect' : s < 3.5 ? 'strained' : 'fluent'; }
-  function classOf(s) { return s < 2.5 ? 'is-bad' : s < 3.5 ? 'is-mid' : 'is-good'; }
-
-  var qEl = document.getElementById('mn-q');
-  var models = document.querySelectorAll('#mn-models .mn-model');
-  function renderDialect(d) {
-    qEl.style.opacity = 0;
-    setTimeout(function () { qEl.textContent = Q[d]; qEl.style.opacity = 1; }, 180);
-    models.forEach(function (m) {
-      var i = +m.dataset.m, s = FID[d][i], med = MED[d][i];
-      m.querySelector('.mn-bar-fill').style.width = ((s - 1) / 4 * 100) + '%';
-      m.querySelector('.mn-score').textContent = s.toFixed(2);
-      var st = m.querySelector('.mn-status');
-      st.textContent = statusOf(s);
-      st.className = 'mn-status ' + classOf(s);
-      m.querySelector('.mn-bar-fill').className = 'mn-bar-fill ' + classOf(s);
-      m.querySelector('.mn-med').textContent = 'medical ' + med.toFixed(2);
+  var q = document.getElementById('mn-q');
+  var segs = document.querySelectorAll('#mn-compbar .mn-seg');
+  var note = document.getElementById('mn-compnote');
+  var fid = document.getElementById('mn-fid');
+  var hum = document.getElementById('mn-hum');
+  function render(d) {
+    var x = D[d];
+    q.style.opacity = 0;
+    setTimeout(function () { q.textContent = x.q; q.style.opacity = 1; }, 160);
+    segs.forEach(function (s, i) {
+      s.style.width = x.comp[i] + '%';
+      s.textContent = x.comp[i] >= 8 ? x.comp[i] + '%' : '';
     });
+    note.textContent = x.note;
+    fid.textContent = x.fid;
+    hum.textContent = x.hum;
   }
   document.querySelectorAll('.mn-dial').forEach(function (b) {
     b.addEventListener('click', function () {
-      document.querySelectorAll('.mn-dial').forEach(function (x) { x.classList.toggle('is-on', x === b); });
-      renderDialect(b.dataset.d);
+      document.querySelectorAll('.mn-dial').forEach(function (o) { o.classList.toggle('is-on', o === b); });
+      render(b.dataset.d);
     });
   });
 
-  /* ---- scoreboard grid ---- */
-  var grid = document.getElementById('mn-grid');
-  var rows = ['msa', 'egy', 'dar'];
-  function renderGrid(t) {
-    var T = t === 'med' ? MED : FID;
-    grid.querySelectorAll('tbody tr').forEach(function (tr, r) {
-      tr.querySelectorAll('td').forEach(function (td, c) {
-        var s = T[rows[r]][c];
-        td.textContent = s.toFixed(2);
-        td.className = classOf(s) + (c === 3 ? ' mn-cell-menara' : '');
-      });
-    });
-  }
-  document.querySelectorAll('.mn-tab').forEach(function (b) {
-    b.addEventListener('click', function () {
-      document.querySelectorAll('.mn-tab').forEach(function (x) { x.classList.toggle('is-on', x === b); });
-      renderGrid(b.dataset.t);
-    });
-  });
-
-  /* ---- reveals ---- */
   var io = new IntersectionObserver(function (es) {
-    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+    es.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+    });
   }, { threshold: 0.18 });
   document.querySelectorAll('.mn-rev').forEach(function (el) { io.observe(el); });
 
-  renderDialect('msa');
-  renderGrid('fid');
+  render('msa');
 })();
 </script>
 <script src="../theme.js" defer></script>
