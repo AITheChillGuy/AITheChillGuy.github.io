@@ -10,8 +10,8 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=7">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=8">
 </head>
 <body class="mn-page">
 
@@ -34,7 +34,12 @@
 <header class="mn-hero">
   <a class="mn-back label-caps" href="../index.html#projects">← Back to projects</a>
   <h1 class="mn-title">
-    <span class="mn-title-ar" lang="ar" dir="rtl">منارة</span>
+    <span class="mn-spec" lang="ar" dir="rtl" role="img" aria-label="منارة">
+      <span class="mn-spec-w mn-spec-kufi is-live" aria-hidden="true">منارة</span>
+      <span class="mn-spec-w mn-spec-naskh" aria-hidden="true">منارة</span>
+      <span class="mn-spec-w mn-spec-ruqaa" aria-hidden="true">منارة</span>
+    </span>
+    <span class="mn-spec-tag"><span id="mn-spec-tag">KUFI</span> — one word, three hands</span>
     <span class="mn-title-en">MENARA</span>
   </h1>
   <div class="mn-rule" aria-hidden="true"></div>
@@ -43,12 +48,21 @@
   a Moroccan Darija specialist, and a medical specialist into <b>one 2-billion-parameter model</b> —
   no retraining, and it outperforms Arabic models six times its size on dialectal medicine.</p>
   <p class="mn-cite">Machine Learning &amp; Knowledge Extraction · MDPI · 8(4):110 · 2026 · open access</p>
+  <span class="mn-cue" aria-hidden="true"></span>
 </header>
+
+<!-- marquee hook: the same complaint in three Arabics -->
+<div class="mn-marquee" aria-hidden="true">
+  <div class="mn-marquee-track" lang="ar" dir="rtl">
+    <span class="mn-mq"><i class="mq-msa">أعاني من صداعٍ شديدٍ منذ يومين، فماذا أفعل؟</i><b class="mq-orn">۞</b><i class="mq-egy">عندي صداع جامد بقاله يومين، أعمل إيه؟</i><b class="mq-orn">۞</b><i class="mq-dar">راسي كيضرني بزاف هادي يومين، شنو ندير؟</i><b class="mq-orn">۞</b></span><span class="mn-mq"><i class="mq-msa">أعاني من صداعٍ شديدٍ منذ يومين، فماذا أفعل؟</i><b class="mq-orn">۞</b><i class="mq-egy">عندي صداع جامد بقاله يومين، أعمل إيه؟</i><b class="mq-orn">۞</b><i class="mq-dar">راسي كيضرني بزاف هادي يومين، شنو ندير؟</i><b class="mq-orn">۞</b></span>
+  </div>
+</div>
 
 <!-- ============================================================
      § 01 — THE QUESTION (one interaction, three linked readouts)
      ============================================================ -->
 <section class="mn-sect" aria-label="Ask in any dialect">
+  <span class="mn-ghost" aria-hidden="true">٠١</span>
   <div class="mn-head mn-rev">
     <span class="mn-head-no">01</span>
     <span class="mn-head-en">Ask in any dialect</span>
@@ -98,6 +112,7 @@
      § 02 — THE MERGE (typographic diagram)
      ============================================================ -->
 <section class="mn-sect" aria-label="How the model was built">
+  <span class="mn-ghost" aria-hidden="true">٠٢</span>
   <div class="mn-head mn-rev">
     <span class="mn-head-no">02</span>
     <span class="mn-head-en">Three specialists, one model</span>
@@ -145,7 +160,21 @@
 <!-- ============================================================
      § 03 — THE BENCHMARK (2B beats 13B)
      ============================================================ -->
+<!-- interstitial stat moment -->
+<section class="mn-stat mn-rev" aria-label="Two billion parameters outscore thirteen billion">
+  <div class="mn-stat-side">
+    <span class="mn-stat-big">2B</span>
+    <span class="mn-stat-cap">parameters in MENARA</span>
+  </div>
+  <span class="mn-stat-vs" lang="ar" dir="rtl">يسبق</span>
+  <div class="mn-stat-side">
+    <span class="mn-stat-big mn-stat-dim">13B</span>
+    <span class="mn-stat-cap">parameters in Jais — outscored</span>
+  </div>
+</section>
+
 <section class="mn-sect" aria-label="Benchmark against larger Arabic models">
+  <span class="mn-ghost" aria-hidden="true">٠٣</span>
   <div class="mn-head mn-rev">
     <span class="mn-head-no">03</span>
     <span class="mn-head-en">Two billion beats thirteen</span>
@@ -157,29 +186,58 @@
   6× larger. Average dialectal fidelity across MSA, Egyptian, and Darija (Table 2):</p>
 
   <div class="mn-bench mn-rev" id="mn-bench">
-    <div class="mn-brow mn-brow-hero" style="--v: 3.68">
-      <span class="mn-bname">MENARA <small>2B</small></span>
-      <span class="mn-btrack"><span class="mn-bfill"></span></span>
-      <span class="mn-bval">3.68</span>
+    <div class="mn-bitem mn-bitem-hero" tabindex="0">
+      <div class="mn-brow" style="--v: 3.68">
+        <span class="mn-bname">MENARA <small>2B</small></span>
+        <span class="mn-btrack"><span class="mn-bfill"></span></span>
+        <span class="mn-bval" data-n="3.68">3.68</span>
+      </div>
+      <div class="mn-bsub"><div class="mn-bsub-in">
+        <span class="mn-msub"><i>MSA</i><span class="mn-mtrack"><b class="mn-mb-msa" style="--w:97.8%"></b></span><em>4.89</em></span>
+        <span class="mn-msub"><i>EGY</i><span class="mn-mtrack"><b class="mn-mb-egy" style="--w:60.4%"></b></span><em>3.02</em></span>
+        <span class="mn-msub"><i>DRJ</i><span class="mn-mtrack"><b class="mn-mb-dar" style="--w:62.4%"></b></span><em>3.12</em></span>
+      </div></div>
     </div>
-    <div class="mn-brow" style="--v: 2.93">
-      <span class="mn-bname">ALLaM <small>7B</small></span>
-      <span class="mn-btrack"><span class="mn-bfill"></span></span>
-      <span class="mn-bval">2.93</span>
+    <div class="mn-bitem" tabindex="0">
+      <div class="mn-brow" style="--v: 2.93">
+        <span class="mn-bname">ALLaM <small>7B</small></span>
+        <span class="mn-btrack"><span class="mn-bfill"></span></span>
+        <span class="mn-bval" data-n="2.93">2.93</span>
+      </div>
+      <div class="mn-bsub"><div class="mn-bsub-in">
+        <span class="mn-msub"><i>MSA</i><span class="mn-mtrack"><b class="mn-mb-msa" style="--w:95.4%"></b></span><em>4.77</em></span>
+        <span class="mn-msub"><i>EGY</i><span class="mn-mtrack"><b class="mn-mb-egy" style="--w:46.2%"></b></span><em>2.31</em></span>
+        <span class="mn-msub"><i>DRJ</i><span class="mn-mtrack"><b class="mn-mb-dar" style="--w:34.4%"></b></span><em>1.72</em></span>
+      </div></div>
     </div>
-    <div class="mn-brow" style="--v: 2.84">
-      <span class="mn-bname">Jais <small>13B</small></span>
-      <span class="mn-btrack"><span class="mn-bfill"></span></span>
-      <span class="mn-bval">2.84</span>
+    <div class="mn-bitem" tabindex="0">
+      <div class="mn-brow" style="--v: 2.84">
+        <span class="mn-bname">Jais <small>13B</small></span>
+        <span class="mn-btrack"><span class="mn-bfill"></span></span>
+        <span class="mn-bval" data-n="2.84">2.84</span>
+      </div>
+      <div class="mn-bsub"><div class="mn-bsub-in">
+        <span class="mn-msub"><i>MSA</i><span class="mn-mtrack"><b class="mn-mb-msa" style="--w:90.6%"></b></span><em>4.53</em></span>
+        <span class="mn-msub"><i>EGY</i><span class="mn-mtrack"><b class="mn-mb-egy" style="--w:42%"></b></span><em>2.10</em></span>
+        <span class="mn-msub"><i>DRJ</i><span class="mn-mtrack"><b class="mn-mb-dar" style="--w:37.6%"></b></span><em>1.88</em></span>
+      </div></div>
     </div>
-    <div class="mn-brow" style="--v: 2.55">
-      <span class="mn-bname">Fanar <small>7B</small></span>
-      <span class="mn-btrack"><span class="mn-bfill"></span></span>
-      <span class="mn-bval">2.55</span>
+    <div class="mn-bitem" tabindex="0">
+      <div class="mn-brow" style="--v: 2.55">
+        <span class="mn-bname">Fanar <small>7B</small></span>
+        <span class="mn-btrack"><span class="mn-bfill"></span></span>
+        <span class="mn-bval" data-n="2.55">2.55</span>
+      </div>
+      <div class="mn-bsub"><div class="mn-bsub-in">
+        <span class="mn-msub"><i>MSA</i><span class="mn-mtrack"><b class="mn-mb-msa" style="--w:98.2%"></b></span><em>4.91</em></span>
+        <span class="mn-msub"><i>EGY</i><span class="mn-mtrack"><b class="mn-mb-egy" style="--w:29.6%"></b></span><em>1.48</em></span>
+        <span class="mn-msub"><i>DRJ</i><span class="mn-mtrack"><b class="mn-mb-dar" style="--w:25%"></b></span><em>1.25</em></span>
+      </div></div>
     </div>
   </div>
-  <p class="mn-benchnote mn-rev">MENARA per dialect: MSA 4.89 · Egyptian 3.02 · Darija 3.12 — on the dialects,
-  it clears every larger model by a wide margin. Dialect adaptation beats scale.</p>
+  <p class="mn-benchhint mn-rev">Hover a row for the per-dialect scores.</p>
+  <p class="mn-benchnote mn-rev">The giants hold their own on MSA — then collapse on the dialects.
+  MENARA is the only profile without a collapse. Dialect adaptation beats scale.</p>
 
   <div class="mn-facts mn-rev">
     <span class="mn-fact">robust to noisy input — no significant drop (p &gt; 0.29)</span>
@@ -277,9 +335,46 @@
     });
   });
 
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* hero specimen: منارة through Kufi → Naskh → Ruqaa */
+  var specs = document.querySelectorAll('.mn-spec-w');
+  var specTag = document.getElementById('mn-spec-tag');
+  var specNames = ['KUFI', 'NASKH', 'RUQAA'];
+  if (specs.length && !reduced) {
+    var si = 0;
+    setInterval(function () {
+      si = (si + 1) % specs.length;
+      specs.forEach(function (s, i) { s.classList.toggle('is-live', i === si); });
+      specTag.textContent = specNames[si];
+    }, 3000);
+  }
+
+  /* count-up for benchmark values */
+  function countUp(el) {
+    var target = parseFloat(el.dataset.n);
+    if (reduced || !target) { return; }
+    var t0 = null;
+    el.textContent = '0.00';
+    function step(t) {
+      if (!t0) t0 = t;
+      var k = Math.min((t - t0) / 1100, 1);
+      k = 1 - Math.pow(1 - k, 3);
+      el.textContent = (target * k).toFixed(2);
+      if (k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+      if (e.isIntersecting) {
+        e.target.classList.add('on');
+        if (e.target.id === 'mn-bench') {
+          e.target.querySelectorAll('.mn-bval').forEach(countUp);
+        }
+        io.unobserve(e.target);
+      }
     });
   }, { threshold: 0.18 });
   document.querySelectorAll('.mn-rev').forEach(function (el) { io.observe(el); });

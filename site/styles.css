@@ -3025,3 +3025,160 @@ model-viewer.hgts-viewer {
   .mn-mergegram { gap: 14px; }
   .mn-brow { grid-template-columns: 92px 1fr 44px; }
 }
+
+/* ---------- v2.1 craft layer: specimen hero, marquee, ghosts,
+   stat interstitial, expandable benchmark ---------- */
+
+/* hero specimen: منارة cycling through three script traditions */
+.mn-spec {
+  position: relative; display: block; width: 100%;
+  height: clamp(9rem, 26vw, 17rem);
+}
+.mn-spec-w {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--mnf-teal);
+  font-size: clamp(5.2rem, 16vw, 11.5rem); line-height: 1.5;
+  opacity: 0; transition: opacity 1s ease;
+}
+.mn-spec-w.is-live { opacity: 1; }
+.mn-spec-kufi  { font-family: "Reem Kufi", serif; font-weight: 600; }
+.mn-spec-naskh { font-family: "Amiri", serif; font-weight: 700; }
+.mn-spec-ruqaa { font-family: "Aref Ruqaa", serif; font-weight: 700; font-size: clamp(4.6rem, 14vw, 10rem); }
+.mn-spec-tag {
+  display: block; margin: 2px 0 10px;
+  font-family: "JetBrains Mono", monospace; font-size: 0.66rem;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--mnf-dim);
+}
+.mn-spec-tag #mn-spec-tag { color: var(--mnf-gold); }
+@media (prefers-reduced-motion: reduce) {
+  .mn-spec-w { transition: none; }
+}
+
+/* scroll cue */
+.mn-cue {
+  display: block; width: 1.5px; height: 52px; margin: 34px auto 0;
+  background: linear-gradient(var(--mnf-gold), transparent);
+  animation: mn-cue 2.2s ease-in-out infinite;
+  transform-origin: top;
+}
+@keyframes mn-cue {
+  0%, 100% { transform: scaleY(0.35); opacity: 0.5; }
+  50%      { transform: scaleY(1); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .mn-cue { animation: none; } }
+
+/* marquee band: the same complaint in three Arabics */
+.mn-marquee {
+  overflow: hidden; margin-top: clamp(40px, 8vh, 80px);
+  border-top: 1px solid var(--mnf-line); border-bottom: 1px solid var(--mnf-line);
+  background: var(--mnf-panel);
+}
+.mn-marquee-track {
+  display: flex; width: max-content;
+  animation: mn-mq 46s linear infinite;
+}
+.mn-marquee:hover .mn-marquee-track { animation-play-state: paused; }
+.mn-mq {
+  display: inline-flex; align-items: center; gap: 44px; padding: 15px 22px;
+  font-family: var(--mn-ar); font-size: 1.35rem; line-height: 1.9; white-space: nowrap;
+}
+.mn-mq i { font-style: normal; }
+.mq-msa { color: var(--mnf-teal); }
+.mq-egy { color: var(--mnf-gold); }
+.mq-dar { color: var(--mnf-terra); }
+.mq-orn { font-weight: 400; color: var(--mnf-dim); opacity: 0.6; font-size: 1.05rem; }
+@keyframes mn-mq {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) { .mn-marquee-track { animation: none; } }
+
+/* ghost chapter numerals (Arabic-Indic) */
+.mn-sect { position: relative; }
+.mn-ghost {
+  position: absolute; top: clamp(8px, 3vh, 30px); left: 8px; z-index: 0;
+  font-family: "Reem Kufi", serif; font-weight: 700;
+  font-size: clamp(7rem, 18vw, 13rem); line-height: 1;
+  color: var(--mnf-ink); opacity: 0.05; pointer-events: none; user-select: none;
+}
+.mn-sect > *:not(.mn-ghost) { position: relative; z-index: 1; }
+
+/* interstitial stat: 2B يسبق 13B */
+.mn-stat {
+  display: flex; align-items: center; justify-content: center;
+  gap: clamp(28px, 6vw, 72px); flex-wrap: wrap;
+  max-width: 880px; margin: 0 auto; padding: clamp(64px, 12vh, 120px) 24px 0;
+  text-align: center;
+}
+.mn-stat-side { display: flex; flex-direction: column; gap: 6px; }
+.mn-stat-big {
+  font-family: "Fraunces", serif; font-weight: 900;
+  font-size: clamp(4.5rem, 13vw, 9rem); line-height: 0.95;
+  color: var(--mnf-teal);
+}
+.mn-stat-dim {
+  color: var(--mnf-dim); opacity: 0.55;
+  text-decoration: line-through;
+  text-decoration-color: var(--mnf-terra); text-decoration-thickness: 6px;
+}
+.mn-stat-cap {
+  font-family: "JetBrains Mono", monospace; font-size: 0.68rem;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--mnf-dim);
+}
+.mn-stat-vs {
+  font-family: var(--mn-ar); font-weight: 700; color: var(--mnf-gold);
+  font-size: clamp(1.6rem, 4vw, 2.6rem); line-height: 1.6;
+}
+
+/* expandable benchmark rows */
+.mn-bitem {
+  border: 1.5px solid transparent; border-radius: 2px;
+  padding: 4px 10px; margin: 0 -10px;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.mn-bitem:hover, .mn-bitem:focus-visible, .mn-bitem:focus-within {
+  border-color: var(--mnf-line); background: var(--mnf-panel); outline: none;
+}
+.mn-bsub {
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mn-bitem:hover .mn-bsub, .mn-bitem:focus-visible .mn-bsub, .mn-bitem:focus-within .mn-bsub {
+  grid-template-rows: 1fr;
+}
+.mn-bsub-in {
+  overflow: hidden; min-height: 0;
+  display: flex; flex-direction: column; gap: 7px;
+  padding-left: 144px; padding-right: 66px;
+}
+.mn-bsub-in > :first-child { margin-top: 10px; }
+.mn-bsub-in > :last-child { margin-bottom: 8px; }
+.mn-msub {
+  display: grid; grid-template-columns: 34px 1fr 40px; align-items: center; gap: 10px;
+}
+.mn-msub i {
+  font-style: normal; font-family: "JetBrains Mono", monospace;
+  font-size: 0.6rem; letter-spacing: 0.08em; color: var(--mnf-dim);
+}
+.mn-mtrack { height: 8px; background: var(--mnf-bg); border-radius: 1px; overflow: hidden; }
+.mn-mtrack b { display: block; height: 100%; width: var(--w); }
+.mn-mb-msa { background: var(--mnf-teal); }
+.mn-mb-egy { background: var(--mnf-gold); }
+.mn-mb-dar { background: var(--mnf-terra); }
+.mn-msub em {
+  font-style: normal; font-family: "JetBrains Mono", monospace;
+  font-size: 0.66rem; text-align: right; color: var(--mnf-ink);
+}
+.mn-benchhint {
+  margin: 14px 0 0; font-family: "JetBrains Mono", monospace;
+  font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--mnf-dim); opacity: 0.8;
+}
+
+@media (max-width: 720px) {
+  .mn-mq { font-size: 1.05rem; gap: 26px; }
+  .mn-bsub-in { padding-left: 0; padding-right: 0; }
+  .mn-benchhint { display: none; }
+  .mn-bitem:active .mn-bsub { grid-template-rows: 1fr; }
+}
