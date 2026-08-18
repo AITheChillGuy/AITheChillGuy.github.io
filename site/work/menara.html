@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=9">
+<link rel="stylesheet" href="../styles.css?v=10">
 </head>
 <body class="mn-page">
 
@@ -29,189 +29,191 @@
 </nav>
 
 <!-- ============================================================
-     TITLE — the word writes itself in
+     THE SCROLL (طومار) — the page reads right-to-left.
+     Vertical scrolling travels the strip sideways, the way
+     Arabic is read. Six panels; the appendix below is vertical.
      ============================================================ -->
-<header class="mn-hero">
-  <a class="mn-back label-caps" href="../index.html#projects">← Back to projects</a>
-  <h1 class="mn-title">
-    <span class="mn-title-ar" lang="ar" dir="rtl">منارة</span>
-    <span class="mn-title-stroke" aria-hidden="true"></span>
-    <span class="mn-title-en">MENARA</span>
-  </h1>
-  <p class="mn-tagline"><span lang="ar" dir="rtl">نموذج واحد، عربيّات كثيرة</span><span class="mn-tagline-sep">·</span>One model, many Arabics</p>
-  <p class="mn-cite">Machine Learning &amp; Knowledge Extraction · MDPI · 8(4):110 · 2026 · open access</p>
-  <span class="mn-cue" aria-hidden="true"></span>
-</header>
+<div class="mn-film" id="mn-film">
+  <div class="mn-view">
+
+    <div class="mn-rail" aria-hidden="true">
+      <span class="mn-rail-fill" id="mn-rail-fill"></span>
+      <span class="mn-rail-dots" id="mn-rail-dots"></span>
+    </div>
+
+    <div class="mn-track" id="mn-track">
+
+      <!-- PANEL 1 · title -->
+      <section class="mn-panel mn-p1" aria-label="MENARA — title">
+        <div class="mn-p1-in">
+          <span class="mn-title-ar" lang="ar" dir="rtl">منارة</span>
+          <span class="mn-title-stroke" aria-hidden="true"></span>
+          <span class="mn-title-en">MENARA</span>
+          <p class="mn-tagline"><span lang="ar" dir="rtl">نموذج واحد، عربيّات كثيرة</span><span class="mn-tagline-sep">·</span>One model, many Arabics</p>
+          <p class="mn-cite">Machine Learning &amp; Knowledge Extraction · MDPI · 8(4):110 · 2026 · open access</p>
+          <p class="mn-hint"><span class="mn-hint-arr" aria-hidden="true">⟵</span>
+            <span>this page reads like Arabic — <b>right to left</b>. scroll to travel.</span>
+            <span lang="ar" dir="rtl">اقرأ كما تُقرأ العربية</span></p>
+        </div>
+      </section>
+
+      <!-- PANEL 2 · three patients -->
+      <section class="mn-panel mn-p2" aria-label="Three patients, one complaint">
+        <div class="mn-p2-in">
+          <p class="mn-kick label-caps" data-beat="1">Monday morning · three clinics · one complaint</p>
+          <div class="mn1-line mn1-msa" data-beat="2">
+            <span class="mn1-city">RIYADH · MSA</span>
+            <span class="mn1-ar" lang="ar" dir="rtl">أعاني من صداعٍ شديدٍ منذ يومين، فماذا أفعل؟</span>
+          </div>
+          <div class="mn1-line mn1-egy" data-beat="3">
+            <span class="mn1-city">CAIRO · EGYPTIAN</span>
+            <span class="mn1-ar" lang="ar" dir="rtl">عندي صداع جامد بقاله يومين، أعمل إيه؟</span>
+          </div>
+          <div class="mn1-line mn1-dar" data-beat="4">
+            <span class="mn1-city">CASABLANCA · DARIJA</span>
+            <span class="mn1-ar" lang="ar" dir="rtl">راسي كيضرني بزاف هادي يومين، شنو ندير؟</span>
+          </div>
+          <p class="mn1-say" data-beat="5">Same headache. Three Arabics.</p>
+          <p class="mn1-say mn1-say2" data-beat="6">Medical models speak the textbook one.
+            <em>Two of these patients won't be understood.</em></p>
+        </div>
+      </section>
+
+      <!-- PANEL 3 · the merge (scrubbed by travel) -->
+      <section class="mn-panel mn-p3" id="mn-merge" aria-label="Three specialists merge into one model">
+        <div class="mn-p3-in">
+          <p class="mn-kick label-caps" data-beat="1">Don't train a new model. <b>Merge three.</b></p>
+          <div class="mn2-row">
+            <div class="mn2-card mn2-c1">
+              <span class="mn2-ar" lang="ar" dir="rtl">مصري</span>
+              <span class="mn2-name">Egyptian Gemma-2B</span>
+              <span class="mn2-w">weight 0.6</span>
+            </div>
+            <div class="mn2-card mn2-c2">
+              <span class="mn2-ar" lang="ar" dir="rtl">طب</span>
+              <span class="mn2-name">Meditron3-Gemma2-2B</span>
+              <span class="mn2-w">weight 0.4</span>
+            </div>
+            <div class="mn2-card mn2-c3">
+              <span class="mn2-ar" lang="ar" dir="rtl">دارجة</span>
+              <span class="mn2-name">Atlas-Chat-2B</span>
+              <span class="mn2-w">weight 0.6</span>
+            </div>
+            <div class="mn2-out" aria-hidden="true">
+              <span class="mn2-out-ar" lang="ar" dir="rtl">منارة</span>
+              <span class="mn2-out-en">one 2B model · no gradient ever flows</span>
+            </div>
+          </div>
+          <div class="mn2-steps">
+            <span class="mn2-step" data-beat="2"><b>TRIM</b> keep the 60% of weights that matter</span>
+            <span class="mn2-step" data-beat="3"><b>ELECT</b> resolve sign conflicts by majority</span>
+            <span class="mn2-step" data-beat="4"><b>MERGE</b> fuse what survives — TIES, via MergeKit</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANEL 4 · try it -->
+      <section class="mn-panel mn-p4" aria-label="Ask MENARA in any dialect">
+        <div class="mn-p4-in">
+          <h2 class="mn-try-title" data-beat="1">It answers you <em>in your own Arabic.</em></h2>
+          <div class="mn-dialects" data-beat="2" role="group" aria-label="Choose the patient's dialect">
+            <button class="mn-dial is-on" type="button" data-d="msa"><span lang="ar" dir="rtl">الفصحى</span><small>MSA</small></button>
+            <button class="mn-dial" type="button" data-d="egy"><span lang="ar" dir="rtl">مصري</span><small>Egyptian</small></button>
+            <button class="mn-dial" type="button" data-d="dar"><span lang="ar" dir="rtl">دارجة</span><small>Darija</small></button>
+            <label class="mn-swx"><input type="checkbox" id="mn-cross"><i></i><span>reply in MSA for the clinician</span></label>
+          </div>
+          <div class="mn-chat" data-beat="3">
+            <p class="mn-qline" id="mn-q" lang="ar" dir="rtl">أعاني من صداعٍ شديدٍ منذ يومين، فماذا أفعل؟</p>
+            <div class="mn-aline">
+              <span class="mn-abadge" lang="ar" dir="rtl">منارة</span>
+              <p class="mn-atext" id="mn-a" lang="ar" dir="rtl"><span id="mn-a-txt">يُنصح بالراحة وشرب الماء بكثرة، وتناول مسكّنٍ مثل الباراسيتامول. إذا استمرّ الصداع أكثر من ثلاثة أيام أو اشتدّ فجأة، فراجع الطبيب فورًا.</span><i class="mn-caret" aria-hidden="true"></i></p>
+            </div>
+          </div>
+          <div class="mn-readout" id="mn-readout" data-beat="4">
+            <div class="mn-comp">
+              <p class="mn-readout-label">What it answered in <span class="mn-readout-note">— token composition, Fig. 7</span></p>
+              <div class="mn-compbar" id="mn-compbar" role="img" aria-label="Token composition of MENARA's replies for the selected dialect">
+                <span class="mn-seg mn-seg-msa"></span><span class="mn-seg mn-seg-egy"></span><span class="mn-seg mn-seg-dar"></span><span class="mn-seg mn-seg-oth"></span>
+              </div>
+              <div class="mn-legend">
+                <span><i class="mn-sw mn-sw-msa"></i>MSA</span>
+                <span><i class="mn-sw mn-sw-egy"></i>Egyptian</span>
+                <span><i class="mn-sw mn-sw-dar"></i>Darija</span>
+                <span><i class="mn-sw mn-sw-oth"></i>other</span>
+              </div>
+              <p class="mn-compnote" id="mn-compnote">Defaults cleanly to the standard register — zero Darija leakage.</p>
+            </div>
+            <div class="mn-scores">
+              <div class="mn-scorebox">
+                <span class="mn-scorenum" id="mn-fid">4.89</span>
+                <span class="mn-scorelbl">dialectal fidelity / 5</span>
+              </div>
+              <div class="mn-scorebox">
+                <span class="mn-scorenum" id="mn-hum">4.91</span>
+                <span class="mn-scorelbl">native-speaker rating / 5</span>
+              </div>
+            </div>
+          </div>
+          <p class="mn-crossban" id="mn-crossban" hidden>Cross-dialect generation — it reads one Arabic and writes another, in all six directions (Fig. 5).</p>
+          <p class="mn-draftnote">Dialect phrasings are illustrative; scores are the journal's.</p>
+        </div>
+      </section>
+
+      <!-- PANEL 5 · the race -->
+      <section class="mn-panel mn-p5" id="mn-race" aria-label="Benchmark race against larger Arabic models">
+        <div class="mn-p5-in">
+          <p class="mn-kick label-caps" data-beat="1">Same prompts · same judge · average dialectal fidelity, Table 2</p>
+          <div class="mn4-chart">
+            <div class="mn4-col mn4-hero" style="--h: 0.736">
+              <span class="mn4-val" data-beat="2">3.68</span>
+              <span class="mn4-bar"><b></b></span>
+              <span class="mn4-name">MENARA<small>2B</small></span>
+            </div>
+            <div class="mn4-col" style="--h: 0.586">
+              <span class="mn4-val" data-beat="2">2.93</span>
+              <span class="mn4-bar"><b></b></span>
+              <span class="mn4-name">ALLaM<small>7B</small></span>
+            </div>
+            <div class="mn4-col" style="--h: 0.568">
+              <span class="mn4-val" data-beat="2">2.84</span>
+              <span class="mn4-bar"><b></b></span>
+              <span class="mn4-name">Jais<small>13B</small></span>
+            </div>
+            <div class="mn4-col" style="--h: 0.51">
+              <span class="mn4-val" data-beat="2">2.55</span>
+              <span class="mn4-bar"><b></b></span>
+              <span class="mn4-name">Fanar<small>7B</small></span>
+            </div>
+          </div>
+          <p class="mn4-stamp" data-beat="3"><b>2B</b><span lang="ar" dir="rtl">يسبق</span><b class="mn4-dim">13B</b></p>
+          <p class="mn4-note" data-beat="4">The giants hold their own on MSA, then collapse on the dialects.
+          MENARA is the only profile without a collapse — 4.89 / 3.02 / 3.12.
+          <b>Dialect adaptation beats scale.</b></p>
+        </div>
+      </section>
+
+      <!-- PANEL 6 · rigor + close -->
+      <section class="mn-panel mn-p6" aria-label="Evaluation rigor">
+        <div class="mn-p6-in">
+          <span class="mn-p6-ar" lang="ar" dir="rtl" data-beat="1">وصلت</span>
+          <p class="mn-p6-en" data-beat="1">You've reached the end of the scroll.</p>
+          <div class="mn-facts" data-beat="2">
+            <span class="mn-fact">robust to noisy input — no significant drop (p &gt; 0.29)</span>
+            <span class="mn-fact">evaluator stability α = 0.89 (Krippendorff)</span>
+            <span class="mn-fact">reviewed by two medical SMEs</span>
+            <span class="mn-fact">humans rated it 4.91 / 4.87 / 4.20</span>
+            <span class="mn-fact">&gt;60% less storage than three specialists</span>
+          </div>
+          <p class="mn-p6-down" data-beat="3">case notes below <span class="mn-p6-darr" aria-hidden="true">↓</span></p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
 
 <!-- ============================================================
-     SCENE 1 — three patients, one complaint
-     ============================================================ -->
-<section class="mn-scene mn-s1" aria-label="Three patients, one complaint">
-  <div class="mn-stage">
-    <div class="mn1-wrap">
-      <p class="mn1-kicker label-caps" data-beat="1">Monday morning · three clinics · one complaint</p>
-
-      <div class="mn1-line mn1-msa" data-beat="1">
-        <span class="mn1-city">RIYADH · MSA</span>
-        <span class="mn1-ar" lang="ar" dir="rtl">أعاني من صداعٍ شديدٍ منذ يومين، فماذا أفعل؟</span>
-      </div>
-      <div class="mn1-line mn1-egy" data-beat="2">
-        <span class="mn1-city">CAIRO · EGYPTIAN</span>
-        <span class="mn1-ar" lang="ar" dir="rtl">عندي صداع جامد بقاله يومين، أعمل إيه؟</span>
-      </div>
-      <div class="mn1-line mn1-dar" data-beat="3">
-        <span class="mn1-city">CASABLANCA · DARIJA</span>
-        <span class="mn1-ar" lang="ar" dir="rtl">راسي كيضرني بزاف هادي يومين، شنو ندير؟</span>
-      </div>
-
-      <p class="mn1-say" data-beat="4">Same headache. Three Arabics.</p>
-      <p class="mn1-say mn1-say2" data-beat="5">Medical models are trained on the textbook one.<br>
-        <em>Two of these patients won't be understood.</em></p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     SCENE 2 — the merge, scrubbed by scroll
-     ============================================================ -->
-<section class="mn-scene mn-s2" aria-label="Three specialists merge into one model">
-  <div class="mn-stage">
-    <div class="mn2-wrap">
-      <p class="mn2-kicker label-caps">Don't train a new model. <b>Merge three.</b></p>
-
-      <div class="mn2-row">
-        <div class="mn2-card mn2-c1">
-          <span class="mn2-ar" lang="ar" dir="rtl">مصري</span>
-          <span class="mn2-name">Egyptian Gemma-2B</span>
-          <span class="mn2-w">weight 0.6</span>
-        </div>
-        <div class="mn2-card mn2-c2">
-          <span class="mn2-ar" lang="ar" dir="rtl">طب</span>
-          <span class="mn2-name">Meditron3-Gemma2-2B</span>
-          <span class="mn2-w">weight 0.4</span>
-        </div>
-        <div class="mn2-card mn2-c3">
-          <span class="mn2-ar" lang="ar" dir="rtl">دارجة</span>
-          <span class="mn2-name">Atlas-Chat-2B</span>
-          <span class="mn2-w">weight 0.6</span>
-        </div>
-        <div class="mn2-out" aria-hidden="true">
-          <span class="mn2-out-ar" lang="ar" dir="rtl">منارة</span>
-          <span class="mn2-out-en">one 2B model · no gradient ever flows</span>
-        </div>
-      </div>
-
-      <div class="mn2-steps">
-        <span class="mn2-step" data-beat="1"><b>TRIM</b> keep the 60% of weights that matter</span>
-        <span class="mn2-step" data-beat="2"><b>ELECT</b> resolve sign conflicts by majority</span>
-        <span class="mn2-step" data-beat="3"><b>MERGE</b> fuse what survives — TIES, via MergeKit</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     SCENE 3 — try it: the answer types itself
-     ============================================================ -->
-<section class="mn-try" aria-label="Ask MENARA in any dialect">
-  <p class="mn-try-kicker label-caps">The result · ask it yourself</p>
-  <h2 class="mn-try-title">It answers you <em>in your own Arabic.</em></h2>
-
-  <div class="mn-dialects" role="group" aria-label="Choose the patient's dialect">
-    <button class="mn-dial is-on" type="button" data-d="msa"><span lang="ar" dir="rtl">الفصحى</span><small>MSA</small></button>
-    <button class="mn-dial" type="button" data-d="egy"><span lang="ar" dir="rtl">مصري</span><small>Egyptian</small></button>
-    <button class="mn-dial" type="button" data-d="dar"><span lang="ar" dir="rtl">دارجة</span><small>Darija</small></button>
-    <label class="mn-swx"><input type="checkbox" id="mn-cross"><i></i><span>reply in MSA for the clinician</span></label>
-  </div>
-
-  <div class="mn-chat">
-    <p class="mn-qline" id="mn-q" lang="ar" dir="rtl">أعاني من صداعٍ شديدٍ منذ يومين، فماذا أفعل؟</p>
-    <div class="mn-aline">
-      <span class="mn-abadge" lang="ar" dir="rtl">منارة</span>
-      <p class="mn-atext" id="mn-a" lang="ar" dir="rtl"><span id="mn-a-txt">يُنصح بالراحة وشرب الماء بكثرة، وتناول مسكّنٍ مثل الباراسيتامول. إذا استمرّ الصداع أكثر من ثلاثة أيام أو اشتدّ فجأة، فراجع الطبيب فورًا.</span><i class="mn-caret" aria-hidden="true"></i></p>
-    </div>
-  </div>
-
-  <div class="mn-readout" id="mn-readout">
-    <div class="mn-comp">
-      <p class="mn-readout-label">What it answered in <span class="mn-readout-note">— token composition, Fig. 7</span></p>
-      <div class="mn-compbar" id="mn-compbar" role="img" aria-label="Token composition of MENARA's replies for the selected dialect">
-        <span class="mn-seg mn-seg-msa"></span><span class="mn-seg mn-seg-egy"></span><span class="mn-seg mn-seg-dar"></span><span class="mn-seg mn-seg-oth"></span>
-      </div>
-      <div class="mn-legend">
-        <span><i class="mn-sw mn-sw-msa"></i>MSA</span>
-        <span><i class="mn-sw mn-sw-egy"></i>Egyptian</span>
-        <span><i class="mn-sw mn-sw-dar"></i>Darija</span>
-        <span><i class="mn-sw mn-sw-oth"></i>other</span>
-      </div>
-      <p class="mn-compnote" id="mn-compnote"></p>
-    </div>
-    <div class="mn-scores">
-      <div class="mn-scorebox">
-        <span class="mn-scorenum" id="mn-fid">4.89</span>
-        <span class="mn-scorelbl">dialectal fidelity / 5<br>Qwen-3 judge, 300 prompts</span>
-      </div>
-      <div class="mn-scorebox">
-        <span class="mn-scorenum" id="mn-hum">4.91</span>
-        <span class="mn-scorelbl">native-speaker rating / 5<br>naturalness &amp; coherence</span>
-      </div>
-    </div>
-  </div>
-  <p class="mn-crossban" id="mn-crossban" hidden>Cross-dialect generation — it reads one Arabic and writes another,
-  in all six directions (Fig. 5 of the paper).</p>
-  <p class="mn-draftnote">Dialect phrasings are illustrative; scores are the journal's.</p>
-</section>
-
-<!-- ============================================================
-     SCENE 4 — the race: 2B vs the giants
-     ============================================================ -->
-<section class="mn-scene mn-s4" aria-label="Benchmark race against larger Arabic models">
-  <div class="mn-stage">
-    <div class="mn4-wrap">
-      <p class="mn4-kicker label-caps">Same prompts · same judge · average dialectal fidelity, Table 2</p>
-      <div class="mn4-chart">
-        <div class="mn4-col mn4-hero" style="--h: 0.736">
-          <span class="mn4-val" data-beat="3">3.68</span>
-          <span class="mn4-bar"><b></b></span>
-          <span class="mn4-name">MENARA<small>2B</small></span>
-        </div>
-        <div class="mn4-col" style="--h: 0.586">
-          <span class="mn4-val" data-beat="3">2.93</span>
-          <span class="mn4-bar"><b></b></span>
-          <span class="mn4-name">ALLaM<small>7B</small></span>
-        </div>
-        <div class="mn4-col" style="--h: 0.568">
-          <span class="mn4-val" data-beat="3">2.84</span>
-          <span class="mn4-bar"><b></b></span>
-          <span class="mn4-name">Jais<small>13B</small></span>
-        </div>
-        <div class="mn4-col" style="--h: 0.51">
-          <span class="mn4-val" data-beat="3">2.55</span>
-          <span class="mn4-bar"><b></b></span>
-          <span class="mn4-name">Fanar<small>7B</small></span>
-        </div>
-      </div>
-      <p class="mn4-stamp" data-beat="4"><b>2B</b><span lang="ar" dir="rtl">يسبق</span><b class="mn4-dim">13B</b></p>
-      <p class="mn4-note" data-beat="5">The giants hold their own on MSA, then collapse on the dialects
-      (Jais-13B: 2.10 Egyptian, 1.88 Darija). MENARA is the only profile without a collapse —
-      4.89 / 3.02 / 3.12. <b>Dialect adaptation beats scale.</b></p>
-    </div>
-  </div>
-</section>
-
-<!-- rigor strip -->
-<section class="mn-facts-sect" aria-label="Evaluation rigor">
-  <div class="mn-facts">
-    <span class="mn-fact">robust to noisy input — no significant drop (p &gt; 0.29)</span>
-    <span class="mn-fact">evaluator stability α = 0.89 (Krippendorff)</span>
-    <span class="mn-fact">reviewed by two medical SMEs</span>
-    <span class="mn-fact">humans rated it 4.91 / 4.87 / 4.20</span>
-    <span class="mn-fact">&gt;60% less storage than three specialists</span>
-  </div>
-</section>
-
-<!-- ============================================================
-     CASE NOTES
+     APPENDIX — vertical, as usual
      ============================================================ -->
 <section class="anatomy">
   <dl>
@@ -263,36 +265,7 @@
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduced) { document.body.classList.add('mn-js'); }
 
-  /* ---------- scene machinery: --p scrub + beat classes ---------- */
-  if (!reduced) {
-    var scenes = [].slice.call(document.querySelectorAll('.mn-scene'));
-    scenes.forEach(function (sc) {
-      sc._beats = [].slice.call(sc.querySelectorAll('[data-beat]'));
-      sc._max = sc._beats.reduce(function (m, b) { return Math.max(m, +b.dataset.beat); }, 0);
-    });
-    var ticking = false;
-    function tick() {
-      var vh = window.innerHeight;
-      scenes.forEach(function (sc) {
-        var r = sc.getBoundingClientRect();
-        var total = sc.offsetHeight - vh;
-        var p = total > 0 ? Math.min(Math.max(-r.top / total, 0), 1) : 1;
-        sc.style.setProperty('--p', p.toFixed(4));
-        sc._beats.forEach(function (b) {
-          b.classList.toggle('on', p >= (+b.dataset.beat + 0.5) / (sc._max + 2));
-        });
-      });
-      ticking = false;
-    }
-    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(tick); } }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    tick();
-  }
-
-  /* ---------- scene 3: typewriter demo ---------- */
-  /* journal data: Fig. 7 composition, §4.2 fidelity, Table 1 human.
-     Dialect phrasings are illustrative drafts. */
+  /* ---------- typewriter demo (shared by both modes) ---------- */
   var D = {
     msa: { q: 'أعاني من صداعٍ شديدٍ منذ يومين، فماذا أفعل؟',
            a: 'يُنصح بالراحة وشرب الماء بكثرة، وتناول مسكّنٍ مثل الباراسيتامول. إذا استمرّ الصداع أكثر من ثلاثة أيام أو اشتدّ فجأة، فراجع الطبيب فورًا.',
@@ -317,7 +290,7 @@
   var readout = document.getElementById('mn-readout');
   var crossBan = document.getElementById('mn-crossban');
   var crossCk = document.getElementById('mn-cross');
-  var cur = 'msa', run = 0;
+  var cur = 'msa', run = 0, started = false;
 
   function showReadout(x) {
     readout.classList.add('is-live');
@@ -329,7 +302,6 @@
     fid.textContent = x.fid;
     hum.textContent = x.hum;
   }
-
   function play(d) {
     var x = D[d], token = ++run;
     var cross = crossCk.checked && d !== 'msa';
@@ -339,8 +311,7 @@
     aWrap.classList.add('is-typing');
     readout.classList.remove('is-live');
     crossBan.hidden = true;
-    var i = 0;
-    var speed = reduced ? 0 : 22;
+    var i = 0, speed = reduced ? 0 : 22;
     function step() {
       if (token !== run) return;
       if (speed === 0) { i = answer.length; }
@@ -354,7 +325,6 @@
     }
     setTimeout(step, reduced ? 0 : 350);
   }
-
   document.querySelectorAll('.mn-dial').forEach(function (b) {
     b.addEventListener('click', function () {
       document.querySelectorAll('.mn-dial').forEach(function (o) { o.classList.toggle('is-on', o === b); });
@@ -364,14 +334,73 @@
   });
   crossCk.addEventListener('change', function () { play(cur); });
 
-  /* start the demo when it scrolls into view */
-  var started = false;
-  var tryIo = new IntersectionObserver(function (es) {
-    es.forEach(function (e) {
-      if (e.isIntersecting && !started) { started = true; play(cur); tryIo.disconnect(); }
+  if (reduced) {
+    var tryIo = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting && !started) { started = true; play(cur); tryIo.disconnect(); }
+      });
+    }, { threshold: 0.3 });
+    tryIo.observe(document.querySelector('.mn-chat'));
+    return;
+  }
+
+  /* ---------- the RTL horizontal scroll ---------- */
+  var film = document.getElementById('mn-film');
+  var track = document.getElementById('mn-track');
+  var panels = [].slice.call(track.querySelectorAll('.mn-panel'));
+  var N = panels.length;
+  var mergeEl = document.getElementById('mn-merge');
+  var raceEl = document.getElementById('mn-race');
+  var railFill = document.getElementById('mn-rail-fill');
+  var dotsWrap = document.getElementById('mn-rail-dots');
+  var dots = [];
+  panels.forEach(function (_, i) {
+    var d = document.createElement('button');
+    d.type = 'button';
+    d.className = 'mn-dot';
+    d.setAttribute('aria-label', 'Go to panel ' + (i + 1) + ' of ' + N);
+    d.addEventListener('click', function () {
+      var total = film.offsetHeight - window.innerHeight;
+      var top = film.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({ top: top + (i / (N - 1)) * total, behavior: 'smooth' });
     });
-  }, { threshold: 0.35 });
-  tryIo.observe(document.querySelector('.mn-chat'));
+    dotsWrap.appendChild(d);
+    dots.push(d);
+  });
+
+  var maxShift = 0, target = 0, x = null, curIdx = -1, animating = false;
+  function clamp01(v) { return Math.min(Math.max(v, 0), 1); }
+  function measure() { maxShift = (N - 1) * window.innerWidth; }
+
+  function update() {
+    var r = film.getBoundingClientRect();
+    var total = film.offsetHeight - window.innerHeight;
+    var p = total > 0 ? clamp01(-r.top / total) : 0;
+    target = -(maxShift - p * maxShift);
+    var f = p * (N - 1);
+    var idx = Math.round(f);
+    if (idx !== curIdx) {
+      curIdx = idx;
+      panels.forEach(function (pl, i) { pl.classList.toggle('live', i === idx); });
+      dots.forEach(function (d, i) { d.classList.toggle('is-on', i === idx); });
+      if (idx === 3 && !started) { started = true; play(cur); }
+    }
+    mergeEl.style.setProperty('--pp', clamp01((f - 1.15) / 0.85).toFixed(4));
+    raceEl.style.setProperty('--pp', clamp01((f - 3.15) / 0.85).toFixed(4));
+    railFill.style.width = (p * 100).toFixed(2) + '%';
+    if (!animating) { animating = true; requestAnimationFrame(glide); }
+  }
+  function glide() {
+    if (x === null) { x = target; }
+    x += (target - x) * 0.12;
+    if (Math.abs(target - x) < 0.4) { x = target; }
+    track.style.transform = 'translate3d(' + x.toFixed(2) + 'px,0,0)';
+    if (x !== target) { requestAnimationFrame(glide); } else { animating = false; }
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', function () { measure(); x = null; update(); });
+  measure();
+  update();
 })();
 </script>
 <script src="../theme.js" defer></script>
