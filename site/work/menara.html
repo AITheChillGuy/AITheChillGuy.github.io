@@ -10,8 +10,8 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=11">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Noto+Kufi+Arabic:wght@700&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=12">
 </head>
 <body class="mn-page">
 
@@ -37,43 +37,13 @@
      HERO — geometric mark + type
      ============================================================ -->
 <header class="mn-sec mn-hero">
-  <div class="mn-hero-grid">
-    <svg class="mn-mark mn-rev" viewBox="0 0 200 200" role="img" aria-label="منارة — MENARA written in square Kufic script">
-      <rect x="1.5" y="1.5" width="197" height="197" class="mn-mark-frame"></rect>
-      <!-- منارة in square Kufic, reading right to left: م ن ا ر ة -->
-      <g class="mn-mark-ink">
-        <!-- م meem (initial): closed loop head on the baseline -->
-        <rect x="140" y="100" width="27" height="9"></rect>
-        <rect x="140" y="109" width="9" height="9"></rect>
-        <rect x="158" y="109" width="9" height="9"></rect>
-        <rect x="140" y="118" width="27" height="9"></rect>
-        <!-- ن noon (medial): baseline join with a tooth -->
-        <rect x="113" y="118" width="27" height="9"></rect>
-        <rect x="122" y="109" width="9" height="9"></rect>
-        <!-- ا alef: tall vertical, receives the join, connects no further -->
-        <rect x="104" y="64" width="9" height="63"></rect>
-        <!-- ر reh: descender bending left below the line -->
-        <rect x="86" y="91" width="9" height="36"></rect>
-        <rect x="68" y="127" width="27" height="9"></rect>
-        <!-- ة teh marbuta (isolated): closed loop -->
-        <rect x="32" y="100" width="27" height="9"></rect>
-        <rect x="32" y="109" width="9" height="9"></rect>
-        <rect x="50" y="109" width="9" height="9"></rect>
-        <rect x="32" y="118" width="27" height="9"></rect>
-      </g>
-      <!-- i'jam: one dot for noon, two for teh marbuta -->
-      <rect x="122" y="91" width="9" height="9" class="mn-mark-dot"></rect>
-      <rect x="32" y="82" width="9" height="9" class="mn-mark-dot"></rect>
-      <rect x="50" y="82" width="9" height="9" class="mn-mark-dot"></rect>
-    </svg>
-    <div class="mn-hero-copy">
-      <a class="mn-back" href="../index.html#projects">← BACK TO PROJECTS</a>
-      <span class="mn-kicker mn-rev">MEDICAL ARABIC · MODEL MERGING · 2026</span>
-      <h1 class="mn-title mn-rev">MENARA</h1>
-      <span class="mn-title-ar mn-rev" lang="ar" dir="rtl">منارة</span>
-      <p class="mn-deck mn-rev">A unified 2B medical model for Egyptian, Darija, and Standard Arabic — engineered by parameter-space merging. No retraining. No model zoo. One checkpoint.</p>
-      <span class="mn-cite mn-rev">MACHINE LEARNING &amp; KNOWLEDGE EXTRACTION · MDPI · 8(4):110 · OPEN ACCESS</span>
-    </div>
+  <div class="mn-hero-stack">
+    <a class="mn-back" href="../index.html#projects">← BACK TO PROJECTS</a>
+    <span class="mn-kicker mn-rev">MEDICAL ARABIC · MODEL MERGING · 2026</span>
+    <span class="mn-title-ar mn-rev" lang="ar" dir="rtl">منارة</span>
+    <h1 class="mn-title mn-rev">MENARA</h1>
+    <p class="mn-deck mn-rev">A unified 2B medical model for Egyptian, Darija, and Standard Arabic — engineered by parameter-space merging. No retraining. No model zoo. One checkpoint.</p>
+    <span class="mn-cite mn-rev">MACHINE LEARNING &amp; KNOWLEDGE EXTRACTION · MDPI · 8(4):110 · OPEN ACCESS</span>
   </div>
 </header>
 
@@ -173,6 +143,26 @@
     <div class="mn-step"><span class="mn-step-no">T-2</span><span class="mn-step-name">ELECT</span><span class="mn-step-desc">where specialists disagree on a weight's sign, majority wins</span></div>
     <div class="mn-step"><span class="mn-step-no">T-3</span><span class="mn-step-name">MERGE</span><span class="mn-step-desc">average what survives — no gradient ever flows</span></div>
   </div>
+
+  <div class="mn-lab mn-rev" id="mn-lab" hidden>
+    <div class="mn-lab-head">
+      <span class="mn-data-label">TRY IT — THE DENSITY DIAL · APPENDIX A</span>
+      <span class="mn-lab-count" id="mn-lab-count">58 / 96 WEIGHTS KEPT</span>
+    </div>
+    <div class="mn-lab-grid" id="mn-lab-grid" aria-hidden="true"></div>
+    <div class="mn-lab-ctl">
+      <span class="mn-lab-end">0.4</span>
+      <input type="range" id="mn-density" min="4" max="8" step="2" value="6" aria-label="TIES trim density">
+      <span class="mn-lab-end">0.8</span>
+    </div>
+    <p class="mn-lab-note" id="mn-lab-note">Density 0.6 — keep the strongest 60% of each task vector. The configuration MENARA ships with (Appendix A).</p>
+    <div class="mn-legend">
+      <span><i class="mn-sw mn-sw-msa"></i>medicine</span>
+      <span><i class="mn-sw mn-sw-egy"></i>Egyptian</span>
+      <span><i class="mn-sw mn-sw-dar"></i>Darija</span>
+      <span><i class="mn-sw mn-sw-oth"></i>trimmed</span>
+    </div>
+  </div>
 </section>
 
 <!-- ============================================================
@@ -181,6 +171,13 @@
 <section class="mn-sec mn-block" aria-label="Benchmark against larger Arabic models">
   <h2 class="mn-h2 mn-rev"><span class="mn-h2-no">03</span>Small model, first place.</h2>
   <p class="mn-lead mn-rev">Same prompts, same judge, against public Arabic LLMs up to 6× larger — average dialectal fidelity, Table 2:</p>
+
+  <div class="mn-tabs mn-rev" id="mn-tabs" role="group" aria-label="Benchmark view" hidden>
+    <button class="mn-tab is-on" type="button" data-v="avg">AVERAGE</button>
+    <button class="mn-tab" type="button" data-v="msa">MSA</button>
+    <button class="mn-tab" type="button" data-v="egy">EGYPTIAN</button>
+    <button class="mn-tab" type="button" data-v="dar">DARIJA</button>
+  </div>
 
   <div class="mn-bench mn-rev" id="mn-bench">
     <div class="mn-brow mn-brow-hero" style="--v: 73.6%">
@@ -203,9 +200,9 @@
       <span class="mn-btrack"><span class="mn-bfill"></span></span>
       <span class="mn-bval">2.55</span>
     </div>
-    <span class="mn-bench-cap">AVERAGE DIALECTAL FIDELITY / 5 · QWEN-3 JUDGE · TABLE 2</span>
+    <span class="mn-bench-cap" id="mn-bench-cap">AVERAGE DIALECTAL FIDELITY / 5 · QWEN-3 JUDGE · TABLE 2</span>
   </div>
-  <p class="mn-benchnote mn-rev">The giants hold their own on MSA, then collapse on the dialects (Jais-13B: 2.10 Egyptian, 1.88 Darija). MENARA — 4.89 / 3.02 / 3.12 — is the only profile without a collapse. <b>Dialect adaptation beats scale.</b></p>
+  <p class="mn-benchnote mn-rev" id="mn-benchnote">The giants hold their own on MSA, then collapse on the dialects (Jais-13B: 2.10 Egyptian, 1.88 Darija). MENARA — 4.89 / 3.02 / 3.12 — is the only profile without a collapse. <b>Dialect adaptation beats scale.</b></p>
 
   <div class="mn-facts mn-rev">
     <span class="mn-fact">NOISE-ROBUST · p &gt; 0.29</span>
@@ -267,10 +264,7 @@
 (function () {
   'use strict';
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduced) {
-    document.body.classList.add('mn-js');
-    document.documentElement.classList.add('mn-snap');
-  }
+  if (!reduced) { document.body.classList.add('mn-js'); }
 
   /* journal data: Fig. 7 composition, §4.2 fidelity, Table 1 human.
      Dialect phrasings are illustrative drafts. */
@@ -344,6 +338,67 @@
     });
   });
   crossCk.addEventListener('change', function () { play(cur); });
+
+  /* ---------- TIES density lab (Appendix A: 0.4 / 0.6 / 0.8) ---------- */
+  var lab = document.getElementById('mn-lab');
+  var labGrid = document.getElementById('mn-lab-grid');
+  if (lab && labGrid) {
+    lab.hidden = false;
+    var LN = 96, cells = [];
+    for (var i = 0; i < LN; i++) {
+      var c = document.createElement('span');
+      c.className = 'mn-w ' + ['mn-w-med', 'mn-w-egy', 'mn-w-dar'][(i * 7 + ((i / 24) | 0)) % 3];
+      labGrid.appendChild(c);
+      cells.push({ el: c, rank: (i * 37 + 11) % LN });
+    }
+    var dens = document.getElementById('mn-density');
+    var labCount = document.getElementById('mn-lab-count');
+    var labNote = document.getElementById('mn-lab-note');
+    var LNOTES = {
+      4: 'Density 0.4 — only the strongest 40% of each task vector survives the trim. Leaner, but more specialist signal is discarded.',
+      6: 'Density 0.6 — keep the strongest 60% of each task vector. The configuration MENARA ships with (Appendix A).',
+      8: 'Density 0.8 — 80% kept, so more of the specialists overlap and ELECT has more sign conflicts to resolve.'
+    };
+    var setDensity = function () {
+      var kept = Math.round((dens.value / 10) * LN);
+      cells.forEach(function (c) { c.el.classList.toggle('is-cut', c.rank >= kept); });
+      labCount.textContent = kept + ' / ' + LN + ' WEIGHTS KEPT';
+      labNote.textContent = LNOTES[dens.value];
+    };
+    dens.addEventListener('input', setDensity);
+    setDensity();
+  }
+
+  /* ---------- benchmark views (full Table 2) ---------- */
+  var BD = {
+    avg: { vals: [3.68, 2.93, 2.84, 2.55], cap: 'AVERAGE DIALECTAL FIDELITY / 5 · QWEN-3 JUDGE · TABLE 2',
+           note: 'The giants hold their own on MSA, then collapse on the dialects (Jais-13B: 2.10 Egyptian, 1.88 Darija). MENARA — 4.89 / 3.02 / 3.12 — is the only profile without a collapse. <b>Dialect adaptation beats scale.</b>' },
+    msa: { vals: [4.89, 4.77, 4.53, 4.91], cap: 'MSA FIDELITY / 5 · QWEN-3 JUDGE · TABLE 2',
+           note: 'On the standard register everyone is competent — Fanar edges MENARA by 0.02. <b>The dialects are where the field separates.</b>' },
+    egy: { vals: [3.02, 2.31, 2.10, 1.48], cap: 'EGYPTIAN FIDELITY / 5 · QWEN-3 JUDGE · TABLE 2',
+           note: 'MENARA leads Egyptian by +0.71 over ALLaM, the next best. <b>Every giant sits below 2.4.</b>' },
+    dar: { vals: [3.12, 1.72, 1.88, 1.25], cap: 'DARIJA FIDELITY / 5 · QWEN-3 JUDGE · TABLE 2',
+           note: 'MENARA leads Darija by +1.24. <b>No baseline crosses 2.</b>' }
+  };
+  var tabsWrap = document.getElementById('mn-tabs');
+  if (tabsWrap) {
+    tabsWrap.hidden = false;
+    var rows = document.querySelectorAll('#mn-bench .mn-brow');
+    var noteEl = document.getElementById('mn-benchnote');
+    var capEl = document.getElementById('mn-bench-cap');
+    tabsWrap.querySelectorAll('.mn-tab').forEach(function (t) {
+      t.addEventListener('click', function () {
+        tabsWrap.querySelectorAll('.mn-tab').forEach(function (o) { o.classList.toggle('is-on', o === t); });
+        var v = BD[t.dataset.v];
+        rows.forEach(function (r, i) {
+          r.style.setProperty('--v', (v.vals[i] / 5 * 100).toFixed(1) + '%');
+          r.querySelector('.mn-bval').textContent = v.vals[i].toFixed(2);
+        });
+        capEl.textContent = v.cap;
+        noteEl.innerHTML = v.note;
+      });
+    });
+  }
 
   /* staged reveals */
   if (!reduced) {

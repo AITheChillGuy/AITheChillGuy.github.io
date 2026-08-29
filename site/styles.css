@@ -2814,10 +2814,6 @@ model-viewer.hgts-viewer {
   }
 }
 
-/* gentle section snap (JS adds .mn-snap; off for reduced motion / no-JS) */
-html.mn-snap { scroll-snap-type: y proximity; }
-.mn-sec { scroll-snap-align: start; scroll-margin-top: 56px; }
-.mn-hero { scroll-snap-align: none; }
 
 /* base overrides inside the grid */
 .mn-page .nav { border-color: var(--mnf-line); background: var(--mnf-bg); }
@@ -2848,28 +2844,20 @@ html.mn-snap { scroll-snap-type: y proximity; }
 
 /* ---------- hero ---------- */
 .mn-hero { padding: clamp(56px, 9vh, 110px) 80px clamp(48px, 8vh, 90px); }
-.mn-hero-grid {
-  display: grid; grid-template-columns: minmax(280px, 440px) minmax(0, 1fr);
-  gap: clamp(40px, 6vw, 84px); align-items: center; max-width: 1440px; margin: 0 auto;
-}
-.mn-mark { width: 100%; height: auto; display: block; }
-.mn-mark-frame { fill: var(--mnf-panel); stroke: var(--mnf-ink); stroke-width: 3; }
-.mn-mark-ink rect { fill: var(--mnf-cobalt); }
-.mn-mark-dot { fill: var(--mnf-ink); }
-.mn-hero-copy { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
+.mn-hero-stack { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
 .mn-back {
   font-size: 12px; font-weight: 700; letter-spacing: 0.18em;
   color: var(--mnf-faint); text-decoration: none; margin-bottom: 6px;
 }
 .mn-back:hover { color: var(--mnf-cobalt); }
 .mn-kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.26em; color: var(--mnf-cobalt); }
+.mn-title-ar {
+  font-family: 'Noto Kufi Arabic', var(--mn-ar); font-weight: 700; color: var(--mnf-cobalt);
+  font-size: clamp(4.2rem, 10.5vw, 8rem); line-height: 1.35; margin-top: 4px;
+}
 .mn-title {
   margin: 0; font-family: var(--mn-lat); font-weight: 700;
-  font-size: clamp(3.4rem, 7.5vw, 6rem); letter-spacing: 0.06em; line-height: 1;
-}
-.mn-title-ar {
-  font-family: var(--mn-ar); font-weight: 900; color: var(--mnf-cobalt);
-  font-size: clamp(3rem, 5.8vw, 4.75rem); line-height: 1.3;
+  font-size: clamp(1.7rem, 3.6vw, 2.7rem); letter-spacing: 0.32em; line-height: 1;
 }
 .mn-deck { margin: 0; font-size: clamp(1rem, 1.6vw, 1.2rem); line-height: 1.65; color: var(--mnf-dim); max-width: 560px; }
 .mn-cite { font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; color: var(--mnf-faint); }
@@ -3051,8 +3039,8 @@ html.mn-snap { scroll-snap-type: y proximity; }
 @media (max-width: 900px) {
   .mn-rulebar { padding: 14px 24px; }
   .mn-hero { padding-left: 24px; padding-right: 24px; }
-  .mn-hero-grid { grid-template-columns: 1fr; gap: 36px; }
-  .mn-mark { max-width: 300px; }
+  .mn-lab-grid { grid-template-columns: repeat(16, minmax(0, 1fr)); }
+  .mn-tabs { flex-wrap: wrap; }
   .mn-block { padding-left: 24px; padding-right: 24px; }
   .mn-matrix { grid-template-columns: 1fr; }
   .mn-console { grid-template-columns: 1fr; }
@@ -3063,3 +3051,45 @@ html.mn-snap { scroll-snap-type: y proximity; }
   .mn-steps { grid-template-columns: 1fr; }
   .mn-brow { grid-template-columns: 96px minmax(0, 1fr) 48px; }
 }
+
+/* ---------- TIES density lab ---------- */
+.mn-lab {
+  margin-top: 30px; background: var(--mnf-panel); border: 2px solid var(--mnf-ink);
+  padding: 24px 28px; display: flex; flex-direction: column; gap: 16px;
+}
+.mn-lab-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.mn-lab-count { font-size: 11.5px; font-weight: 700; letter-spacing: 0.14em; color: var(--mnf-cobalt); }
+.mn-lab-grid { display: grid; grid-template-columns: repeat(24, minmax(0, 1fr)); gap: 4px; }
+.mn-w { aspect-ratio: 1; display: block; transition: background 0.35s ease, opacity 0.35s ease; }
+.mn-w-med { background: var(--mnf-cobalt); }
+.mn-w-egy { background: var(--mnf-mid); }
+.mn-w-dar { background: var(--mnf-pale); }
+.mn-w.is-cut { background: var(--mnf-ghost); opacity: 0.55; }
+.mn-lab-ctl { display: flex; align-items: center; gap: 16px; }
+.mn-lab-end { font-size: 12px; font-weight: 700; color: var(--mnf-dim); }
+#mn-density {
+  flex: 1; appearance: none; -webkit-appearance: none; height: 2px;
+  background: var(--mnf-ink); outline: none; cursor: pointer;
+}
+#mn-density::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 20px; height: 20px; border-radius: 0;
+  background: var(--mnf-cobalt); border: 2px solid var(--mnf-ink); cursor: pointer;
+}
+#mn-density::-moz-range-thumb {
+  width: 16px; height: 16px; border-radius: 0;
+  background: var(--mnf-cobalt); border: 2px solid var(--mnf-ink); cursor: pointer;
+}
+#mn-density:focus-visible { outline: 3px solid var(--mnf-cobalt); outline-offset: 6px; }
+.mn-lab-note { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--mnf-dim); }
+
+/* ---------- benchmark view tabs ---------- */
+.mn-tabs { display: flex; gap: 10px; margin-bottom: 24px; }
+.mn-tab {
+  font-family: var(--mn-lat); font-size: 11.5px; font-weight: 700; letter-spacing: 0.14em;
+  border: 2px solid var(--mnf-ink); background: var(--mnf-panel); color: var(--mnf-ink);
+  padding: 9px 16px; cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.mn-tab:hover { border-color: var(--mnf-cobalt); color: var(--mnf-cobalt); }
+.mn-tab.is-on { background: var(--mnf-cobalt); border-color: var(--mnf-cobalt); color: var(--mnf-panel); }
+.mn-tab:focus-visible { outline: 3px solid var(--mnf-cobalt); outline-offset: 3px; }
