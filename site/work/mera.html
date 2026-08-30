@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <title>MERA — Medical Electronic Records Assistant</title>
-<meta name="description" content="An end-to-end Retrieval-Augmented Generation assistant for clinical EHRs — unifying medical QA, report summarization, and patient-case similarity. Published in Machine Learning and Knowledge Extraction, MDPI 2025.">
+<meta name="description" content="MERA: a Retrieval-Augmented Generation assistant that unifies clinical question answering, report summarization, and patient-case similarity behind one retriever — validated on de-identified MIMIC-IV-Note records. Published in Machine Learning and Knowledge Extraction, MDPI 2025.">
 <link rel="icon" href="../assets/favicon.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=6">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=16">
 </head>
-<body>
+<body class="me-page">
 
 <nav class="nav">
   <a class="wordmark" href="../index.html#cover" aria-label="Ahmed Ibrahim — back to home">
@@ -24,50 +24,159 @@
     <li><a class="nav-link label-caps" href="../index.html#research">Research</a></li>
     <li><a class="nav-link label-caps" href="../index.html#projects">Projects</a></li>
     <li><a class="nav-link label-caps" href="../index.html#contact">Contact</a></li>
-      <li><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.3" y1="5.3" x2="7" y2="7"/><line x1="17" y1="17" x2="18.7" y2="18.7"/><line x1="5.3" y1="18.7" x2="7" y2="17"/><line x1="17" y1="7" x2="18.7" y2="5.3"/></svg></button></li>
+    <li><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.3" y1="5.3" x2="7" y2="7"/><line x1="17" y1="17" x2="18.7" y2="18.7"/><line x1="5.3" y1="18.7" x2="7" y2="17"/><line x1="17" y1="7" x2="18.7" y2="5.3"/></svg></button></li>
   </ul>
 </nav>
 
-<header class="detail-hero">
-  <a class="back-link label-caps" href="../index.html#research">← Back to research</a>
-  <p class="label-caps issue">Publication · 2025 · MDPI</p>
-  <h1>MERA — Medical Electronic Records Assistant</h1>
-  <p class="lead">A retrieval pipeline that unifies medical QA, report summarization, and patient-case similarity into one domain-specific assistant.</p>
+<!-- ============================================================
+     INTRO
+     ============================================================ -->
+<header class="me-hero">
+  <a class="me-back" href="../index.html#projects">← BACK TO PROJECTS</a>
+  <span class="me-kicker">CLINICAL RAG · PUBLICATION 004 · MAKE 7(3):73 · 2025 · OPEN ACCESS</span>
+  <h1 class="me-title">MERA <span class="me-title-sub">Medical Electronic Records Assistant</span></h1>
+  <p class="me-deck">One retriever behind three clinical tools — ask the record, summarize it, find the similar case.
+  The page is the product: everything below is a working mock of the assistant over synthetic charts.</p>
 </header>
 
+<!-- ============================================================
+     THE APP
+     ============================================================ -->
+<section class="me-app-wrap" aria-label="Interactive mock of the MERA assistant">
+  <div class="me-win">
+    <div class="me-titlebar">
+      <span class="me-dot"></span><span class="me-dot"></span><span class="me-dot me-dot-live"></span>
+      <span class="me-titlebar-name">mera — records assistant</span>
+      <span class="me-titlebar-note">synthetic charts · de-identified</span>
+    </div>
+
+    <div class="me-body">
+      <!-- sidebar -->
+      <aside class="me-side">
+        <span class="me-side-label">MODE</span>
+        <button class="me-mode is-on" type="button" data-mode="ask">Ask the record</button>
+        <button class="me-mode" type="button" data-mode="sum">Summarize report</button>
+        <button class="me-mode" type="button" data-mode="sim">Similar patients</button>
+        <span class="me-side-label me-side-label2">PATIENTS</span>
+        <div id="me-ptlist"></div>
+        <div class="me-side-meta">retriever: domain-tuned<br>corpus: synthetic + MIMIC-IV-Note</div>
+      </aside>
+
+      <!-- note pane -->
+      <div class="me-notepane">
+        <div class="me-banner">
+          <span class="me-banner-id" id="me-banner-id">PT-0042</span>
+          <span class="me-banner-info" id="me-banner-info">67 M · community-acquired pneumonia</span>
+          <span class="me-banner-tag">SYNTHETIC</span>
+        </div>
+        <div class="me-note" id="me-note"></div>
+      </div>
+
+      <!-- action pane -->
+      <div class="me-action">
+        <!-- ask -->
+        <div class="me-pane" id="me-pane-ask">
+          <span class="me-pane-label">ASK THE RECORD — PICK A QUESTION</span>
+          <div class="me-qchips" id="me-qchips"></div>
+          <div class="me-card me-card-q"><span class="me-card-who">You</span><p id="me-ask-q"></p></div>
+          <div class="me-card me-card-a">
+            <span class="me-card-who me-card-who-mera">MERA</span>
+            <p id="me-ask-a"><span id="me-ask-a-txt"></span><i class="me-caret" aria-hidden="true"></i></p>
+            <div class="me-prov" id="me-prov"></div>
+            <div class="me-ground" id="me-ground" hidden>
+              <span class="me-ground-label">groundedness</span>
+              <span class="me-ground-track"><span class="me-ground-fill" id="me-ground-fill"></span></span>
+              <span class="me-ground-val" id="me-ground-val">0.00</span>
+            </div>
+          </div>
+        </div>
+        <!-- summarize -->
+        <div class="me-pane" id="me-pane-sum" hidden>
+          <span class="me-pane-label">REPORT → SUMMARY</span>
+          <button class="me-run" id="me-sum-run" type="button">Generate summary</button>
+          <div class="me-sumlines" id="me-sumlines"></div>
+          <div class="me-sumstats" id="me-sumstats" hidden>
+            <span class="me-chip me-chip-teal">paper ROUGE-1 F1 0.70</span>
+            <span class="me-chip me-chip-teal">paper Jaccard 0.73</span>
+            <span class="me-chip">hover a line → its sources light in the note</span>
+          </div>
+        </div>
+        <!-- similar -->
+        <div class="me-pane" id="me-pane-sim" hidden>
+          <span class="me-pane-label">SIMILAR PATIENTS — RANKED</span>
+          <div class="me-simlist" id="me-simlist"></div>
+          <p class="me-simnote">Similarity search supports differential diagnosis and treatment planning —
+          paper METEOR 0.7–1.0 across diagnoses.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- status bar + trace -->
+    <div class="me-statusbar">
+      <span id="me-status">mode: ask · PT-0042 loaded</span>
+      <button class="me-trace-toggle" id="me-trace-toggle" type="button" aria-expanded="false">UNDER THE HOOD ▴</button>
+    </div>
+    <div class="me-trace" id="me-trace" hidden>
+      <div class="me-trace-grid" id="me-trace-grid"></div>
+      <p class="me-trace-note">Illustrative trace over the synthetic chart. Paper-reported means:
+      retrieval relevance <b>0.92</b> · groundedness <b>0.89</b>.</p>
+    </div>
+  </div>
+  <p class="me-appnote">Charts, questions, and answers are synthetic demo content — MERA's training corpus itself was synthetic
+  (Mistral v0.3 · Qwen 2.5 · Llama 3), validated on de-identified MIMIC-IV-Note records.</p>
+</section>
+
+<!-- ============================================================
+     METRICS
+     ============================================================ -->
+<section class="me-metrics-sect" aria-label="Evaluation results">
+  <h2 class="me-h2">Measured, five ways.</h2>
+  <div class="me-metrics" id="me-metrics">
+    <div class="me-tile"><span class="me-tile-num" data-n="0.91">0.91</span><span class="me-tile-lbl">QA correctness</span></div>
+    <div class="me-tile"><span class="me-tile-num" data-n="0.98">0.98</span><span class="me-tile-lbl">QA relevance</span></div>
+    <div class="me-tile me-tile-hero"><span class="me-tile-num" data-n="0.89">0.89</span><span class="me-tile-lbl">groundedness</span></div>
+    <div class="me-tile"><span class="me-tile-num" data-n="0.92">0.92</span><span class="me-tile-lbl">retrieval relevance</span></div>
+    <div class="me-tile"><span class="me-tile-num" data-n="0.70">0.70</span><span class="me-tile-lbl">summarization ROUGE-1 F1</span></div>
+  </div>
+  <p class="me-metrics-note">Plus Jaccard 0.73 on summaries and METEOR 0.7–1.0 on similarity search — with consistent results
+  on real de-identified EHRs. To our knowledge the first system to unify clinical QA, summarization, and case similarity in one RAG framework.</p>
+</section>
+
+<!-- ============================================================
+     CASE NOTES
+     ============================================================ -->
 <section class="anatomy">
   <dl>
-    <dt class="label-caps">Role</dt><dd>AI Research Specialist · WCM-Q</dd>
+    <dt class="label-caps">Role</dt><dd>Lead author · WCM-Q</dd>
     <dt class="label-caps">Stack</dt><dd>Python · LangChain · RAG · Mistral · Qwen · Llama</dd>
-    <dt class="label-caps">Data</dt><dd>Synthetic clinical · MIMIC-IV-Note (de-identified)</dd>
+    <dt class="label-caps">Data</dt><dd>Synthetic clinical corpus · MIMIC-IV-Note (de-identified)</dd>
     <dt class="label-caps">Year</dt><dd>2025</dd>
-    <dt class="label-caps">Venue</dt><dd>Machine Learning and Knowledge Extraction · MDPI</dd>
-    <dt class="label-caps">Status</dt><dd>Published</dd>
+    <dt class="label-caps">Venue</dt><dd>MAKE · MDPI · 7(3):73 · <a href="https://doi.org/10.3390/make7030073" target="_blank" rel="noopener noreferrer">DOI ↗</a></dd>
+    <dt class="label-caps">Authors</dt><dd>Ahmed Ibrahim, Abdullah Khalili, Maryam Arabi, Aamenah Sattar, Abdullah Hosseini, Ahmed Serag</dd>
+    <dt class="label-caps">Status</dt><dd>Published — open access (CC BY)</dd>
   </dl>
   <div class="prose">
-    <p><strong>The problem.</strong> Three different clinical questions tend to need three different tools — medical question answering, report summarization, and patient-case similarity search. Most assistants split each into its own pipeline, with its own retrieval, prompts, and evaluation. That's a lot of moving parts to maintain.</p>
-    <p><strong>The approach.</strong> A single end-to-end Retrieval-Augmented Generation pipeline, behind one domain-specific retriever, that serves all three tasks. The training set was generated synthetically using <em>Mistral</em>, <em>Qwen</em>, and <em>Llama</em>, and the system was validated on de-identified <strong>MIMIC-IV-Note</strong> records.</p>
-    <blockquote class="pullquote">One retriever, three clinical tasks — validated on real EHR notes.</blockquote>
-    <p><strong>What was hard.</strong> Evaluation. The system was scored across five complementary signals — <em>correctness</em>, <em>groundedness</em>, <em>ROUGE-1 F1</em>, <em>Jaccard</em>, and <em>METEOR</em> — so a model that did well on one metric still had to hold up on the others.</p>
-    <p><strong>What shipped.</strong> A peer-reviewed assistant in <em>Machine Learning and Knowledge Extraction</em> (MDPI, 2025), with the unified retrieval pipeline, the synthetic data approach, and the multi-metric evaluation documented end-to-end.</p>
-    <p><strong>What this changes.</strong> A reusable template for clinical RAG: one retriever, one evaluation harness, multiple downstream tasks behind it.</p>
+    <p><strong>The problem.</strong> Three different clinical questions tend to need three different tools — asking the record, summarizing a report, and finding the patient like this one. Most assistants split each into its own pipeline, with its own retrieval, prompts, and evaluation. And plain LLMs hallucinate, age badly, and can't explain themselves — disqualifying in medicine.</p>
+    <p><strong>The approach.</strong> One Retrieval-Augmented Generation pipeline behind one domain-specific retriever, serving all three tasks. Privacy came first: the training corpus was generated synthetically with Mistral v0.3, Qwen 2.5, and Llama 3 — no real patient ever enters training — and the system was then validated on de-identified MIMIC-IV-Note records.</p>
+    <blockquote class="pullquote">Correctness 0.91, groundedness 0.89, retrieval relevance 0.92 — and every answer traces back into the record.</blockquote>
+    <p><strong>What was hard.</strong> Evaluation. MERA is scored across complementary signals — correctness, relevance, groundedness, and retrieval relevance for QA; ROUGE-1 F1 and Jaccard for summaries; METEOR for similarity — so a model that shines on one axis still has to hold up on the others, and results had to stay consistent when moving from synthetic charts to real EHRs.</p>
+    <p><strong>What shipped.</strong> A peer-reviewed assistant in <em>Machine Learning and Knowledge Extraction</em> — to our knowledge the first to unify clinical question answering, summarization, and patient-case similarity in a single RAG framework.</p>
+    <p><strong>What this changes.</strong> A reusable template for clinical RAG: one retriever, one evaluation harness, three tools behind it — and a privacy recipe (synthetic training, de-identified validation) that other hospitals can copy.</p>
   </div>
 </section>
 
 <section class="artifacts">
   <figure class="fig">
-<pre>EHR notes
-  → domain-specific retriever
-  → three tasks behind one pipeline:
-       · medical QA
-       · report summarization
-       · patient-case similarity
-  → eval: correctness · groundedness · ROUGE-1 F1 · Jaccard · METEOR</pre>
+<pre>synthetic corpus (Mistral v0.3 · Qwen 2.5 · Llama 3)  +  MIMIC-IV-Note validation
+  → one domain-specific retriever
+  → three tools: ask the record · summarize report · similar patients
+  → eval: correctness 0.91 · relevance 0.98 · groundedness 0.89 · retrieval 0.92
+          ROUGE-1 F1 0.70 · Jaccard 0.73 · METEOR 0.7–1.0</pre>
     <figcaption class="caption-meta label-caps">FIG. 1 — MERA system overview</figcaption>
   </figure>
 </section>
 
-<p class="footnote">Published in <em>Machine Learning and Knowledge Extraction</em>, MDPI, 2025. Validated on de-identified MIMIC-IV-Note records.</p>
+<p class="footnote">Ibrahim, Khalili, Arabi, Sattar, Hosseini, Serag. “MERA: Medical Electronic Records Assistant.” <em>Machine Learning and Knowledge Extraction</em> 7(3):73, MDPI, 2025. Open access (CC BY). All metrics are the paper's; the demo charts and conversations are synthetic.</p>
 
 <a class="next-issue" href="d3.html">
   <span class="label-caps lab">Next publication →</span>
@@ -81,6 +190,349 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  'use strict';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.body.classList.add('me-js');
+
+  /* ---------- synthetic demo data (illustrative; metrics in copy are the paper's) ---------- */
+  var PTS = {
+    p42: {
+      id: 'PT-0042', info: '67 M · community-acquired pneumonia',
+      paras: [
+        { k: 'p1', t: 'HPI: 67-year-old male with fever and productive cough for 3 days, worsening dyspnea on exertion. Presented to the ED at 09:12.' },
+        { k: 'p2', t: 'Blood cultures ×2 drawn prior to antibiotic administration.' },
+        { k: 'p3', t: 'Started ceftriaxone 1 g IV q24h and azithromycin 500 mg PO daily.' },
+        { k: 'p4', t: 'CXR: right lower lobe consolidation. No pleural effusion.' },
+        { k: 'p5', t: 'Day 3: afebrile 48 h, weaned to room air, CRP trending down.' },
+        { k: 'p6', t: 'Plan: step down to oral amoxicillin–clavulanate, discharge with 48 h follow-up.' }
+      ],
+      qs: [
+        { q: 'Were cultures drawn before antibiotics?', a: 'Yes — two sets of blood cultures were drawn before any antibiotics were given [1], after which ceftriaxone and azithromycin were started [2].', cites: [{ p: 'p2', s: 0.94 }, { p: 'p3', s: 0.91 }] },
+        { q: 'What did imaging show?', a: 'Chest X-ray showed a right lower lobe consolidation with no pleural effusion [1].', cites: [{ p: 'p4', s: 0.96 }] },
+        { q: 'Is the patient ready for discharge?', a: 'Trending that way — afebrile 48 h and on room air [1], with a plan for oral step-down and discharge with follow-up in 48 hours [2].', cites: [{ p: 'p5', s: 0.93 }, { p: 'p6', s: 0.95 }] }
+      ],
+      sum: [
+        { t: '67 M admitted with RLL community-acquired pneumonia.', srcs: ['p1', 'p4'] },
+        { t: 'Cultures ×2 before antibiotics; ceftriaxone + azithromycin.', srcs: ['p2', 'p3'] },
+        { t: 'Improved by day 3 — afebrile, room air, CRP falling.', srcs: ['p5'] },
+        { t: 'Discharge on oral step-down with 48 h follow-up.', srcs: ['p6'] }
+      ],
+      sim: [
+        { id: 'PT-0187', s: 0.86, tags: ['pneumonia', 'culture-first', 'same regimen'], blurb: '58 F · RLL pneumonia, culture-first workup, identical empiric regimen, discharged day 4.' },
+        { id: 'PT-0311', s: 0.74, tags: ['respiratory', 'IV→PO step-down'], blurb: '71 M · COPD exacerbation with IV-to-oral antibiotic step-down and short admission.' }
+      ]
+    },
+    p187: {
+      id: 'PT-0187', info: '58 F · community-acquired pneumonia',
+      paras: [
+        { k: 'p1', t: 'HPI: 58-year-old female with cough and pleuritic chest pain for 2 days. Temp 38.6 °C at triage.' },
+        { k: 'p2', t: 'Blood cultures obtained; antibiotics held until draw completed.' },
+        { k: 'p3', t: 'Empiric ceftriaxone + azithromycin initiated per CAP pathway.' },
+        { k: 'p4', t: 'CXR: right lower lobe infiltrate.' },
+        { k: 'p5', t: 'Day 2: symptomatically improved, tolerating PO.' },
+        { k: 'p6', t: 'Day 4: discharged on oral step-down, safety-netting advised.' }
+      ],
+      qs: [
+        { q: 'Was the CAP pathway followed?', a: 'Yes — cultures were completed before antibiotics [1], and the standard empiric regimen was started per pathway [2].', cites: [{ p: 'p2', s: 0.95 }, { p: 'p3', s: 0.92 }] },
+        { q: 'How long was the admission?', a: 'Four days — symptomatic improvement by day 2 [1] and discharge on day 4 on an oral step-down [2].', cites: [{ p: 'p5', s: 0.93 }, { p: 'p6', s: 0.95 }] },
+        { q: 'What did imaging show?', a: 'A right lower lobe infiltrate on chest X-ray [1].', cites: [{ p: 'p4', s: 0.96 }] }
+      ],
+      sum: [
+        { t: '58 F with RLL community-acquired pneumonia.', srcs: ['p1', 'p4'] },
+        { t: 'Culture-first workup, then empiric ceftriaxone + azithromycin.', srcs: ['p2', 'p3'] },
+        { t: 'Improved by day 2; discharged day 4 on oral step-down.', srcs: ['p5', 'p6'] }
+      ],
+      sim: [
+        { id: 'PT-0042', s: 0.86, tags: ['pneumonia', 'culture-first', 'same regimen'], blurb: '67 M · RLL pneumonia, cultures before antibiotics, same empiric regimen, discharged with follow-up.' },
+        { id: 'PT-0311', s: 0.71, tags: ['respiratory', 'short admission'], blurb: '71 M · COPD exacerbation with IV-to-oral step-down and short admission.' }
+      ]
+    },
+    p233: {
+      id: 'PT-0233', info: '54 F · decompensated heart failure',
+      paras: [
+        { k: 'p1', t: 'HPI: 54-year-old female with 5 days of progressive leg swelling and orthopnea. Known HFrEF (EF 30%).' },
+        { k: 'p2', t: 'Exam: JVP elevated, bibasal crackles, pitting edema to knees. Weight +4 kg from baseline.' },
+        { k: 'p3', t: 'Started IV furosemide 40 mg BID; strict input–output monitoring and daily weights.' },
+        { k: 'p4', t: 'BNP markedly elevated; creatinine stable throughout diuresis.' },
+        { k: 'p5', t: 'Day 4: 3.5 kg net negative, breathing comfortably at rest, transitioned to oral diuretics.' },
+        { k: 'p6', t: 'Plan: cardiology follow-up in 1 week; medication reconciliation completed at discharge.' }
+      ],
+      qs: [
+        { q: 'What decongestion strategy was used?', a: 'IV furosemide with strict input–output monitoring and daily weights [1]; creatinine stayed stable throughout diuresis [2].', cites: [{ p: 'p3', s: 0.95 }, { p: 'p4', s: 0.93 }] },
+        { q: 'How much fluid was removed?', a: 'About 3.5 kg net negative by day 4, at which point she was switched to oral diuretics [1].', cites: [{ p: 'p5', s: 0.96 }] },
+        { q: 'What follow-up was arranged?', a: 'Cardiology review in one week, with medication reconciliation completed at discharge [1].', cites: [{ p: 'p6', s: 0.95 }] }
+      ],
+      sum: [
+        { t: '54 F with decompensated HFrEF (EF 30%).', srcs: ['p1'] },
+        { t: 'Congested on exam, +4 kg over dry weight.', srcs: ['p2'] },
+        { t: 'IV diuresis with stable renal function.', srcs: ['p3', 'p4'] },
+        { t: '3.5 kg net negative; oral diuretics by day 4.', srcs: ['p5'] },
+        { t: 'Cardiology follow-up in 1 week.', srcs: ['p6'] }
+      ],
+      sim: [
+        { id: 'PT-0356', s: 0.81, tags: ['HFrEF', 'IV diuresis', 'renal-stable'], blurb: '61 M · HFrEF decompensation, IV-to-oral diuretic transition, stable creatinine, day-5 discharge.' },
+        { id: 'PT-0119', s: 0.53, tags: ['dyspnea workup'], blurb: '49 F · dyspnea admission with cardiopulmonary workup and short stay.' }
+      ]
+    }
+  };
+
+  var curPt = 'p42', curMode = 'ask', run = 0, lastAsk = null;
+  var $ = function (id) { return document.getElementById(id); };
+  var note = $('me-note'), qchips = $('me-qchips'), prov = $('me-prov');
+  var askQ = $('me-ask-q'), askATxt = $('me-ask-a-txt'), askA = askATxt.parentNode;
+  var ground = $('me-ground'), groundFill = $('me-ground-fill'), groundVal = $('me-ground-val');
+  var status = $('me-status');
+
+  /* ---------- note pane ---------- */
+  function renderNote(pt) {
+    $('me-banner-id').textContent = pt.id;
+    $('me-banner-info').textContent = pt.info;
+    note.innerHTML = '';
+    pt.paras.forEach(function (pa, i) {
+      var d = document.createElement('p');
+      d.className = 'me-para';
+      d.id = 'me-para-' + pa.k;
+      d.innerHTML = '<span class="me-para-no">¶' + (i + 1) + '</span>' + pa.t;
+      note.appendChild(d);
+    });
+  }
+  function light(keys, on) {
+    document.querySelectorAll('.me-para').forEach(function (el) {
+      el.classList.toggle('is-lit', on && keys.indexOf(el.id.replace('me-para-', '')) !== -1);
+    });
+    if (on && keys.length) {
+      var first = $('me-para-' + keys[0]);
+      if (first) { first.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' }); }
+    }
+  }
+
+  /* ---------- ask mode ---------- */
+  function renderChips(pt) {
+    qchips.innerHTML = '';
+    pt.qs.forEach(function (qa, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'me-qchip' + (i === 0 ? ' is-on' : '');
+      b.textContent = qa.q;
+      b.addEventListener('click', function () {
+        qchips.querySelectorAll('.me-qchip').forEach(function (o) { o.classList.toggle('is-on', o === b); });
+        ask(qa);
+      });
+      qchips.appendChild(b);
+    });
+  }
+  function citeHTML(text, cites) {
+    return text.replace(/\[(\d)\]/g, function (_, n) {
+      var c = cites[+n - 1];
+      return c ? '<sup class="me-cite" data-p="' + c.p + '">[' + n + ']</sup>' : '[' + n + ']';
+    });
+  }
+  function ask(qa) {
+    var token = ++run;
+    lastAsk = qa;
+    askQ.textContent = qa.q;
+    askATxt.textContent = '';
+    askA.classList.add('is-typing');
+    prov.innerHTML = '';
+    ground.hidden = true;
+    light([], false);
+    renderTrace(qa);
+    status.textContent = 'mode: ask · retrieving over ' + PTS[curPt].id + ' …';
+    var i = 0, plain = qa.a, speed = reduced ? 0 : 14;
+    function step() {
+      if (token !== run) return;
+      if (speed === 0) { i = plain.length; }
+      i += 1;
+      askATxt.textContent = plain.slice(0, i);
+      if (i < plain.length) { setTimeout(step, speed); }
+      else { finish(); }
+    }
+    function finish() {
+      askA.classList.remove('is-typing');
+      askATxt.innerHTML = citeHTML(plain, qa.cites);
+      askATxt.querySelectorAll('.me-cite').forEach(function (s) {
+        s.addEventListener('click', function () { light([s.dataset.p], true); });
+      });
+      qa.cites.forEach(function (c, ci) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'me-provchip';
+        b.textContent = 'source ¶' + (PTS[curPt].paras.findIndex(function (pa) { return pa.k === c.p; }) + 1) + ' · ' + c.s.toFixed(2);
+        b.addEventListener('click', function () { light([c.p], true); });
+        b.addEventListener('mouseenter', function () { light([c.p], true); });
+        b.addEventListener('mouseleave', function () { light([], false); });
+        prov.appendChild(b);
+      });
+      ground.hidden = false;
+      var g = 0.89;
+      groundFill.style.width = '0%';
+      requestAnimationFrame(function () {
+        groundFill.style.width = (g * 100) + '%';
+      });
+      if (reduced) { groundVal.textContent = g.toFixed(2); }
+      else {
+        var t0 = null;
+        requestAnimationFrame(function cnt(ts) {
+          if (t0 === null) t0 = ts;
+          var k = Math.max(0, Math.min((ts - t0) / 800, 1));
+          groundVal.textContent = (g * k).toFixed(2);
+          if (k < 1) requestAnimationFrame(cnt);
+        });
+      }
+      if (curMode === 'ask') { status.textContent = 'mode: ask · answered from ' + qa.cites.length + ' passage' + (qa.cites.length > 1 ? 's' : '') + ' of ' + PTS[curPt].id; }
+    }
+    setTimeout(step, reduced ? 0 : 260);
+  }
+
+  /* ---------- summarize mode ---------- */
+  var sumLines = $('me-sumlines'), sumStats = $('me-sumstats');
+  function resetSum() { sumLines.innerHTML = ''; sumStats.hidden = true; }
+  $('me-sum-run').addEventListener('click', function () {
+    var token = ++run;
+    resetSum();
+    light([], false);
+    status.textContent = 'mode: summarize · condensing ' + PTS[curPt].id + ' …';
+    var lines = PTS[curPt].sum;
+    function addLine(i) {
+      if (token !== run) return;
+      if (i >= lines.length) {
+        sumStats.hidden = false;
+        status.textContent = 'mode: summarize · ' + lines.length + ' lines from ' + PTS[curPt].paras.length + ' paragraphs';
+        return;
+      }
+      var L = lines[i];
+      var d = document.createElement('div');
+      d.className = 'me-sumline';
+      d.innerHTML = '<span class="me-sumline-no">' + (i + 1) + '</span><span>' + L.t + '</span>';
+      d.addEventListener('mouseenter', function () { light(L.srcs, true); });
+      d.addEventListener('mouseleave', function () { light([], false); });
+      sumLines.appendChild(d);
+      requestAnimationFrame(function () { d.classList.add('on'); });
+      setTimeout(function () { addLine(i + 1); }, reduced ? 0 : 380);
+    }
+    addLine(0);
+  });
+
+  /* ---------- similar mode ---------- */
+  var simList = $('me-simlist');
+  function renderSim(pt) {
+    simList.innerHTML = '';
+    pt.sim.forEach(function (m) {
+      var d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'me-sim';
+      d.innerHTML =
+        '<span class="me-sim-head"><b>' + m.id + '</b><span class="me-sim-score">match ' + m.s.toFixed(2) + '</span></span>' +
+        '<span class="me-sim-bar"><i style="width:' + (m.s * 100) + '%"></i></span>' +
+        '<span class="me-sim-blurb" hidden>' + m.blurb + '</span>' +
+        '<span class="me-sim-tags" hidden>' + m.tags.map(function (t) { return '<em>' + t + '</em>'; }).join('') + '</span>';
+      d.addEventListener('click', function () {
+        var open = !d.classList.contains('is-open');
+        simList.querySelectorAll('.me-sim').forEach(function (o) {
+          o.classList.remove('is-open');
+          o.querySelector('.me-sim-blurb').hidden = true;
+          o.querySelector('.me-sim-tags').hidden = true;
+        });
+        if (open) {
+          d.classList.add('is-open');
+          d.querySelector('.me-sim-blurb').hidden = false;
+          d.querySelector('.me-sim-tags').hidden = false;
+          status.textContent = 'mode: similar · ' + m.id + ' matches ' + PTS[curPt].id + ' on: ' + m.tags.join(', ');
+        }
+      });
+      simList.appendChild(d);
+    });
+  }
+
+  /* ---------- trace drawer ---------- */
+  var traceGrid = $('me-trace-grid');
+  function renderTrace(qa) {
+    var pt = PTS[curPt];
+    var chunks = qa ? qa.cites.map(function (c) {
+      var idx = pt.paras.findIndex(function (pa) { return pa.k === c.p; });
+      return '¶' + (idx + 1) + ' <b>' + c.s.toFixed(2) + '</b>';
+    }).join(' · ') : '—';
+    traceGrid.innerHTML =
+      '<div class="me-step"><span>1 · EMBED</span><p>query → 768-d vector</p></div>' +
+      '<div class="me-step"><span>2 · RETRIEVE</span><p>top-k over ' + pt.id + ': ' + chunks + '</p></div>' +
+      '<div class="me-step"><span>3 · GROUND</span><p>generation constrained to retrieved passages</p></div>' +
+      '<div class="me-step"><span>4 · ANSWER</span><p>response with inline citations</p></div>';
+  }
+  $('me-trace-toggle').addEventListener('click', function () {
+    var tr = $('me-trace');
+    tr.hidden = !tr.hidden;
+    this.setAttribute('aria-expanded', String(!tr.hidden));
+    this.textContent = tr.hidden ? 'UNDER THE HOOD ▴' : 'UNDER THE HOOD ▾';
+  });
+
+  /* ---------- patients + modes ---------- */
+  var ptlist = $('me-ptlist');
+  Object.keys(PTS).forEach(function (key, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'me-pt' + (i === 0 ? ' is-on' : '');
+    b.innerHTML = '<b>' + PTS[key].id + '</b><span>' + PTS[key].info + '</span>';
+    b.addEventListener('click', function () {
+      ptlist.querySelectorAll('.me-pt').forEach(function (o) { o.classList.toggle('is-on', o === b); });
+      curPt = key;
+      loadPatient();
+    });
+    ptlist.appendChild(b);
+  });
+  function loadPatient() {
+    var pt = PTS[curPt];
+    run += 1;
+    renderNote(pt);
+    renderChips(pt);
+    renderSim(pt);
+    resetSum();
+    renderTrace(null);
+    status.textContent = 'mode: ' + curMode + ' · ' + pt.id + ' loaded';
+    if (curMode === 'ask') { ask(pt.qs[0]); }
+  }
+  document.querySelectorAll('.me-mode').forEach(function (b) {
+    b.addEventListener('click', function () { setMode(b.dataset.mode, true); });
+  });
+  function setMode(mode, fromClick) {
+    curMode = mode;
+    document.querySelectorAll('.me-mode').forEach(function (o) { o.classList.toggle('is-on', o.dataset.mode === mode); });
+    ['ask', 'sum', 'sim'].forEach(function (m) { $('me-pane-' + m).hidden = m !== mode; });
+    light([], false);
+    status.textContent = 'mode: ' + mode + ' · ' + PTS[curPt].id + ' loaded';
+    if (mode === 'ask' && fromClick) { ask(PTS[curPt].qs[0]); }
+  }
+
+  /* deep links: #ask #summarize #similar */
+  var hash = (location.hash || '').replace('#', '');
+  var hashMode = { ask: 'ask', summarize: 'sum', similar: 'sim' }[hash];
+  loadPatient();
+  if (hashMode && hashMode !== 'ask') { setMode(hashMode, false); }
+
+  /* ---------- metric count-ups ---------- */
+  if (!reduced) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        e.target.querySelectorAll('.me-tile-num').forEach(function (el) {
+          var target = parseFloat(el.dataset.n), t0 = null;
+          el.textContent = '0.00';
+          requestAnimationFrame(function stepN(ts) {
+            if (t0 === null) t0 = ts;
+            var k = Math.max(0, Math.min((ts - t0) / 1000, 1));
+            k = 1 - Math.pow(1 - k, 3);
+            el.textContent = (target * k).toFixed(2);
+            if (k < 1) requestAnimationFrame(stepN);
+          });
+        });
+      });
+    }, { threshold: 0.3 });
+    io.observe($('me-metrics'));
+  }
+})();
+</script>
 <script src="../theme.js" defer></script>
 </body>
 </html>
