@@ -2852,8 +2852,8 @@ model-viewer.hgts-viewer {
 .mn-back:hover { color: var(--mnf-cobalt); }
 .mn-kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.26em; color: var(--mnf-cobalt); }
 .mn-title-ar {
-  font-family: 'Noto Kufi Arabic', var(--mn-ar); font-weight: 700; color: var(--mnf-cobalt);
-  font-size: clamp(4.2rem, 10.5vw, 8rem); line-height: 1.35; margin-top: 4px;
+  font-family: 'Reem Kufi', var(--mn-ar); font-weight: 700; color: var(--mnf-cobalt);
+  font-size: clamp(4.4rem, 11vw, 8.5rem); line-height: 1.25; margin-top: 10px;
 }
 .mn-title {
   margin: 0; font-family: var(--mn-lat); font-weight: 700;
