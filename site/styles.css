@@ -2851,10 +2851,8 @@ model-viewer.hgts-viewer {
 }
 .mn-back:hover { color: var(--mnf-cobalt); }
 .mn-kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.26em; color: var(--mnf-cobalt); }
-.mn-title-ar {
-  font-family: 'Reem Kufi', var(--mn-ar); font-weight: 700; color: var(--mnf-cobalt);
-  font-size: clamp(4.4rem, 11vw, 8.5rem); line-height: 1.25; margin-top: 10px;
-}
+.mn-title-sq { width: min(540px, 84vw); height: auto; display: block; margin: 14px 0 6px; }
+.mn-title-sq rect { fill: var(--mnf-cobalt); }
 .mn-title {
   margin: 0; font-family: var(--mn-lat); font-weight: 700;
   font-size: clamp(1.7rem, 3.6vw, 2.7rem); letter-spacing: 0.32em; line-height: 1;
