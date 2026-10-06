@@ -1,202 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
-<title>MERA — Medical Electronic Records Assistant</title>
-<meta name="description" content="MERA: a Retrieval-Augmented Generation assistant that unifies clinical question answering, report summarization, and patient-case similarity behind one retriever — validated on de-identified MIMIC-IV-Note records. Published in Machine Learning and Knowledge Extraction, MDPI 2025.">
-<link rel="icon" href="../assets/favicon.png">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=16">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <title>MERA — Medical Electronic Records Assistant | Ahmed Ibrahim</title>
+  <meta name="description" content="MERA brings clinical question answering, report summarization, and case similarity into one retrieval-augmented assistant. Explore the research through an interactive evidence engine.">
+  <meta property="og:title" content="MERA — Medical Electronic Records Assistant">
+  <meta property="og:description" content="Clinical questions. Answers connected to the record. A research project by Ahmed Ibrahim.">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://aithechillguy.github.io/work/mera.html">
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="../styles.css?v=18">
 </head>
-<body class="me-page">
-
-<nav class="nav">
-  <a class="wordmark" href="../index.html#cover" aria-label="Ahmed Ibrahim — back to home">
-    <span class="wordmark-text">AHMED IBRAHIM</span>
-  </a>
-  <ul class="nav-links">
-    <li><a class="nav-link label-caps" href="../index.html#about">About</a></li>
-    <li><a class="nav-link label-caps" href="../index.html#research">Research</a></li>
-    <li><a class="nav-link label-caps" href="../index.html#projects">Projects</a></li>
-    <li><a class="nav-link label-caps" href="../index.html#contact">Contact</a></li>
-    <li><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.3" y1="5.3" x2="7" y2="7"/><line x1="17" y1="17" x2="18.7" y2="18.7"/><line x1="5.3" y1="18.7" x2="7" y2="17"/><line x1="17" y1="7" x2="18.7" y2="5.3"/></svg></button></li>
-  </ul>
+<body class="mf-page" id="top">
+<a class="mf-skip" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Portfolio navigation">
+  <a class="wordmark" href="../index.html#cover">AHMED IBRAHIM<span class="mf-nav-divider" aria-hidden="true">/</span><span class="mf-nav-project">SELECTED WORK</span></a>
+  <div class="mf-navtools">
+    <a class="mf-nav-back" href="../index.html#projects">All projects <span aria-hidden="true">↗</span></a>
+    <button class="theme-toggle mf-interactive" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.5m0 14v2.5M2.5 12H5m14 0h2.5M5.3 5.3 7 7m10 10 1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7"/></svg></button>
+  </div>
 </nav>
-
-<!-- ============================================================
-     INTRO
-     ============================================================ -->
-<header class="me-hero">
-  <a class="me-back" href="../index.html#projects">← BACK TO PROJECTS</a>
-  <span class="me-kicker">CLINICAL RAG · PUBLICATION 004 · MAKE 7(3):73 · 2025 · OPEN ACCESS</span>
-  <h1 class="me-title">MERA <span class="me-title-sub">Medical Electronic Records Assistant</span></h1>
-  <p class="me-deck">One retriever behind three clinical tools — ask the record, summarize it, find the similar case.
-  The page is the product: everything below is a working mock of the assistant over synthetic charts.</p>
-</header>
-
-<!-- ============================================================
-     THE APP
-     ============================================================ -->
-<section class="me-app-wrap" aria-label="Interactive mock of the MERA assistant">
-  <div class="me-win">
-    <div class="me-titlebar">
-      <span class="me-dot"></span><span class="me-dot"></span><span class="me-dot me-dot-live"></span>
-      <span class="me-titlebar-name">mera — records assistant</span>
-      <span class="me-titlebar-note">synthetic charts · de-identified</span>
-    </div>
-
-    <div class="me-body">
-      <!-- sidebar -->
-      <aside class="me-side">
-        <span class="me-side-label">MODE</span>
-        <button class="me-mode is-on" type="button" data-mode="ask">Ask the record</button>
-        <button class="me-mode" type="button" data-mode="sum">Summarize report</button>
-        <button class="me-mode" type="button" data-mode="sim">Similar patients</button>
-        <span class="me-side-label me-side-label2">PATIENTS</span>
-        <div id="me-ptlist"></div>
-        <div class="me-side-meta">retriever: domain-tuned<br>corpus: synthetic + MIMIC-IV-Note</div>
-      </aside>
-
-      <!-- note pane -->
-      <div class="me-notepane">
-        <div class="me-banner">
-          <span class="me-banner-id" id="me-banner-id">PT-0042</span>
-          <span class="me-banner-info" id="me-banner-info">67 M · community-acquired pneumonia</span>
-          <span class="me-banner-tag">SYNTHETIC</span>
+<main id="main">
+  <header class="mf-hero">
+    <div class="mf-shell">
+      <div class="mf-fileline"><span>04 / CLINICAL INTELLIGENCE</span><span>LEAD AUTHOR · AHMED IBRAHIM <i>↗</i> 2025</span></div>
+      <div class="mf-title-row"><h1>MERA<span aria-hidden="true">✳</span></h1><p>Medical Electronic<br>Records Assistant</p><span class="mf-title-symbol" aria-hidden="true">✳</span></div>
+      <div class="mf-hero-grid">
+        <div class="mf-intro">
+          <p class="mf-eyebrow">FROM CLINICAL RECORDS TO</p>
+          <h2>Answers.<br><em>With evidence.</em></h2>
+          <p class="mf-deck">A retrieval-augmented assistant for asking questions, condensing reports, and finding related clinical cases.</p>
+          <div class="mf-hero-actions"><a class="mf-button" href="#evidence">Explore the assistant <span aria-hidden="true">↘</span></a><a class="mf-textlink" href="https://doi.org/10.3390/make7030073" target="_blank" rel="noopener noreferrer">Read the research ↗</a></div>
+          <div class="mf-hero-note"><span aria-hidden="true">＋</span><p>Don't just read the answer.<br>Explore how it gets there.</p></div>
         </div>
-        <div class="me-note" id="me-note"></div>
-      </div>
-
-      <!-- action pane -->
-      <div class="me-action">
-        <!-- ask -->
-        <div class="me-pane" id="me-pane-ask">
-          <span class="me-pane-label">ASK THE RECORD — PICK A QUESTION</span>
-          <div class="me-qchips" id="me-qchips"></div>
-          <div class="me-card me-card-q"><span class="me-card-who">You</span><p id="me-ask-q"></p></div>
-          <div class="me-card me-card-a">
-            <span class="me-card-who me-card-who-mera">MERA</span>
-            <p id="me-ask-a"><span id="me-ask-a-txt"></span><i class="me-caret" aria-hidden="true"></i></p>
-            <div class="me-prov" id="me-prov"></div>
-            <div class="me-ground" id="me-ground" hidden>
-              <span class="me-ground-label">groundedness</span>
-              <span class="me-ground-track"><span class="me-ground-fill" id="me-ground-fill"></span></span>
-              <span class="me-ground-val" id="me-ground-val">0.00</span>
+        <div class="mf-instrument" id="mf-instrument" data-stage="3" aria-label="Interactive retrieval walkthrough">
+          <div class="mf-instrument-top"><span><i aria-hidden="true"></i> EVIDENCE ENGINE</span><span>PT–0042 / SYNTHETIC</span></div>
+          <div class="mf-query-chips mf-interactive" role="group" aria-label="Walkthrough question"><button type="button" class="is-active" data-query="0" aria-pressed="true">Cultures before antibiotics?</button><button type="button" data-query="1" aria-pressed="false">Imaging findings?</button><button type="button" data-query="2" aria-pressed="false">Discharge plan?</button></div>
+          <div class="mf-atlas">
+            <svg class="mf-routes" viewBox="0 0 720 360" preserveAspectRatio="none" aria-hidden="true"><path d="M190 47 H272 V180 H353 M190 98 H272 M190 149 H272 M190 200 H272 M190 251 H272 M190 302 H272 V180 M427 180 H497"/><path class="mf-live-route" id="mf-live-route" d="M190 98 H272 V180 H353 M190 149 H272 V180 M427 180 H497"/></svg>
+            <div class="mf-source-stack" role="group" aria-label="Inspect source passages">
+              <span class="mf-atlas-label">01 / THE RECORD</span>
+              <button type="button" class="mf-fragment" data-fragment="0" aria-pressed="false"><span>01</span><b>Presentation</b><i aria-hidden="true">↗</i></button>
+              <button type="button" class="mf-fragment is-retrieved is-inspected" data-fragment="1" aria-pressed="true"><span>02</span><b>Blood cultures</b><i aria-hidden="true">↗</i></button>
+              <button type="button" class="mf-fragment is-retrieved" data-fragment="2" aria-pressed="false"><span>03</span><b>Antibiotics</b><i aria-hidden="true">↗</i></button>
+              <button type="button" class="mf-fragment" data-fragment="3" aria-pressed="false"><span>04</span><b>Chest imaging</b><i aria-hidden="true">↗</i></button>
+              <button type="button" class="mf-fragment" data-fragment="4" aria-pressed="false"><span>05</span><b>Clinical course</b><i aria-hidden="true">↗</i></button>
+              <button type="button" class="mf-fragment" data-fragment="5" aria-pressed="false"><span>06</span><b>Discharge plan</b><i aria-hidden="true">↗</i></button>
             </div>
+            <div class="mf-core" aria-hidden="true"><div class="mf-core-orbit"></div><div class="mf-core-orbit mf-orbit-two"></div><div class="mf-core-disc"><svg viewBox="0 0 100 100"><path d="M25 72V28L50 54 75 28v44M25 50h50"/></svg><span>MERA</span></div><span class="mf-core-caption">RETRIEVE / GROUND</span></div>
+            <div class="mf-engine-answer"><span class="mf-atlas-label">02 / THE ANSWER</span><div class="mf-answer-light" id="mf-engine-light" aria-hidden="true">↗</div><p id="mf-engine-answer">Two sets of blood cultures were drawn before antibiotics.</p><span class="mf-engine-sources" id="mf-engine-sources">GROUNDED IN 02 + 03</span></div>
           </div>
-        </div>
-        <!-- summarize -->
-        <div class="me-pane" id="me-pane-sum" hidden>
-          <span class="me-pane-label">REPORT → SUMMARY</span>
-          <button class="me-run" id="me-sum-run" type="button">Generate summary</button>
-          <div class="me-sumlines" id="me-sumlines"></div>
-          <div class="me-sumstats" id="me-sumstats" hidden>
-            <span class="me-chip me-chip-teal">paper ROUGE-1 F1 0.70</span>
-            <span class="me-chip me-chip-teal">paper Jaccard 0.73</span>
-            <span class="me-chip">hover a line → its sources light in the note</span>
-          </div>
-        </div>
-        <!-- similar -->
-        <div class="me-pane" id="me-pane-sim" hidden>
-          <span class="me-pane-label">SIMILAR PATIENTS — RANKED</span>
-          <div class="me-simlist" id="me-simlist"></div>
-          <p class="me-simnote">Similarity search supports differential diagnosis and treatment planning —
-          paper METEOR 0.7–1.0 across diagnoses.</p>
+          <div class="mf-inspector"><span id="mf-inspector-label">SOURCE 02 / RETRIEVED</span><p id="mf-inspector-text">Blood cultures ×2 drawn prior to antibiotic administration.</p></div>
+          <div class="mf-transport mf-interactive"><button type="button" id="mf-replay" aria-label="Replay retrieval"><span aria-hidden="true">▶</span> Replay</button><div class="mf-stage-controls" role="group" aria-label="Retrieval steps"><button type="button" data-stage="0" aria-pressed="false">01 <span>Query</span></button><button type="button" data-stage="1" aria-pressed="false">02 <span>Retrieve</span></button><button type="button" data-stage="2" aria-pressed="false">03 <span>Ground</span></button><button type="button" data-stage="3" class="is-active" aria-pressed="true">04 <span>Answer</span></button></div><label class="mf-sr" for="mf-scrub">Retrieval stage</label><input id="mf-scrub" type="range" min="0" max="3" value="3" step="1" aria-valuetext="Answer"></div>
+          <p class="mf-engine-caption" id="mf-engine-caption" role="status" aria-live="polite">An answer connected to its supporting passages. Select a source to inspect it.</p>
         </div>
       </div>
+      <div class="mf-hero-footer"><span>WEILL CORNELL MEDICINE — QATAR</span><span>PEER-REVIEWED / MAKE 7(3), 73</span><span>PREPARED WALKTHROUGH · NO LIVE MODEL</span></div>
     </div>
+  </header>
 
-    <!-- status bar + trace -->
-    <div class="me-statusbar">
-      <span id="me-status">mode: ask · PT-0042 loaded</span>
-      <button class="me-trace-toggle" id="me-trace-toggle" type="button" aria-expanded="false">UNDER THE HOOD ▴</button>
+
+  <section class="mf-evidence mf-shell" id="evidence" aria-labelledby="evidence-title">
+    <div class="mf-section-heading"><div><p class="mf-eyebrow">01 / THE CLINICAL PLAYGROUND</p><h2 id="evidence-title">Open the record.<br><em>Interrogate the evidence.</em></h2></div><p>Three tasks. Three synthetic cases.<br>Switch the context. Inspect the citations.</p></div>
+    <div class="mf-folder">
+      <div class="mf-tabs mf-interactive" role="tablist" aria-label="Clinical tasks">
+        <button class="mf-tab is-active" type="button" id="mf-tab-ask" role="tab" aria-selected="true" aria-controls="mf-output" tabindex="0" data-mode="ask"><span>01</span> Ask the record</button>
+        <button class="mf-tab" type="button" id="mf-tab-sum" role="tab" aria-selected="false" aria-controls="mf-output" tabindex="-1" data-mode="sum"><span>02</span> Summarize</button>
+        <button class="mf-tab" type="button" id="mf-tab-sim" role="tab" aria-selected="false" aria-controls="mf-output" tabindex="-1" data-mode="sim"><span>03</span> Similar cases</button>
+      </div>
+      <div class="mf-folder-header"><span class="mf-demo-label"><span aria-hidden="true"></span>ILLUSTRATIVE DEMO · SYNTHETIC RECORDS</span><div class="mf-patient-control mf-interactive"><label for="mf-patient">Case</label><select id="mf-patient"><option value="p42">PT-0042 · Pneumonia</option><option value="p187">PT-0187 · Pneumonia</option><option value="p233">PT-0233 · Heart failure</option></select></div></div>
+      <div class="mf-context-bar mf-interactive"><span>WHAT HAPPENS WITHOUT THE RECORD?</span><button id="mf-context" type="button" aria-pressed="true"><i aria-hidden="true"></i><span>Context on</span></button></div><div class="mf-workspace">
+        <article class="mf-chart" aria-labelledby="chart-title">
+          <div class="mf-sheet-heading"><span class="mf-eyebrow">SOURCE RECORD</span><span class="mf-page-number">01 / 02</span></div>
+          <h3 id="chart-title"><span id="mf-record-id">PT-0042</span><span id="mf-record-info">67 M · community-acquired pneumonia</span></h3>
+          <div class="mf-chart-meta"><span>DOCUMENT <b>Clinical note</b></span><span>IDENTIFIERS <b>Omitted</b></span></div>
+          <div class="mf-passages" id="mf-passages">
+            <p class="mf-passage" id="mf-p1" tabindex="-1"><span class="mf-passage-no">01</span><span>HPI: 67-year-old male with fever and productive cough for 3 days, worsening dyspnea on exertion. Presented to the ED at 09:12.</span></p>
+            <p class="mf-passage is-evidence" id="mf-p2" tabindex="-1"><span class="mf-passage-no">02</span><span>Blood cultures ×2 drawn prior to antibiotic administration.</span></p>
+            <p class="mf-passage is-evidence" id="mf-p3" tabindex="-1"><span class="mf-passage-no">03</span><span>Started ceftriaxone 1 g IV q24h and azithromycin 500 mg PO daily.</span></p>
+            <p class="mf-passage" id="mf-p4" tabindex="-1"><span class="mf-passage-no">04</span><span>CXR: right lower lobe consolidation. No pleural effusion.</span></p>
+            <p class="mf-passage" id="mf-p5" tabindex="-1"><span class="mf-passage-no">05</span><span>Day 3: afebrile 48 h, weaned to room air, CRP trending down.</span></p>
+            <p class="mf-passage" id="mf-p6" tabindex="-1"><span class="mf-passage-no">06</span><span>Plan: step down to oral amoxicillin–clavulanate, discharge with 48 h follow-up.</span></p>
+          </div>
+          <p class="mf-chart-caption"><span aria-hidden="true">↳</span> Lime marks identify the supporting passages.</p>
+        </article>
+        <section class="mf-output" id="mf-output" role="tabpanel" aria-labelledby="mf-tab-ask" tabindex="0">
+          <div class="mf-sheet-heading"><span class="mf-eyebrow" id="mf-output-label">RECORD INQUIRY</span><span class="mf-page-number">02 / 02</span></div>
+          <div class="mf-question-control mf-interactive" id="mf-question-control"><label for="mf-question">Choose a question</label><select id="mf-question"><option value="0">Were cultures drawn before antibiotics?</option><option value="1">What did imaging show?</option><option value="2">What is the discharge plan?</option></select></div>
+          <div id="mf-result"><p class="mf-question-text">Were cultures drawn before antibiotics?</p><div class="mf-answer"><span class="mf-eyebrow">MERA / ANSWER</span><p>Yes. Two sets of blood cultures were drawn before antibiotics <sup>[02]</sup>, followed by ceftriaxone and azithromycin <sup>[03]</sup>.</p></div><p class="mf-evidence-caption">Supported by passages 02 and 03.</p></div>
+          <p class="mf-output-footnote">This walkthrough uses prepared examples. It does not run a live model or access patient data.</p>
+        </section>
+      </div>
+      <div class="mf-file-status"><span id="mf-status" role="status" aria-live="polite">PT-0042 · answer supported by 2 passages</span><span>FILE / MERA–2025</span></div>
     </div>
-    <div class="me-trace" id="me-trace" hidden>
-      <div class="me-trace-grid" id="me-trace-grid"></div>
-      <p class="me-trace-note">Illustrative trace over the synthetic chart. Paper-reported means:
-      retrieval relevance <b>0.92</b> · groundedness <b>0.89</b>.</p>
+    <details class="mf-trace"><summary>How the record becomes an answer <span aria-hidden="true">+</span></summary><ol class="mf-pipeline"><li><span>01 / QUERY</span><h3>A clinical question</h3><p>The question determines which information to retrieve.</p></li><li><span>02 / RETRIEVAL</span><h3>Relevant passages</h3><p>The retriever selects context from the clinical records.</p></li><li><span>03 / GENERATION</span><h3>A contextual answer</h3><p>The language model uses the retrieved context to form its response.</p></li></ol><p class="mf-smallprint">The highlighted source links illustrate the retrieval mechanism; they are not a reproduction of the original MERA interface.</p></details>
+  </section>
+
+  <section class="mf-results mf-shell" aria-labelledby="results-title">
+    <div class="mf-section-heading"><div><p class="mf-eyebrow">02 / THE RESEARCH RESULTS</p><h2 id="results-title">Research,<br><em>under the lens.</em></h2></div><p>Select a measure to inspect it.<br>All scores are reported in the paper.</p></div>
+    <div class="mf-results-grid">
+      <div class="mf-primary-result" id="mf-metric-detail" aria-live="polite"><div class="mf-metric-orbit" style="--metric:89%" aria-hidden="true"><span></span></div><span class="mf-eyebrow" id="mf-metric-label">QA groundedness</span><strong id="mf-metric-value">0.89</strong><p id="mf-metric-note">How well an answer is supported by its retrieved context.</p><span class="mf-result-note" id="mf-metric-scope">Single-patient question answering · mean score</span></div>
+      <div class="mf-scorecard"><div class="mf-scorecard-title"><span>SELECT AN EVALUATION MEASURE</span><span>SCORE</span></div><button type="button" class="mf-metric is-active" aria-pressed="true" aria-controls="mf-metric-detail"><span>01</span><span>QA groundedness</span><b>0.89</b><i aria-hidden="true">↗</i></button><button type="button" class="mf-metric" aria-pressed="false" aria-controls="mf-metric-detail"><span>02</span><span>QA correctness</span><b>0.91</b><i aria-hidden="true">↗</i></button><button type="button" class="mf-metric" aria-pressed="false" aria-controls="mf-metric-detail"><span>03</span><span>QA relevance</span><b>0.98</b><i aria-hidden="true">↗</i></button><button type="button" class="mf-metric" aria-pressed="false" aria-controls="mf-metric-detail"><span>04</span><span>Retrieval relevance</span><b>0.92</b><i aria-hidden="true">↗</i></button><button type="button" class="mf-metric" aria-pressed="false" aria-controls="mf-metric-detail"><span>05</span><span>Summary ROUGE-1 F1</span><b>0.70</b><i aria-hidden="true">↗</i></button><button type="button" class="mf-metric" aria-pressed="false" aria-controls="mf-metric-detail"><span>06</span><span>Summary Jaccard</span><b>0.73</b><i aria-hidden="true">↗</i></button><button type="button" class="mf-metric" aria-pressed="false" aria-controls="mf-metric-detail"><span>07</span><span>Case similarity METEOR</span><b>0.7–1.0</b><i aria-hidden="true">↗</i></button></div>
     </div>
-  </div>
-  <p class="me-appnote">Charts, questions, and answers are synthetic demo content — MERA's training corpus itself was synthetic
-  (Mistral v0.3 · Qwen 2.5 · Llama 3), validated on de-identified MIMIC-IV-Note records.</p>
-</section>
+    <p class="mf-results-caption">Metrics describe different tasks and should be read in their evaluation context. See the <a href="https://doi.org/10.3390/make7030073" target="_blank" rel="noopener noreferrer">paper’s methods and results ↗</a> for the full analysis, including validation on de-identified MIMIC-IV-Note records.</p>
+  </section>
 
-<!-- ============================================================
-     METRICS
-     ============================================================ -->
-<section class="me-metrics-sect" aria-label="Evaluation results">
-  <h2 class="me-h2">Measured, five ways.</h2>
-  <div class="me-metrics" id="me-metrics">
-    <div class="me-tile"><span class="me-tile-num" data-n="0.91">0.91</span><span class="me-tile-lbl">QA correctness</span></div>
-    <div class="me-tile"><span class="me-tile-num" data-n="0.98">0.98</span><span class="me-tile-lbl">QA relevance</span></div>
-    <div class="me-tile me-tile-hero"><span class="me-tile-num" data-n="0.89">0.89</span><span class="me-tile-lbl">groundedness</span></div>
-    <div class="me-tile"><span class="me-tile-num" data-n="0.92">0.92</span><span class="me-tile-lbl">retrieval relevance</span></div>
-    <div class="me-tile"><span class="me-tile-num" data-n="0.70">0.70</span><span class="me-tile-lbl">summarization ROUGE-1 F1</span></div>
-  </div>
-  <p class="me-metrics-note">Plus Jaccard 0.73 on summaries and METEOR 0.7–1.0 on similarity search — with consistent results
-  on real de-identified EHRs. To our knowledge the first system to unify clinical QA, summarization, and case similarity in one RAG framework.</p>
-</section>
+  <section class="mf-research mf-shell" aria-labelledby="research-title">
+    <div class="mf-research-intro"><p class="mf-eyebrow">03 / INSIDE THE RESEARCH</p><h2 id="research-title">Three tasks.<br><em>One retrieval framework.</em></h2><p>MERA brings question answering, report summarization, and patient-case similarity into the same clinical RAG system.</p><dl class="mf-facts"><div><dt>MY ROLE</dt><dd>Lead author</dd></div><div><dt>RESEARCH HOME</dt><dd>Weill Cornell Medicine — Qatar</dd></div><div><dt>CORE STACK</dt><dd>Python · LangChain · RAG</dd></div></dl></div>
+    <div class="mf-method"><article><span>01</span><div><h3>Build a clinical corpus.</h3><p>Synthetic reports generated with Mistral, Qwen, and Llama formed the training corpus.</p></div></article><article><span>02</span><div><h3>Retrieve before generating.</h3><p>A domain-specific retriever supplies the clinical context for each task.</p></div></article><article><span>03</span><div><h3>Test beyond synthetic data.</h3><p>The study also evaluates the system on de-identified MIMIC-IV-Note records, using task-specific measures for answers, summaries, and similar cases.</p></div></article></div>
+  </section>
 
-<!-- ============================================================
-     CASE NOTES
-     ============================================================ -->
-<section class="anatomy">
-  <dl>
-    <dt class="label-caps">Role</dt><dd>Lead author · WCM-Q</dd>
-    <dt class="label-caps">Stack</dt><dd>Python · LangChain · RAG · Mistral · Qwen · Llama</dd>
-    <dt class="label-caps">Data</dt><dd>Synthetic clinical corpus · MIMIC-IV-Note (de-identified)</dd>
-    <dt class="label-caps">Year</dt><dd>2025</dd>
-    <dt class="label-caps">Venue</dt><dd>MAKE · MDPI · 7(3):73 · <a href="https://doi.org/10.3390/make7030073" target="_blank" rel="noopener noreferrer">DOI ↗</a></dd>
-    <dt class="label-caps">Authors</dt><dd>Ahmed Ibrahim, Abdullah Khalili, Maryam Arabi, Aamenah Sattar, Abdullah Hosseini, Ahmed Serag</dd>
-    <dt class="label-caps">Status</dt><dd>Published — open access (CC BY)</dd>
-  </dl>
-  <div class="prose">
-    <p><strong>The problem.</strong> Three different clinical questions tend to need three different tools — asking the record, summarizing a report, and finding the patient like this one. Most assistants split each into its own pipeline, with its own retrieval, prompts, and evaluation. And plain LLMs hallucinate, age badly, and can't explain themselves — disqualifying in medicine.</p>
-    <p><strong>The approach.</strong> One Retrieval-Augmented Generation pipeline behind one domain-specific retriever, serving all three tasks. Privacy came first: the training corpus was generated synthetically with Mistral v0.3, Qwen 2.5, and Llama 3 — no real patient ever enters training — and the system was then validated on de-identified MIMIC-IV-Note records.</p>
-    <blockquote class="pullquote">Correctness 0.91, groundedness 0.89, retrieval relevance 0.92 — and every answer traces back into the record.</blockquote>
-    <p><strong>What was hard.</strong> Evaluation. MERA is scored across complementary signals — correctness, relevance, groundedness, and retrieval relevance for QA; ROUGE-1 F1 and Jaccard for summaries; METEOR for similarity — so a model that shines on one axis still has to hold up on the others, and results had to stay consistent when moving from synthetic charts to real EHRs.</p>
-    <p><strong>What shipped.</strong> A peer-reviewed assistant in <em>Machine Learning and Knowledge Extraction</em> — to our knowledge the first to unify clinical question answering, summarization, and patient-case similarity in a single RAG framework.</p>
-    <p><strong>What this changes.</strong> A reusable template for clinical RAG: one retriever, one evaluation harness, three tools behind it — and a privacy recipe (synthetic training, de-identified validation) that other hospitals can copy.</p>
-  </div>
-</section>
-
-<section class="artifacts">
-  <figure class="fig">
-<pre>synthetic corpus (Mistral v0.3 · Qwen 2.5 · Llama 3)  +  MIMIC-IV-Note validation
-  → one domain-specific retriever
-  → three tools: ask the record · summarize report · similar patients
-  → eval: correctness 0.91 · relevance 0.98 · groundedness 0.89 · retrieval 0.92
-          ROUGE-1 F1 0.70 · Jaccard 0.73 · METEOR 0.7–1.0</pre>
-    <figcaption class="caption-meta label-caps">FIG. 1 — MERA system overview</figcaption>
-  </figure>
-</section>
-
-<p class="footnote">Ibrahim, Khalili, Arabi, Sattar, Hosseini, Serag. “MERA: Medical Electronic Records Assistant.” <em>Machine Learning and Knowledge Extraction</em> 7(3):73, MDPI, 2025. Open access (CC BY). All metrics are the paper's; the demo charts and conversations are synthetic.</p>
-
-<a class="next-issue" href="d3.html">
-  <span class="label-caps lab">Next publication →</span>
-  <h2 class="h2">D3 — Drug–Drug Interaction Prediction</h2>
-</a>
-
-<footer class="footer">
-  <div class="footer-row">
-    <span class="label-caps">© 2026 Ahmed Ibrahim · Doha, Qatar</span>
-    <a href="../index.html#cover" class="label-caps back-to-top">Back to top ↑</a>
-  </div>
-</footer>
-
+  <section class="mf-publication mf-shell" aria-labelledby="publication-title"><div class="mf-publication-mark" aria-hidden="true">M<span>MAKE<br>2025</span></div><div><p class="mf-eyebrow">THE PUBLISHED WORK</p><h2 id="publication-title">MERA: Medical Electronic<br>Records Assistant</h2><p class="mf-authors">Ahmed Ibrahim, Abdullah Khalili, Maryam Arabi, Aamenah Sattar, Abdullah Hosseini, Ahmed Serag.</p><p><i>Machine Learning and Knowledge Extraction</i> · 7(3), 73 · MDPI, 2025</p><a class="mf-textlink" href="https://doi.org/10.3390/make7030073" target="_blank" rel="noopener noreferrer">Read the open-access paper <span aria-hidden="true">↗</span></a></div></section>
+  <a class="mf-next mf-shell" href="d3.html"><span class="mf-eyebrow">NEXT PROJECT</span><span>D3 <em>Drug–Drug Interaction Prediction</em></span><b aria-hidden="true">↗</b></a>
+</main>
+<footer class="mf-footer mf-shell"><span>© 2026 Ahmed Ibrahim · Doha, Qatar</span><a href="#top">Back to top ↑</a></footer>
 <script>
 (function () {
   'use strict';
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.body.classList.add('me-js');
-
-  /* ---------- synthetic demo data (illustrative; metrics in copy are the paper's) ---------- */
   var PTS = {
     p42: {
       id: 'PT-0042', info: '67 M · community-acquired pneumonia',
@@ -211,7 +134,7 @@
       qs: [
         { q: 'Were cultures drawn before antibiotics?', a: 'Yes — two sets of blood cultures were drawn before any antibiotics were given [1], after which ceftriaxone and azithromycin were started [2].', cites: [{ p: 'p2', s: 0.94 }, { p: 'p3', s: 0.91 }] },
         { q: 'What did imaging show?', a: 'Chest X-ray showed a right lower lobe consolidation with no pleural effusion [1].', cites: [{ p: 'p4', s: 0.96 }] },
-        { q: 'Is the patient ready for discharge?', a: 'Trending that way — afebrile 48 h and on room air [1], with a plan for oral step-down and discharge with follow-up in 48 hours [2].', cites: [{ p: 'p5', s: 0.93 }, { p: 'p6', s: 0.95 }] }
+        { q: 'What is the discharge plan?', a: 'The note records 48 hours without fever and a transition to room air [1]. The documented plan is oral antibiotic step-down and discharge with follow-up in 48 hours [2].', cites: [{ p: 'p5', s: 0.93 }, { p: 'p6', s: 0.95 }] }
       ],
       sum: [
         { t: '67 M admitted with RLL community-acquired pneumonia.', srcs: ['p1', 'p4'] },
@@ -277,260 +200,205 @@
       ]
     }
   };
-
-  var curPt = 'p42', curMode = 'ask', run = 0, lastAsk = null;
   var $ = function (id) { return document.getElementById(id); };
-  var note = $('me-note'), qchips = $('me-qchips'), prov = $('me-prov');
-  var askQ = $('me-ask-q'), askATxt = $('me-ask-a-txt'), askA = askATxt.parentNode;
-  var ground = $('me-ground'), groundFill = $('me-ground-fill'), groundVal = $('me-ground-val');
-  var status = $('me-status');
-
-  /* ---------- note pane ---------- */
-  function renderNote(pt) {
-    $('me-banner-id').textContent = pt.id;
-    $('me-banner-info').textContent = pt.info;
-    note.innerHTML = '';
-    pt.paras.forEach(function (pa, i) {
-      var d = document.createElement('p');
-      d.className = 'me-para';
-      d.id = 'me-para-' + pa.k;
-      d.innerHTML = '<span class="me-para-no">¶' + (i + 1) + '</span>' + pa.t;
-      note.appendChild(d);
+  var current = 'p42', mode = 'ask', selectedQuestion = 0, evidence = [], contextEnabled = true;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var labels = { ask: 'RECORD INQUIRY', sum: 'REPORT SUMMARY', sim: 'CASE SIMILARITY' };
+  var result = $('mf-result');
+  document.body.classList.add('mf-ready');
+  function make(tag, cls, text) {
+    var el = document.createElement(tag);
+    if (cls) el.className = cls;
+    if (text !== undefined) el.textContent = text;
+    return el;
+  }
+  function highlight(keys) {
+    document.querySelectorAll('.mf-passage').forEach(function (p) {
+      p.classList.toggle('is-evidence', keys.indexOf(p.dataset.key) !== -1);
     });
   }
-  function light(keys, on) {
-    document.querySelectorAll('.me-para').forEach(function (el) {
-      el.classList.toggle('is-lit', on && keys.indexOf(el.id.replace('me-para-', '')) !== -1);
-    });
-    if (on && keys.length) {
-      var first = $('me-para-' + keys[0]);
-      if (first) { first.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' }); }
-    }
-  }
-
-  /* ---------- ask mode ---------- */
-  function renderChips(pt) {
-    qchips.innerHTML = '';
-    pt.qs.forEach(function (qa, i) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'me-qchip' + (i === 0 ? ' is-on' : '');
-      b.textContent = qa.q;
-      b.addEventListener('click', function () {
-        qchips.querySelectorAll('.me-qchip').forEach(function (o) { o.classList.toggle('is-on', o === b); });
-        ask(qa);
-      });
-      qchips.appendChild(b);
-    });
-  }
-  function citeHTML(text, cites) {
-    return text.replace(/\[(\d)\]/g, function (_, n) {
-      var c = cites[+n - 1];
-      return c ? '<sup class="me-cite" data-p="' + c.p + '">[' + n + ']</sup>' : '[' + n + ']';
-    });
-  }
-  function ask(qa) {
-    var token = ++run;
-    lastAsk = qa;
-    askQ.textContent = qa.q;
-    askATxt.textContent = '';
-    askA.classList.add('is-typing');
-    prov.innerHTML = '';
-    ground.hidden = true;
-    light([], false);
-    renderTrace(qa);
-    status.textContent = 'mode: ask · retrieving over ' + PTS[curPt].id + ' …';
-    var i = 0, plain = qa.a, speed = reduced ? 0 : 14;
-    function step() {
-      if (token !== run) return;
-      if (speed === 0) { i = plain.length; }
-      i += 1;
-      askATxt.textContent = plain.slice(0, i);
-      if (i < plain.length) { setTimeout(step, speed); }
-      else { finish(); }
-    }
-    function finish() {
-      askA.classList.remove('is-typing');
-      askATxt.innerHTML = citeHTML(plain, qa.cites);
-      askATxt.querySelectorAll('.me-cite').forEach(function (s) {
-        s.addEventListener('click', function () { light([s.dataset.p], true); });
-      });
-      qa.cites.forEach(function (c, ci) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'me-provchip';
-        b.textContent = 'source ¶' + (PTS[curPt].paras.findIndex(function (pa) { return pa.k === c.p; }) + 1) + ' · ' + c.s.toFixed(2);
-        b.addEventListener('click', function () { light([c.p], true); });
-        b.addEventListener('mouseenter', function () { light([c.p], true); });
-        b.addEventListener('mouseleave', function () { light([], false); });
-        prov.appendChild(b);
-      });
-      ground.hidden = false;
-      var g = 0.89;
-      groundFill.style.width = '0%';
-      requestAnimationFrame(function () {
-        groundFill.style.width = (g * 100) + '%';
-      });
-      if (reduced) { groundVal.textContent = g.toFixed(2); }
-      else {
-        var t0 = null;
-        requestAnimationFrame(function cnt(ts) {
-          if (t0 === null) t0 = ts;
-          var k = Math.max(0, Math.min((ts - t0) / 800, 1));
-          groundVal.textContent = (g * k).toFixed(2);
-          if (k < 1) requestAnimationFrame(cnt);
-        });
-      }
-      if (curMode === 'ask') { status.textContent = 'mode: ask · answered from ' + qa.cites.length + ' passage' + (qa.cites.length > 1 ? 's' : '') + ' of ' + PTS[curPt].id; }
-    }
-    setTimeout(step, reduced ? 0 : 260);
-  }
-
-  /* ---------- summarize mode ---------- */
-  var sumLines = $('me-sumlines'), sumStats = $('me-sumstats');
-  function resetSum() { sumLines.innerHTML = ''; sumStats.hidden = true; }
-  $('me-sum-run').addEventListener('click', function () {
-    var token = ++run;
-    resetSum();
-    light([], false);
-    status.textContent = 'mode: summarize · condensing ' + PTS[curPt].id + ' …';
-    var lines = PTS[curPt].sum;
-    function addLine(i) {
-      if (token !== run) return;
-      if (i >= lines.length) {
-        sumStats.hidden = false;
-        status.textContent = 'mode: summarize · ' + lines.length + ' lines from ' + PTS[curPt].paras.length + ' paragraphs';
-        return;
-      }
-      var L = lines[i];
-      var d = document.createElement('div');
-      d.className = 'me-sumline';
-      d.innerHTML = '<span class="me-sumline-no">' + (i + 1) + '</span><span>' + L.t + '</span>';
-      d.addEventListener('mouseenter', function () { light(L.srcs, true); });
-      d.addEventListener('mouseleave', function () { light([], false); });
-      sumLines.appendChild(d);
-      requestAnimationFrame(function () { d.classList.add('on'); });
-      setTimeout(function () { addLine(i + 1); }, reduced ? 0 : 380);
-    }
-    addLine(0);
-  });
-
-  /* ---------- similar mode ---------- */
-  var simList = $('me-simlist');
-  function renderSim(pt) {
-    simList.innerHTML = '';
-    pt.sim.forEach(function (m) {
-      var d = document.createElement('button');
-      d.type = 'button';
-      d.className = 'me-sim';
-      d.innerHTML =
-        '<span class="me-sim-head"><b>' + m.id + '</b><span class="me-sim-score">match ' + m.s.toFixed(2) + '</span></span>' +
-        '<span class="me-sim-bar"><i style="width:' + (m.s * 100) + '%"></i></span>' +
-        '<span class="me-sim-blurb" hidden>' + m.blurb + '</span>' +
-        '<span class="me-sim-tags" hidden>' + m.tags.map(function (t) { return '<em>' + t + '</em>'; }).join('') + '</span>';
-      d.addEventListener('click', function () {
-        var open = !d.classList.contains('is-open');
-        simList.querySelectorAll('.me-sim').forEach(function (o) {
-          o.classList.remove('is-open');
-          o.querySelector('.me-sim-blurb').hidden = true;
-          o.querySelector('.me-sim-tags').hidden = true;
-        });
-        if (open) {
-          d.classList.add('is-open');
-          d.querySelector('.me-sim-blurb').hidden = false;
-          d.querySelector('.me-sim-tags').hidden = false;
-          status.textContent = 'mode: similar · ' + m.id + ' matches ' + PTS[curPt].id + ' on: ' + m.tags.join(', ');
-        }
-      });
-      simList.appendChild(d);
-    });
-  }
-
-  /* ---------- trace drawer ---------- */
-  var traceGrid = $('me-trace-grid');
-  function renderTrace(qa) {
-    var pt = PTS[curPt];
-    var chunks = qa ? qa.cites.map(function (c) {
-      var idx = pt.paras.findIndex(function (pa) { return pa.k === c.p; });
-      return '¶' + (idx + 1) + ' <b>' + c.s.toFixed(2) + '</b>';
-    }).join(' · ') : '—';
-    traceGrid.innerHTML =
-      '<div class="me-step"><span>1 · EMBED</span><p>query → 768-d vector</p></div>' +
-      '<div class="me-step"><span>2 · RETRIEVE</span><p>top-k over ' + pt.id + ': ' + chunks + '</p></div>' +
-      '<div class="me-step"><span>3 · GROUND</span><p>generation constrained to retrieved passages</p></div>' +
-      '<div class="me-step"><span>4 · ANSWER</span><p>response with inline citations</p></div>';
-  }
-  $('me-trace-toggle').addEventListener('click', function () {
-    var tr = $('me-trace');
-    tr.hidden = !tr.hidden;
-    this.setAttribute('aria-expanded', String(!tr.hidden));
-    this.textContent = tr.hidden ? 'UNDER THE HOOD ▴' : 'UNDER THE HOOD ▾';
-  });
-
-  /* ---------- patients + modes ---------- */
-  var ptlist = $('me-ptlist');
-  Object.keys(PTS).forEach(function (key, i) {
-    var b = document.createElement('button');
+  function citation(key) {
+    var number = PTS[current].paras.findIndex(function (p) { return p.k === key; }) + 1;
+    var b = make('button', 'mf-citation', String(number).padStart(2, '0'));
     b.type = 'button';
-    b.className = 'me-pt' + (i === 0 ? ' is-on' : '');
-    b.innerHTML = '<b>' + PTS[key].id + '</b><span>' + PTS[key].info + '</span>';
+    b.setAttribute('aria-label', 'Show source passage ' + number);
+    b.setAttribute('aria-controls', 'mf-' + key);
+    b.addEventListener('mouseenter', function () { highlight([key]); });
+    b.addEventListener('mouseleave', function () { highlight(evidence); });
+    b.addEventListener('focus', function () { highlight([key]); });
+    b.addEventListener('blur', function () { highlight(evidence); });
     b.addEventListener('click', function () {
-      ptlist.querySelectorAll('.me-pt').forEach(function (o) { o.classList.toggle('is-on', o === b); });
-      curPt = key;
-      loadPatient();
+      var passage = $('mf-' + key);
+      passage.focus({ preventScroll: true });
+      highlight([key]);
+      passage.scrollIntoView({ block: 'center', behavior: reduced.matches ? 'auto' : 'smooth' });
     });
-    ptlist.appendChild(b);
-  });
+    return b;
+  }
+  function withCitations(text, cites) {
+    var p = make('p'), parts = text.split(/(\[\d+\])/g);
+    parts.forEach(function (part) {
+      var n = /^\[(\d+)\]$/.exec(part);
+      if (n && cites[Number(n[1])-1]) p.appendChild(citation(cites[Number(n[1])-1].p));
+      else p.appendChild(document.createTextNode(part));
+    });
+    return p;
+  }
+  function renderAsk(pt) {
+    var qa = pt.qs[selectedQuestion];
+    evidence = qa.cites.map(function (c) { return c.p; });
+    result.appendChild(make('p','mf-question-text',qa.q));
+    var answer = make('div','mf-answer');
+    answer.appendChild(make('span','mf-eyebrow','MERA / ANSWER'));
+    answer.appendChild(withCitations(qa.a,qa.cites));
+    result.appendChild(answer);
+    var sources = make('div','mf-source-links');
+    sources.appendChild(make('span',null,'SUPPORTING PASSAGES'));
+    evidence.forEach(function (key) { sources.appendChild(citation(key)); });
+    result.appendChild(sources);
+    $('mf-status').textContent = pt.id + ' · answer supported by ' + evidence.length + ' passage' + (evidence.length === 1 ? '' : 's');
+  }
+  function renderSummary(pt) {
+    result.appendChild(make('p','mf-question-text','The report, condensed.'));
+    var list = make('ol','mf-summary');
+    evidence = [];
+    pt.sum.forEach(function (line,i) {
+      var li=make('li');
+      li.appendChild(make('span','mf-summary-no',String(i+1).padStart(2,'0')));
+      var content=make('div');
+      content.appendChild(make('p',null,line.t));
+      var links=make('div','mf-summary-sources');
+      line.srcs.forEach(function (key) { if(evidence.indexOf(key)===-1)evidence.push(key); links.appendChild(citation(key)); });
+      content.appendChild(links); li.appendChild(content); list.appendChild(li);
+    });
+    result.appendChild(list);
+    $('mf-status').textContent = pt.id + ' · ' + pt.sum.length + ' summary points from ' + pt.paras.length + ' passages';
+  }
+  function renderSimilar(pt) {
+    evidence = [];
+    result.appendChild(make('p','mf-question-text','Related clinical cases.'));
+    result.appendChild(make('p','mf-sim-caption','Prepared examples of what case retrieval can surface. Open a case to compare its clinical features.'));
+    pt.sim.forEach(function (match) {
+      var card=make('details','mf-match'), head=make('summary');
+      head.appendChild(make('b',null,match.id));
+      head.appendChild(make('span',null,'Compare case +'));
+      card.appendChild(head); card.appendChild(make('p',null,match.blurb));
+      var tags=make('div','mf-match-tags');
+      match.tags.forEach(function (t) { tags.appendChild(make('span',null,t)); });
+      card.appendChild(tags);
+      var caseKey=Object.keys(PTS).find(function(key){return PTS[key].id===match.id;});
+      if(caseKey){var openCase=make('button','mf-open-case','Explore this record ↗');openCase.type='button';openCase.addEventListener('click',function(){current=caseKey;$('mf-patient').value=caseKey;mode='ask';loadPatient();setMode('ask');$('mf-output').focus({preventScroll:true});});card.appendChild(openCase);}
+      result.appendChild(card);
+    });
+    $('mf-status').textContent = pt.id + ' · ' + pt.sim.length + ' illustrative related cases';
+  }
+  function renderOutput() {
+    var pt=PTS[current]; result.replaceChildren();
+    $('mf-output-label').textContent=labels[mode];
+    $('mf-question-control').hidden=mode!=='ask';
+    $('mf-output').setAttribute('aria-labelledby','mf-tab-'+mode);
+    document.querySelector('.mf-chart-caption').lastChild.textContent = mode==='sim' ? ' Compare the source record with the related cases.' : ' Lime marks identify the supporting passages.';
+    document.querySelector('.mf-workspace').classList.toggle('mf-context-off',contextEnabled===false);
+    if(contextEnabled===false){
+      evidence=[];result.appendChild(make('p','mf-question-text','No record. No grounded answer.'));
+      var missing=make('div','mf-missing');missing.appendChild(make('span',null,'∅'));
+      missing.appendChild(make('h3',null,'The context is disconnected.'));
+      missing.appendChild(make('p',null,'Without the record, the assistant has no retrieved evidence for this case. Reconnect the context to inspect an answer, summary, or related case.'));result.appendChild(missing);
+      $('mf-status').textContent=pt.id+' · context disconnected';
+    } else if(mode==='ask')renderAsk(pt); else if(mode==='sum')renderSummary(pt); else renderSimilar(pt);
+    highlight(evidence);
+  }
   function loadPatient() {
-    var pt = PTS[curPt];
-    run += 1;
-    renderNote(pt);
-    renderChips(pt);
-    renderSim(pt);
-    resetSum();
-    renderTrace(null);
-    status.textContent = 'mode: ' + curMode + ' · ' + pt.id + ' loaded';
-    if (curMode === 'ask') { ask(pt.qs[0]); }
+    var pt=PTS[current]; selectedQuestion=0;
+    $('mf-record-id').textContent=pt.id; $('mf-record-info').textContent=pt.info;
+    $('mf-passages').replaceChildren();
+    pt.paras.forEach(function (para,i) {
+      var p=make('p','mf-passage'); p.id='mf-'+para.k; p.dataset.key=para.k; p.tabIndex=-1;
+      p.appendChild(make('span','mf-passage-no',String(i+1).padStart(2,'0')));
+      p.appendChild(make('span',null,para.t)); $('mf-passages').appendChild(p);
+    });
+    $('mf-question').replaceChildren();
+    pt.qs.forEach(function (qa,i) { var o=make('option',null,qa.q); o.value=String(i); $('mf-question').appendChild(o); });
+    renderOutput();
   }
-  document.querySelectorAll('.me-mode').forEach(function (b) {
-    b.addEventListener('click', function () { setMode(b.dataset.mode, true); });
+  function setMode(next) {
+    mode=next;
+    document.querySelectorAll('.mf-tab').forEach(function (b) {
+      var active=b.dataset.mode===mode;
+      b.classList.toggle('is-active',active); b.setAttribute('aria-selected',String(active)); b.tabIndex=active?0:-1;
+    });
+    renderOutput();
+  }
+  var tabs=Array.from(document.querySelectorAll('.mf-tab'));
+  tabs.forEach(function (b,i) {
+    b.addEventListener('click',function () { setMode(b.dataset.mode); });
+    b.addEventListener('keydown',function (e) {
+      var target;
+      if(e.key==='ArrowRight')target=(i+1)%tabs.length;
+      if(e.key==='ArrowLeft')target=(i+tabs.length-1)%tabs.length;
+      if(e.key==='Home')target=0;
+      if(e.key==='End')target=tabs.length-1;
+      if(target!==undefined) { e.preventDefault(); tabs[target].focus(); setMode(tabs[target].dataset.mode); }
+    });
   });
-  function setMode(mode, fromClick) {
-    curMode = mode;
-    document.querySelectorAll('.me-mode').forEach(function (o) { o.classList.toggle('is-on', o.dataset.mode === mode); });
-    ['ask', 'sum', 'sim'].forEach(function (m) { $('me-pane-' + m).hidden = m !== mode; });
-    light([], false);
-    status.textContent = 'mode: ' + mode + ' · ' + PTS[curPt].id + ' loaded';
-    if (mode === 'ask' && fromClick) { ask(PTS[curPt].qs[0]); }
-  }
-
-  /* deep links: #ask #summarize #similar */
-  var hash = (location.hash || '').replace('#', '');
-  var hashMode = { ask: 'ask', summarize: 'sum', similar: 'sim' }[hash];
+  $('mf-patient').addEventListener('change',function () { current=this.value; loadPatient(); });
+  $('mf-question').addEventListener('change',function () { selectedQuestion=Number(this.value); renderOutput(); });
   loadPatient();
-  if (hashMode && hashMode !== 'ask') { setMode(hashMode, false); }
-
-  /* ---------- metric count-ups ---------- */
-  if (!reduced) {
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        io.unobserve(e.target);
-        e.target.querySelectorAll('.me-tile-num').forEach(function (el) {
-          var target = parseFloat(el.dataset.n), t0 = null;
-          el.textContent = '0.00';
-          requestAnimationFrame(function stepN(ts) {
-            if (t0 === null) t0 = ts;
-            var k = Math.max(0, Math.min((ts - t0) / 1000, 1));
-            k = 1 - Math.pow(1 - k, 3);
-            el.textContent = (target * k).toFixed(2);
-            if (k < 1) requestAnimationFrame(stepN);
-          });
-        });
-      });
-    }, { threshold: 0.3 });
-    io.observe($('me-metrics'));
+  var deepLink={ '#ask':'ask', '#summarize':'sum', '#similar':'sim' }[location.hash];
+  if(deepLink)setMode(deepLink);
+  // Prepared, synthetic examples: these controls reveal the retrieval concept,
+  // rather than simulate model latency or invent per-answer performance scores.
+  var engineQuestion=0, engineStage=3, inspected=1, replayTimer=null;
+  var shortAnswers=['Two sets of blood cultures were drawn before antibiotics.','Right lower lobe consolidation. No pleural effusion.','Oral antibiotic step-down, with follow-up in 48 hours.'];
+  var stageNames=['Query','Retrieve','Ground','Answer'];
+  var stageDescriptions=['The question defines what to look for in the record.','Select the passages relevant to the question.','Use the retrieved passages as the answer’s context.','An answer connected to its supporting passages. Select a source to inspect it.'];
+  function stopReplay(){ clearTimeout(replayTimer); replayTimer=null; $('mf-replay').innerHTML='<span aria-hidden="true">▶</span> Replay'; }
+  function updateInspector(){
+    var relevant=PTS.p42.qs[engineQuestion].cites.some(function(c){return c.p==='p'+(inspected+1);});
+    $('mf-inspector-label').textContent='SOURCE '+String(inspected+1).padStart(2,'0')+' / '+(relevant?'RETRIEVED':'OUTSIDE THIS ANSWER');
+    $('mf-inspector-text').textContent=PTS.p42.paras[inspected].t;
+    document.querySelectorAll('.mf-fragment').forEach(function(b,i){b.classList.toggle('is-inspected',i===inspected);b.setAttribute('aria-pressed',String(i===inspected));});
   }
+  function paintEngine(){
+    var keys=PTS.p42.qs[engineQuestion].cites.map(function(c){return Number(c.p.slice(1))-1;});
+    $('mf-instrument').dataset.stage=String(engineStage);
+    $('mf-scrub').value=String(engineStage);$('mf-scrub').setAttribute('aria-valuetext',stageNames[engineStage]);
+    document.querySelectorAll('.mf-stage-controls button').forEach(function(b,i){b.classList.toggle('is-active',i===engineStage);b.classList.toggle('is-complete',i<engineStage);b.setAttribute('aria-pressed',String(i===engineStage));});
+    document.querySelectorAll('.mf-fragment').forEach(function(b,i){b.classList.toggle('is-retrieved',engineStage>0&&keys.indexOf(i)!==-1);});
+    $('mf-live-route').setAttribute('d',keys.map(function(i){return 'M190 '+(47+i*51)+' H272 V180 H353';}).join(' ')+' M427 180 H497');
+    $('mf-engine-answer').textContent=engineStage===3?shortAnswers[engineQuestion]:['What does the record say?','Finding the relevant passages…','Context assembled. Ready to answer.'][engineStage];
+    $('mf-engine-sources').textContent=engineStage===3?'GROUNDED IN '+keys.map(function(i){return String(i+1).padStart(2,'0');}).join(' + '):stageNames[engineStage].toUpperCase()+' / '+String(engineStage+1).padStart(2,'0');
+    $('mf-engine-caption').textContent=stageDescriptions[engineStage];updateInspector();
+  }
+  function replay(){stopReplay();engineStage=0;paintEngine();if(reduced.matches){engineStage=3;paintEngine();return;} $('mf-replay').innerHTML='<span aria-hidden="true">■</span> Stop';
+    function advance(){engineStage++;paintEngine();if(engineStage<3)replayTimer=setTimeout(advance,1050);else stopReplay();}replayTimer=setTimeout(advance,1050);
+  }
+  $('mf-replay').addEventListener('click',function(){if(replayTimer)stopReplay();else replay();});
+  document.querySelectorAll('.mf-query-chips button').forEach(function(b){b.addEventListener('click',function(){engineQuestion=Number(b.dataset.query);inspected=Number(PTS.p42.qs[engineQuestion].cites[0].p.slice(1))-1;document.querySelectorAll('.mf-query-chips button').forEach(function(q){q.classList.toggle('is-active',q===b);q.setAttribute('aria-pressed',String(q===b));});replay();});});
+  document.querySelectorAll('.mf-fragment').forEach(function(b){b.addEventListener('click',function(){inspected=Number(b.dataset.fragment);updateInspector();});});
+  document.querySelectorAll('.mf-stage-controls button').forEach(function(b){b.addEventListener('click',function(){stopReplay();engineStage=Number(b.dataset.stage);paintEngine();});});
+  $('mf-scrub').addEventListener('input',function(){stopReplay();engineStage=Number(this.value);paintEngine();});
+  document.addEventListener('visibilitychange',function(){if(document.hidden)stopReplay();});
+  reduced.addEventListener('change',function(){if(reduced.matches){stopReplay();engineStage=3;paintEngine();}});
+  paintEngine();
+
+
+  $('mf-context').addEventListener('click',function(){contextEnabled=!contextEnabled;this.setAttribute('aria-pressed',String(contextEnabled));this.querySelector('span').textContent=contextEnabled?'Context on':'Context off';renderOutput();});
+
+  var metrics=[
+    {value:'0.89',label:'QA groundedness',note:'How well an answer is supported by its retrieved context.',scope:'Single-patient question answering · mean score',score:89},
+    {value:'0.91',label:'QA correctness',note:'Whether an answer accurately addresses the clinical question.',scope:'Single-patient question answering · mean score',score:91},
+    {value:'0.98',label:'QA relevance',note:'How closely an answer addresses the question asked.',scope:'Single-patient question answering · mean score',score:98},
+    {value:'0.92',label:'Retrieval relevance',note:'How relevant the retrieved context is to the query.',scope:'Single-patient question answering · mean score',score:92},
+    {value:'0.70',label:'Summary ROUGE-1 F1',note:'Unigram overlap between generated and reference summaries.',scope:'Report summarization · ROUGE-1 F1',score:70},
+    {value:'0.73',label:'Summary Jaccard',note:'Token-set overlap between generated and reference summaries.',scope:'Report summarization · Jaccard similarity',score:73},
+    {value:'0.7–1.0',label:'Case similarity METEOR',note:'Reported METEOR range for the similarity-search task.',scope:'Patient-case similarity · reported range',score:100}
+  ];
+  document.querySelectorAll('.mf-metric').forEach(function(b,i){b.addEventListener('click',function(){var m=metrics[i];document.querySelectorAll('.mf-metric').forEach(function(row){row.classList.toggle('is-active',row===b);row.setAttribute('aria-pressed',String(row===b));});$('mf-metric-value').textContent=m.value;$('mf-metric-label').textContent=m.label;$('mf-metric-note').textContent=m.note;$('mf-metric-scope').textContent=m.scope;document.querySelector('.mf-metric-orbit').style.setProperty('--metric',m.score+'%');document.querySelector('.mf-primary-result').classList.toggle('mf-range',i===6);});});
+  // Reveal is progressive enhancement: all research content stays readable
+  // when scripting or animation is unavailable.
+  if('IntersectionObserver' in window&&!reduced.matches){var reveal=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');reveal.unobserve(entry.target);}});},{threshold:0.12});document.querySelectorAll('.mf-results,.mf-research,.mf-publication').forEach(function(el){el.classList.add('mf-reveal');reveal.observe(el);});}
+
 })();
 </script>
 <script src="../theme.js" defer></script>

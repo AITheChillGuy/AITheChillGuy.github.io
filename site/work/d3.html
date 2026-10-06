@@ -4,79 +4,149 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
-<title>D3 — A Small Language Model for Drug–Drug Interaction Prediction</title>
-<meta name="description" content="A ~70M-parameter small language model for Drug–Drug Interaction prediction that matches billion-parameter LLMs at a fraction of the inference cost. Published in Machine Learning with Applications, Elsevier 2025.">
+<title>D3 — Drug–Drug Interaction Prediction | Ahmed Ibrahim</title>
+<meta name="description" content="A compact language model for drug–drug interaction severity prediction. Explore D3's architecture, parameter scale, published benchmarks, and evaluation errors.">
+<meta property="og:title" content="D3 — Drug–Drug Interaction Prediction">
+<meta property="og:description" content="An interactive look inside a specialist language model for drug–drug interaction prediction.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://aithechillguy.github.io/work/d3.html">
 <link rel="icon" href="../assets/favicon.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=6">
+<link rel="stylesheet" href="../styles.css?v=33">
 </head>
-<body>
-
-<nav class="nav">
-  <a class="wordmark" href="../index.html#cover" aria-label="Ahmed Ibrahim — back to home">
-    <span class="wordmark-text">AHMED IBRAHIM</span>
-  </a>
-  <ul class="nav-links">
-    <li><a class="nav-link label-caps" href="../index.html#about">About</a></li>
-    <li><a class="nav-link label-caps" href="../index.html#research">Research</a></li>
-    <li><a class="nav-link label-caps" href="../index.html#projects">Projects</a></li>
-    <li><a class="nav-link label-caps" href="../index.html#contact">Contact</a></li>
-      <li><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.3" y1="5.3" x2="7" y2="7"/><line x1="17" y1="17" x2="18.7" y2="18.7"/><line x1="5.3" y1="18.7" x2="7" y2="17"/><line x1="17" y1="7" x2="18.7" y2="5.3"/></svg></button></li>
-  </ul>
-</nav>
-
-<header class="detail-hero">
-  <a class="back-link label-caps" href="../index.html#research">← Back to research</a>
-  <p class="label-caps issue">Publication · 2025 · Elsevier</p>
-  <h1>D3 — A Small Language Model for Drug–Drug Interaction Prediction</h1>
-  <p class="lead">A ~70M-parameter specialist matches billion-parameter LLMs at a fraction of the inference cost.</p>
-</header>
-
-<section class="anatomy">
-  <dl>
-    <dt class="label-caps">Role</dt><dd>AI Research Specialist · WCM-Q</dd>
-    <dt class="label-caps">Stack</dt><dd>Python · PyTorch · Hugging Face · Pretraining · SFT</dd>
-    <dt class="label-caps">Year</dt><dd>2025</dd>
-    <dt class="label-caps">Venue</dt><dd>Machine Learning with Applications · Elsevier</dd>
-    <dt class="label-caps">Status</dt><dd>Published</dd>
-  </dl>
-  <div class="prose">
-    <p><strong>The problem.</strong> Drug–Drug Interactions are a leading cause of preventable adverse events, and predicting them is exactly the kind of narrow, well-bounded task where deploying a billion-parameter general-purpose LLM is an expensive answer.</p>
-    <p><strong>The approach.</strong> A compact ~70M-parameter small language model, pretrained and fine-tuned on biomedical interaction data for DDI prediction. The bet is simple: a small specialist trained on the right data can keep up with a generalist that's much larger.</p>
-    <blockquote class="pullquote">The 70M specialist matched billion-parameter LLMs — at a fraction of the inference cost.</blockquote>
-    <p><strong>What was hard.</strong> A fair benchmark. Comparing a small specialist to a billion-parameter LLM only means something if the evaluation, the splits, and the metric definitions are the same on both sides.</p>
-    <p><strong>What shipped.</strong> A peer-reviewed comparison in <em>Machine Learning with Applications</em> (Elsevier, 2025) showing the small specialized model reaches comparable accuracy at a fraction of the inference cost.</p>
-    <p><strong>What this changes.</strong> For narrow prediction tasks at scale, a small specialist with clean training and evaluation discipline is often the more deployable answer than a billion-parameter generalist.</p>
+<body class="d3-page" id="top">
+<a class="d3-skip" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Portfolio navigation"><a class="wordmark" href="../index.html#cover">AHMED IBRAHIM<span>/</span><b>RESEARCH NO. 05</b></a><div class="d3-navtools"><a href="../index.html#projects">All projects ↗</a><button class="theme-toggle d3-interactive" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.5m0 14v2.5M2.5 12H5m14 0h2.5M5.3 5.3 7 7m10 10 1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7"/></svg></button></div></nav>
+<div class="d3-reading-progress" aria-hidden="true"><i id="d3-reading-progress"></i></div>
+<main id="main">
+<header class="d3-story" id="d3-story"><div class="d3-story-pin">
+<div class="d3-story-label"><span>D3 / A SPECIALIST LANGUAGE MODEL</span><span>Ahmed Ibrahim · WCM–Qatar · 2025</span></div>
+<div class="d3-flow" id="d3-flow" data-stage="0">
+  <div class="d3-story-copy"><p class="d3-kicker">DRUG–DRUG INTERACTION PREDICTION</p><h1><span>Two drugs.</span><span>One question.</span></h1><p class="d3-story-question">How severe is their interaction?</p><p class="d3-story-intro">D3 predicts interaction severity with a compact decoder model developed at Weill Cornell Medicine — Qatar.</p><a class="d3-link" href="https://doi.org/10.1016/j.mlwa.2025.100658" target="_blank" rel="noopener noreferrer">Read the published paper ↗</a></div>
+  <div class="d3-sculpture" aria-label="Illustrated workflow from two medications through six decoder blocks to three severity labels">
+    <div class="d3-query"><small>01 / THE INPUT</small><p>What is the severity of interaction between <strong>Calcium carbonate</strong> and <strong>Doxycycline</strong>?</p></div>
+    <div class="d3-encode-route"><span>Text → token IDs</span><svg viewBox="0 0 24 80" aria-hidden="true"><path d="M12 2V72M5 65L12 72L19 65"/><circle cx="12" cy="12" r="4"/></svg></div>
+    <div class="d3-stack-explanation"><b>02 / D3’S SIX DECODER BLOCKS</b><p>Each layer refines the representation of the drug pair.</p></div>
+    <div class="d3-model-scene"><div class="d3-stack"><div class="d3-decoder-block" data-block="0" style="--layer:0"><span>DECODER / 01</span><b>01</b><i></i></div><div class="d3-decoder-block" data-block="1" style="--layer:1"><span>DECODER / 02</span><b>02</b><i></i></div><div class="d3-decoder-block" data-block="2" style="--layer:2"><span>DECODER / 03</span><b>03</b><i></i></div><div class="d3-decoder-block" data-block="3" style="--layer:3"><span>DECODER / 04</span><b>04</b><i></i></div><div class="d3-decoder-block" data-block="4" style="--layer:4"><span>DECODER / 05</span><b>05</b><i></i></div><div class="d3-decoder-block" data-block="5" style="--layer:5"><span>DECODER / 06</span><b>D3</b><i></i></div></div></div>
+    <div class="d3-classifier-route"><svg viewBox="0 0 24 50" aria-hidden="true"><path d="M12 2V42M5 35L12 42L19 35"/></svg><span>Classification head</span></div>
+    <div class="d3-output-labels" aria-label="Three possible severity labels"><small>03 / POSSIBLE OUTPUTS</small><span>Minor</span><span>Moderate</span><span>Major</span></div>
   </div>
-</section>
-
-<section class="artifacts">
-  <figure class="fig">
-<pre>biomedical interaction data
-  → pretraining + fine-tuning (~70M params)
-  → benchmark vs. billion-parameter LLMs
-  → comparable accuracy · ≪ inference cost</pre>
-    <figcaption class="caption-meta label-caps">FIG. 1 — Training and evaluation pipeline</figcaption>
+  <div class="d3-story-bottom"><div class="d3-flow-description"><b id="d3-flow-title">Two medications. One question.</b><p id="d3-flow-detail">The drug-pair question is tokenized into the sequence D3 receives.</p></div><div class="d3-flow-controls d3-interactive"><div role="group" aria-label="Model walkthrough stage"><button type="button" data-flow-stage="0" aria-pressed="true">01 <span>Input</span></button><button type="button" data-flow-stage="1" aria-pressed="false">02 <span>Model</span></button><button type="button" data-flow-stage="2" aria-pressed="false">03 <span>Output</span></button></div><button type="button" id="d3-motion-toggle" aria-pressed="false" aria-label="Pause walkthrough">Ⅱ</button></div><a class="d3-scroll-cue" href="#scale">SCROLL TO EXPLORE <span>↓</span></a></div>
+</div><p class="d3-flow-caption">Illustrated architecture; no live prediction. <a href="https://github.com/serag-ai/D3" target="_blank" rel="noopener noreferrer">Example query &amp; code ↗</a></p>
+</div></header>
+<nav class="d3-contents d3-shell" aria-label="Article contents"><a href="#scale"><span>01</span> Comparison</a><a href="#errors"><span>02</span> Error analysis</a><a href="#method"><span>03</span> Model &amp; training</a></nav>
+<section class="d3-scale d3-shell d3-editorial-bench d3-volume-section" id="scale" aria-labelledby="d3-scale-title">
+  <header class="d3-bench-header"><div><p class="d3-kicker">01 / Parameter scale</p><h2 id="d3-scale-title">70 million.<br>Against billions.</h2></div><p>A small model for one task. See how D3’s parameter count compares with the larger models in the study.</p></header>
+  <figure class="d3-bench-figure">
+    <div class="d3-bench-main">
+      <div class="d3-bench-selector d3-interactive"><span>Compare D3 with</span><div role="group" aria-label="Comparison model"><button type="button" data-model="0" aria-pressed="false">Qwen 2.5</button><button type="button" data-model="1" aria-pressed="false">Gemma</button><button type="button" data-model="2" aria-pressed="false">Mistral</button><button type="button" data-model="3" class="is-selected" aria-pressed="true">LLaMA 3.1</button></div></div>
+      <div class="d3-volume-stage" id="d3-volume-stage" role="img" aria-label="Two cubes drawn on the same volume scale. D3 has approximately 70 million parameters. LLaMA 3.1 has 70 billion: 1,000 times as many. Its cube has ten times the edge length of D3’s cube.">
+        <svg viewBox="0 0 940 460" aria-hidden="true">
+          <g class="d3-volume-unit" transform="translate(125 424)"><path class="d3-volume-front" d="M0 0H30V-30H0Z"/><path class="d3-volume-top" d="M0-30L14.4-38.4H44.4L30-30Z"/><path class="d3-volume-side" d="M30 0L44.4-8.4V-38.4L30-30Z"/></g>
+          <g transform="translate(425 424)"><path class="d3-volume-front" id="d3-volume-front" d="M0 0H300V-300H0Z"/><path class="d3-volume-top" id="d3-volume-top" d="M0-300L144-384H444L300-300Z"/><path class="d3-volume-side" id="d3-volume-side" d="M300 0L444-84V-384L300-300Z"/></g>
+        </svg>
+      </div>
+      <div class="d3-volume-labels"><div><b>D3</b><strong>70M</strong><span>parameters</span></div><div><b id="d3-volume-name">LLaMA 3.1</b><strong id="d3-volume-count">70B</strong><span id="d3-volume-state">parameters</span></div></div>
+      <p class="d3-volume-key">Cube volume represents parameter count. Both cubes use the same scale.</p>
+      <div class="d3-volume-controls d3-interactive"><button type="button" id="d3-volume-replay"><span aria-hidden="true">↗</span> Replay growth</button><div><label for="d3-volume-scrub">Grow from D3 to the full model</label><input id="d3-volume-scrub" type="range" min="0" max="100" step="0.1" value="100" aria-valuetext="70 billion parameters, full model size"><div class="d3-volume-endpoints"><span>D3 size</span><span>Full model</span></div></div></div>
+    </div>
+    <figcaption class="d3-bench-reading" aria-live="polite"><h3>The size difference</h3><p id="d3-bench-reading"><span class="d3-bench-stat"><strong>1,000×</strong><span>as many parameters</span></span></p><p id="d3-volume-detail">10× the width, height, and depth of D3. That makes 1,000× the volume.</p>
+      <div class="d3-volume-performance"><h3>Published F1 score</h3><div><span>D3 <b>0.86</b></span><span id="d3-volume-score-label">LLaMA 3.1 <b id="d3-volume-score">0.89</b></span></div><p id="d3-comparison-note">The study found no statistically significant performance difference between these two models.</p></div>
+      <footer class="d3-bench-source"><p>Parameter counts are approximate. F1 scores are rounded values from the paper’s abstract.</p><a class="d3-link" href="https://doi.org/10.1016/j.mlwa.2025.100658" target="_blank" rel="noopener noreferrer">Read the published results ↗</a></footer>
+    </figcaption>
   </figure>
+  <noscript><p class="d3-caption">This view compares D3 with LLaMA 3.1. Enable JavaScript to select another model or animate its size.</p></noscript>
 </section>
 
-<p class="footnote">Published in <em>Machine Learning with Applications</em>, Elsevier, 2025.</p>
+<section class="d3-errors d3-shell" id="errors" aria-labelledby="d3-errors-title">
+  <div class="d3-section-head"><div><p class="d3-kicker">02 / Look closer</p><h2 id="d3-errors-title">Where predictions<br>diverge.</h2></div><p>Each cell records a true label and a predicted label. Select one to inspect the saved test run.</p></div>
+  <div class="d3-error-lab"><div class="d3-matrix-area"><div class="d3-matrix-top"><span>Fig. 03 / Confusion matrix</span><div class="d3-segment d3-interactive" role="group" aria-label="Confusion matrix values"><button type="button" id="d3-counts" class="is-active" aria-pressed="true">Case counts</button><button type="button" id="d3-percent" aria-pressed="false">Percentages</button></div></div><div class="d3-matrix-axis">Predicted severity →</div><div class="d3-matrix" role="group" aria-label="True labels by predicted labels"><span></span><span>Minor</span><span>Moderate</span><span>Major</span><b>Minor</b><button type="button" data-cell="0" class="d3-cell d3-correct is-active" aria-pressed="true" aria-label="True Minor, predicted Minor: 909 cases">909</button><button type="button" data-cell="1" class="d3-cell" aria-pressed="false" aria-label="True Minor, predicted Moderate: 129 cases">129</button><button type="button" data-cell="2" class="d3-cell" aria-pressed="false" aria-label="True Minor, predicted Major: 11 cases">11</button><b>Moderate</b><button type="button" data-cell="3" class="d3-cell" aria-pressed="false" aria-label="True Moderate, predicted Minor: 88 cases">88</button><button type="button" data-cell="4" class="d3-cell d3-correct" aria-pressed="false" aria-label="True Moderate, predicted Moderate: 1020 cases">1,020</button><button type="button" data-cell="5" class="d3-cell" aria-pressed="false" aria-label="True Moderate, predicted Major: 64 cases">64</button><b>Major</b><button type="button" data-cell="6" class="d3-cell" aria-pressed="false" aria-label="True Major, predicted Minor: 12 cases">12</button><button type="button" data-cell="7" class="d3-cell" aria-pressed="false" aria-label="True Major, predicted Moderate: 56 cases">56</button><button type="button" data-cell="8" class="d3-cell d3-correct" aria-pressed="false" aria-label="True Major, predicted Major: 503 cases">503</button></div><p class="d3-matrix-axis d3-true-axis">Actual severity ↑</p><p class="d3-caption"><span id="d3-matrix-help">Each number is a count of test cases. Rows show actual severity; columns show D3’s prediction.</span></p></div>
+  <div class="d3-error-inspector" aria-live="polite"><h3 class="d3-inspector-heading">Selected result</h3><div class="d3-error-route"><span>Actual severity</span><b id="d3-true-label">Minor</b><i class="d3-route-signal" aria-hidden="true">→<span></span></i><span>Predicted severity</span><b id="d3-pred-label">Minor</b></div><span class="d3-error-status" id="d3-error-status">CORRECT CLASSIFICATION</span><div class="d3-error-count"><strong id="d3-cell-count">909</strong><span>test cases</span></div><p id="d3-cell-explanation">909 of 1,049 Minor examples were classified as Minor: 86.7% of that row.</p></div></div>
+  <div class="d3-outcome"><div class="d3-accuracy-ring" role="img" aria-label="87.11 percent of 2,792 examples correctly classified"><span><b>87.11<small>%</small></b><i>NOTEBOOK ACCURACY</i></span></div><div class="d3-outcome-copy"><h3>Performance in the<br>released notebook.</h3><p>These results describe one saved test run.</p></div></div><div class="d3-error-summary"><div><b>2,792</b><span>test examples</span></div><div><b>2,432</b><span>correct classifications</span></div><div><b>360</b><span>misclassifications</span></div></div>
+  <p class="d3-caption d3-source-note">These counts come from a saved test run in the released notebook, separate from the paper’s F1 comparison. <a href="https://github.com/serag-ai/D3/blob/main/src/d3_pretraining_finetuning.ipynb" target="_blank" rel="noopener noreferrer">Inspect the source notebook ↗</a></p>
+</section>
 
-<a class="next-issue" href="stroke-segmentation.html">
-  <span class="label-caps lab">Next publication →</span>
-  <h2 class="h2">Stroke Lesion Segmentation on MRI</h2>
-</a>
+<section id="method" class="d3-build d3-shell" aria-labelledby="d3-build-title"><div><p class="d3-kicker">03 / Implementation</p><h2 id="d3-build-title">Built for<br>one job.</h2><p>A decoder model developed in PyTorch, pretrained on biomedical interaction data and adapted to severity classification.</p><dl><div><dt>MY ROLE</dt><dd>Lead author · AI Research Specialist</dd></div><div><dt>RESEARCH HOME</dt><dd>Weill Cornell Medicine — Qatar</dd></div><div><dt>TOOLKIT</dt><dd>Python · PyTorch · Hugging Face</dd></div></dl></div><div class="d3-build-steps"><div class="d3-architecture"><div class="d3-arch-top"><h3>The training view</h3><div class="d3-segment d3-interactive" role="group" aria-label="Training stage"><button type="button" data-training="pretrain" class="is-active" aria-pressed="true">Pretraining</button><button type="button" data-training="classify" aria-pressed="false">Classification</button></div></div><div class="d3-blocks" role="group" aria-label="Six transformer blocks"><span data-block="0"><b>Decoder block 01</b><em class="d3-layer-status">Trainable</em></span><span data-block="1"><b>Decoder block 02</b><em class="d3-layer-status">Trainable</em></span><span data-block="2"><b>Decoder block 03</b><em class="d3-layer-status">Trainable</em></span><span data-block="3"><b>Decoder block 04</b><em class="d3-layer-status">Trainable</em></span><span data-block="4"><b>Decoder block 05</b><em class="d3-layer-status">Trainable</em></span><span data-block="5"><b>Decoder block 06</b><em class="d3-layer-status">Trainable</em></span></div><div class="d3-arch-head"><span>Final normalization</span><span id="d3-head-name">Language-model head</span></div><p id="d3-training-note" aria-live="polite">Pretraining learns the decoder’s representations with a language-model objective. All six blocks are trainable.</p><div class="d3-config"><span><b>6</b> blocks</span><span><b>8</b> attention heads</span><span><b>512</b> embedding dimensions</span></div></div><details open><summary><span>01</span> Pretrain the decoder <i aria-hidden="true">＋</i></summary><p>Learn from curated DrugBank interaction data using a language-model objective. The released configuration uses six transformer blocks, eight attention heads, and 512-dimensional embeddings.</p></details><details><summary><span>02</span> Adapt to the task <i aria-hidden="true">＋</i></summary><p>Replace the language-model output layer with a three-class head. The released notebook trains the final transformer block, final normalization, and classification head for Minor, Moderate, and Major labels.</p></details><details><summary><span>03</span> Compare against larger models <i aria-hidden="true">＋</i></summary><p>Fine-tune Qwen 2.5, Gemma, Mistral v0.3, and LLaMA 3.1 for the same DDI task. Assess predictions with task metrics and expert evaluation.</p></details><a class="d3-link" href="https://github.com/serag-ai/D3" target="_blank" rel="noopener noreferrer">Explore the implementation ↗</a></div></section>
 
-<footer class="footer">
-  <div class="footer-row">
-    <span class="label-caps">© 2026 Ahmed Ibrahim · Doha, Qatar</span>
-    <a href="../index.html#cover" class="label-caps back-to-top">Back to top ↑</a>
-  </div>
-</footer>
+<section class="d3-publication d3-shell" aria-labelledby="d3-paper-title"><div class="d3-paper-icon" aria-hidden="true"><b>D3</b><span>MLWA · 20 / 100658<br>2025</span></div><div><p class="d3-kicker">THE PUBLISHED WORK</p><h2 id="d3-paper-title">D3: A Small Language Model for Drug–Drug Interaction prediction and comparison with Large Language Models</h2><p>Ahmed Ibrahim, Abdullah Hosseini, Salma Ibrahim, Aamenah Sattar, Ahmed Serag.</p><p><em>Machine Learning with Applications</em> · Volume 20, 100658 · Elsevier, 2025</p><div><a class="d3-link" href="https://doi.org/10.1016/j.mlwa.2025.100658" target="_blank" rel="noopener noreferrer">Open-access paper ↗</a><a class="d3-link" href="https://huggingface.co/serag-ai/D3" target="_blank" rel="noopener noreferrer">Model checkpoint ↗</a></div></div></section>
+<a class="d3-next d3-shell" href="stroke-segmentation.html"><span>Next / Research</span><strong>Stroke lesion <br><em>segmentation.</em></strong><b aria-hidden="true">↗</b></a>
+</main>
+<footer class="d3-footer d3-shell"><span>© 2026 Ahmed Ibrahim · Doha, Qatar</span><a href="#top">Back to top ↑</a></footer>
+<script>(function(){
+  'use strict';
+  var $=function(id){return document.getElementById(id);};
+  function setPressed(button,active){button.classList.toggle('is-active',active);button.setAttribute('aria-pressed',String(active));}
+  var models=[{name:'Qwen 2.5',params:1500,display:'1.5B',f1:null},{name:'Gemma',params:2000,display:'2B',f1:null},{name:'Mistral v0.3',params:7000,display:'7B',f1:'0.88'},{name:'LLaMA 3.1',params:70000,display:'70B',f1:'0.89'}];
+  var selected=3,volumeFrame=0,volumeRatio=1000;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)'),motionPaused=reduced.matches;document.body.classList.toggle('d3-reduced',reduced.matches);
+  function enter(el){if(!motionPaused&&el&&el.animate)el.animate([{opacity:.3,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0)'}],{duration:550,easing:'cubic-bezier(.2,.8,.2,1)'});}
+  // The projection is identical for both cubes. Edge length is the cube root
+  // of parameter ratio, so represented volume is proportional to parameters.
+  function volumeCount(millions){return millions>=1000?(millions/1000).toLocaleString('en-US',{maximumFractionDigits:2})+'B':millions.toLocaleString('en-US',{maximumFractionDigits:0})+'M';}
+  function drawVolume(ratio){
+    volumeRatio=ratio;var side=30*Math.cbrt(ratio),dx=side*.48,dy=side*.28;
+    $('d3-volume-front').setAttribute('d','M0 0H'+side+'V-'+side+'H0Z');
+    $('d3-volume-top').setAttribute('d','M0-'+side+'L'+dx+'-'+(side+dy)+'H'+(side+dx)+'L'+side+'-'+side+'Z');
+    $('d3-volume-side').setAttribute('d','M'+side+' 0L'+(side+dx)+'-'+dy+'V-'+(side+dy)+'L'+side+'-'+side+'Z');
+    var target=models[selected].params/70,progress=(Math.cbrt(ratio)-1)/(Math.cbrt(target)-1),full=Math.abs(ratio-target)<target*.00001;
+    $('d3-volume-scrub').value=Math.max(0,Math.min(100,progress*100));
+    $('d3-volume-scrub').setAttribute('aria-valuetext',volumeCount(ratio*70)+' parameters'+(full?', full model size':', intermediate size'));
+    $('d3-volume-count').textContent=volumeCount(ratio*70);
+    $('d3-volume-state').textContent=full?'parameters':'parameters · intermediate size';
+  }
+  function stopVolume(){if(volumeFrame)cancelAnimationFrame(volumeFrame);volumeFrame=0;$('d3-volume-replay').removeAttribute('aria-busy');}
+  function animateVolume(from,to){
+    stopVolume();if(reduced.matches){drawVolume(to);return;}
+    var start=performance.now(),fromEdge=Math.cbrt(from),toEdge=Math.cbrt(to);$('d3-volume-replay').setAttribute('aria-busy','true');
+    function move(now){var t=Math.min(1,(now-start)/1500),ease=t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;drawVolume(Math.pow(fromEdge+(toEdge-fromEdge)*ease,3));if(t<1)volumeFrame=requestAnimationFrame(move);else{volumeFrame=0;$('d3-volume-replay').removeAttribute('aria-busy');drawVolume(to);}}
+    volumeFrame=requestAnimationFrame(move);
+  }
+  function paintComparison(animate){
+    stopVolume();var m=models[selected],ratio=m.params/70,missing=m.f1===null,ratioText=ratio.toLocaleString('en-US',{maximumFractionDigits:1});
+    $('d3-volume-name').textContent=m.name;
+    $('d3-bench-reading').querySelector('strong').textContent=ratioText+'×';
+    $('d3-volume-detail').textContent=Math.cbrt(ratio).toLocaleString('en-US',{maximumFractionDigits:2})+'× the width, height, and depth of D3. That makes '+ratioText+'× the volume.';
+    var scoreLabel=$('d3-volume-score-label');scoreLabel.replaceChildren(document.createTextNode(m.name+' '));var score=document.createElement('b');score.id='d3-volume-score';score.textContent=missing?'—':m.f1;scoreLabel.appendChild(score);
+    $('d3-comparison-note').textContent=missing?'Its individual F1 score is not listed in the paper’s abstract. D3’s reported F1 is 0.86.':'The study found no statistically significant performance difference between these two models.';
+    $('d3-volume-stage').setAttribute('aria-label','Two cubes drawn on the same volume scale. D3 has approximately 70 million parameters. '+m.name+' has '+m.display+' parameters: '+ratioText+' times as many. Its cube has '+Math.cbrt(ratio).toFixed(2)+' times the edge length of D3’s cube.');
+    if(animate)animateVolume(volumeRatio,ratio);else drawVolume(ratio);
+  }
+  document.querySelectorAll('[data-model]').forEach(function(b){b.addEventListener('click',function(){selected=Number(b.dataset.model);document.querySelectorAll('[data-model]').forEach(function(other){other.classList.toggle('is-selected',other===b);other.setAttribute('aria-pressed',String(other===b));});paintComparison(true);});});
+  $('d3-volume-replay').addEventListener('click',function(){drawVolume(1);animateVolume(1,models[selected].params/70);});
+  $('d3-volume-scrub').addEventListener('input',function(){stopVolume();var edge=1+(Math.cbrt(models[selected].params/70)-1)*Number(this.value)/100;drawVolume(Math.pow(edge,3));});
+  document.querySelectorAll('[data-training]').forEach(function(b){b.addEventListener('click',function(){var classify=b.dataset.training==='classify';document.querySelectorAll('[data-training]').forEach(function(other){setPressed(other,other===b);});document.querySelector('.d3-architecture').classList.toggle('is-classifying',classify);document.querySelectorAll('.d3-blocks>span').forEach(function(el,i){el.querySelector('.d3-layer-status').textContent=classify&&i<5?'Frozen':'Trainable';});$('d3-head-name').textContent=classify?'Three-class prediction head':'Language-model head';$('d3-training-note').textContent=classify?'For severity classification, blocks 01–05 are frozen. The final block, normalization, and new prediction head are trained for Minor, Moderate, and Major.':'Pretraining learns the decoder’s representations with a language-model objective. All six blocks are trainable.';});});
+  paintComparison();document.body.classList.add('d3-ready');
+  var volumeObserver=new IntersectionObserver(function(entries){if(entries.some(function(e){return e.isIntersecting;})){drawVolume(1);animateVolume(1,models[selected].params/70);volumeObserver.disconnect();}},{threshold:.45});volumeObserver.observe($('d3-volume-stage'));
+  // The six-layer cutaway follows the released architecture. This is a visual explanation, not inference.
+  var stage=$('d3-flow'),story=$('d3-story'),sceneVisible=true,flowTime=0,lastFrame=0,frameID=0,currentStep=-1,scrollDriven=false;
+  var stageButtons=document.querySelectorAll('[data-flow-stage]'),blocks=stage.querySelectorAll('[data-block]');
+  var flowCopy=[['Two medications. One question.','The question is converted into numerical token IDs that the model can process.'],['Six layers. A learned representation.','The highlighted layer is active in this illustrated pass. Each layer refines the drug-pair representation.'],['From representation to severity.','The prediction head maps that representation to Minor, Moderate, or Major.']];
+  function paintFlow(){var t=flowTime%12000,index=t<3500?0:t<8500?1:2,progress=Math.max(0,Math.min(1,(t-3500)/5000));stage.style.setProperty('--flow-sweep',progress);if(index!==currentStep){currentStep=index;stage.dataset.stage=index;$('d3-flow-title').textContent=flowCopy[index][0];$('d3-flow-detail').textContent=flowCopy[index][1];stageButtons.forEach(function(b,i){b.setAttribute('aria-pressed',String(i===index));});}blocks.forEach(function(b,i){b.classList.toggle('is-current',index===1&&i===Math.min(5,Math.floor(progress*6)));b.classList.toggle('is-visited',index===2||index===1&&i<Math.floor(progress*6));});}
+  function frame(now){frameID=0;if(document.hidden||!sceneVisible||motionPaused||scrollDriven){lastFrame=0;return;}var dt=lastFrame?Math.min(now-lastFrame,60):16;lastFrame=now;flowTime+=dt;paintFlow();frameID=requestAnimationFrame(frame);}
+  function startFrames(){if(!frameID&&!motionPaused&&!scrollDriven&&sceneVisible&&!document.hidden){lastFrame=0;frameID=requestAnimationFrame(frame);}}
+  function syncMotion(){document.body.classList.toggle('d3-motion-paused',motionPaused);var b=$('d3-motion-toggle');b.setAttribute('aria-pressed',String(motionPaused));b.setAttribute('aria-label',motionPaused?'Play walkthrough':'Pause walkthrough');b.textContent=motionPaused?'▶':'Ⅱ';if((motionPaused||scrollDriven)&&frameID){cancelAnimationFrame(frameID);frameID=0;lastFrame=0;}else startFrames();}
+  $('d3-motion-toggle').addEventListener('click',function(){motionPaused=!motionPaused;scrollDriven=false;syncMotion();});
+  stageButtons.forEach(function(b){b.addEventListener('click',function(){motionPaused=true;scrollDriven=false;flowTime=[1000,6100,9500][Number(b.dataset.flowStage)];paintFlow();syncMotion();});});
+  reduced.addEventListener('change',function(e){if(e.matches){stopVolume();drawVolume(models[selected].params/70);}motionPaused=e.matches;document.body.classList.toggle('d3-reduced',e.matches);scrollDriven=false;if(e.matches)flowTime=9500;paintFlow();syncMotion();});
+  if(reduced.matches)flowTime=9500;
+  var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.target===stage){sceneVisible=entry.isIntersecting;if(sceneVisible)startFrames();}else if(entry.isIntersecting){entry.target.classList.add('d3-entered');entry.target.querySelectorAll('.d3-reveal').forEach(function(el){el.classList.add('d3-entered');});observer.unobserve(entry.target);}});},{threshold:.14});
+  observer.observe(stage);document.querySelectorAll('.d3-section-head h2,.d3-outcome,.d3-publication h2,.d3-build h2').forEach(function(el){if(!el.classList.contains('d3-outcome')){el.classList.add('d3-reveal');observer.observe(el.parentElement);}else observer.observe(el);});
+  document.addEventListener('visibilitychange',startFrames);
+  var scrollPending=false;function readingProgress(){scrollPending=false;var total=document.documentElement.scrollHeight-window.innerHeight;$('d3-reading-progress').style.transform='scaleX('+(total>0?window.scrollY/total:0)+')';if(!reduced.matches){var rect=story.getBoundingClientRect(),travel=story.offsetHeight-document.querySelector('.d3-story-pin').offsetHeight,p=Math.max(0,Math.min(1,-rect.top/Math.max(1,travel)));if(travel>100&&rect.top<0&&rect.bottom>0){scrollDriven=true;flowTime=Math.min(11950,p*12000);paintFlow();syncMotion();}else if(rect.top>=0&&scrollDriven){scrollDriven=false;flowTime=0;paintFlow();syncMotion();}}}
+  window.addEventListener('scroll',function(){if(!scrollPending){scrollPending=true;requestAnimationFrame(readingProgress);}},{passive:true});window.addEventListener('resize',readingProgress);readingProgress();
+  var sculpture=document.querySelector('.d3-sculpture'),stack=document.querySelector('.d3-stack');sculpture.addEventListener('pointermove',function(e){if(reduced.matches||e.pointerType==='touch')return;var r=sculpture.getBoundingClientRect();stack.style.setProperty('--turn',(-32+(e.clientX-r.left-r.width/2)/r.width*12)+'deg');});sculpture.addEventListener('pointerleave',function(){stack.style.removeProperty('--turn');});
+  paintFlow();syncMotion();
 
+  // Exact values from the saved confusion matrix in the public research
+  // notebook. These are evaluation counts, not predictions generated here.
+  var matrix=[[909,129,11],[88,1020,64],[12,56,503]],classNames=['Minor','Moderate','Major'],cell=0,percent=false;
+  function rowTotal(r){return matrix[r].reduce(function(a,b){return a+b;},0);}
+  function paintCell(){var r=Math.floor(cell/3),c=cell%3,n=matrix[r][c],share=(100*n/rowTotal(r)).toFixed(1);$('d3-true-label').textContent=classNames[r];$('d3-pred-label').textContent=classNames[c];$('d3-cell-count').textContent=n.toLocaleString('en-US');$('d3-error-status').textContent=r===c?'CORRECT CLASSIFICATION':c<r?'SEVERITY UNDERESTIMATED':'SEVERITY OVERESTIMATED';$('d3-error-status').dataset.kind=r===c?'correct':c<r?'under':'over';$('d3-cell-explanation').textContent=n.toLocaleString('en-US')+' of '+rowTotal(r).toLocaleString('en-US')+' '+classNames[r]+' examples were classified as '+classNames[c]+': '+share+'% of all actual '+classNames[r]+' cases.';document.querySelectorAll('[data-cell]').forEach(function(b,i){setPressed(b,i===cell);});enter($('d3-cell-count'));enter($('d3-pred-label'));if(!reduced.matches&&document.querySelector('.d3-error-inspector').animate)document.querySelector('.d3-error-inspector').animate([{transform:'translateX(18px)',opacity:.4},{transform:'translateX(0)',opacity:1}],{duration:450,easing:'cubic-bezier(.22,1,.36,1)'});}
+  function paintMatrix(){document.querySelectorAll('[data-cell]').forEach(function(b,i){var r=Math.floor(i/3),c=i%3,n=matrix[r][c],share=(100*n/rowTotal(r)).toFixed(1);b.textContent=percent?share+'%':n.toLocaleString('en-US');b.setAttribute('aria-label','True '+classNames[r]+', predicted '+classNames[c]+': '+n+' cases'+(percent?', '+share+' percent of the row':''));});setPressed($('d3-counts'),!percent);setPressed($('d3-percent'),percent);$('d3-matrix-help').textContent=percent?'Each row adds to 100%. The percentages show how cases with the same actual severity were classified.':'Each number is a count of test cases. Rows show actual severity; columns show D3’s prediction.';}
+  document.querySelectorAll('[data-cell]').forEach(function(b,i){b.addEventListener('click',function(){cell=i;paintCell();});b.addEventListener('keydown',function(e){var next;if(e.key==='ArrowRight')next=(i+1)%9;if(e.key==='ArrowLeft')next=(i+8)%9;if(e.key==='ArrowDown')next=(i+3)%9;if(e.key==='ArrowUp')next=(i+6)%9;if(next!==undefined){e.preventDefault();cell=next;paintCell();document.querySelectorAll('[data-cell]')[next].focus();}});});
+  $('d3-counts').addEventListener('click',function(){percent=false;paintMatrix();});$('d3-percent').addEventListener('click',function(){percent=true;paintMatrix();});paintCell();paintMatrix();
+})();
+</script>
 <script src="../theme.js" defer></script>
 </body>
 </html>
