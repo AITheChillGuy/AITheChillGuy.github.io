@@ -37,7 +37,8 @@
 .evidence-note{color:var(--pp-muted);font-size:14px;line-height:1.7;max-width:83ch;margin-top:25px!important}
 .evidence-film{margin-top:65px!important}
 .evidence-film h3{font-size:28px;margin-bottom:18px}
-.evidence-film video{display:block;width:100%;height:auto;border-radius:12px;background:#101114}
+.evidence-film video{display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;border-radius:12px;background:#101114}
+.evidence-film video:fullscreen{max-height:100vh}
 .evidence-film figcaption{margin-top:16px;color:var(--pp-muted);font-size:15px;line-height:1.7;max-width:85ch}
 .evidence-film a{color:var(--pp-accent);text-decoration:underline;text-underline-offset:4px}
 .evidence-android{margin:0!important;text-align:center}

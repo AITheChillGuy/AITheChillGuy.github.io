@@ -1,21 +1,33 @@
 WEBVTT
 
 1
-00:00:00.000 --> 00:00:04.000
-Web booking calendar — sample data
+00:00:00.000 --> 00:00:01.599
+Browse the live class schedule
 
 2
-00:00:04.000 --> 00:00:08.000
-Staff dashboard — sample data
+00:00:01.599 --> 00:00:05.050
+Choose Monday
 
 3
-00:00:08.000 --> 00:00:12.000
-English mobile website — sample data
+00:00:05.050 --> 00:00:06.829
+Return to today
 
 4
-00:00:12.000 --> 00:00:16.000
-Arabic / right-to-left website — sample data
+00:00:06.829 --> 00:00:13.051
+Filter available afternoon classes
 
 5
-00:00:16.000 --> 00:00:20.000
-Android development build — sample data
+00:00:13.051 --> 00:00:15.699
+Clear filters
+
+6
+00:00:15.699 --> 00:00:17.307
+View the Arabic right-to-left schedule
+
+7
+00:00:17.307 --> 00:00:20.193
+Open the Arabic date picker
+
+8
+00:00:20.193 --> 00:00:22.123
+Return to the class agenda
