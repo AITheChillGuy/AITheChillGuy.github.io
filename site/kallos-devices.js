@@ -1,13 +1,16 @@
 /* The working HTML app stays on the physical display of the original glTF model. */
 (() => {
  'use strict';
- const stage=document.querySelector('.kd-stage'),viewer=stage?.querySelector('model-viewer'),surface=document.querySelector('.kd-live-surface');
+ const stage=document.querySelector('.kd-stage'),viewer=stage?.querySelector('model-viewer');
+ let surface=document.querySelector('.kd-live-surface');
  if(!stage||!viewer||!surface)return;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)'),narrow=matchMedia('(max-width:720px)');
- const content=surface.querySelector('.kd-live-content'),toolbar=document.querySelector('.kd-use-controls'),title=document.querySelector('#kd-use-title'),status=document.querySelector('.kd-scene-status');
- const roots=new Map([...document.querySelectorAll('[data-kallos-app]')].map(root=>[root.dataset.kallosApp,{root,home:root.parentElement}]));
+ const toolbar=document.querySelector('.kd-use-controls'),title=document.querySelector('#kd-use-title'),status=document.querySelector('.kd-scene-status');
+ const roots=new Map([...document.querySelectorAll('[data-kallos-app]')].map(root=>[root.dataset.kallosApp,{root,surface:root.closest('.kd-live-surface')}]));
  const buttons=[...document.querySelectorAll('[data-kd-enter]')],orbitButtons=[...document.querySelectorAll('[data-kd-rotate]')],frames=JSON.parse(document.querySelector('#kd-camera-frames').textContent);
- const projection=window.KallosScreenProjection.create(viewer,surface,frames),rad=Math.PI/180,touches=new Set();
+ const projections=new Map([...roots].map(([which,item])=>[which,window.KallosScreenProjection.create(viewer,item.surface,{[which]:frames[which]})]));
+ const projection={use:which=>projections.get(which).use(which),update:()=>role&&projections.get(role).update(),hide:()=>role&&projections.get(role).hide()};
+ const rad=Math.PI/180,touches=new Set();
  let active=null,role=null,trigger=null,returnView=null,serial=0,phase='idle',pointer=null,textures=null,orbitGoal=null,multiTouch=false;
  const nextFrame=()=>new Promise(requestAnimationFrame);
  const read=()=>{const o=viewer.getCameraOrbit(),t=viewer.getCameraTarget();return{theta:o.theta,phi:o.phi,radius:o.radius,target:[t.x,t.y,t.z],fov:parseFloat(viewer.fieldOfView)||32};};
@@ -62,9 +65,9 @@
  }
  async function enter(which,button){
   if(phase!=='idle')return;active=roots.get(which);if(!active)return;
-  role=which;trigger=button;returnView=viewer.loaded?read():home();title.textContent=role==='staff'?'Staff workspace':'Member experience';
+  role=which;surface=active.surface;trigger=button;returnView=viewer.loaded?read():home();title.textContent=role==='staff'?'Staff workspace':'Member experience';
   setPhase('entering');stage.style.height=expandedHeight()+'px';surface.dataset.device=role;surface.hidden=false;surface.inert=true;surface.classList.remove('is-visible','kd-flat-fallback');
-  active.root.inert=true;content.append(active.root);if(viewer.loaded)projection.use(role);
+  active.root.inert=true;if(viewer.loaded)projection.use(role);
   announce('Moving into the '+(role==='staff'?'laptop':'phone')+' display…');await centerStage();if(phase!=='entering')return;
   if(viewer.loaded){
    if(!await fly(()=>closeView(role),1100,p=>{projection.update();if(p>.86)surface.classList.add('is-visible');}))return;
@@ -80,10 +83,12 @@
   serial++;setPhase('leaving');surface.inert=true;if(active)active.root.inert=true;
   const opacity=getComputedStyle(surface).opacity;surface.classList.remove('is-visible');
   if(!reduced.matches&&!surface.hidden)await surface.animate([{opacity},{opacity:0}],{duration:180,easing:'ease-in'}).finished.catch(()=>{});
-  surface.hidden=true;projection.hide();if(active){active.home.append(active.root);active=null;}textures?.update();setPhase('returning');
+  surface.hidden=true;projection.hide();if(active){active=null;}textures?.update();setPhase('returning');
   await fly(returnView||home(),1000);role=null;stage.style.removeProperty('height');setPhase('idle');announce('Drag to rotate. Click either screen to use its demo.');restoreFocus();
  }
+ document.addEventListener('kallos:escape',()=>{if(phase==='using')exit();});
  buttons.forEach(button=>button.addEventListener('click',()=>enter(button.dataset.kdEnter,button)));
+ setPhase('idle');
  toolbar.querySelector('[data-kd-back]').addEventListener('click',exit);
  toolbar.querySelector('[data-kd-reset]').addEventListener('click',()=>window.KallosDemo?.reset());
  addEventListener('keydown',e=>{if(e.key!=='Escape'||e.defaultPrevented||e.target.closest?.('select')||document.querySelector('dialog[open]'))return;if(phase==='entering'||(phase==='using'&&stage.contains(document.activeElement))){e.preventDefault();exit();}});
