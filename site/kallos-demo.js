@@ -143,6 +143,7 @@
         target?.focus({preventScroll:true});
       }
     }
+    document.dispatchEvent(new CustomEvent('kallos:demo-change'));
   }
   for(const root of roots) {
     preferences.set(root,{role:root.dataset.kallosApp,lang:'en',view:root.dataset.kallosApp==='staff'?'dashboard':'schedule',day:0,class:'all',space:'all',roster:'skills',filterOpen:false});
@@ -182,7 +183,12 @@
   }
   resetState();
   renderAll();
-  window.KallosDemo=Object.freeze({reset(){
+  window.KallosDemo=Object.freeze({snapshot(role){
+    const root=roots.find(r=>r.dataset.kallosApp===role);
+    if(!root)return null;
+    const p=preferences.get(root);
+    return {lang:p.lang,date:dateLabel(p,true),counts:{sessions:classes.length,booked:classes.reduce((n,c)=>n+enrolled(p.day,c),0),checked:classes.reduce((n,c)=>n+checked(p.day,c),0),available:classes.reduce((n,c)=>n+c.capacity-enrolled(p.day,c),0)},classes:classes.map(c=>({id:c.id,title:c[p.lang],time:timeLabel(p,c.time),end:timeLabel(p,c.end),capacity:c.capacity,enrolled:enrolled(p.day,c),checked:checked(p.day,c),booked:isBooked(p.day,c.id)}))};
+  },reset(){
     resetState();
     for(const root of roots) {
       const p=preferences.get(root);Object.assign(p,{view:p.role==='staff'?'dashboard':'schedule',day:0,class:'all',space:'all',roster:'skills',filterOpen:false});
