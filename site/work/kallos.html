@@ -20,12 +20,13 @@
 <script src="../product-evidence.js?v=20261024r3" defer></script><meta property="og:image:width" content="2255">
 <meta property="og:image:height" content="1244">
 <meta property="og:image:alt" content="Kallos application calendar and class agenda using sample data">
-<link rel="stylesheet" href="../kallos-demo.css?v=20261024devices">
-<link rel="stylesheet" href="../kallos-devices.css?v=20261024glb">
-<script src="../kallos-demo.js?v=20261024glb" defer></script>
+<link rel="stylesheet" href="../kallos-demo.css?v=20261024inline">
+<link rel="stylesheet" href="../kallos-devices.css?v=20261024inline">
+<script src="../kallos-demo.js?v=20261024inline" defer></script>
 <script type="module" src="../assets/vendor/model-viewer-3.5.0.min.js"></script>
 <script src="../kallos-screen-textures.js?v=20261024glb" defer></script>
-<script src="../kallos-devices.js?v=20261024glb" defer></script>
+<script src="../kallos-screen-projection.js?v=20261024inline" defer></script>
+<script src="../kallos-devices.js?v=20261024inline" defer></script>
 </head>
 <body id="top" class="product-page kallos-page">
 <a class="pp-skip" href="#main">Skip to content</a><nav class="pp-nav pp-shell" aria-label="Portfolio navigation"><a href="../index.html#products">↖ Ahmed Ibrahim / Product work</a><div>
@@ -67,15 +68,17 @@
 <p class="pp-eyebrow">Explore the interface</p>
 <h2 id="screens-heading">Step inside<br>the working day.</h2>
 </div>
-<p>Turn the laptop and phone around, then move into either screen. Try a sample booking on the phone and follow it into the staff workspace.</p>
+<p>Turn the laptop and phone around, then move into either screen. Book a sample class or check attendance directly inside the device.</p>
 </div>
 <div class="kd-open-controls" role="group" aria-label="Open an interactive Kallos demo">
-<button type="button" data-kd-enter="staff" aria-haspopup="dialog" aria-controls="kd-device-dialog">Enter staff dashboard <span aria-hidden="true">↗</span></button><button type="button" data-kd-enter="member" aria-haspopup="dialog" aria-controls="kd-device-dialog">Enter mobile web demo <span aria-hidden="true">↗</span></button>
+<button type="button" data-kd-enter="staff" aria-expanded="false" aria-controls="kd-live-surface">Enter staff dashboard <span aria-hidden="true">↗</span></button><button type="button" data-kd-enter="member" aria-expanded="false" aria-controls="kd-live-surface">Enter mobile web demo <span aria-hidden="true">↗</span></button>
 </div>
 <div class="kd-stage" data-phase="idle"><div class="kd-stage-label"><span>Kallos / Explore in 3D</span><span>Drag to rotate 360° · Scroll or pinch to zoom</span></div>
 <model-viewer id="kd-model" src="../assets/models/kallos-devices.glb?v=20261024" alt="Rotatable 3D laptop and phone showing the Kallos sample interfaces. Drag or use arrow keys to rotate; use the Enter buttons to open a working demo." camera-controls disable-pan disable-tap touch-action="pan-y" interaction-prompt="none" environment-image="neutral" tone-mapping="neutral" shadow-intensity="0.65" shadow-softness="1" exposure="1" camera-orbit="18deg 69deg 7.9m" camera-target="-0.25m 1.35m 0m" field-of-view="32deg" min-camera-orbit="auto 20deg 1.5m" max-camera-orbit="auto 140deg 20m" interpolation-decay="110" loading="eager" reveal="auto" tabindex="0"></model-viewer>
+<div class="kd-use-controls" id="kd-use-controls" hidden><div><h3 id="kd-use-title">Kallos demo</h3><span>Sample data</span></div><div class="kd-use-actions"><button type="button" data-kd-reset>Reset demo</button><button type="button" data-kd-back>Return to 3D <span aria-hidden="true">↗</span></button></div></div>
+<div id="kd-live-surface" class="kd-live-surface" role="region" aria-labelledby="kd-use-title" tabindex="-1" inert hidden><div class="kd-live-content"></div></div>
 <p class="kd-model-loading">Loading the 3D devices…</p></div>
-<div class="kd-stage-footer"><p>Rotate to see the devices from every side. Click a screen or use Enter above to move into the demo.</p><div class="kd-view-controls" role="group" aria-label="Rotate the 3D models"><button type="button" data-kd-rotate="-45" aria-label="Rotate models left">←</button><button type="button" data-kd-rotate="45" aria-label="Rotate models right">→</button><button type="button" data-kd-rotate="up" aria-label="Rotate models upward">↑</button><button type="button" data-kd-rotate="down" aria-label="Rotate models downward">↓</button><button type="button" data-kd-rotate="reset" aria-label="Reset 3D view">↺</button></div></div>
+<div class="kd-stage-footer"><p>Rotate to see the devices from every side. Click a screen to use the app directly inside the device.</p><div class="kd-view-controls" role="group" aria-label="Rotate the 3D models"><button type="button" data-kd-rotate="-45" aria-label="Rotate models left">←</button><button type="button" data-kd-rotate="45" aria-label="Rotate models right">→</button><button type="button" data-kd-rotate="up" aria-label="Rotate models upward">↑</button><button type="button" data-kd-rotate="down" aria-label="Rotate models downward">↓</button><button type="button" data-kd-rotate="reset" aria-label="Reset 3D view">↺</button></div></div>
 <p class="kd-scene-status" role="status" aria-live="polite">The interactive demos are ready while the 3D models load.</p>
 <div id="kd-demo-storage" hidden><div class="kd-app-slot"><div class="kd-app" data-kallos-app="staff" inert></div></div><div class="kd-app-slot"><div class="kd-app" data-kallos-app="member" inert></div></div></div>
 <p class="kd-disclosure"><strong>Interactive demo · sample data.</strong> Adapted from the Kallos interfaces for this portfolio. Try dates, filters, booking, cancellation, attendance, and Arabic. Demo actions stay in this page and reset when it is reloaded; the live service and its member and payment records are never accessed. The phone shows the responsive website. The 3D screen previews reflect the same sample state.</p>
@@ -142,13 +145,6 @@
 <div class="pp-actions">
 <a class="pp-action" href="https://kallosfitness.com/" target="_blank" rel="noopener noreferrer">Visit Kallos Fitness <span aria-hidden="true">↗</span></a><a class="pp-text-link" href="framee.html">Explore FraMee ↗</a>
 </div></section></main><footer class="pp-footer pp-shell"><a href="../index.html#products">Back to product work</a><a href="#top">Back to top ↑</a></footer>
-<dialog id="kd-device-dialog" class="kd-dialog" aria-labelledby="kd-dialog-title" aria-describedby="kd-dialog-description"><div class="kd-dialog-bar"><div>
-<h2 id="kd-dialog-title">Kallos demo</h2>
-<p id="kd-dialog-description">Interactive demo · sample data</p>
-</div>
-<div class="kd-dialog-actions">
-<button type="button" data-kd-reset>Reset demo</button><button type="button" class="kd-close" aria-label="Close interactive demo">×</button>
-</div></div><div class="kd-dialog-content"></div></dialog>
-<script type="application/json" id="kd-camera-frames">{"staff": {"center": [-0.8, 1.391232033814365, -1.2861483645674745], "normal": [0.0, 0.25881904510252074, 0.9659258262890683], "width": 3.28, "height": 2.05}, "member": {"center": [1.7823067151114087, 1.4, 0.5832403608224469], "normal": [-0.20791169081775934, 0.0, 0.9781476007338057], "width": 1.19, "height": 2.539}}</script>
+<script type="application/json" id="kd-camera-frames">{"staff": {"center": [-0.8, 1.391232033814365, -1.2861483645674745], "normal": [0.0, 0.25881904510252074, 0.9659258262890683], "up": [0.0, 0.9659258262890683, -0.25881904510252074], "right": [1.0, 0.0, 0.0], "width": 3.28, "height": 2.05, "radius": 0.036}, "member": {"center": [1.7823067151114087, 1.4, 0.5832403608224469], "normal": [-0.20791169081775934, 0.0, 0.9781476007338057], "up": [0.0, 1.0, 0.0], "right": [0.9781476007338057, 0.0, 0.20791169081775934], "width": 1.19, "height": 2.539, "radius": 0.125}}</script>
 </body>
 </html>

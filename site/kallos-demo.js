@@ -72,7 +72,7 @@
     return `<div class="kd-week" role="group" aria-label="${txt(p,'date')}">${days.map((day,i)=>{
       const weekday = new Intl.DateTimeFormat(p.lang==='ar'?'ar-QA':'en-GB',{weekday:p.lang==='ar'?'narrow':'short',timeZone:'UTC'}).format(day);
       const label = new Intl.DateTimeFormat(p.lang==='ar'?'ar-QA':'en-GB',{weekday:'long',day:'numeric',month:'long',timeZone:'UTC'}).format(day);
-      return `<button type="button" data-kd-action="day" data-kd-day="${i}" data-kd-focus="day-${i}" aria-pressed="${p.day===i}" aria-label="${label}"><span>${weekday}</span><strong>${num(p,day.getUTCDate())}</strong></button>`;
+      return `<button type="button" data-kd-action="day" data-kd-day="${i}" data-kd-focus="day-${i}" aria-pressed="${p.day===i}" aria-label="${weekday} ${num(p,day.getUTCDate())}, ${label}"><span>${weekday}</span> <strong>${num(p,day.getUTCDate())}</strong></button>`;
     }).join('')}</div>`;
   }
   function filtersHTML(p) {
@@ -131,6 +131,7 @@
       const previousFocus=active?.dataset.kdFocus;
       const surface=root.querySelector('.kd-render');
       const top=surface.scrollTop;
+      root.dataset.message=state.message;
       root.lang=p.lang;
       root.dir=p.lang==='ar'?'rtl':'ltr';
       surface.innerHTML=appHTML(p);
