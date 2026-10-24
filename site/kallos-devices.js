@@ -4,6 +4,8 @@
  const stage=document.querySelector('.kd-stage'),viewer=stage?.querySelector('model-viewer');
  let surface=document.querySelector('.kd-live-surface');
  if(!stage||!viewer||!surface)return;
+ customElements.whenDefined('model-viewer').then(()=>{customElements.get('model-viewer').minimumRenderScale=1;});
+ viewer.addEventListener('render-scale',e=>{viewer.dataset.renderScale=JSON.stringify(e.detail);});
  const reduced=matchMedia('(prefers-reduced-motion: reduce)'),narrow=matchMedia('(max-width:720px)');
  const toolbar=document.querySelector('.kd-use-controls'),title=document.querySelector('#kd-use-title'),status=document.querySelector('.kd-scene-status');
  const roots=new Map([...document.querySelectorAll('[data-kallos-app]')].map(root=>[root.dataset.kallosApp,{root,surface:root.closest('.kd-live-surface')}]));
@@ -15,7 +17,7 @@
  const nextFrame=()=>new Promise(requestAnimationFrame);
  const read=()=>{const o=viewer.getCameraOrbit(),t=viewer.getCameraTarget();return{theta:o.theta,phi:o.phi,radius:o.radius,target:[t.x,t.y,t.z],fov:parseFloat(viewer.fieldOfView)||32};};
  const apply=v=>{viewer.cameraTarget=v.target.map(n=>n+'m').join(' ');viewer.cameraOrbit=`${v.theta}rad ${v.phi}rad ${v.radius}m`;viewer.fieldOfView=v.fov+'deg';};
- const home=()=>narrow.matches?{theta:-12*rad,phi:83*rad,radius:6.5,target:frames.member.center,fov:32}:{theta:18*rad,phi:69*rad,radius:7.9,target:[-.25,1.35,0],fov:32};
+ const home=()=>narrow.matches?{theta:-12*rad,phi:83*rad,radius:4.35,target:frames.member.center,fov:32}:{theta:12*rad,phi:74*rad,radius:7.6,target:[-.15,1.35,-.1],fov:32};
  const expandedHeight=()=>Math.min(920,Math.max(640,innerHeight-36));
  function closeView(which){
   const f=frames[which],h=stage.clientHeight,w=stage.clientWidth,top=Math.max(86,toolbar.offsetHeight+32),bottom=20;
@@ -65,7 +67,7 @@
  }
  async function enter(which,button){
   if(phase!=='idle')return;active=roots.get(which);if(!active)return;
-  role=which;surface=active.surface;trigger=button;returnView=viewer.loaded?read():home();title.textContent=role==='staff'?'Staff workspace':'Member experience';
+  role=which;surface=active.surface;trigger=button;returnView=viewer.loaded?read():home();title.textContent=role==='staff'?'Staff':'Member';
   setPhase('entering');stage.style.height=expandedHeight()+'px';surface.dataset.device=role;surface.hidden=false;surface.inert=true;surface.classList.remove('is-visible','kd-flat-fallback');
   active.root.inert=true;if(viewer.loaded)projection.use(role);
   announce('Moving into the '+(role==='staff'?'laptop':'phone')+' display…');await centerStage();if(phase!=='entering')return;
@@ -114,5 +116,5 @@
  const placeToolbar=()=>{if(toolbarPending)return;toolbarPending=requestAnimationFrame(()=>{toolbarPending=0;if(phase==='idle'){toolbar.style.removeProperty('top');return;}const r=stage.getBoundingClientRect();toolbar.style.top=Math.max(16,Math.min(stage.clientHeight-toolbar.offsetHeight-12,12-r.top))+'px';});};
  new ResizeObserver(()=>{resize();placeToolbar();}).observe(stage);addEventListener('resize',resize);addEventListener('scroll',placeToolbar,{passive:true});
  reduced.addEventListener('change',()=>{viewer.interpolationDecay=reduced.matches?0:110;});
- narrow.addEventListener('change',()=>{if(viewer.loaded&&phase==='idle'){apply(home());viewer.jumpCameraToGoal();}});
+ narrow.addEventListener('change',()=>{if(!viewer.loaded)return;if(phase==='idle'){apply(home());viewer.jumpCameraToGoal();}else{returnView=home();}});
 })();

@@ -11590,3 +11590,5 @@ video {
     padding-right: 2rem;
   }
 }
+/* Native controls follow the isolated app theme. */ html[data-theme=dark]{color-scheme:dark}html[data-theme=light]{color-scheme:light}:where(.app-main,.app-sidebar,body){scrollbar-width:thin;scrollbar-color:#626874 transparent}
+/* Keep announcement links legible on their cyan surface in every pointer state. */ .staff-home-bulletin:is(:hover,:focus-visible){color:#081316}
