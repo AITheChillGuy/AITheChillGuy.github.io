@@ -1,24 +1,2 @@
-/* Theme toggle — light/dark across the whole site.
- * Explicit choice (data-theme + localStorage) wins; with no stored
- * choice the CSS prefers-color-scheme media queries decide, so this
- * script only has to handle the manual override. A tiny inline
- * snippet in each page's <head> restores the stored theme pre-paint.
- */
-(function () {
-  'use strict';
-  var root = document.documentElement;
-
-  function current() {
-    var t = root.getAttribute('data-theme');
-    if (t) return t;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-
-  document.addEventListener('click', function (e) {
-    var btn = e.target.closest('.theme-toggle');
-    if (!btn) return;
-    var next = current() === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (err) { /* private mode */ }
-  });
-})();
+/* Shared theme preference with an announced toggle state. */
+(function(){'use strict';var root=document.documentElement,system=matchMedia('(prefers-color-scheme: dark)');function current(){var t=root.getAttribute('data-theme');return t==='dark'||t==='light'?t:(system.matches?'dark':'light')}function sync(){var dark=current()==='dark';document.querySelectorAll('.theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',String(dark));b.title=dark?'Switch to light theme':'Switch to dark theme'})}document.addEventListener('click',function(e){if(!e.target.closest('.theme-toggle'))return;var next=current()==='dark'?'light':'dark';root.setAttribute('data-theme',next);try{localStorage.setItem('theme',next)}catch(err){}sync()});system.addEventListener('change',sync);window.addEventListener('storage',function(e){if(e.key!=='theme')return;if(e.newValue==='light'||e.newValue==='dark')root.setAttribute('data-theme',e.newValue);else root.removeAttribute('data-theme');sync()});sync()})();

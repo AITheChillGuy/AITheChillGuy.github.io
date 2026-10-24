@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <script>document.documentElement.classList.add('has-js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
   <title>MERA — Medical Electronic Records Assistant | Ahmed Ibrahim</title>
   <meta name="description" content="MERA brings clinical question answering, report summarization, and case similarity into one retrieval-augmented assistant. Explore the research through an interactive evidence engine.">
-  <meta property="og:title" content="MERA — Medical Electronic Records Assistant">
-  <meta property="og:description" content="Clinical questions. Answers connected to the record. A research project by Ahmed Ibrahim.">
+  <meta property="og:title" content="MERA — Medical Electronic Records Assistant | Ahmed Ibrahim">
+  <meta property="og:description" content="MERA brings clinical question answering, report summarization, and case similarity into one retrieval-augmented assistant. Explore the research through an interactive evidence engine.">
   <meta property="og:type" content="article">
   <link rel="canonical" href="https://aithechillguy.github.io/work/mera.html">
   <link rel="icon" href="../assets/favicon.png">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-  <link rel="stylesheet" href="../styles.css?v=18">
-</head>
+  <link rel="stylesheet" href="../styles.css?v=20261015">
+<link rel="preload" href="../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin=""><meta property="og:url" content="https://aithechillguy.github.io/work/mera.html"><meta property="og:image" content="https://aithechillguy.github.io/assets/social-preview.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ahmed Ibrahim — AI engineering, language models, retrieval, and agents"><meta name="twitter:card" content="summary_large_image"></head>
 <body class="mf-page" id="top">
 <a class="mf-skip" href="#main">Skip to content</a>
 <nav class="nav" aria-label="Portfolio navigation">
   <a class="wordmark" href="../index.html#cover">AHMED IBRAHIM<span class="mf-nav-divider" aria-hidden="true">/</span><span class="mf-nav-project">SELECTED WORK</span></a>
   <div class="mf-navtools">
     <a class="mf-nav-back" href="../index.html#projects">All projects <span aria-hidden="true">↗</span></a>
-    <button class="theme-toggle mf-interactive" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.5m0 14v2.5M2.5 12H5m14 0h2.5M5.3 5.3 7 7m10 10 1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7"/></svg></button>
+    <button class="theme-toggle mf-interactive" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="tt-sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.5m0 14v2.5M2.5 12H5m14 0h2.5M5.3 5.3 7 7m10 10 1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7"></path></svg></button>
   </div>
 </nav>
-<main id="main">
+<main id="main" tabindex="-1">
   <header class="mf-hero">
     <div class="mf-shell">
       <div class="mf-fileline"><span>04 / CLINICAL INTELLIGENCE</span><span>LEAD AUTHOR · AHMED IBRAHIM <i>↗</i> 2025</span></div>
@@ -40,7 +40,7 @@
           <div class="mf-instrument-top"><span><i aria-hidden="true"></i> EVIDENCE ENGINE</span><span>PT–0042 / SYNTHETIC</span></div>
           <div class="mf-query-chips mf-interactive" role="group" aria-label="Walkthrough question"><button type="button" class="is-active" data-query="0" aria-pressed="true">Cultures before antibiotics?</button><button type="button" data-query="1" aria-pressed="false">Imaging findings?</button><button type="button" data-query="2" aria-pressed="false">Discharge plan?</button></div>
           <div class="mf-atlas">
-            <svg class="mf-routes" viewBox="0 0 720 360" preserveAspectRatio="none" aria-hidden="true"><path d="M190 47 H272 V180 H353 M190 98 H272 M190 149 H272 M190 200 H272 M190 251 H272 M190 302 H272 V180 M427 180 H497"/><path class="mf-live-route" id="mf-live-route" d="M190 98 H272 V180 H353 M190 149 H272 V180 M427 180 H497"/></svg>
+            <svg class="mf-routes" viewbox="0 0 720 360" preserveaspectratio="none" aria-hidden="true"><path d="M190 47 H272 V180 H353 M190 98 H272 M190 149 H272 M190 200 H272 M190 251 H272 M190 302 H272 V180 M427 180 H497"></path><path class="mf-live-route" id="mf-live-route" d="M190 98 H272 V180 H353 M190 149 H272 V180 M427 180 H497"></path></svg>
             <div class="mf-source-stack" role="group" aria-label="Inspect source passages">
               <span class="mf-atlas-label">01 / THE RECORD</span>
               <button type="button" class="mf-fragment" data-fragment="0" aria-pressed="false"><span>01</span><b>Presentation</b><i aria-hidden="true">↗</i></button>
@@ -50,7 +50,7 @@
               <button type="button" class="mf-fragment" data-fragment="4" aria-pressed="false"><span>05</span><b>Clinical course</b><i aria-hidden="true">↗</i></button>
               <button type="button" class="mf-fragment" data-fragment="5" aria-pressed="false"><span>06</span><b>Discharge plan</b><i aria-hidden="true">↗</i></button>
             </div>
-            <div class="mf-core" aria-hidden="true"><div class="mf-core-orbit"></div><div class="mf-core-orbit mf-orbit-two"></div><div class="mf-core-disc"><svg viewBox="0 0 100 100"><path d="M25 72V28L50 54 75 28v44M25 50h50"/></svg><span>MERA</span></div><span class="mf-core-caption">RETRIEVE / GROUND</span></div>
+            <div class="mf-core" aria-hidden="true"><div class="mf-core-orbit"></div><div class="mf-core-orbit mf-orbit-two"></div><div class="mf-core-disc"><svg viewbox="0 0 100 100"><path d="M25 72V28L50 54 75 28v44M25 50h50"></path></svg><span>MERA</span></div><span class="mf-core-caption">RETRIEVE / GROUND</span></div>
             <div class="mf-engine-answer"><span class="mf-atlas-label">02 / THE ANSWER</span><div class="mf-answer-light" id="mf-engine-light" aria-hidden="true">↗</div><p id="mf-engine-answer">Two sets of blood cultures were drawn before antibiotics.</p><span class="mf-engine-sources" id="mf-engine-sources">GROUNDED IN 02 + 03</span></div>
           </div>
           <div class="mf-inspector"><span id="mf-inspector-label">SOURCE 02 / RETRIEVED</span><p id="mf-inspector-text">Blood cultures ×2 drawn prior to antibiotic administration.</p></div>
@@ -221,7 +221,7 @@
     var number = PTS[current].paras.findIndex(function (p) { return p.k === key; }) + 1;
     var b = make('button', 'mf-citation', String(number).padStart(2, '0'));
     b.type = 'button';
-    b.setAttribute('aria-label', 'Show source passage ' + number);
+    b.setAttribute('aria-label', 'Show source passage ' + String(number).padStart(2, '0'));
     b.setAttribute('aria-controls', 'mf-' + key);
     b.addEventListener('mouseenter', function () { highlight([key]); });
     b.addEventListener('mouseleave', function () { highlight(evidence); });
@@ -401,6 +401,6 @@
 
 })();
 </script>
-<script src="../theme.js" defer></script>
+<script src="../theme.js?v=20261015" defer></script>
 </body>
 </html>

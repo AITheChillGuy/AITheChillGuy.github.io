@@ -32,23 +32,6 @@
     }, { passive: true });
   }
 
-  /* ---- Mobile nav -------------------------------------------- */
-  const toggle = $('.nav-toggle'), overlay = $('#navmenu');
-  function closeMenu() {
-    if (!overlay) return;
-    overlay.classList.remove('open');
-    if (toggle) toggle.setAttribute('aria-expanded', 'false');
-  }
-  if (toggle && overlay) {
-    toggle.addEventListener('click', () => {
-      overlay.classList.add('open');
-      toggle.setAttribute('aria-expanded', 'true');
-    });
-    const close = $('.close', overlay);
-    if (close) close.addEventListener('click', closeMenu);
-    $$('a', overlay).forEach(a => a.addEventListener('click', closeMenu));
-  }
-
   /* ---- Active nav link on scroll -----------------------------
      Picks the section currently crossing a "trigger line" set
      just below the sticky nav. Works for tall sections (the
@@ -56,7 +39,7 @@
      previous threshold-based IntersectionObserver). Also clears
      the active state when the user is back at the hero. */
   const navLinks = $$('.nav-link');
-  const sectionIds = ['about', 'research', 'projects', 'contact'];
+  const sectionIds = ['about', 'research', 'projects', 'products', 'contact'];
   const sections = sectionIds
     .map(id => document.getElementById(id))
     .filter(Boolean);
@@ -111,6 +94,7 @@
     ];
     let i = 0;
     setInterval(() => {
+      if (document.hidden) return;
       cycleEl.classList.add('swap');
       setTimeout(() => {
         i = (i + 1) % words.length;
@@ -130,13 +114,6 @@
            added to the static list), the live number wins.
      If the fetch fails or is slower than the scroll-in trigger,
      we just use the DOM count and move on. */
-  const ORCID = '0009-0002-9217-4173';
-  const WCMQ_INSTITUTION = 'I4210152471';
-  const OPENALEX_URL =
-    `https://api.openalex.org/works` +
-    `?filter=author.orcid:${ORCID},authorships.institutions.id:${WCMQ_INSTITUTION}` +
-    `&per-page=1`;
-
   const domPubCount = $$('.pub-list .pub').length;
   const featuredProjectCount =
     $$('.proj-git .git-commit').length || $$('.proj-grid .proj-card').length;
@@ -154,17 +131,6 @@
     });
   };
   applyPubCount(domPubCount);
-
-  if (typeof fetch === 'function') {
-    fetch(OPENALEX_URL, { headers: { 'Accept': 'application/json' } })
-      .then(r => r.ok ? r.json() : null)
-      .then(json => {
-        const liveCount = json && json.meta && Number.isInteger(json.meta.count)
-          ? json.meta.count : 0;
-        if (liveCount > resolvedPubCount) applyPubCount(liveCount);
-      })
-      .catch(() => { /* offline / blocked / CORS — DOM count stands */ });
-  }
 
   const statNums = $$('.stat-num');
   if (statNums.length) {
@@ -390,13 +356,13 @@
         print(
           '# Ahmed Ibrahim\n' +
           '\n' +
-          'AI research specialist · Weill Cornell Medicine — Qatar.\n' +
+          'AI engineer · Doha, Qatar.\n' +
           'I work end-to-end on LLMs, RAG, multimodal models, and AI agents,\n' +
-          'with healthcare data as the use case rather than the subject.\n' +
+          'from data preparation through model integration and evaluation.\n' +
           '\n' +
           '## current\n' +
           '  - TriAgent — crisis clinical decision support (AI 7(6):230)\n' +
-          '  - applying to graduate school\n'
+          '  - wearable haptics research at Qatar University\n'
         );
         return;
       }
@@ -577,7 +543,7 @@
         const d = Math.hypot(dx, dy);
         if (d < 96) {
           const f = (1 - d / 96) * 8;
-          btn.style.transform = `translate(${dx / d * f}px, ${dy / d * f}px)`;
+          btn.style.transform = `translate(${(d ? dx / d : 0) * f}px, ${(d ? dy / d : 0) * f}px)`;
         } else btn.style.transform = '';
       });
       btn.addEventListener('mouseleave', () => btn.style.transform = '');
@@ -616,6 +582,8 @@
         }, 600);
       } else if (status) {
         status.textContent = 'Please fill in the highlighted fields.';
+        const firstInvalid = form.querySelector('[aria-invalid="true"]');
+        if (firstInvalid) firstInvalid.focus();
       }
     });
   }

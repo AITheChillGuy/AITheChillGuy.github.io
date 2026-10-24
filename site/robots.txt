@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aithechillguy.github.io/sitemap.xml

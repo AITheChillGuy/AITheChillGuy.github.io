@@ -3,20 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script>document.documentElement.classList.add('has-js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <title>HGTS — Handball Goalkeeping Training System</title>
 <meta name="description" content="A virtual-reality training platform for handball goalkeepers, paired with a DIY haptic feedback glove. Senior Design Project at Qatar University — 2nd Place at the CENG Capstone Design Competition 2023 (Best Prototype, Most Creative Design) and 2nd Place at the Senior Design Project Competition.">
 <link rel="icon" href="../assets/favicon.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=6">
+<link rel="stylesheet" href="../styles.css?v=20261015">
 <script type="module" src="../assets/vendor/model-viewer-3.5.0.min.js"></script>
-</head>
-<body class="hgts-page">
+<link rel="preload" href="../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin=""><link rel="canonical" href="https://aithechillguy.github.io/work/hgts.html"><meta property="og:title" content="HGTS — Handball Goalkeeping Training System"><meta property="og:description" content="A virtual-reality training platform for handball goalkeepers, paired with a DIY haptic feedback glove. Senior Design Project at Qatar University — 2nd Place at the CENG Capstone Design Competition 2023 (Best Prototype, Most Creative Design) and 2nd Place at the Senior Design Project Competition."><meta property="og:type" content="article"><meta property="og:url" content="https://aithechillguy.github.io/work/hgts.html"><meta property="og:image" content="https://aithechillguy.github.io/assets/social-preview.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ahmed Ibrahim — AI engineering, language models, retrieval, and agents"><meta name="twitter:card" content="summary_large_image"></head>
+<body class="hgts-page site-template-page" id="top">
 
-<nav class="nav">
+<a href="#main" class="site-skip">Skip to content</a><nav class="nav" aria-label="Portfolio navigation">
   <a class="wordmark" href="../index.html#cover" aria-label="Ahmed Ibrahim — back to home">
     <span class="wordmark-text">AHMED IBRAHIM</span>
   </a>
@@ -24,12 +21,12 @@
     <li><a class="nav-link label-caps" href="../index.html#about">About</a></li>
     <li><a class="nav-link label-caps" href="../index.html#research">Research</a></li>
     <li><a class="nav-link label-caps" href="../index.html#projects">Projects</a></li>
-    <li><a class="nav-link label-caps" href="../index.html#contact">Contact</a></li>
-      <li><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.3" y1="5.3" x2="7" y2="7"/><line x1="17" y1="17" x2="18.7" y2="18.7"/><line x1="5.3" y1="18.7" x2="7" y2="17"/><line x1="17" y1="7" x2="18.7" y2="5.3"/></svg></button></li>
+    <li><a class="nav-link label-caps" href="../index.html#products">PRODUCTS</a></li><li><a class="nav-link label-caps" href="../index.html#contact">Contact</a></li>
+      <li><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="tt-sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><line x1="12" y1="2.5" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="21.5"></line><line x1="2.5" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="21.5" y2="12"></line><line x1="5.3" y1="5.3" x2="7" y2="7"></line><line x1="17" y1="17" x2="18.7" y2="18.7"></line><line x1="5.3" y1="18.7" x2="7" y2="17"></line><line x1="17" y1="7" x2="18.7" y2="5.3"></line></svg></button></li>
   </ul>
-</nav>
+<button type="button" class="nav-toggle label-caps" aria-expanded="false" aria-controls="navmenu">MENU</button></nav>
 
-<!-- ============================================================
+<div id="navmenu" class="nav-overlay" role="dialog" aria-modal="true" aria-label="Portfolio menu" hidden="" inert=""><button type="button" class="close label-caps" aria-label="Close menu">CLOSE ×</button><a href="../index.html#about">About</a><a href="../index.html#research">Research</a><a href="../index.html#projects">Projects</a><a href="../index.html#products">Products</a><a href="../index.html#contact">Contact</a><button class="theme-toggle theme-toggle-lg" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="tt-sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><line x1="12" y1="2.5" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="21.5"></line><line x1="2.5" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="21.5" y2="12"></line><line x1="5.3" y1="5.3" x2="7" y2="7"></line><line x1="17" y1="17" x2="18.7" y2="18.7"></line><line x1="5.3" y1="18.7" x2="7" y2="17"></line><line x1="17" y1="7" x2="18.7" y2="5.3"></line></svg><span>Theme</span></button></div><main id="main" tabindex="-1"><!-- ============================================================
      STAGE — dark inverted block: hero text on the left,
      interactive 3D model on the right.
      ============================================================ -->
@@ -47,33 +44,12 @@
     </div>
 
     <div class="hgts-viewer-wrap">
-      <model-viewer
-        class="hgts-viewer"
-        src="../assets/models/gloves-2k.glb"
-        ios-src=""
-        alt="Interactive 3D model of the haptic feedback glove"
-        camera-controls
-        disable-zoom
-        touch-action="pan-y"
-        auto-rotate
-        auto-rotate-delay="2000"
-        rotation-per-second="14deg"
-        interaction-prompt="none"
-        environment-image="neutral"
-        skybox-image=""
-        tone-mapping="neutral"
-        shadow-intensity="0.5"
-        shadow-softness="1"
-        exposure="0.5"
-        camera-orbit="35deg 78deg 130%"
-        loading="eager"
-        reveal="auto">
-        <div slot="poster" style="background: transparent;"></div>
-      </model-viewer>
+      <model-viewer class="hgts-viewer" src="../assets/models/gloves-2k.glb" alt="Interactive 3D model of the haptic feedback glove" camera-controls disable-zoom touch-action="pan-y" auto-rotate auto-rotate-delay="2000" rotation-per-second="14deg" interaction-prompt="none" environment-image="neutral" tone-mapping="neutral" shadow-intensity="0.5" shadow-softness="1" exposure="0.5" camera-orbit="35deg 78deg 130%" loading="eager" reveal="auto" poster="../assets/hgts/prototype-4.webp">
+        <img src="../assets/hgts/prototype-4.webp" slot="poster" alt="" class="hgts-poster" aria-hidden="true" width="1056" height="1800" decoding="async"></model-viewer>
 
       <span class="hgts-viewer-hint label-caps">Drag to rotate</span>
       <button class="hgts-viewer-reset label-caps" type="button" data-hgts-reset>Reset view</button>
-    </div>
+    <button type="button" class="hgts-viewer-motion" data-hgts-motion="" aria-pressed="false">Pause rotation</button></div>
   </div>
 </section>
 
@@ -82,16 +58,16 @@
      ============================================================ -->
 <section class="hgts-stats">
   <div class="hgts-stat">
-    <span class="hgts-stat-num">95%</span>
-    <span class="hgts-stat-lbl label-caps">Real-time, haptics on</span>
+    <span class="hgts-stat-num">ESP32</span>
+    <span class="hgts-stat-lbl label-caps">Embedded controller</span>
   </div>
   <div class="hgts-stat">
     <span class="hgts-stat-num">4</span>
     <span class="hgts-stat-lbl label-caps">Prototype iterations</span>
   </div>
   <div class="hgts-stat">
-    <span class="hgts-stat-num">5</span>
-    <span class="hgts-stat-lbl label-caps">Barriers dismantled</span>
+    <span class="hgts-stat-num">2</span>
+    <span class="hgts-stat-lbl label-caps">Feedback modes</span>
   </div>
   <div class="hgts-stat">
     <span class="hgts-stat-num">2×</span>
@@ -114,9 +90,9 @@
   <div class="prose">
     <p><strong>The problem.</strong> Handball goalkeeper training depends on a coach, a thrower, and a court — and geographical limitations and global event restrictions make consistent practice hard for most players outside elite academies. The need was for an accessible, engaging, and adaptable training solution that didn't require a venue or a partner.</p>
     <p><strong>The approach.</strong> A Unity VR simulation at the intersection of sports and technology, paired with a custom haptic glove built from flex sensors and an ESP32 microcontroller. The glove delivered both tactile and force feedback; SteamVR handled motion capture and rendering; motion-capture animations and a user-friendly interface filled in the rest. The design went through four iterative prototypes.</p>
-    <blockquote class="pullquote">95% real-time performance with haptic feedback enabled — meeting both real-time simulation and haptic-feedback standards.</blockquote>
+    <blockquote class="pullquote">Sensor input, a VR simulation, and tactile and force feedback connected in one prototype.</blockquote>
     <p><strong>What was hard.</strong> The five barriers the project set out to dismantle — realism, integration, user engagement, technology skepticism, and scalability — all converge on one technical problem: a haptic loop fast enough that the cue still feels like contact. Late feedback teaches the wrong timing.</p>
-    <p><strong>What shipped.</strong> A working end-to-end prototype across four iterations. The project placed 2nd at the CENG Capstone Design Competition 2023 — winning Best Prototype and Most Creative Design — and 2nd at the Senior Design Project Competition. The system rendered user movements accurately in VR and held 95% real-time performance with haptics on.</p>
+    <p><strong>What shipped.</strong> A working end-to-end prototype across four iterations. The project placed 2nd at the CENG Capstone Design Competition 2023 — winning Best Prototype and Most Creative Design — and 2nd at the Senior Design Project Competition. The prototype connected sensor input, VR interaction, and haptic feedback.</p>
     <p><strong>What this changes.</strong> Sport-specific VR training can be built cheap, accessible, and customisable when the haptic loop is treated as a primary design constraint, not a finishing touch — reshaping how athletes outside elite academies can train.</p>
   </div>
 </section>
@@ -131,19 +107,19 @@
   </header>
   <div class="hgts-gallery-grid">
     <figure class="hgts-shot">
-      <img src="../assets/hgts/prototype-1.webp" alt="Prototype I — early proof-of-concept of the haptic glove">
+      <img src="../assets/hgts/prototype-1.webp" alt="Prototype I — early proof-of-concept of the haptic glove" width="1126" height="1800" decoding="async" loading="lazy">
       <figcaption class="caption-meta label-caps">Prototype I</figcaption>
     </figure>
     <figure class="hgts-shot">
-      <img src="../assets/hgts/prototype-2.webp" alt="Prototype II — refined sensor placement and wiring">
+      <img src="../assets/hgts/prototype-2.webp" alt="Prototype II — refined sensor placement and wiring" width="1152" height="1800" decoding="async" loading="lazy">
       <figcaption class="caption-meta label-caps">Prototype II</figcaption>
     </figure>
     <figure class="hgts-shot">
-      <img src="../assets/hgts/prototype-3.webp" alt="Prototype III — improved fit and feedback integration">
+      <img src="../assets/hgts/prototype-3.webp" alt="Prototype III — improved fit and feedback integration" width="1002" height="1800" decoding="async" loading="lazy">
       <figcaption class="caption-meta label-caps">Prototype III</figcaption>
     </figure>
     <figure class="hgts-shot">
-      <img src="../assets/hgts/prototype-4.webp" alt="Prototype IV — final iteration used in competition demos">
+      <img src="../assets/hgts/prototype-4.webp" alt="Prototype IV — final iteration used in competition demos" width="1056" height="1800" decoding="async" loading="lazy">
       <figcaption class="caption-meta label-caps">Prototype IV</figcaption>
     </figure>
   </div>
@@ -158,7 +134,7 @@
   → Unity simulation (SteamVR motion + rendering)
   → ball trajectory + collision
   → haptic glove (tactile + force feedback)
-  → measured loop: 95% real-time with haptics on</pre>
+  → repeat sensor readings and feedback updates</pre>
     <figcaption class="caption-meta label-caps">FIG. 1 — System loop</figcaption>
   </figure>
 </section>
@@ -170,10 +146,10 @@
   <h2 class="h2">Multimodal Models for Radiology</h2>
 </a>
 
-<footer class="footer">
+</main><footer class="footer">
   <div class="footer-row">
     <span class="label-caps">© 2026 Ahmed Ibrahim · Doha, Qatar</span>
-    <a href="../index.html#cover" class="label-caps back-to-top">Back to top ↑</a>
+    <a href="#top" class="label-caps back-to-top">Back to top ↑</a>
   </div>
 </footer>
 
@@ -193,6 +169,6 @@
   })();
 </script>
 
-<script src="../theme.js" defer></script>
-</body>
+<script src="../theme.js?v=20261015" defer></script>
+<script src="../site-navigation.js?v=20261015" defer></script><script>(function(){var mv=document.querySelector('.hgts-viewer'),button=document.querySelector('[data-hgts-motion]'),query=matchMedia('(prefers-reduced-motion: reduce)'),paused=query.matches;function sync(){mv.autoRotate=!paused&&!document.hidden;button.textContent=paused?'Resume rotation':'Pause rotation';button.setAttribute('aria-pressed',String(paused))}button.addEventListener('click',function(){paused=!paused;sync()});query.addEventListener('change',function(e){if(e.matches)paused=true;sync()});document.addEventListener('visibilitychange',sync);sync()})();</script></body>
 </html>

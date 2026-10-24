@@ -3,19 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script>document.documentElement.classList.add('has-js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <title>TriAgent — Code Blue: 11 Minutes</title>
 <meta name="description" content="Code Blue: 11 Minutes — a scroll-driven replay of TriAgent deciding a crisis case with almost nothing known. Adaptive multi-agent clinical decision support, published in AI (MDPI), 2026.">
 <link rel="icon" href="../assets/favicon.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=6">
-</head>
-<body class="cb-page">
+<link rel="stylesheet" href="../styles.css?v=20261015">
+<link rel="preload" href="../assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin=""><link rel="canonical" href="https://aithechillguy.github.io/work/triagent.html"><meta property="og:title" content="TriAgent — Code Blue: 11 Minutes"><meta property="og:description" content="Code Blue: 11 Minutes — a scroll-driven replay of TriAgent deciding a crisis case with almost nothing known. Adaptive multi-agent clinical decision support, published in AI (MDPI), 2026."><meta property="og:type" content="article"><meta property="og:url" content="https://aithechillguy.github.io/work/triagent.html"><meta property="og:image" content="https://aithechillguy.github.io/assets/social-preview.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Ahmed Ibrahim — AI engineering, language models, retrieval, and agents"><meta name="twitter:card" content="summary_large_image"></head>
+<body class="cb-page site-template-page" id="top">
 
-<nav class="nav">
+<a href="#main" class="site-skip">Skip to content</a><nav class="nav" aria-label="Portfolio navigation">
   <a class="wordmark" href="../index.html#cover" aria-label="Ahmed Ibrahim — back to home">
     <span class="wordmark-text">AHMED IBRAHIM</span>
   </a>
@@ -23,12 +20,12 @@
     <li><a class="nav-link label-caps" href="../index.html#about">About</a></li>
     <li><a class="nav-link label-caps" href="../index.html#research">Research</a></li>
     <li><a class="nav-link label-caps" href="../index.html#projects">Projects</a></li>
-    <li><a class="nav-link label-caps" href="../index.html#contact">Contact</a></li>
-    <li><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.3" y1="5.3" x2="7" y2="7"/><line x1="17" y1="17" x2="18.7" y2="18.7"/><line x1="5.3" y1="18.7" x2="7" y2="17"/><line x1="17" y1="7" x2="18.7" y2="5.3"/></svg></button></li>
+    <li><a class="nav-link label-caps" href="../index.html#products">PRODUCTS</a></li><li><a class="nav-link label-caps" href="../index.html#contact">Contact</a></li>
+    <li><button class="theme-toggle" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="tt-sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><line x1="12" y1="2.5" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="21.5"></line><line x1="2.5" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="21.5" y2="12"></line><line x1="5.3" y1="5.3" x2="7" y2="7"></line><line x1="17" y1="17" x2="18.7" y2="18.7"></line><line x1="5.3" y1="18.7" x2="7" y2="17"></line><line x1="17" y1="7" x2="18.7" y2="5.3"></line></svg></button></li>
   </ul>
-</nav>
+<button type="button" class="nav-toggle label-caps" aria-expanded="false" aria-controls="navmenu">MENU</button></nav>
 
-<!-- fixed HUD: the clock that binds the film together -->
+<div id="navmenu" class="nav-overlay" role="dialog" aria-modal="true" aria-label="Portfolio menu" hidden="" inert=""><button type="button" class="close label-caps" aria-label="Close menu">CLOSE ×</button><a href="../index.html#about">About</a><a href="../index.html#research">Research</a><a href="../index.html#projects">Projects</a><a href="../index.html#products">Products</a><a href="../index.html#contact">Contact</a><button class="theme-toggle theme-toggle-lg" type="button" aria-label="Toggle light/dark theme"><svg class="tt-moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="tt-sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><line x1="12" y1="2.5" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="21.5"></line><line x1="2.5" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="21.5" y2="12"></line><line x1="5.3" y1="5.3" x2="7" y2="7"></line><line x1="17" y1="17" x2="18.7" y2="18.7"></line><line x1="5.3" y1="18.7" x2="7" y2="17"></line><line x1="17" y1="7" x2="18.7" y2="5.3"></line></svg><span>Theme</span></button></div><main id="main" tabindex="-1"><!-- fixed HUD: the clock that binds the film together -->
 <div class="cb-hud" aria-hidden="true">
   <span class="cb-hud-label">T+</span><span class="cb-hud-time" id="cb-clock">00:00</span>
 </div>
@@ -77,35 +74,35 @@
           <!-- V1 — unresponsive on arrival: the gurney bursts in -->
           <div class="cb-vg cb-vg-1">
             <figure class="cb-plate cb-plate-1">
-              <img src="../assets/cb/v1c.webp" alt="" width="960" height="707" loading="lazy"><video class="cb-anim" data-src="../assets/cb/anim/v1c.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="cb-plate-cap"><span class="cb-plate-no">01</span>unresponsive on arrival — no ID, no one who knows them</figcaption>
+              <img src="../assets/cb/v1c.webp" alt="" width="960" height="707" loading="lazy" decoding="async"><video class="cb-anim" data-src="../assets/cb/anim/v1c.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="cb-plate-cap"><span class="cb-plate-no">01</span>unresponsive on arrival — no ID, no one who knows them</figcaption>
             </figure>
           </div>
 
           <!-- V2 — none on file: the search comes back empty -->
           <div class="cb-vg cb-vg-2">
             <figure class="cb-plate cb-plate-2">
-              <img src="../assets/cb/v2b.webp" alt="" width="960" height="707" loading="lazy"><video class="cb-anim" data-src="../assets/cb/anim/v2b.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="cb-plate-cap"><span class="cb-plate-no">02</span>records search: zero results — this patient has no past here</figcaption>
+              <img src="../assets/cb/v2b.webp" alt="" width="960" height="707" loading="lazy" decoding="async"><video class="cb-anim" data-src="../assets/cb/anim/v2b.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="cb-plate-cap"><span class="cb-plate-no">02</span>records search: zero results — this patient has no past here</figcaption>
             </figure>
           </div>
 
           <!-- V3 — medications unknown -->
           <div class="cb-vg cb-vg-3">
             <figure class="cb-plate cb-plate-3">
-              <img src="../assets/cb/v3b.webp" alt="" width="960" height="707" loading="lazy"><video class="cb-anim" data-src="../assets/cb/anim/v3b.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="cb-plate-cap"><span class="cb-plate-no">03</span>on medication? which? interacting with what we give next?</figcaption>
+              <img src="../assets/cb/v3b.webp" alt="" width="960" height="707" loading="lazy" decoding="async"><video class="cb-anim" data-src="../assets/cb/anim/v3b.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="cb-plate-cap"><span class="cb-plate-no">03</span>on medication? which? interacting with what we give next?</figcaption>
             </figure>
           </div>
 
           <!-- V4 — allergies unknown: the band is blank -->
           <div class="cb-vg cb-vg-4">
             <figure class="cb-plate cb-plate-4">
-              <img src="../assets/cb/v4.webp" alt="" width="960" height="707" loading="lazy"><video class="cb-anim" data-src="../assets/cb/anim/v4.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="cb-plate-cap"><span class="cb-plate-no">04</span>one wrong drug and the rescue becomes the injury</figcaption>
+              <img src="../assets/cb/v4.webp" alt="" width="960" height="707" loading="lazy" decoding="async"><video class="cb-anim" data-src="../assets/cb/anim/v4.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="cb-plate-cap"><span class="cb-plate-no">04</span>one wrong drug and the rescue becomes the injury</figcaption>
             </figure>
           </div>
 
           <!-- V5 — the monitor: the only thing alive -->
           <div class="cb-vg cb-vg-5">
             <figure class="cb-plate cb-plate-5">
-              <img src="../assets/cb/v5.webp" alt="" width="960" height="707" loading="lazy"><video class="cb-anim" data-src="../assets/cb/anim/v5.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="cb-plate-cap"><span class="cb-plate-no">05</span>the monitor is the only witness — and it says the patient is crashing</figcaption>
+              <img src="../assets/cb/v5.webp" alt="" width="960" height="707" loading="lazy" decoding="async"><video class="cb-anim" data-src="../assets/cb/anim/v5.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption class="cb-plate-cap"><span class="cb-plate-no">05</span>the monitor is the only witness — and it says the patient is crashing</figcaption>
             </figure>
           </div>
 
@@ -133,50 +130,50 @@
         </div>
 
         <div class="cb-graphwrap">
-          <svg class="cb-graph" viewBox="0 0 960 620" aria-label="TriAgent end-to-end architecture from the paper's Figure 2 — use the buttons to read each component's role">
+          <svg class="cb-graph" viewbox="0 0 960 620" aria-label="TriAgent end-to-end architecture from the paper's Figure 2 — use the buttons to read each component's role">
             <defs>
-              <marker id="cbarrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
-                <path class="cb-arrowhead" d="M0,0 L10,5 L0,10 z"/>
+              <marker id="cbarrow" viewbox="0 0 10 10" refx="8" refy="5" markerwidth="13" markerheight="13" markerunits="userSpaceOnUse" orient="auto-start-reverse">
+                <path class="cb-arrowhead" d="M0,0 L10,5 L0,10 z"></path>
               </marker>
             </defs>
 
             <!-- edges -->
-            <path id="a-rail" class="cb-e cb-e-crit" data-beat="4" pathLength="1" d="M325,32 V12 H845 V26" marker-end="url(#cbarrow)"/>
-            <path id="a-in"   class="cb-e" data-beat="2" pathLength="1" d="M170,67 H202" marker-end="url(#cbarrow)"/>
-            <path id="a-oc"   class="cb-e" data-beat="3" pathLength="1" d="M446,67 H474" marker-start="url(#cbarrow)" marker-end="url(#cbarrow)"/>
-            <path id="a-ce"   class="cb-e" data-beat="4" pathLength="1" d="M716,67 H742" marker-end="url(#cbarrow)"/>
-            <path id="d-orch" class="cb-e" data-beat="6" pathLength="1" d="M325,102 V146" marker-end="url(#cbarrow)"/>
-            <path id="d-crit" class="cb-e" data-beat="7" pathLength="1" d="M595,102 V146" marker-end="url(#cbarrow)"/>
-            <path id="d-out"  class="cb-e" data-beat="8" pathLength="1" d="M410,480 V524" marker-end="url(#cbarrow)"/>
-            <path id="fb"     class="cb-e cb-e-dash" data-beat="8" pathLength="1" d="M560,565 H930 V404 H778" marker-end="url(#cbarrow)"/>
+            <path id="a-rail" class="cb-e cb-e-crit" data-beat="4" pathlength="1" d="M325,32 V12 H845 V26" marker-end="url(#cbarrow)"></path>
+            <path id="a-in" class="cb-e" data-beat="2" pathlength="1" d="M170,67 H202" marker-end="url(#cbarrow)"></path>
+            <path id="a-oc" class="cb-e" data-beat="3" pathlength="1" d="M446,67 H474" marker-start="url(#cbarrow)" marker-end="url(#cbarrow)"></path>
+            <path id="a-ce" class="cb-e" data-beat="4" pathlength="1" d="M716,67 H742" marker-end="url(#cbarrow)"></path>
+            <path id="d-orch" class="cb-e" data-beat="6" pathlength="1" d="M325,102 V146" marker-end="url(#cbarrow)"></path>
+            <path id="d-crit" class="cb-e" data-beat="7" pathlength="1" d="M595,102 V146" marker-end="url(#cbarrow)"></path>
+            <path id="d-out" class="cb-e" data-beat="8" pathlength="1" d="M410,480 V524" marker-end="url(#cbarrow)"></path>
+            <path id="fb" class="cb-e cb-e-dash" data-beat="8" pathlength="1" d="M560,565 H930 V404 H778" marker-end="url(#cbarrow)"></path>
             <text class="cb-elbl" data-beat="4" x="585" y="9" text-anchor="middle">critical case ⚡ bypass</text>
             <text class="cb-elbl" data-beat="8" x="924" y="588" text-anchor="end">clinician feedback ↺</text>
 
             <!-- top row -->
-            <g class="cb-n" data-beat="2" data-agent="input" tabindex="0" role="button" aria-label="Input">
-              <rect x="20" y="32" width="150" height="70" rx="2"/>
+            <g class="cb-n" data-beat="2" data-agent="input" tabindex="0" role="button" aria-label="INPUT JSON / free-text">
+              <rect x="20" y="32" width="150" height="70" rx="2"></rect>
               <text class="cb-nn" x="95" y="62" text-anchor="middle">INPUT</text>
               <text class="cb-ns" x="95" y="84" text-anchor="middle">JSON / free-text</text>
             </g>
-            <g class="cb-n cb-n-gate" data-beat="1" data-agent="orch" tabindex="0" role="button" aria-label="Orchestrator agent">
-              <rect x="210" y="32" width="230" height="70" rx="2"/>
+            <g class="cb-n cb-n-gate" data-beat="1" data-agent="orch" tabindex="0" role="button" aria-label="ORCHESTRATOR AGENT triage · plan · route">
+              <rect x="210" y="32" width="230" height="70" rx="2"></rect>
               <text class="cb-nn" x="325" y="62" text-anchor="middle">ORCHESTRATOR AGENT</text>
               <text class="cb-ns" x="325" y="84" text-anchor="middle">triage · plan · route</text>
             </g>
-            <g class="cb-n cb-n-crit" data-beat="3" data-agent="crit" tabindex="0" role="button" aria-label="Critique agent">
-              <rect x="480" y="32" width="230" height="70" rx="2"/>
+            <g class="cb-n cb-n-crit" data-beat="3" data-agent="crit" tabindex="0" role="button" aria-label="CRITIQUE AGENT verify & remediate">
+              <rect x="480" y="32" width="230" height="70" rx="2"></rect>
               <text class="cb-nn" x="595" y="62" text-anchor="middle">CRITIQUE AGENT</text>
               <text class="cb-ns" x="595" y="84" text-anchor="middle">verify &amp; remediate</text>
             </g>
-            <g class="cb-n cb-n-final" data-beat="4" data-agent="emerg" tabindex="0" role="button" aria-label="Activate emergency">
-              <rect x="750" y="32" width="190" height="70" rx="2"/>
+            <g class="cb-n cb-n-final" data-beat="4" data-agent="emerg" tabindex="0" role="button" aria-label="⚠ EMERGENCY escalate · handoff">
+              <rect x="750" y="32" width="190" height="70" rx="2"></rect>
               <text class="cb-nn" x="845" y="62" text-anchor="middle">⚠ EMERGENCY</text>
               <text class="cb-ns" x="845" y="84" text-anchor="middle">escalate · handoff</text>
             </g>
 
             <!-- composable specialist modules -->
             <g class="cb-frame" data-beat="5">
-              <rect class="cb-frame-box" x="30" y="150" width="760" height="330" rx="2"/>
+              <rect class="cb-frame-box" x="30" y="150" width="760" height="330" rx="2"></rect>
               <text class="cb-frame-title" x="410" y="180" text-anchor="middle">COMPOSABLE SPECIALIST MODULES</text>
               <text class="cb-frame-sub" x="410" y="198" text-anchor="middle">invoked dynamically by the Orchestrator and Critique agents</text>
               <text class="cb-ng cb-ng-r" x="165" y="228" text-anchor="middle">REASONING &amp; PLANNING</text>
@@ -184,49 +181,49 @@
               <text class="cb-ng cb-ng-m" x="655" y="228" text-anchor="middle">MEMORY &amp; DOCUMENTATION</text>
             </g>
             <g class="cb-mods" data-beat="6">
-              <g class="cb-n cb-n-mod cb-n-mod-r" data-agent="urgency" tabindex="0" role="button" aria-label="Case urgency module">
-                <rect x="50" y="240" width="230" height="56" rx="2"/>
+              <g class="cb-n cb-n-mod cb-n-mod-r" data-agent="urgency" tabindex="0" role="button" aria-label="CASE URGENCY">
+                <rect x="50" y="240" width="230" height="56" rx="2"></rect>
                 <text class="cb-nn" x="165" y="273" text-anchor="middle">CASE URGENCY</text>
               </g>
-              <g class="cb-n cb-n-mod cb-n-mod-r" data-agent="simsearch" tabindex="0" role="button" aria-label="Similarity search module">
-                <rect x="50" y="308" width="230" height="56" rx="2"/>
+              <g class="cb-n cb-n-mod cb-n-mod-r" data-agent="simsearch" tabindex="0" role="button" aria-label="SIMILARITY SEARCH">
+                <rect x="50" y="308" width="230" height="56" rx="2"></rect>
                 <text class="cb-nn" x="165" y="341" text-anchor="middle">SIMILARITY SEARCH</text>
               </g>
-              <g class="cb-n cb-n-mod cb-n-mod-r" data-agent="draftplan" tabindex="0" role="button" aria-label="Draft plan module">
-                <rect x="50" y="376" width="230" height="56" rx="2"/>
+              <g class="cb-n cb-n-mod cb-n-mod-r" data-agent="draftplan" tabindex="0" role="button" aria-label="DRAFT PLAN">
+                <rect x="50" y="376" width="230" height="56" rx="2"></rect>
                 <text class="cb-nn" x="165" y="409" text-anchor="middle">DRAFT PLAN</text>
               </g>
             </g>
             <g class="cb-mods" data-beat="7">
-              <g class="cb-n cb-n-mod cb-n-mod-s" data-agent="drugsafety" tabindex="0" role="button" aria-label="Drug safety module">
-                <rect x="295" y="240" width="230" height="56" rx="2"/>
+              <g class="cb-n cb-n-mod cb-n-mod-s" data-agent="drugsafety" tabindex="0" role="button" aria-label="DRUG SAFETY">
+                <rect x="295" y="240" width="230" height="56" rx="2"></rect>
                 <text class="cb-nn" x="410" y="273" text-anchor="middle">DRUG SAFETY</text>
               </g>
-              <g class="cb-n cb-n-mod cb-n-mod-s" data-agent="safetypolicy" tabindex="0" role="button" aria-label="Safety policy module">
-                <rect x="295" y="308" width="230" height="56" rx="2"/>
+              <g class="cb-n cb-n-mod cb-n-mod-s" data-agent="safetypolicy" tabindex="0" role="button" aria-label="SAFETY POLICY">
+                <rect x="295" y="308" width="230" height="56" rx="2"></rect>
                 <text class="cb-nn" x="410" y="341" text-anchor="middle">SAFETY POLICY</text>
               </g>
-              <g class="cb-n cb-n-mod cb-n-mod-s" data-agent="allergyrisk" tabindex="0" role="button" aria-label="Allergy risk module">
-                <rect x="295" y="376" width="230" height="56" rx="2"/>
+              <g class="cb-n cb-n-mod cb-n-mod-s" data-agent="allergyrisk" tabindex="0" role="button" aria-label="ALLERGY RISK">
+                <rect x="295" y="376" width="230" height="56" rx="2"></rect>
                 <text class="cb-nn" x="410" y="409" text-anchor="middle">ALLERGY RISK</text>
               </g>
-              <g class="cb-n cb-n-mod cb-n-mod-m" data-agent="notegen" tabindex="0" role="button" aria-label="Clinical note generation module">
-                <rect x="540" y="240" width="230" height="56" rx="2"/>
+              <g class="cb-n cb-n-mod cb-n-mod-m" data-agent="notegen" tabindex="0" role="button" aria-label="CLINICAL NOTE GEN">
+                <rect x="540" y="240" width="230" height="56" rx="2"></rect>
                 <text class="cb-nn" x="655" y="273" text-anchor="middle">CLINICAL NOTE GEN</text>
               </g>
-              <g class="cb-n cb-n-mod cb-n-mod-m" data-agent="historyrecall" tabindex="0" role="button" aria-label="Case history recall module">
-                <rect x="540" y="308" width="230" height="56" rx="2"/>
+              <g class="cb-n cb-n-mod cb-n-mod-m" data-agent="historyrecall" tabindex="0" role="button" aria-label="CASE HISTORY RECALL">
+                <rect x="540" y="308" width="230" height="56" rx="2"></rect>
                 <text class="cb-nn" x="655" y="341" text-anchor="middle">CASE HISTORY RECALL</text>
               </g>
-              <g class="cb-n cb-n-mod cb-n-mod-m cb-n-mem" data-agent="decisionmem" tabindex="0" role="button" aria-label="Decision memory module">
-                <rect x="540" y="376" width="230" height="56" rx="2"/>
+              <g class="cb-n cb-n-mod cb-n-mod-m cb-n-mem" data-agent="decisionmem" tabindex="0" role="button" aria-label="DECISION MEMORY">
+                <rect x="540" y="376" width="230" height="56" rx="2"></rect>
                 <text class="cb-nn" x="655" y="409" text-anchor="middle">DECISION MEMORY</text>
               </g>
             </g>
 
             <!-- output -->
-            <g class="cb-n cb-n-out" data-beat="8" data-agent="output" tabindex="0" role="button" aria-label="Output">
-              <rect x="260" y="530" width="300" height="70" rx="2"/>
+            <g class="cb-n cb-n-out" data-beat="8" data-agent="output" tabindex="0" role="button" aria-label="OUTPUT recommendations · actions · notes">
+              <rect x="260" y="530" width="300" height="70" rx="2"></rect>
               <text class="cb-nn" x="410" y="560" text-anchor="middle">OUTPUT</text>
               <text class="cb-ns" x="410" y="582" text-anchor="middle">recommendations · actions · notes</text>
             </g>
@@ -250,28 +247,28 @@
 
         <div class="cb-mode" id="cb-mode" role="group" aria-label="Show the human version or the machine version">
           <button class="cb-mode-btn is-on" id="cb-mode-h" type="button">
-            <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="6.5" r="3.5"/><path d="M3.5 17 c1.5-4.5 11.5-4.5 13 0"/></svg>
+            <svg viewbox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="6.5" r="3.5"></circle><path d="M3.5 17 c1.5-4.5 11.5-4.5 13 0"></path></svg>
             HUMAN
           </button>
           <button class="cb-mode-btn" id="cb-mode-m" type="button">
-            <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4.5" y="7" width="11" height="8.5" rx="1.5"/><line x1="10" y1="7" x2="10" y2="3.5"/><circle cx="10" cy="2.8" r="1"/><circle cx="7.8" cy="11" r="0.9"/><circle cx="12.2" cy="11" r="0.9"/></svg>
+            <svg viewbox="0 0 20 20" aria-hidden="true"><rect x="4.5" y="7" width="11" height="8.5" rx="1.5"></rect><line x1="10" y1="7" x2="10" y2="3.5"></line><circle cx="10" cy="2.8" r="1"></circle><circle cx="7.8" cy="11" r="0.9"></circle><circle cx="12.2" cy="11" r="0.9"></circle></svg>
             MACHINE
           </button>
         </div>
 
         <!-- the paper's loop: search → grade → (one) rewrite -->
-        <div class="cb-strip">
+        <div class="cb-strip" tabindex="0" role="region" aria-label="Scrollable comparison of clinical evidence">
           <div class="cb-cell" data-beat="1">
             <span class="cb-step">STEP 1 — SEARCH</span>
             <div class="cb-flip">
               <div class="cb-flip-inner" data-beat="4">
                 <figure class="cb-plate cb-face cb-face-front">
-                  <img src="../assets/cb/r1.webp"  width="760" height="560" loading="lazy">
+                  <img src="../assets/cb/r1.webp" width="760" height="560" loading="lazy" alt="Illustration of retrieving clinical evidence" decoding="async">
                   <video class="cb-anim" data-src="../assets/cb/anim/r1.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                   <figcaption class="cb-plate-cap"><span class="cb-plate-no">01</span>comb 49,000 notes for the five most similar cases</figcaption>
                 </figure>
                 <figure class="cb-plate cb-face cb-face-back">
-                  <img src="../assets/cb/t1.webp" alt="Documents as a constellation of connected points; a teal query document under a magnifying glass linked to its nearest neighbors" width="760" height="560" loading="lazy">
+                  <img src="../assets/cb/t1.webp" alt="Documents as a constellation of connected points; a teal query document under a magnifying glass linked to its nearest neighbors" width="760" height="560" loading="lazy" decoding="async">
                   <video class="cb-anim" data-src="../assets/cb/anim/t1.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                   <figcaption class="cb-plate-cap cb-cap-tech"><span class="cb-plate-no">01</span>MiniLM embeddings · FAISS cosine search → top-5</figcaption>
                 </figure>
@@ -283,12 +280,12 @@
             <div class="cb-flip">
               <div class="cb-flip-inner" data-beat="4">
                 <figure class="cb-plate cb-face cb-face-front">
-                  <img src="../assets/cb/r3.webp" alt="Hands keep glowing similar pages while grey pages fall to a discard basket" width="760" height="560" loading="lazy">
+                  <img src="../assets/cb/r3.webp" alt="Hands keep glowing similar pages while grey pages fall to a discard basket" width="760" height="560" loading="lazy" decoding="async">
                   <video class="cb-anim" data-src="../assets/cb/anim/r3.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                   <figcaption class="cb-plate-cap"><span class="cb-plate-no">02</span>read the five — are they truly like this patient?</figcaption>
                 </figure>
                 <figure class="cb-plate cb-face cb-face-back">
-                  <img src="../assets/cb/t3.webp" alt="A robot arm stamps documents on a conveyor: teal checks continue, a red X page falls into a wire bin" width="760" height="560" loading="lazy">
+                  <img src="../assets/cb/t3.webp" alt="A robot arm stamps documents on a conveyor: teal checks continue, a red X page falls into a wire bin" width="760" height="560" loading="lazy" decoding="async">
                   <video class="cb-anim" data-src="../assets/cb/anim/t3.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                   <figcaption class="cb-plate-cap cb-cap-tech"><span class="cb-plate-no">02</span>the LLM scores each candidate — accept at ≥ 0.5</figcaption>
                 </figure>
@@ -300,12 +297,12 @@
             <div class="cb-flip">
               <div class="cb-flip-inner" data-beat="4">
                 <figure class="cb-plate cb-face cb-face-front">
-                  <img src="../assets/cb/r2.webp" alt="The doctor reads what came back and writes a sharper query" width="760" height="560" loading="lazy">
+                  <img src="../assets/cb/r2.webp" alt="The doctor reads what came back and writes a sharper query" width="760" height="560" loading="lazy" decoding="async">
                   <video class="cb-anim" data-src="../assets/cb/anim/r2.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                   <figcaption class="cb-plate-cap"><span class="cb-plate-no">03</span>weak matches? ask once more, sharper</figcaption>
                 </figure>
                 <figure class="cb-plate cb-face cb-face-back">
-                  <img src="../assets/cb/t2b.webp" alt="A robot feeding a rewritten page back into the search machine along a big return arrow; the rejected page lies in a bin" width="760" height="560" loading="lazy">
+                  <img src="../assets/cb/t2b.webp" alt="A robot feeding a rewritten page back into the search machine along a big return arrow; the rejected page lies in a bin" width="760" height="560" loading="lazy" decoding="async">
                   <video class="cb-anim" data-src="../assets/cb/anim/t2b.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
                   <figcaption class="cb-plate-cap cb-cap-tech"><span class="cb-plate-no">03</span>below threshold → one rewrite → search again</figcaption>
                 </figure>
@@ -436,10 +433,10 @@
   <h2 class="h2">Selected publications</h2>
 </a>
 
-<footer class="footer">
+</main><footer class="footer">
   <div class="footer-row">
     <span class="label-caps">© 2026 Ahmed Ibrahim · Doha, Qatar</span>
-    <a href="../index.html#cover" class="label-caps back-to-top">Back to top ↑</a>
+    <a href="#top" class="label-caps back-to-top">Back to top ↑</a>
   </div>
 </footer>
 
@@ -630,6 +627,6 @@
 })();
 </script>
 
-<script src="../theme.js" defer></script>
-</body>
+<script src="../theme.js?v=20261015" defer></script>
+<script src="../site-navigation.js?v=20261015" defer></script></body>
 </html>
