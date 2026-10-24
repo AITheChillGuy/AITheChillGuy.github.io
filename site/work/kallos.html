@@ -16,26 +16,32 @@
 <link rel="icon" href="../assets/favicon.png">
 <link rel="stylesheet" href="../styles.css?v=20261015">
 <link rel="stylesheet" href="../product-work.css?v=20261016">
-<script src="../theme.js?v=20261015" defer></script><script src="../product-work.js?v=20261016" defer></script><link rel="stylesheet" href="../product-evidence.css?v=20261024staff">
+<script src="../theme.js?v=20261015" defer></script><script src="../product-work.js?v=20261016" defer></script><link rel="stylesheet" href="../product-evidence.css?v=20261024devices">
 <script src="../product-evidence.js?v=20261024r3" defer></script><meta property="og:image:width" content="2255">
 <meta property="og:image:height" content="1244">
 <meta property="og:image:alt" content="Kallos application calendar and class agenda using sample data">
+<link rel="stylesheet" href="../kallos-demo.css?v=20261024devices">
+<link rel="stylesheet" href="../kallos-devices.css?v=20261024devices">
+<script src="../kallos-demo.js?v=20261024devices" defer></script>
+<script src="../kallos-devices.js?v=20261024devices" defer></script>
 </head>
 <body id="top" class="product-page kallos-page">
 <a class="pp-skip" href="#main">Skip to content</a><nav class="pp-nav pp-shell" aria-label="Portfolio navigation"><a href="../index.html#products">↖ Ahmed Ibrahim / Product work</a><div>
 <a class="pp-nav-next" href="framee.html">FraMee ↗</a><button type="button" class="theme-toggle pp-theme" aria-label="Toggle light/dark theme"><svg width="20" height="20" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"></circle><path d="M12 3a9 9 0 0 1 0 18Z" fill="currentColor"></path></svg></button>
 </div></nav>
-<main id="main" tabindex="-1"><header class="pp-hero pp-shell"><img src="../assets/products/kallos-light.svg" class="kg-logo pp-logo-dark" width="190" height="66" alt="Kallos Fitness"><img src="../assets/products/kallos-dark.svg" class="kg-logo pp-logo-light" width="190" height="66" alt="Kallos Fitness"><div class="kg-hero">
+<main id="main" tabindex="-1"><header class="pp-hero pp-shell"><img src="../assets/products/kallos-light.svg" class="kg-logo pp-logo-dark" width="190" height="66" alt="Kallos Fitness"><img src="../assets/products/kallos-dark.svg" class="kg-logo pp-logo-light" width="190" height="66" alt="Kallos Fitness"><div class="kg-hero kd-hero">
 <div>
 <p class="pp-eyebrow">Web platform / Mobile application</p>
 <h1>Built for the rhythm<br>of a <em>working gym.</em>
 </h1>
+</div>
+
+<div class="kd-hero-copy">
 <p class="pp-intro">A website gets people through the door. Kallos also needs to keep classes, memberships, attendance, and the team moving together.</p>
 <div class="pp-actions">
 <a class="pp-action" href="#screens">Explore the product <span aria-hidden="true">↘</span></a><a class="pp-text-link" href="https://kallosfitness.com/" target="_blank" rel="noopener noreferrer">Visit Kallos Fitness ↗</a>
 </div>
 </div>
-<figure class="hero-capture"><a href="#screens" aria-label="Explore actual Kallos application screens"><img src="../assets/products/screens/kallos-staff-live.png" width="684" height="674" alt="Live Kallos staff dashboard showing daily totals and two complete class entries" fetchpriority="high"></a><figcaption><span>Staff workspace / Live application</span><a href="#screens">Explore the screens ↘</a></figcaption></figure>
 </div>
 <div class="kg-ribbon">
 <span><strong>English + Arabic</strong> / RTL layouts</span><span><strong>Web + Android</strong> / shared backend</span><span><strong>Four roles</strong> / database permissions</span>
@@ -54,15 +60,44 @@
 <dd>kallosfitness.com</dd>
 </div>
 </dl></header>
-<section class="product-evidence pp-shell" id="screens" aria-labelledby="screens-heading">
-<div class="evidence-heading">
-<p class="pp-eyebrow">Inside the product</p>
-<h2 id="screens-heading">The software<br>behind the brand.</h2>
-<p class="evidence-intro">Actual application screens: the booking calendar, the staff workspace, the Arabic website, and the Android app.</p>
+<section class="product-evidence pp-shell" id="screens" aria-labelledby="screens-heading"><div class="kd-heading">
+<div>
+<p class="pp-eyebrow">Explore the interface</p>
+<h2 id="screens-heading">Step inside<br>the working day.</h2>
 </div>
-<div data-evidence>
+<p>Open the staff workspace on the laptop, or book a class from the phone. Try a sample booking and see it reach the staff view. Enter either device for a full-size interface.</p>
+</div>
+<div class="kd-open-controls" role="group" aria-label="Open an interactive Kallos demo">
+<button type="button" data-kd-enter="staff" aria-haspopup="dialog" aria-controls="kd-device-dialog">Enter staff dashboard <span aria-hidden="true">↗</span></button><button type="button" data-kd-enter="member" aria-haspopup="dialog" aria-controls="kd-device-dialog">Enter mobile web demo <span aria-hidden="true">↗</span></button>
+</div>
+<div class="kd-stage" aria-label="Three-dimensional laptop and phone previews">
+<div class="kd-stage-label">
+<span>Kallos / Two sides of the same gym</span><span>Drag the background to rotate · Click a screen to enter</span>
+</div>
+<div class="kd-laptop">
+<div class="kd-laptop-lid"><div class="kd-laptop-screen"><div class="kd-app-slot"><div class="kd-app" data-kallos-app="staff" inert></div></div><button type="button" class="kd-screen-enter" data-kd-enter="staff" aria-label="Enter the laptop staff demo" aria-haspopup="dialog" aria-controls="kd-device-dialog"><span>Enter workspace ↗</span></button></div></div>
+<div class="kd-laptop-base" aria-hidden="true"></div>
+<span class="kd-device-name">Staff workspace</span>
+</div>
+<div class="kd-phone">
+<div class="kd-phone-shell">
+<span class="kd-phone-camera" aria-hidden="true"></span><div class="kd-phone-screen"><div class="kd-app-slot"><div class="kd-app" data-kallos-app="member" inert></div></div><button type="button" class="kd-screen-enter" data-kd-enter="member" aria-label="Enter the phone member demo" aria-haspopup="dialog" aria-controls="kd-device-dialog"><span>Enter mobile demo ↗</span></button></div>
+</div>
+<span class="kd-device-name">Member / Mobile web</span>
+</div>
+</div>
+<div class="kd-stage-footer">
+<p>Enter a device for a flat, full-size interface. Your demo bookings and attendance stay in sync across both views.</p>
+<div class="kd-view-controls" role="group" aria-label="Rotate the devices">
+<span>Change the angle</span><button type="button" data-kd-rotate="-5" aria-label="Rotate devices left">←</button><button type="button" data-kd-rotate="5" aria-label="Rotate devices right">→</button><button type="button" data-kd-rotate="reset" aria-label="Reset device angle">↺</button>
+</div>
+</div>
+<p class="kd-disclosure"><strong>Interactive demo · sample data.</strong> Adapted from the Kallos interfaces for this portfolio. Try dates, filters, booking, cancellation, attendance, and Arabic. Demo actions stay in this page and reset when it is reloaded; the live service and its member and payment records are never accessed. The phone shows the responsive website.</p>
+<figure class="evidence-film" id="live-workflow" aria-labelledby="live-workflow-heading"><h3 id="live-workflow-heading">Watch the live workflow.</h3>
+<video controls playsinline preload="none" poster="../assets/products/screens/kallos-live-poster.png" width="1100" height="820" aria-label="Live Kallos web application: date navigation, schedule filters, and Arabic layout"><source src="../assets/products/screens/kallos-screen-tour.mp4?v=live-20261024" type="video/mp4"><track kind="captions" src="../assets/products/screens/kallos-screen-tour.vtt?v=live-20261024" srclang="en" label="English" default>Your browser does not support video. Use the original application captures below.</video><figcaption>Recorded in the live Kallos web app on 24 October 2026: browse dates, filter available afternoon classes, clear filters, and open the Arabic date picker. The recording is cropped to the schedule, with a cut between the English and Arabic views. Member records and payment screens are excluded. The interactive devices above use separate sample data.</figcaption></figure>
+<details class="kd-capture-archive"><summary>Original application captures</summary><div data-evidence>
 <div class="evidence-tabs" role="tablist" aria-label="Kallos application screens">
-<button type="button" role="tab" id="screen-tab-calendar" aria-controls="screen-panel-calendar" aria-selected="true" tabindex="0"><span aria-hidden="true">01</span>Booking calendar</button><button type="button" role="tab" id="screen-tab-staff" aria-controls="screen-panel-staff" aria-selected="false" tabindex="-1"><span aria-hidden="true">02</span>Staff dashboard</button><button type="button" role="tab" id="screen-tab-arabic" aria-controls="screen-panel-arabic" aria-selected="false" tabindex="-1"><span aria-hidden="true">03</span>Arabic / RTL</button><button type="button" role="tab" id="screen-tab-android" aria-controls="screen-panel-android" aria-selected="false" tabindex="-1"><span aria-hidden="true">04</span>Android app</button>
+<button type="button" role="tab" id="screen-tab-calendar" aria-controls="screen-panel-calendar" aria-selected="true" tabindex="0"><span aria-hidden="true">01</span>Booking calendar</button><button type="button" role="tab" id="screen-tab-arabic" aria-controls="screen-panel-arabic" aria-selected="false" tabindex="-1"><span aria-hidden="true">02</span>Arabic / RTL</button><button type="button" role="tab" id="screen-tab-android" aria-controls="screen-panel-android" aria-selected="false" tabindex="-1"><span aria-hidden="true">03</span>Android app</button>
 </div>
 <div class="evidence-panel" id="screen-panel-calendar" role="tabpanel" aria-labelledby="screen-tab-calendar">
 <figure class="evidence-stage "><img src="../assets/products/screens/kallos-calendar.png" width="2255" height="1244" alt="Kallos web application showing the month calendar, coach filters, and class agenda with sample data" loading="lazy" decoding="async"><button type="button" class="evidence-enlarge" data-enlarge aria-label="Open full-size image: Kallos web application showing the month calendar, coach filters, and class agenda with sample data">Open full-size ↗</button></figure><div class="evidence-caption">
@@ -73,15 +108,7 @@
 <span class="evidence-origin">Web application · development capture</span>
 </div>
 </div>
-<div class="evidence-panel" id="screen-panel-staff" role="tabpanel" aria-labelledby="screen-tab-staff" hidden>
-<figure class="evidence-stage "><img src="../assets/products/screens/kallos-staff-live.png" width="684" height="674" alt="Live Kallos staff dashboard showing session times, coaches, booked places, and attendance links" loading="lazy" decoding="async"><button type="button" class="evidence-enlarge" data-enlarge aria-label="Open full-size image: Live Kallos staff dashboard showing session times, coaches, booked places, and attendance links">Open full-size ↗</button></figure><div class="evidence-caption">
-<div>
-<h3>The daily view for the team.</h3>
-<p>Session times, coaches, and booked places sit together in the live staff workspace. Each class links directly to attendance; the daily totals stay in view above.</p>
-</div>
-<span class="evidence-origin">Live web app · 24 October 2026</span>
-</div>
-</div>
+
 <div class="evidence-panel" id="screen-panel-arabic" role="tabpanel" aria-labelledby="screen-tab-arabic" hidden>
 <figure class="evidence-stage tall"><img src="../assets/products/screens/kallos-arabic.png" width="375" height="812" alt="Actual Arabic Kallos schedule in a right-to-left mobile web layout using sample data" loading="lazy" decoding="async"><button type="button" class="evidence-enlarge" data-enlarge aria-label="Open full-size image: Actual Arabic Kallos schedule in a right-to-left mobile web layout using sample data">Open full-size ↗</button></figure><div class="evidence-caption">
 <div>
@@ -101,42 +128,7 @@
 </div>
 </div>
 </div>
-<p class="evidence-note">Staff dashboard: live capture, 24 October 2026. Other stills: development and staging builds with sample data, September 2026. Member records and payment information are excluded. Open any image to inspect it at full size.</p>
-<figure class="evidence-film" id="live-workflow" aria-labelledby="live-workflow-heading"><h3 id="live-workflow-heading">Watch the live workflow.</h3>
-<video controls playsinline preload="none" poster="../assets/products/screens/kallos-live-poster.png" width="1100" height="820" aria-label="Live Kallos web application: date navigation, schedule filters, and Arabic layout"><source src="../assets/products/screens/kallos-screen-tour.mp4?v=live-20261024" type="video/mp4"><track kind="captions" src="../assets/products/screens/kallos-screen-tour.vtt?v=live-20261024" srclang="en" label="English" default>Your browser does not support video. Use the application screen gallery above.</video><figcaption>Recorded in the live Kallos web app on 24 October 2026: browse dates, filter available afternoon classes, clear filters, and open the Arabic date picker. The recording is cropped to the schedule, with a cut between the English and Arabic views. Member records and payment screens are excluded. The interactive sample below remains a separate illustrative walkthrough.</figcaption></figure>
-</section><section class="pp-section pp-shell" id="workspace" aria-labelledby="kg-workspace-title"><div class="pp-section-head">
-<h2 id="kg-workspace-title">One gym.<br>Different working days.</h2>
-<p>The interface changes with the job. A member needs a place in a class; staff need the tools to run it.</p>
-</div>
-<div class="kg-workspace">
-<div class="kg-demo-toolbar">
-<div class="pp-tabs" role="tablist" aria-label="Product role">
-<button role="tab" type="button" id="kg-member" data-role="member" aria-selected="true" aria-controls="kg-role-panel">Member</button><button role="tab" type="button" id="kg-coach" data-role="coach" aria-selected="false" tabindex="-1" aria-controls="kg-role-panel">Coach</button><button role="tab" type="button" id="kg-reception" data-role="reception" aria-selected="false" tabindex="-1" aria-controls="kg-role-panel">Reception</button><button role="tab" type="button" id="kg-admin" data-role="admin" aria-selected="false" tabindex="-1" aria-controls="kg-role-panel">Admin</button>
-</div>
-<div class="kg-language" role="group" aria-label="Example language">
-<button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="ar" lang="ar" aria-pressed="false">العربية</button>
-</div>
-</div>
-<div class="kg-demo" id="kg-role-panel" role="tabpanel" aria-labelledby="kg-member" lang="en" dir="ltr">
-<div class="kg-demo-title">
-<div>
-<h3>Your next session.</h3>
-<p>Book a class and keep track of your training.</p>
-</div>
-<span class="kg-status">Membership active</span>
-</div>
-<div class="kg-session">
-<time>18:00</time><div>
-<h4>Calisthenics foundations</h4>
-<p>Technique and strength / 60 minutes</p>
-</div>
-<button type="button" class="kg-book" id="kg-booking">Try booking a spot</button>
-</div>
-<p class="kg-demo-story">The real platform checks membership eligibility and class capacity before confirming a booking.</p>
-</div>
-<p class="kg-role-note" id="kg-role-note">Members browse the schedule, book eligible classes, and review their bookings and membership.</p>
-<p class="pp-demo-note">Illustrative product walkthrough using sample content. Actions stay on this page and do not create real bookings or access member records.</p>
-</div></section>
+<p class="evidence-note">These stills show development and staging builds with sample data from September 2026. The Android capture is a development build; the recording above shows the live web application.</p></details></section>
 <section class="pp-section pp-shell kg-platforms" aria-labelledby="kg-platform-title"><div class="kg-platform-copy">
 <p class="pp-eyebrow">A shared foundation</p>
 <h2 id="kg-platform-title">On the web.<br>In your pocket.</h2>
@@ -164,5 +156,12 @@
 <div class="pp-actions">
 <a class="pp-action" href="https://kallosfitness.com/" target="_blank" rel="noopener noreferrer">Visit Kallos Fitness <span aria-hidden="true">↗</span></a><a class="pp-text-link" href="framee.html">Explore FraMee ↗</a>
 </div></section></main><footer class="pp-footer pp-shell"><a href="../index.html#products">Back to product work</a><a href="#top">Back to top ↑</a></footer>
+<dialog id="kd-device-dialog" class="kd-dialog" aria-labelledby="kd-dialog-title" aria-describedby="kd-dialog-description"><header class="kd-dialog-bar"><div>
+<h2 id="kd-dialog-title">Kallos demo</h2>
+<p id="kd-dialog-description">Interactive demo · sample data</p>
+</div>
+<div class="kd-dialog-actions">
+<button type="button" data-kd-reset>Reset demo</button><button type="button" class="kd-close" aria-label="Close interactive demo">×</button>
+</div></header><div class="kd-dialog-content"></div></dialog>
 </body>
 </html>
