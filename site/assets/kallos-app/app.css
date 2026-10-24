@@ -11592,3 +11592,9 @@ video {
 }
 /* Native controls follow the isolated app theme. */ html[data-theme=dark]{color-scheme:dark}html[data-theme=light]{color-scheme:light}:where(.app-main,.app-sidebar,body){scrollbar-width:thin;scrollbar-color:#626874 transparent}
 /* Keep announcement links legible on their cyan surface in every pointer state. */ .staff-home-bulletin:is(:hover,:focus-visible){color:#081316}
+
+/* Phone displays scroll naturally without persistent browser chrome. */
+@media(max-width:767px){
+  :where(html,body,#root,#root *){scrollbar-width:none!important;scrollbar-gutter:auto!important}
+  :where(html,body,#root,#root *)::-webkit-scrollbar{display:none;width:0;height:0}
+}
