@@ -7,11 +7,11 @@
  const reduced=matchMedia('(prefers-reduced-motion: reduce)'),narrow=matchMedia('(max-width:720px)');
  const toolbar=document.querySelector('.kd-use-controls'),title=document.querySelector('#kd-use-title'),status=document.querySelector('.kd-scene-status');
  const roots=new Map([...document.querySelectorAll('[data-kallos-app]')].map(root=>[root.dataset.kallosApp,{root,surface:root.closest('.kd-live-surface')}]));
- const buttons=[...document.querySelectorAll('[data-kd-enter]')],orbitButtons=[...document.querySelectorAll('[data-kd-rotate]')],frames=JSON.parse(document.querySelector('#kd-camera-frames').textContent);
+ const buttons=[...document.querySelectorAll('[data-kd-enter]')],frames=JSON.parse(document.querySelector('#kd-camera-frames').textContent);
  const projections=new Map([...roots].map(([which,item])=>[which,window.KallosScreenProjection.create(viewer,item.surface,{[which]:frames[which]})]));
  const projection={use:which=>projections.get(which).use(which),update:()=>role&&projections.get(role).update(),hide:()=>role&&projections.get(role).hide()};
  const rad=Math.PI/180,touches=new Set();
- let active=null,role=null,trigger=null,returnView=null,serial=0,phase='idle',pointer=null,textures=null,orbitGoal=null,multiTouch=false;
+ let active=null,role=null,trigger=null,returnView=null,serial=0,phase='idle',pointer=null,textures=null,multiTouch=false;
  const nextFrame=()=>new Promise(requestAnimationFrame);
  const read=()=>{const o=viewer.getCameraOrbit(),t=viewer.getCameraTarget();return{theta:o.theta,phi:o.phi,radius:o.radius,target:[t.x,t.y,t.z],fov:parseFloat(viewer.fieldOfView)||32};};
  const apply=v=>{viewer.cameraTarget=v.target.map(n=>n+'m').join(' ');viewer.cameraOrbit=`${v.theta}rad ${v.phi}rad ${v.radius}m`;viewer.fieldOfView=v.fov+'deg';};
@@ -31,12 +31,12 @@
  function setPhase(value){
   phase=value;stage.dataset.phase=value;stage.setAttribute('aria-busy',String(!['idle','using'].includes(value)));
   buttons.forEach(b=>{b.disabled=value!=='idle';b.setAttribute('aria-expanded',String(value==='using'&&b.dataset.kdEnter===role));});
-  orbitButtons.forEach(b=>{b.disabled=value!=='idle';});toolbar.hidden=value==='idle';
+  toolbar.hidden=value==='idle';
   toolbar.querySelector('[data-kd-reset]').disabled=value!=='using';toolbar.querySelector('[data-kd-back]').disabled=['leaving','returning'].includes(value);
   viewer.inert=value!=='idle';viewer.tabIndex=value==='idle'?0:-1;viewer.cameraControls=value==='idle';
  }
  function fly(destination,duration=1100,onProgress){
-  const id=++serial;orbitGoal=null;
+  const id=++serial;
   const to=()=>typeof destination==='function'?destination():destination;
   if(!viewer.loaded)return Promise.resolve(true);
   if(reduced.matches){apply(to());viewer.jumpCameraToGoal();onProgress?.(1);return Promise.resolve(true);}
@@ -100,8 +100,7 @@
  });
  viewer.addEventListener('error',()=>{stage.dataset.error='true';announce('3D preview unavailable. Enter a demo to use its fixed-size display.');});
  viewer.addEventListener('camera-change',()=>{if(viewer.loaded){const o=viewer.getCameraOrbit();viewer.dataset.orbit=[o.theta,o.phi,o.radius].map(n=>n.toFixed(4)).join(' ');}});
- viewer.addEventListener('pointerdown',e=>{orbitGoal=null;if(e.pointerType==='touch'){touches.add(e.pointerId);if(touches.size>1){multiTouch=true;pointer=null;return;}}pointer={x:e.clientX,y:e.clientY,time:performance.now()};});
- viewer.addEventListener('keydown',()=>{orbitGoal=null;});viewer.addEventListener('wheel',()=>{orbitGoal=null;},{passive:true});
+ viewer.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'){touches.add(e.pointerId);if(touches.size>1){multiTouch=true;pointer=null;return;}}pointer={x:e.clientX,y:e.clientY,time:performance.now()};});
  viewer.addEventListener('pointerup',e=>{
   if(e.pointerType==='touch'){touches.delete(e.pointerId);if(multiTouch){if(!touches.size)multiTouch=false;pointer=null;return;}}
   if(!pointer||phase!=='idle'||performance.now()-pointer.time>550||Math.hypot(e.clientX-pointer.x,e.clientY-pointer.y)>7)return;pointer=null;
@@ -109,13 +108,6 @@
   if(which)enter(which,document.querySelector(`[data-kd-enter="${which}"]`));
  });
  viewer.addEventListener('pointercancel',e=>{touches.delete(e.pointerId);if(!touches.size)multiTouch=false;pointer=null;});
- orbitButtons.forEach(button=>button.addEventListener('click',()=>{
-  if(!viewer.loaded||phase!=='idle')return;
-  if(button.dataset.kdRotate==='reset'){fly(home(),900);announce('Returning to the starting view.');return;}
-  serial++;viewer.cameraControls=true;const v=orbitGoal||read(),change=button.dataset.kdRotate;
-  if(change==='up'||change==='down')v.phi=Math.max(20*rad,Math.min(130*rad,v.phi+(change==='up'?-14:14)*rad));else v.theta+=Number(change)*rad;
-  orbitGoal=v;viewer.interpolationDecay=reduced.matches?0:110;apply(v);if(reduced.matches)viewer.jumpCameraToGoal();
- }));
  let resizePending=0;
  const resize=()=>{if(resizePending)return;resizePending=requestAnimationFrame(()=>{resizePending=0;if(phase==='using'){stage.style.height=expandedHeight()+'px';if(viewer.loaded){apply(closeView(role));viewer.jumpCameraToGoal();projection.update();}else flatFallback();}});};
  let toolbarPending=0;
