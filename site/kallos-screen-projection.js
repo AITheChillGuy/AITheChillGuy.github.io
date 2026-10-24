@@ -162,6 +162,7 @@
       surface.style.borderRadius = (radius / frame.width * 100) + '% / ' + (radius / frame.height * 100) + '%';
       surface.style.transform = 'matrix3d(' + matrix.join(',') + ')';
       surface.style.visibility = 'visible'; surface.style.pointerEvents = '';
+      surface.classList.remove('kd-flat-fallback');
       surface.dataset.projectable = 'true';
       const result = {role: active, projectable: true, width, height, aspect: width / height,
         points, cornerError, ...scales};

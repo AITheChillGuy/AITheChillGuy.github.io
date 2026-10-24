@@ -13,8 +13,12 @@
  const projections=new Map([...roots].map(([which,item])=>[which,window.KallosScreenProjection.create(viewer,item.surface,{[which]:frames[which]})]));
  const projection={use:which=>projections.get(which).use(which),update:()=>role&&projections.get(role).update(),hide:()=>role&&projections.get(role).hide()};
  const rad=Math.PI/180,touches=new Set();
- let active=null,role=null,trigger=null,returnView=null,serial=0,phase='idle',pointer=null,textures=null,multiTouch=false;
- const nextFrame=()=>new Promise(requestAnimationFrame);
+ let active=null,role=null,trigger=null,returnView=null,serial=0,flow=0,phase='idle',pointer=null,textures=null,multiTouch=false;
+ const nextFrame=()=>new Promise(resolve=>{
+  let frame=0,done=false;
+  const finish=()=>{if(done)return;done=true;clearTimeout(timer);cancelAnimationFrame(frame);resolve();};
+  const timer=setTimeout(finish,80);frame=requestAnimationFrame(finish);
+ });
  const read=()=>{const o=viewer.getCameraOrbit(),t=viewer.getCameraTarget();return{theta:o.theta,phi:o.phi,radius:o.radius,target:[t.x,t.y,t.z],fov:parseFloat(viewer.fieldOfView)||32};};
  const apply=v=>{viewer.cameraTarget=v.target.map(n=>n+'m').join(' ');viewer.cameraOrbit=`${v.theta}rad ${v.phi}rad ${v.radius}m`;viewer.fieldOfView=v.fov+'deg';};
  const home=()=>narrow.matches?{theta:-12*rad,phi:83*rad,radius:4.35,target:frames.member.center,fov:32}:{theta:12*rad,phi:74*rad,radius:7.6,target:[-.15,1.35,-.1],fov:32};
@@ -32,32 +36,49 @@
  const restoreFocus=()=>{if(!trigger)return;trigger.focus({preventScroll:true});const r=trigger.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)trigger.scrollIntoView({behavior:reduced.matches?'instant':'smooth',block:'nearest'});};
  function setPhase(value){
   phase=value;stage.dataset.phase=value;stage.setAttribute('aria-busy',String(!['idle','using'].includes(value)));
-  buttons.forEach(b=>{b.disabled=value!=='idle';b.setAttribute('aria-expanded',String(value==='using'&&b.dataset.kdEnter===role));});
+  buttons.forEach(b=>{b.disabled=value!=='idle'&&!(value==='using'&&b.dataset.kdEnter!==role);b.setAttribute('aria-expanded',String(value==='using'&&b.dataset.kdEnter===role));});
   toolbar.hidden=value==='idle';
   toolbar.querySelector('[data-kd-reset]').disabled=value!=='using';toolbar.querySelector('[data-kd-back]').disabled=['leaving','returning'].includes(value);
   viewer.inert=value!=='idle';viewer.tabIndex=value==='idle'?0:-1;viewer.cameraControls=value==='idle';
  }
  function fly(destination,duration=1100,onProgress){
-  const id=++serial;
-  const to=()=>typeof destination==='function'?destination():destination;
+  const id=++serial,to=()=>typeof destination==='function'?destination():destination;
   if(!viewer.loaded)return Promise.resolve(true);
   if(reduced.matches){apply(to());viewer.jumpCameraToGoal();onProgress?.(1);return Promise.resolve(true);}
   const from=read();viewer.cameraControls=false;viewer.interpolationDecay=0;
   return new Promise(resolve=>{
-   const start=performance.now();
-   const tick=now=>{
+   let frame=0,settled=false;
+   const finish=(completed,snap=false)=>{
+    if(settled)return;settled=true;clearTimeout(timer);cancelAnimationFrame(frame);
     if(id!==serial){resolve(false);return;}
-    const goal=to(),delta=((goal.theta-from.theta+Math.PI)%(2*Math.PI)+2*Math.PI)%(2*Math.PI)-Math.PI;
-    const p=Math.min(1,(now-start)/duration),e=p*p*p*(p*(p*6-15)+10),mix=(a,b)=>a+(b-a)*e;
-    apply({theta:from.theta+delta*e,phi:mix(from.phi,goal.phi),radius:mix(from.radius,goal.radius),target:from.target.map((n,i)=>mix(n,goal.target[i])),fov:mix(from.fov,goal.fov)});onProgress?.(p);
-    if(p<1)requestAnimationFrame(tick);else{viewer.interpolationDecay=reduced.matches?0:110;viewer.cameraControls=phase==='idle';resolve(true);}
-   };requestAnimationFrame(tick);
+    try{if(snap){apply(to());viewer.jumpCameraToGoal();onProgress?.(1);}}
+    catch(error){console.warn('Device camera recovery',error);completed=false;}
+    viewer.interpolationDecay=reduced.matches?0:110;viewer.cameraControls=phase==='idle';resolve(completed);
+   };
+   // A hidden or throttled browser can stop delivering animation frames.
+   const timer=setTimeout(()=>finish(true,true),duration+300),start=performance.now();
+   const tick=now=>{
+    if(settled)return;
+    if(id!==serial){finish(false);return;}
+    try{
+     const goal=to(),delta=((goal.theta-from.theta+Math.PI)%(2*Math.PI)+2*Math.PI)%(2*Math.PI)-Math.PI;
+     const p=Math.min(1,(now-start)/duration),e=p*p*p*(p*(p*6-15)+10),mix=(a,b)=>a+(b-a)*e;
+     apply({theta:from.theta+delta*e,phi:mix(from.phi,goal.phi),radius:mix(from.radius,goal.radius),target:from.target.map((n,i)=>mix(n,goal.target[i])),fov:mix(from.fov,goal.fov)});onProgress?.(p);
+     if(p<1)frame=requestAnimationFrame(tick);else finish(true);
+    }catch(error){console.warn('Device camera transition',error);finish(false);}
+   };frame=requestAnimationFrame(tick);
   });
  }
  async function centerStage(){
   const top=stage.getBoundingClientRect().top+scrollY-Math.max(12,(innerHeight-expandedHeight())/2);
   scrollTo({top,behavior:reduced.matches?'instant':'smooth'});if(reduced.matches)return;
-  await new Promise(resolve=>{const start=performance.now();let last=Infinity,lastHeight=0,stable=0;const check=now=>{const r=stage.getBoundingClientRect();stable=Math.abs(r.top-last)<.5&&Math.abs(r.height-lastHeight)<.5?stable+1:0;last=r.top;lastHeight=r.height;if((stable>3&&now-start>180)||now-start>850)resolve();else requestAnimationFrame(check);};requestAnimationFrame(check);});
+  await new Promise(resolve=>{
+   let frame=0,done=false,last=Infinity,lastHeight=0,stable=0;
+   const finish=()=>{if(done)return;done=true;clearTimeout(timer);cancelAnimationFrame(frame);resolve();};
+   const timer=setTimeout(finish,900),start=performance.now();
+   const check=now=>{if(done)return;const r=stage.getBoundingClientRect();stable=Math.abs(r.top-last)<.5&&Math.abs(r.height-lastHeight)<.5?stable+1:0;last=r.top;lastHeight=r.height;if((stable>3&&now-start>180)||now-start>850)finish();else frame=requestAnimationFrame(check);};
+   frame=requestAnimationFrame(check);
+  });
  }
  function flatFallback(){
   const f=frames[role],h=stage.clientHeight,w=stage.clientWidth,top=Math.max(86,toolbar.offsetHeight+32),maxHeight=h-top-20,maxWidth=w-48;
@@ -66,32 +87,40 @@
   surface.style.transform=`translate(${(w-width)/2}px,${top+(maxHeight-height)/2}px)`;surface.style.visibility='visible';surface.style.pointerEvents='';
  }
  async function enter(which,button){
-  if(phase!=='idle')return;active=roots.get(which);if(!active)return;
+  if(phase!=='idle')return;active=roots.get(which);if(!active)return;const entryId=++flow;
   role=which;surface=active.surface;trigger=button;returnView=viewer.loaded?read():home();title.textContent=role==='staff'?'Staff':'Member';
   setPhase('entering');stage.style.height=expandedHeight()+'px';surface.dataset.device=role;surface.hidden=false;surface.inert=true;surface.classList.remove('is-visible','kd-flat-fallback');
   active.root.inert=true;if(viewer.loaded)projection.use(role);
-  announce('Moving into the '+(role==='staff'?'laptop':'phone')+' display…');await centerStage();if(phase!=='entering')return;
-  if(viewer.loaded){
-   if(!await fly(()=>closeView(role),1100,p=>{projection.update();if(p>.86)surface.classList.add('is-visible');}))return;
-   await nextFrame();await nextFrame();projection.update();
-  }else flatFallback();
-  if(phase!=='entering')return;
+  window.KallosDemo?.activate?.(role);
+  let aligned=false;
+  try{
+   announce('Moving into the '+(role==='staff'?'laptop':'phone')+' display…');await centerStage();if(phase!=='entering'||entryId!==flow)return;
+   if(viewer.loaded){
+    aligned=await fly(()=>closeView(role),1100,p=>{projection.update();if(p>.86)surface.classList.add('is-visible');});
+    await nextFrame();await nextFrame();projection.update();
+   }
+  }catch(error){console.warn('Device entry recovery',error);}
+  if(phase!=='entering'||entryId!==flow)return;
+  if(!aligned||surface.dataset.projectable!=='true')flatFallback();
   surface.classList.add('is-visible');surface.inert=false;active.root.inert=false;setPhase('using');
   const viewport=active.root.querySelector('.kd-render');viewport.tabIndex=0;viewport.setAttribute('role','group');viewport.setAttribute('aria-label','Scrollable '+(role==='staff'?'staff':'member')+' app content');viewport.focus({preventScroll:true});
   announce('Use the app inside the device. Return to 3D or press Escape when finished.');
  }
- async function exit(){
+ async function exit(restore=true){
   if(['idle','leaving','returning'].includes(phase))return;
-  serial++;setPhase('leaving');surface.inert=true;if(active)active.root.inert=true;
+  flow++;serial++;setPhase('leaving');surface.inert=true;if(active)active.root.inert=true;
   const opacity=getComputedStyle(surface).opacity;surface.classList.remove('is-visible');
-  if(!reduced.matches&&!surface.hidden)await surface.animate([{opacity},{opacity:0}],{duration:180,easing:'ease-in'}).finished.catch(()=>{});
+  if(!reduced.matches&&!surface.hidden){
+   const fade=surface.animate([{opacity},{opacity:0}],{duration:180,easing:'ease-in'});
+   await Promise.race([fade.finished.catch(()=>{}),new Promise(resolve=>setTimeout(resolve,230))]);fade.cancel();
+  }
   surface.hidden=true;projection.hide();if(active){active=null;}textures?.update();setPhase('returning');
-  await fly(returnView||home(),1000);role=null;stage.style.removeProperty('height');setPhase('idle');announce('Drag to rotate. Click either screen to use its demo.');restoreFocus();
+  try{await fly(returnView||home(),1000);}catch(error){console.warn('Device return recovery',error);}role=null;stage.style.removeProperty('height');setPhase('idle');announce('Drag to rotate. Click either screen to use its demo.');if(restore)restoreFocus();
  }
  document.addEventListener('kallos:escape',()=>{if(phase==='using')exit();});
- buttons.forEach(button=>button.addEventListener('click',()=>enter(button.dataset.kdEnter,button)));
+ buttons.forEach(button=>button.addEventListener('click',async()=>{const which=button.dataset.kdEnter;if(phase==='using'&&role!==which)await exit(false);if(phase==='idle')await enter(which,button);}));
  setPhase('idle');
- toolbar.querySelector('[data-kd-back]').addEventListener('click',exit);
+ toolbar.querySelector('[data-kd-back]').addEventListener('click',()=>exit());
  toolbar.querySelector('[data-kd-reset]').addEventListener('click',()=>window.KallosDemo?.reset());
  addEventListener('keydown',e=>{if(e.key!=='Escape'||e.defaultPrevented||e.target.closest?.('select')||document.querySelector('dialog[open]'))return;if(phase==='entering'||(phase==='using'&&stage.contains(document.activeElement))){e.preventDefault();exit();}});
  viewer.addEventListener('load',async()=>{

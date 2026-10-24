@@ -4,3 +4,9 @@
 .kd-app{display:flex;flex-direction:column;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden;background:#0d0e11;color-scheme:dark}
 .kd-app .kd-render{flex:1;min-width:0;min-height:0;overflow:hidden;overscroll-behavior:contain}
 .kd-frontend{display:block;width:100%;height:100%;border:0;background:#0d0e11}
+.kd-app .kd-render{position:relative}
+.kd-frame-loader{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;background:#0d0e11;color:#f7f8f8;font:400 16px/1.5 "Kallos Avenir",Arial,sans-serif;text-align:center}
+.kd-frame-loader[hidden],.kd-frame-retry[hidden]{display:none!important}
+.kd-frame-loader p{margin:0}
+.kd-frame-retry{min-height:44px;padding:10px 22px;border:0;border-radius:6px;background:#69b2c8;color:#0d0e11;font:700 16px/1.3 "Kallos Avenir",Arial,sans-serif;cursor:pointer}
+.kd-frame-retry:focus-visible{outline:3px solid #f7f8f8;outline-offset:4px}
