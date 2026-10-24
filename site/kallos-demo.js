@@ -15,7 +15,7 @@
     const role = root.dataset.kallosApp;
     const viewport = document.createElement('div'); viewport.className = 'kd-render';
     const frame = document.createElement('iframe');
-    const url = new URL(base); url.searchParams.set('role', role);
+    const url = new URL(base); url.searchParams.set('role', role); url.searchParams.set('v', new URL(document.currentScript.src).searchParams.get('v') || 'current');
     frame.src = url.href;
     frame.title = `Kallos ${role === 'staff' ? 'staff workspace' : 'member website'} — interactive sample data`;
     frame.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-downloads');
