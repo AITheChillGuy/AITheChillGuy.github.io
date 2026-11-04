@@ -214,6 +214,8 @@
       const parts = cmd.split(/\s+/);
       const head = parts[0].toLowerCase();
       const rest = parts.slice(1).join(' ');
+      const secret = new CustomEvent('portfolio:command', {detail:{command:lower,print},cancelable:true});
+      if (!window.dispatchEvent(secret)) return;
 
       /* --- navigation -------------------------------------- */
       if (head === 'open' || head === 'cat' && /^work\//.test(parts[1] || '')) {
@@ -248,7 +250,8 @@
           '  whoami                current user\n' +
           '  vim                   exit Vim\n' +
           '  sudo rm -rf /         classic\n' +
-          '  clear                 wipe terminal output\n'
+          '  clear                 wipe terminal output\n' +
+          '  inspect               investigate an unexplained signal\n'
         );
         return;
       }
@@ -453,7 +456,7 @@
     const gitFoot = $('.git-foot');
     if (gitFoot) {
       gitFoot.addEventListener('click', (e) => {
-        if (e.target.tagName !== 'A') gitInput.focus();
+        if (!e.target.closest('a, button, input')) gitInput.focus();
       });
     }
   }
